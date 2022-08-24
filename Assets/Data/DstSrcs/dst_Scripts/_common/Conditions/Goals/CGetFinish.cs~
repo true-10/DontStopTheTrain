@@ -1,0 +1,36 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CGetFinish : CBaseGoal 
+{
+	#region fields
+	private bool m_isFinished = false;
+	#endregion
+
+	//сбрасываем до дефолта
+	public override void Reset () 
+	{
+		m_isFinished = false;
+	}
+
+	// проверка выполненности цели
+	public override bool IsReached () 
+	{
+		return m_isFinished;	
+	}
+	/*
+	//запускаем механизмы всякие
+	public virtual void GoalStart()
+	{
+
+	}*/
+
+	void OnTriggerEnter( Collider col )
+	{
+		if( col.CompareTag("Player") )
+		{
+			m_isFinished = true;
+		}
+	}
+}
