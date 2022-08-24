@@ -21,3 +21,6 @@ Zenject-UnitTests-Editor.csproj
 .vs/DontStopTheTrain_0/FileContentIndex/1a4cd2c8-c167-417c-aec4-0c0b514b0663.vsidx
 .vs/DontStopTheTrain_0/FileContentIndex/read.lock
 .vs/DontStopTheTrain_0/v17/.suo
+Logs/
+.vs/
+UserSettings/Layouts/CurrentMaximizeLayout.dwlt

@@ -1,5 +1,11 @@
 using UnityEngine;
 
+public interface IGameLifeCycle
+{
+
+}
+
+
 public abstract class AbstractManager : MonoBehaviour, IGameLifeCycle
 {
     private bool IsInit;
