@@ -18,10 +18,10 @@ public class TickManager : AbstractManager
     private DateTime timePaused;
     private bool isPaused;
 
-    public override void OnInit()
+   /* public override void OnInit()
     {
         timerManager.AddTimer("Tick", Tick, tickPeriod, true);
-    }
+    }*/
 
     public void StopTicking()
     {

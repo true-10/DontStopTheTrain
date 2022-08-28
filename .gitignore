@@ -24,3 +24,7 @@ Zenject-UnitTests-Editor.csproj
 Logs/
 .vs/
 UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+Assets/Camera Perspective Editor/
+Assets/PathCreator/
+Assets/TextMesh Pro/Sprites.meta
+Assets/TextMesh Pro/

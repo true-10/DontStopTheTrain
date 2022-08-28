@@ -60,6 +60,8 @@
     <Compile Include="Assets\Data\Scripts\True10\Utils\DataFromGoogleSheets\Editor\GoogleSheetLoaderInspector.cs" />
     <Compile Include="Assets\Data\DstSrcs\Inter_Scriptors\DataModels\Editor\StaticDataInspector.cs" />
     <Compile Include="Assets\Data\Scripts\True10\Utils\DataFromGoogleSheets\Editor\GoogleSheetLoaderBehaviourInspector.cs" />
+    <Compile Include="Assets\Camera Perspective Editor\Scripts\Editor\CameraPerspectiveEditorEditor.cs" />
+    <Compile Include="Assets\PathCreator\Examples\Scripts\Editor\PathSceneToolEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -913,6 +915,10 @@
       <Project>{03B7E68F-EF41-F285-62F2-1F0D4DFE8B74}</Project>
       <Name>Zenject-Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="PathCreatorEditor.csproj">
+      <Project>{B0030277-FB33-5FDD-91F2-BE7312CF142A}</Project>
+      <Name>PathCreatorEditor</Name>
+    </ProjectReference>
     <ProjectReference Include="NaughtyAttributes.Editor.csproj">
       <Project>{72E28E17-3C7C-0EE6-F8AB-41ED454AA605}</Project>
       <Name>NaughtyAttributes.Editor</Name>
@@ -928,6 +934,10 @@
     <ProjectReference Include="NaughtyAttributes.Test.csproj">
       <Project>{A71780AF-2C1F-BA19-AFFE-6A0B1A3EA5D8}</Project>
       <Name>NaughtyAttributes.Test</Name>
+    </ProjectReference>
+    <ProjectReference Include="PathCreator.csproj">
+      <Project>{E9F6C745-CFCE-812F-4654-2AB54498D862}</Project>
+      <Name>PathCreator</Name>
     </ProjectReference>
     <ProjectReference Include="Zenject-PoolMonitor-Editor.csproj">
       <Project>{C020CAC4-E5E2-ED82-78DD-690145DC01E5}</Project>

@@ -16,10 +16,10 @@ public class TimerManager : AbstractManager
         
     private bool isInited = false;
 
-    public override void OnInit()
+   /* public override void OnInit()
     {
         throw new NotImplementedException();
-    }
+    }*/
 
     private void OnDestroy()
     {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,8 @@ public interface IGlobalInventoryController
 /// </summary>
 public class GlobalInventoryController : IGlobalInventoryController, IGameLifeCycle
 {
+    public Action OnInit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
     //датаменеджер
 
 

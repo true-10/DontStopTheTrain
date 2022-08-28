@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using True10.CameraSystem;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using Zenject;
 
 namespace DontStopTheTrain.Gameplay
 {
@@ -13,10 +15,11 @@ namespace DontStopTheTrain.Gameplay
         public IWagonType WagonType;
     }
 
-    public class Wagon : MonoBehaviour, IWagon
+    public class Wagon : MonoBehaviour, IWagon, IPointerClickHandler
     {
+        [Inject] private ICameraController cameraController;
         [SerializeField] private WagonData wagonData;
-        [SerializeField] private List<ICameraHolder> cameras;
+        [SerializeField] private List<CameraHolder> cameras;
         public int Number => wagonData.Number;
 
         public IWagonType WagonType => wagonData.WagonType;
@@ -24,16 +27,11 @@ namespace DontStopTheTrain.Gameplay
         public int Next { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public int Prev { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
-        // Start is called before the first frame update
-        void Start()
+        public void OnPointerClick(PointerEventData eventData)
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            Debug.Log($"{name} OnPointerClick");
+            int hash = cameras[0].HashCode;
+            cameraController.SwitchToCamera(hash);
         }
     }
 }

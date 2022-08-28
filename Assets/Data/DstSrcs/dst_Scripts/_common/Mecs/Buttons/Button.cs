@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Button : MonoBehaviour
+public abstract class Button_InGame : MonoBehaviour
 {
     #region fields
     [SerializeField, Range(0f, 1f)] private float _threshold;

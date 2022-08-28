@@ -63,7 +63,9 @@
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\_common\Animation\FollowPathAnimation.cs" />
     <Compile Include="Assets\Data\DstSrcs\Inter_Scriptors\DataModels\StaticDataSO.cs" />
     <Compile Include="Assets\Data\DstSrcs\Inter_Scriptors\Core\Controllers\BattleSystem\CameraBattleController.cs" />
+    <Compile Include="Assets\Data\Scripts\True10\CommonSystems\AbstractManager.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\Level\LayerChunk.cs" />
+    <Compile Include="Assets\Camera Perspective Editor\Examples\Classic 2.5D FPS Controller\Scripts\FPSInputController.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\_common\Tools\AddCollidersFromMesh.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\_common\Conditions\Base\SequenceCondition.cs" />
     <Compile Include="Assets\Data\DstSrcs\Inter_Scriptors\Core\Controllers\Reputation.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="Assets\Data\Scripts\True10\LevelScrollSystem\Scripts\LevelFactory.cs" />
     <Compile Include="Assets\Data\Scripts\DI\DST_Installer.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\GameManager.cs" />
+    <Compile Include="Assets\Camera Perspective Editor\Examples\Classic 2.5D FPS Controller\Scripts\ClassicFPSCameraController.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\Train\Parts\Data\EngineData.cs" />
     <Compile Include="Assets\Data\Scripts\True10\CommonSystems\CameraSystem\Scripts\CameraHolder.cs" />
     <Compile Include="Assets\Data\Scripts\True10\LevelScrollSystem\Scripts\ECS\EcsMonoEnterPoint.cs" />
@@ -95,10 +98,12 @@
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\Train\Parts\Engine.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\_common\StateMachine\IState.cs" />
     <Compile Include="Assets\Data\DstSrcs\Inter_Scriptors\Core\Controllers\ReputationManager.cs" />
-    <Compile Include="Assets\Data\Scripts\DI\InterceptorsInstaller.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\_common\Tools\PhysicsObject.cs" />
+    <Compile Include="Assets\PathCreator\Examples\Scripts\GeneratePathExample.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\Level\Triggers\StationStopTrigger.cs" />
     <Compile Include="Assets\Data\Scripts\True10\PerkSystem\scripts\PerkSystem.cs" />
+    <Compile Include="Assets\Camera Perspective Editor\Examples\Scripts\CPEScreenPointToRayDemonstration.cs" />
+    <Compile Include="Assets\Camera Perspective Editor\Scripts\CameraPerspectiveEditor.cs" />
     <Compile Include="Assets\Data\Scripts\True10\Utils\DataFromGoogleSheets\GoogleDocsRequestTsvImport.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\_common\Mecs\Doors\Door.cs" />
     <Compile Include="Assets\Data\Scripts\True10\CommonSystems\Interfaces\DamageSystem\IDamageController.cs" />
@@ -113,6 +118,7 @@
     <Compile Include="Assets\Data\Scripts\True10\GridSystem\Scripts\Grid.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\Camera\CameraManager.cs" />
     <Compile Include="Assets\Data\DstSrcs\Inter_Scriptors\Core\Controllers\BattleSystem\DamageSystem\Damagables\Damagable.cs" />
+    <Compile Include="Assets\PathCreator\Examples\Scripts\PathSceneTool.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\_common\Mecs\Buttons\Button.cs" />
     <Compile Include="Assets\Data\DstSrcs\Inter_Scriptors\Core\Controllers\Lattice.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\Level\LandscapeLayer.cs" />
@@ -124,6 +130,7 @@
     <Compile Include="Assets\Data\Scripts\True10\LevelScrollSystem\Scripts\ECS\Systems\InitChunksSystem.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\Level\DOTS\LandscapeLayerMovement.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\Camera\TrainDroneCam.cs" />
+    <Compile Include="Assets\Camera Perspective Editor\Examples\Classic 2.5D FPS Controller\Scripts\MouseLook.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\_common\Conditions\Goals\CBaseGoal.cs" />
     <Compile Include="Assets\Data\Scripts\True10\Utils\DataFromGoogleSheets\GoogleSheetLoader.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\StationManager.cs" />
@@ -131,6 +138,7 @@
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\Train\LocomotivData.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\Train\Locomotiv.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\_common\Conditions\Base\MultiANDCondition.cs" />
+    <Compile Include="Assets\PathCreator\Examples\Scripts\PathSpawner.cs" />
     <Compile Include="Assets\Data\DstSrcs\Inter_Scriptors\ScrollPhysicsTest.cs" />
     <Compile Include="Assets\Data\Scripts\True10\GridSystem\Scripts\GridController.cs" />
     <Compile Include="Assets\Data\DstSrcs\Inter_Scriptors\DataModels\Interfaces\IVehiclePartStaticDataManager.cs" />
@@ -153,7 +161,6 @@
     <Compile Include="Assets\Data\Scripts\True10\GridSystem\Scripts\GridGenerator.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\Train\Parts\PassengerContainer.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\_common\ObjectsPool\GroupObject.cs" />
-    <Compile Include="Assets\Data\Scripts\GamePlay\TrainCameraController.cs" />
     <Compile Include="Assets\Data\Scripts\True10\CommonSystems\ParitclSystem\Scripts\PSController.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\_common\Animation\CAnimationController.cs" />
     <Compile Include="Assets\Data\DstSrcs\Inter_Scriptors\DataModels\Data\CityDataModel.cs" />
@@ -174,11 +181,13 @@
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\_common\Mecs\Doors\SingleDoor.cs" />
     <Compile Include="Assets\Data\Scripts\True10\LevelScrollSystem\Scripts\LevelScrollController.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\_common\Animation\CBaseAnimation.cs" />
+    <Compile Include="Assets\Data\Scripts\True10\LevelScrollSystem\Scripts\ECS\MonoProviders\ScrollSettingsProvider.cs" />
     <Compile Include="Assets\Data\DstSrcs\Inter_Scriptors\DataModels\Data\ArmorDataModel.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\_common\Animation\TowardsToTarget.cs" />
     <Compile Include="Assets\Data\Scripts\True10\LevelScrollSystem\Scripts\ECS\Events\SnapChunkEvent.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\_common\Time\GTime.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\StationPlayerGUI.cs" />
+    <Compile Include="Assets\Data\Scripts\True10\CommonSystems\Interfaces\IGameLifeCycle.cs" />
     <Compile Include="Assets\Data\Scripts\True10\CommonSystems\AnimationSystem\Scripts\IAnimation.cs" />
     <Compile Include="Assets\Data\DstSrcs\Inter_Scriptors\Core\Controllers\BattleSystem\DamageSystem\Damages\Damage.cs" />
     <Compile Include="Assets\Data\Scripts\True10\LevelScrollSystem\Scripts\ECS\Components\ScrollableComponent.cs" />
@@ -186,6 +195,7 @@
     <Compile Include="Assets\Data\DstSrcs\Inter_Scriptors\Core\Controllers\BattleSystem\DamageSystem\DamageController.cs" />
     <Compile Include="Assets\Data\Scripts\True10\LevelScrollSystem\Scripts\ECS\Systems\SnapChunkToNextSystem.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\_common\ObjectsPool\CObjPool.cs" />
+    <Compile Include="Assets\PathCreator\Examples\Scripts\PathPlacer.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\_common\Animation\Sequence.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\_common\Animation\MoveAnimation.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
@@ -203,22 +213,60 @@
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\StateMachine\gameStates\MainMenuState.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\MainMenuManager.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\Level\StationChunk.cs" />
+    <Compile Include="Assets\PathCreator\Examples\Scripts\PathFollower.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\Cargo.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\GameMenuManager.cs" />
     <Compile Include="Assets\Data\Scripts\True10\Utils\DataFromGoogleSheets\SimpleJSON-master\SimpleJSON.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\_common\Animation\CMultiAnimation.cs" />
     <Compile Include="Assets\Data\Scripts\True10\CommonSystems\SoundSystem\Scripts\LoudnessDetector.cs" />
     <Compile Include="Assets\Data\Scripts\True10\LevelScrollSystem\Scripts\ECS\MonoProviders\ScrollableProvider.cs" />
-    <Compile Include="Assets\Data\Scripts\Managers\AbstractManager.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\Train\TrainManager.cs" />
     <Compile Include="Assets\Data\Scripts\GamePlay\Interfaces\Player.cs" />
     <Compile Include="Assets\Data\Scripts\True10\Utils\DataFromGoogleSheets\SimpleJSON-master\SimpleJSONDotNetTypes.cs" />
     <Compile Include="Assets\Data\Scripts\Managers\TickManager.cs" />
+    <Compile Include="Assets\Camera Perspective Editor\Examples\Classic 2.5D FPS Controller\Scripts\CharacterMotor.cs" />
+    <Compile Include="Assets\PathCreator\Examples\Scripts\RoadMeshCreator.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\StateMachine\gameStates\RunState.cs" />
-    <Compile Include="Assets\Data\Scripts\True10\LevelScrollSystem\Scripts\ECS\MonoProviders\ScrollSettingsProvider.cs" />
+    <Compile Include="Assets\Data\Scripts\GamePlay\UI\WagonUIView.cs" />
+    <Compile Include="Assets\Data\Scripts\GamePlay\UI\TrainUIView.cs" />
+    <Compile Include="Assets\Data\Scripts\GamePlay\UI\LocoUIView.cs" />
+    <Compile Include="Assets\Data\Scripts\True10\LevelScrollSystem\Scripts\ECS\Systems\ScrollObjectsSpawnSystem.cs" />
+    <Compile Include="Assets\Data\Scripts\GamePlay\UI\UIController.cs" />
+    <Compile Include="Assets\Data\Scripts\True10\CommonSystems\CameraSystem\Scripts\ICustomCameraController.cs" />
+    <Compile Include="Assets\Data\Scripts\GamePlay\Camera\CameraTargetControllers\TrainCameraController.cs" />
+    <Compile Include="Assets\Data\Scripts\GamePlay\Camera\CameraTargetControllers\CameraTargetMover.cs" />
+    <Compile Include="Assets\Data\Scripts\GamePlay\Camera\CameraTargetControllers\MouseLookTargetController.cs" />
+    <Compile Include="Assets\Data\Scripts\GamePlay\Camera\CameraTargetControllers\MouseDragTargetController.cs" />
+    <Compile Include="Assets\Data\Scripts\GamePlay\Camera\CameraTargetControllers\ZoomTargetController.cs" />
+    <Compile Include="Assets\Data\Scripts\GamePlay\Camera\CameraTargetControllers\CameraTargetLimiter.cs" />
+    <Compile Include="Assets\Data\Scripts\GamePlay\Camera\CameraTargetControllers\CameraYTargetRotator.cs" />
+    <Compile Include="Assets\Data\Scripts\GamePlay\Camera\CameraTargetControllers\CameraTargetZoom.cs" />
+    <Compile Include="Assets\Data\Scripts\GamePlay\Camera\CameraTargetControllers\MouseScreenMover.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\Data\Scripts\True10\Utils\DataFromGoogleSheets\SimpleJSON-master\Changelog.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\Camera Perspective Editor\Read Me.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1017,6 +1065,10 @@
       <Project>{03B7E68F-EF41-F285-62F2-1F0D4DFE8B74}</Project>
       <Name>Zenject-Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="PathCreatorEditor.csproj">
+      <Project>{B0030277-FB33-5FDD-91F2-BE7312CF142A}</Project>
+      <Name>PathCreatorEditor</Name>
+    </ProjectReference>
     <ProjectReference Include="NaughtyAttributes.Editor.csproj">
       <Project>{72E28E17-3C7C-0EE6-F8AB-41ED454AA605}</Project>
       <Name>NaughtyAttributes.Editor</Name>
@@ -1032,6 +1084,10 @@
     <ProjectReference Include="NaughtyAttributes.Test.csproj">
       <Project>{A71780AF-2C1F-BA19-AFFE-6A0B1A3EA5D8}</Project>
       <Name>NaughtyAttributes.Test</Name>
+    </ProjectReference>
+    <ProjectReference Include="PathCreator.csproj">
+      <Project>{E9F6C745-CFCE-812F-4654-2AB54498D862}</Project>
+      <Name>PathCreator</Name>
     </ProjectReference>
     <ProjectReference Include="Zenject-PoolMonitor-Editor.csproj">
       <Project>{C020CAC4-E5E2-ED82-78DD-690145DC01E5}</Project>
