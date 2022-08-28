@@ -40,6 +40,10 @@ namespace DontStopTheTrain.Gameplay
             {
                 return;
             }
+            if (cachedTransform == null)
+            {
+                cachedTransform = GetComponent<Transform>();
+            }
             var pos = cachedTransform.position;
             if ((camHolder as MonoBehaviour).TryGetComponent(out Transform transform))
             {

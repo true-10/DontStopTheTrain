@@ -11,6 +11,7 @@ namespace DontStopTheTrain.Gameplay
     {
         [SerializeField] float moveSpeed = 10f;
         [SerializeField] float sensitivity = 100f;
+        [SerializeField] AnimationCurve curve;
         //[SerializeField] CameraHolder cameraHolder;
         private Transform cachedTransform;
         public Action OnInit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -41,9 +42,9 @@ namespace DontStopTheTrain.Gameplay
         void Update()
         {
 
-            if (IsMovementAvailable() == false)
+          //  if (IsMovementAvailable() == false)
             {
-                return;
+              //  return;
             }
 
             float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
@@ -52,12 +53,14 @@ namespace DontStopTheTrain.Gameplay
             var mouseVectorMove = new Vector3(mouseX, 0f, mouseY);
             //var cross = Vector3.Cross(()
             var dot = Vector3.Dot(trainForward, mouseVectorMove);
+
             MoveAlongTrain(dot);
         }
 
         private void MoveAlongTrain(float move)
         {
             var position = cachedTransform.position;
+            Debug.Log($"position = {position} move = {move}");
             position.z += move * moveSpeed * Time.deltaTime;
             cachedTransform.position = position;
         }
@@ -65,24 +68,34 @@ namespace DontStopTheTrain.Gameplay
         private bool IsMovementAvailable()
         {
             var mousePos = Input.mousePosition;
-            Debug.Log($"mousePos = {mousePos}");
-            if (mousePos.x <= 0f)
-            {
-                return true;
-            }        
-            if (mousePos.x >= Screen.width)
-            {
-                return true;
-            }          
-            if (mousePos.y <= 0f)
-            {
-                return true;
-            }        
-            if (mousePos.y >= Screen.height)
+            var xValue = mousePos.x / Screen.width;
+            var yValue = mousePos.y / Screen.height;
+            var xFromCenter = curve.Evaluate(xValue);
+            var yFromCenter = curve.Evaluate(yValue);
+
+           
+            if (xFromCenter < 0.1f || xFromCenter < 0.1f)
             {
                 return true;
             }
-
+            Debug.Log($"mousePos = {mousePos} xValue = {xValue} xFromCenter = {xFromCenter} yValue = {yValue} yFromCenter = {yFromCenter}");
+            /* if (mousePos.x <= 0f)
+             {
+                 return true;
+             }        
+             if (mousePos.x >= Screen.width)
+             {
+                 return true;
+             }          
+             if (mousePos.y <= 0f)
+             {
+                 return true;
+             }        
+             if (mousePos.y >= Screen.height)
+             {
+                 return true;
+             }
+            */
             return false;
         }
     }
