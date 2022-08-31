@@ -12,6 +12,8 @@ namespace DontStopTheTrain.Gameplay
         [Inject] private ICameraController cameraController;
         [SerializeField] float rotationSpeed = 10f;
         [SerializeField] CameraHolder cameraHolder;
+        [SerializeField] private KeyCode turnLeftKey = KeyCode.Q;
+        [SerializeField] private KeyCode turnRightKey = KeyCode.E;
         private Transform cachedTransform;
 
         public Action OnInit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -54,11 +56,11 @@ namespace DontStopTheTrain.Gameplay
         void Update()
         {
             var move = 0f;
-            if (Input.GetKey(KeyCode.Q))
+            if (Input.GetKey(turnLeftKey))
             {
                 move = 1f;
             }
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(turnRightKey))
             {
                 move = -1f;
             }

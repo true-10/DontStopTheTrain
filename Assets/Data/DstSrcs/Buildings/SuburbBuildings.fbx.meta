@@ -8,7 +8,8 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Ground
-    second: {fileID: 2100000, guid: 017221a7e3c25b94fa4301931203f3e5, type: 2}
+    second: {fileID: 6138011156554045791, guid: fd09b2e372111456b873a89b5fb55ad9,
+      type: 3}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -71,7 +72,7 @@ ModelImporter:
     secondaryUVMinLightmapResolution: 40
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
