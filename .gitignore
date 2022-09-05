@@ -28,3 +28,6 @@ Assets/Camera Perspective Editor/
 Assets/PathCreator/
 Assets/TextMesh Pro/Sprites.meta
 Assets/TextMesh Pro/
+Assembly-CSharp.csproj
+Assembly-CSharp-firstpass.csproj
+UserSettings/

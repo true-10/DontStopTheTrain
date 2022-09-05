@@ -244,6 +244,7 @@
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\StateMachine\gameStates\RunState.cs" />
     <Compile Include="Assets\Data\Scripts\TrainToRailRoadSystem\TrainAxle.cs" />
     <Compile Include="Assets\Data\Scripts\TrainToRailRoadSystem\TrainRig.cs" />
+    <Compile Include="Assets\Data\Scripts\GamePlay\Camera\CameraTargetControllers\CameraTargetLifter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

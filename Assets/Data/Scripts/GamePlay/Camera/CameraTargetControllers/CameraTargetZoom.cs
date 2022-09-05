@@ -13,6 +13,9 @@ namespace DontStopTheTrain.Gameplay
         [SerializeField] float zoomSpeed = 10f;
         [SerializeField] private Transform target;
         [SerializeField] private Vector2 minMax = new Vector2(-30f, -3f);
+        [SerializeField] private bool useMouseScrollWheel = false;
+        [SerializeField] private KeyCode zoomInKey = KeyCode.W;
+        [SerializeField] private KeyCode zoomOutKey = KeyCode.S;
         [SerializeField] CameraHolder cameraHolder;
 
         public Action OnInit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -47,15 +50,18 @@ namespace DontStopTheTrain.Gameplay
         void Update()
         {
             var move = 0f;
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(zoomInKey))
             {
                 move = 1f;
             }
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(zoomOutKey))
             {
                 move = -1f;
             }
-
+            if (useMouseScrollWheel)
+            {
+                move = Input.GetAxis("Mouse ScrollWheel") * 10f;
+            }
             ZoomTargetAlongZ(move);
         }
 
