@@ -86,6 +86,7 @@
     <Compile Include="Assets\Data\Scripts\True10\LevelScrollSystem\Scripts\LevelFactory.cs" />
     <Compile Include="Assets\Data\Scripts\DI\DST_Installer.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\GameManager.cs" />
+    <Compile Include="Assets\Data\Scripts\TrainToRailRoadSystem\TrainAxle.cs" />
     <Compile Include="Assets\Camera Perspective Editor\Examples\Classic 2.5D FPS Controller\Scripts\ClassicFPSCameraController.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\Train\Parts\Data\EngineData.cs" />
     <Compile Include="Assets\Data\Scripts\True10\CommonSystems\CameraSystem\Scripts\CameraHolder.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Assets\Data\DstSrcs\Inter_Scriptors\DataModels\Data\LevelDataModel.cs" />
     <Compile Include="Assets\Data\Scripts\True10\GridSystem\Scripts\Grid.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\Camera\CameraManager.cs" />
+    <Compile Include="Assets\Data\Scripts\GamePlay\Camera\CameraTargetControllers\CameraTargetLifter.cs" />
     <Compile Include="Assets\Data\DstSrcs\Inter_Scriptors\Core\Controllers\BattleSystem\DamageSystem\Damagables\Damagable.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathSceneTool.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\_common\Mecs\Buttons\Button.cs" />
@@ -198,6 +200,7 @@
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\StationPlayerGUI.cs" />
     <Compile Include="Assets\Data\Scripts\True10\CommonSystems\Interfaces\IGameLifeCycle.cs" />
     <Compile Include="Assets\Data\Scripts\True10\CommonSystems\AnimationSystem\Scripts\IAnimation.cs" />
+    <Compile Include="Assets\Data\Scripts\TrainToRailRoadSystem\TrainRig.cs" />
     <Compile Include="Assets\Data\DstSrcs\Inter_Scriptors\Core\Controllers\BattleSystem\DamageSystem\Damages\Damage.cs" />
     <Compile Include="Assets\Data\Scripts\True10\LevelScrollSystem\Scripts\ECS\Components\ScrollableComponent.cs" />
     <Compile Include="Assets\Data\Scripts\GamePlay\Camera\CameraTargetControllers\TrainCameraController.cs" />
@@ -242,9 +245,6 @@
     <Compile Include="Assets\Camera Perspective Editor\Examples\Classic 2.5D FPS Controller\Scripts\CharacterMotor.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\RoadMeshCreator.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\StateMachine\gameStates\RunState.cs" />
-    <Compile Include="Assets\Data\Scripts\TrainToRailRoadSystem\TrainAxle.cs" />
-    <Compile Include="Assets\Data\Scripts\TrainToRailRoadSystem\TrainRig.cs" />
-    <Compile Include="Assets\Data\Scripts\GamePlay\Camera\CameraTargetControllers\CameraTargetLifter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

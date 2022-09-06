@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 4236.538, g: 2992.2324, b: 3288.4922, a: 1}
+  m_IndirectSpecularColor: {r: 4236.089, g: 2990.7402, b: 3284.8945, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1984,7 +1984,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -105.06152, y: 44.17621}
+  m_AnchoredPosition: {x: -105.06152, y: 44.17627}
   m_SizeDelta: {x: 210.1232, y: 88.3524}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &282328624
@@ -6028,6 +6028,90 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8ccce559d3a454f9cd3a03ced85a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1620707825
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: df45c047868f36943b8d94cf52c46bf0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: df45c047868f36943b8d94cf52c46bf0,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: df45c047868f36943b8d94cf52c46bf0,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: df45c047868f36943b8d94cf52c46bf0,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: df45c047868f36943b8d94cf52c46bf0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: df45c047868f36943b8d94cf52c46bf0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: df45c047868f36943b8d94cf52c46bf0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: df45c047868f36943b8d94cf52c46bf0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: df45c047868f36943b8d94cf52c46bf0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: df45c047868f36943b8d94cf52c46bf0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: df45c047868f36943b8d94cf52c46bf0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: df45c047868f36943b8d94cf52c46bf0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: df45c047868f36943b8d94cf52c46bf0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: df45c047868f36943b8d94cf52c46bf0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: df45c047868f36943b8d94cf52c46bf0,
+        type: 3}
+      propertyPath: m_Name
+      value: CurveRailRoadScene
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: df45c047868f36943b8d94cf52c46bf0, type: 3}
 --- !u!1 &1621689549
 GameObject:
   m_ObjectHideFlags: 0
@@ -6776,7 +6860,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 3000
-  field of view: 60
+  field of view: 15.88
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -6801,8 +6885,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823688464}
-  m_LocalRotation: {x: 0.042509794, y: 0.9494068, z: -0.1472304, w: 0.274122}
-  m_LocalPosition: {x: -32.9, y: 24.9, z: 52.3}
+  m_LocalRotation: {x: 0, y: -0.09063256, z: 0, w: 0.9958844}
+  m_LocalPosition: {x: 1.98, y: 0.48, z: -8.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6941,7 +7025,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823688464}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
