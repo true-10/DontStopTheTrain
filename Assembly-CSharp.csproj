@@ -245,6 +245,7 @@
     <Compile Include="Assets\Camera Perspective Editor\Examples\Classic 2.5D FPS Controller\Scripts\CharacterMotor.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\RoadMeshCreator.cs" />
     <Compile Include="Assets\Data\DstSrcs\dst_Scripts\StateMachine\gameStates\RunState.cs" />
+    <Compile Include="Assets\Data\Scripts\TrainToRailRoadSystem\AxleRotator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -67,7 +67,7 @@ namespace DontStopTheTrain.TrainToRailRoadSystem
         private void SetAxleToPathAtDistance(TrainAxle axle, float distance) 
         {
             Vector3 angleVector = Vector3.forward * 90f;
-            axle.CachedTransform.position = pathCreator.path.GetPointAtDistance(distance);
+            axle.CachedTransform.position = pathCreator.path.GetPointAtDistance(distance) + Vector3.up * .1f;
             axle.CachedTransform.rotation = pathCreator.path.GetRotationAtDistance(distance);
             axle.CachedTransform.Rotate(angleVector);
 

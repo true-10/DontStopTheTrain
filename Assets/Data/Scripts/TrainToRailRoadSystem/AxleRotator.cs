@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+namespace DontStopTheTrain.TrainToRailRoadSystem
+{
+    public class AxleRotator : MonoBehaviour
+    {
+        public static float speed = 10f;
+
+        private Transform cachedTransform;
+        // Start is called before the first frame update
+        void Start()
+        {
+            cachedTransform = GetComponent<Transform>();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            cachedTransform.Rotate(Vector3.right * speed * 360f* Time.deltaTime);
+        }
+    }
+}
