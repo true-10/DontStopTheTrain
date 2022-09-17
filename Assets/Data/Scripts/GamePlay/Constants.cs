@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Interceptors
+namespace DontStopTheTrain
 {
-    public class Constants
+    public static class Constants
     {
 
     }

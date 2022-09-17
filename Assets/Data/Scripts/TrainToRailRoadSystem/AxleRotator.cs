@@ -16,8 +16,7 @@ namespace DontStopTheTrain.TrainToRailRoadSystem
             cachedTransform = GetComponent<Transform>();
         }
 
-        // Update is called once per frame
-        void Update()
+        void LateUpdate()
         {
             cachedTransform.Rotate(Vector3.right * speed * 360f* Time.deltaTime);
         }

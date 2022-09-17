@@ -1,0 +1,26 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace DontStopTheTrain.Train
+{
+    public interface ITrainController
+    {
+
+        Action OnStart { get; set; }//поезд тронулся
+        Action OnStop { get; set; }//поезд остановился
+        Action OnSwitchWagon { get; set; }
+    }
+
+
+    public class TrainController : MonoBehaviour
+    {
+        private List<IWagon> wagons;
+
+        //бригады строителей? пьют самогон? инженеры? Механики?
+        //советники? Управленцы? Мэнеджеры?
+
+    }
+
+}
