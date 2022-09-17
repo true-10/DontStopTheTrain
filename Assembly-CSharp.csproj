@@ -249,6 +249,7 @@
     <Compile Include="Assets\Data\Scripts\dst_Scripts\StateMachine\gameStates\RunState.cs" />
     <Compile Include="Assets\Data\Scripts\Events\RoadMapGenerator.cs" />
     <Compile Include="Assets\Data\Scripts\GamePlay\TurnController.cs" />
+    <Compile Include="Assets\Data\Scripts\Train\TrainMovementSimulationSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
