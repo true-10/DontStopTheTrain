@@ -123,6 +123,7 @@
     <Compile Include="Assets\Data\Scripts\dst_Scripts\Camera\CameraManager.cs" />
     <Compile Include="Assets\Data\Scripts\Camera\CameraTargetControllers\CameraTargetLifter.cs" />
     <Compile Include="Assets\Data\Scripts\Inter_Scriptors\Core\Controllers\BattleSystem\DamageSystem\Damagables\Damagable.cs" />
+    <Compile Include="Assets\Data\Scripts\GamePlay\TurnController.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathSceneTool.cs" />
     <Compile Include="Assets\Data\Scripts\dst_Scripts\_common\Mecs\Buttons\Button.cs" />
     <Compile Include="Assets\Data\Scripts\Inter_Scriptors\Core\Controllers\Lattice.cs" />
@@ -190,6 +191,7 @@
     <Compile Include="Assets\Data\Scripts\Inter_Scriptors\Core\Controllers\BattleSystem\BattleController.cs" />
     <Compile Include="Assets\Data\Scripts\True10\ScriptableObjects\Parts\Parts\PartScriptableObject.cs" />
     <Compile Include="Assets\Data\Scripts\dst_Scripts\_common\Conditions\Base\TimerCondition.cs" />
+    <Compile Include="Assets\Data\Scripts\Events\RoadMapGenerator.cs" />
     <Compile Include="Assets\Data\Scripts\dst_Scripts\_common\Mecs\Doors\SingleDoor.cs" />
     <Compile Include="Assets\Data\Scripts\True10\LevelScrollSystem\Scripts\LevelScrollController.cs" />
     <Compile Include="Assets\Data\Scripts\dst_Scripts\_common\Animation\CBaseAnimation.cs" />
@@ -247,8 +249,6 @@
     <Compile Include="Assets\Camera Perspective Editor\Examples\Classic 2.5D FPS Controller\Scripts\CharacterMotor.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\RoadMeshCreator.cs" />
     <Compile Include="Assets\Data\Scripts\dst_Scripts\StateMachine\gameStates\RunState.cs" />
-    <Compile Include="Assets\Data\Scripts\Events\RoadMapGenerator.cs" />
-    <Compile Include="Assets\Data\Scripts\GamePlay\TurnController.cs" />
     <Compile Include="Assets\Data\Scripts\Train\TrainMovementSimulationSystem.cs" />
   </ItemGroup>
   <ItemGroup>

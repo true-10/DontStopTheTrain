@@ -7,14 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: black
+    second: {fileID: 2100000, guid: 13a23c754ac4b614a8f8f84cbf09ff44, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: contour
-    second: {fileID: 2100000, guid: b09773de7ca8ba64990dcda43d4e69cd, type: 2}
+    second: {fileID: 2100000, guid: 13a23c754ac4b614a8f8f84cbf09ff44, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: white
-    second: {fileID: 7922251121040759823, guid: cbb20c81083acf34db76f711d46b3055,
-      type: 3}
+    second: {fileID: 2100000, guid: 24cdf9fe0bb577147a43fb0c42aeba61, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

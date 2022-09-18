@@ -16,7 +16,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: 7023617f8065b7040a228318d617390f, type: 2}
+      objectReference: {fileID: 2100000, guid: 24cdf9fe0bb577147a43fb0c42aeba61, type: 2}
     - target: {fileID: 5138182837975006076, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
       propertyPath: m_IsActive
@@ -26,6 +26,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869454094328425967, guid: 2e1bcfd78a19c6d4d915dffe45018398,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869454094328425967, guid: 2e1bcfd78a19c6d4d915dffe45018398,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 8869454094328425967, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
@@ -110,7 +120,7 @@ PrefabInstance:
     - target: {fileID: 8869454094818834448, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
       propertyPath: m_Name
-      value: wagon_pass3
+      value: wagon_pass3 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8869454094818834448, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
