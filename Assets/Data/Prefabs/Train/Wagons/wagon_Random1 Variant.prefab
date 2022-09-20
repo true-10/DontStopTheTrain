@@ -19,9 +19,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7361007865734189397, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361007865734189397, guid: 2e1bcfd78a19c6d4d915dffe45018398,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3f8d5102d67fe674fa9545fed7ccf4ad, type: 2}
+      objectReference: {fileID: 2100000, guid: 8d9df7e08377cbe4e8792e74d273a204, type: 2}
+    - target: {fileID: 7361007865734189397, guid: 2e1bcfd78a19c6d4d915dffe45018398,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d65dfbb1a451d474f8002f3102a55a89, type: 2}
     - target: {fileID: 7361007865734189397, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
       propertyPath: m_Materials.Array.data[2]
@@ -30,7 +40,7 @@ PrefabInstance:
     - target: {fileID: 8869454094328425965, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.7782755
+      value: 1.7777778
       objectReference: {fileID: 0}
     - target: {fileID: 8869454094328425967, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
@@ -115,7 +125,7 @@ PrefabInstance:
     - target: {fileID: 8869454094818834448, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
       propertyPath: m_Name
-      value: wagon_Random1
+      value: wagon_Random1 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8869454094818834448, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
