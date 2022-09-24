@@ -7,7 +7,7 @@ namespace DontStopTheTrain.TrainToRailRoadSystem
 {
     public class AxleRotator : MonoBehaviour
     {
-        public static float speed = -10f;
+        public static float speed = -5f;
 
         private Transform cachedTransform;
         // Start is called before the first frame update
