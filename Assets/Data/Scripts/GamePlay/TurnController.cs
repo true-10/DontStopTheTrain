@@ -22,15 +22,27 @@ namespace DontStopTheTrain.Gameplay
         public Action OnTurnEnd { get; set; }
         public Action OnTurnStart { get; set; }
 
+        private Coroutine turnLoopCoroutine = null;
 
         // Start is called before the first frame update
         void Start()
         {
-
+            InitCallbacks();
+            turnLoopCoroutine = StartCoroutine( TurnLoopCoroutine() );
         }
 
         // Update is called once per frame
         void Update()
+        {
+
+        }
+
+        private IEnumerator TurnLoopCoroutine()
+        {
+
+            yield return null;
+        }
+        private void InitCallbacks()
         {
 
         }

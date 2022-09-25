@@ -11,6 +11,9 @@ namespace DontStopTheTrain.Gameplay
     {
         [SerializeField] private Transform minLimiter;
         [SerializeField] private Transform maxLimiter;
+        [SerializeField] private bool x = false;
+        [SerializeField] private bool y = false;
+        [SerializeField] private bool z = false;
 
         private Transform cachedTransform;
 
@@ -25,11 +28,55 @@ namespace DontStopTheTrain.Gameplay
         // Update is called once per frame
         void LateUpdate()
         {
-            CheckPosition();
+            CheckXPosition();
+            CheckYPosition();
+            CheckZPosition();
         }
 
-        private void CheckPosition()
+        private void CheckXPosition()
         {
+            if (x == false)
+            {
+                return;
+            }
+            var pos = cachedTransform.position;
+            if (pos.x > maxLimiter.position.x)
+            {
+                pos.x = maxLimiter.position.x;
+            }
+            if (pos.x < minLimiter.position.x)
+            {
+                pos.x = minLimiter.position.x;
+            }
+
+            cachedTransform.position = pos;
+        }
+
+        private void CheckYPosition()
+        {
+            if (y == false)
+            {
+                return;
+            }
+            var pos = cachedTransform.position;
+            if (pos.y > maxLimiter.position.y)
+            {
+                pos.y = maxLimiter.position.y;
+            }
+            if (pos.y < minLimiter.position.y)
+            {
+                pos.y = minLimiter.position.y;
+            }
+
+            cachedTransform.position = pos;
+        }
+
+        private void CheckZPosition()
+        {
+            if (z == false)
+            {
+                return;
+            }
             var pos = cachedTransform.position;
             if (pos.z > maxLimiter.position.z)
             {

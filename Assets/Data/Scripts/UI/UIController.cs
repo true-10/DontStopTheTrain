@@ -43,10 +43,10 @@ namespace DontStopTheTrain.UI
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKey(KeyCode.Escape))
+          /*  if (Input.GetKey(KeyCode.Escape))
             {
                 cameraController.SwitchToCamera(trainCameraHolder.HashCode);
-            }
+            }*/
         }
 
         private void DisableUI()
