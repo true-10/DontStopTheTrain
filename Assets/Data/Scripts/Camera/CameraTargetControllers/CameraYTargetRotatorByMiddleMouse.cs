@@ -65,7 +65,7 @@ namespace DontStopTheTrain.Gameplay
 
         public void RotateAroundY(float move)
         {
-            var angle = move;// /* rotationSpeed*/ * Time.deltaTime;
+            var angle = move / rotationSpeed;// /* rotationSpeed*/ * Time.deltaTime;
 
             cachedTransform.Rotate(Vector3.up * angle, Space.World);
         }

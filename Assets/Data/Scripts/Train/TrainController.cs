@@ -1,7 +1,9 @@
+using DontStopTheTrain.Gameplay;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace DontStopTheTrain.Train
 {
@@ -16,6 +18,7 @@ namespace DontStopTheTrain.Train
 
     public class TrainController : MonoBehaviour
     {
+        [Inject] private ITurnController turnController;
         private List<IWagon> wagons;
 
         //бригады строителей? пьют самогон? инженеры? Механики?
