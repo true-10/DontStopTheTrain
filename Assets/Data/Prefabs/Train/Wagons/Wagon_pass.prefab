@@ -1669,7 +1669,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8869454094328425968}
-  m_LocalRotation: {x: 0.07433257, y: 0.86429906, z: -0.13411437, w: 0.4790357}
+  m_LocalRotation: {x: 0.07433258, y: 0.86429906, z: -0.13411437, w: 0.47903574}
   m_LocalPosition: {x: -8, y: 5, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1707,7 +1707,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7782755, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -1781,7 +1781,7 @@ GameObject:
   - component: {fileID: 8869454094818834447}
   - component: {fileID: 8869454094818834446}
   - component: {fileID: 2962377781646028248}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wagon_pass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1835,8 +1835,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.2373133, y: 4.067721, z: 16.12}
-  m_Center: {x: 0, y: 2.9198291, z: 0}
+  m_Size: {x: 3.5, y: 4.4205213, z: 16.12}
+  m_Center: {x: 0, y: 3.1, z: 0}
 --- !u!1001 &5300395584108512103
 PrefabInstance:
   m_ObjectHideFlags: 0
