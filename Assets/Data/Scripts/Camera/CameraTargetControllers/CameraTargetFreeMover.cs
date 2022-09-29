@@ -10,12 +10,12 @@ namespace DontStopTheTrain.Gameplay
 {
     public class CameraTargetFreeMover : MonoBehaviour, ICameraTargetController
     {
-        [Inject] private ICameraController cameraController;
-        [SerializeField] float moveSpeed = 10f;
-        [SerializeField] CameraHolder cameraHolder;
-        [SerializeField] string verticalAxis = "Vertical";
-        [SerializeField] string horizontalAxis = "Horizontal";
-        private Transform cachedTransform;
+        [Inject] protected ICameraController cameraController;
+        [SerializeField] protected float moveSpeed = 10f;
+        [SerializeField] protected CameraHolder cameraHolder;
+        [SerializeField] protected string verticalAxis = "Vertical";
+        [SerializeField] protected string horizontalAxis = "Horizontal";
+        protected Transform cachedTransform;
 
         public Action OnInit { get; set; }
 
