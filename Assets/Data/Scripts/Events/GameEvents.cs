@@ -15,7 +15,7 @@ namespace DontStopTheTrain.Events
         int ActionPointPrice { get; }
         int EventType { get; }
         //List<int> int_params;
-        Action Fire { get; set; }
+        //Action Fire { get; set; }
     }
 
     public enum GameEventStatus
@@ -49,10 +49,9 @@ namespace DontStopTheTrain.Events
         GameEventStatus EventStatus { get; set; }
     }
 
-    public interface IGameEventsController
+    public class GameEventCallback : IGameEventCallback
     {
-
-        Action<IGameEventCallback> OnComplete { get; set; }
-        Action<IGameEvent> OnChangeStatus { get; set; }
+        public int EventId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public GameEventStatus EventStatus { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }
