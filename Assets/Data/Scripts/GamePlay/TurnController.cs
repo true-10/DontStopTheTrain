@@ -44,7 +44,8 @@ namespace DontStopTheTrain.Gameplay
         private Coroutine turnLoopCoroutine = null;
 
         private bool turnIsComleted = false;
-        // Start is called before the first frame update
+
+
         void Start()
         {
             InitCallbacks();

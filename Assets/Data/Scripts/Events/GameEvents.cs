@@ -11,8 +11,11 @@ namespace DontStopTheTrain.Events
     {
         int Id { get; }
         GameEventStatus Status { get; set; }//??
+
+        int ActionPointPrice { get; }
         int EventType { get; }
         //List<int> int_params;
+        Action Fire { get; set; }
     }
 
     public enum GameEventStatus
