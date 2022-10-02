@@ -10,11 +10,14 @@ namespace DontStopTheTrain.Events
 {
     public class LandscapeViewEvent : MonoBehaviour, IGameEvent
     {
-        [Inject] private IGameEventController gameEventController;
+       // [Inject] private IGameEventController gameEventController;
         [Inject] private ICameraController cameraController;
        // [Inject] private IDispose 
 
-        [SerializeField] private CameraHolder cameraHolder;
+        [SerializeField] private CameraHolder eventCameraHolder;
+        [SerializeField] private CameraHolder defaultCameraHolder;
+        [SerializeField] private float duration;
+        [SerializeField] private AudioSource audioSource;
 
         public int Id => 1;
 
@@ -30,23 +33,33 @@ namespace DontStopTheTrain.Events
 
         void Start()
         {
-            gameEventController.AddEventToProcessor(this);
+            //gameEventController.AddEventToProcessor(this);
         }
 
 
         void Update()
         {
-
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                FireEvent();
+            }
         }
 
         private void FireEvent()
         {
-            cameraController.SwitchToCamera(cameraHolder.HashCode);
+            cameraController.SwitchToCamera(eventCameraHolder.HashCode);
             //завершить событие и сообщить об этом
             //разные контроллеры обрабатывают свои ивент тайпы
             //если
 
-            var timer = Observable.
+            var timer = Observable.Timer(TimeSpan.FromSeconds(duration))
+                .Subscribe(x =>
+               {
+                   audioSource.Play();
+                   cameraController.SwitchToCamera(defaultCameraHolder.HashCode);
+               }
+                );
+
         }
     }
 }

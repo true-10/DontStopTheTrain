@@ -1,6 +1,3 @@
 [submodule "Assets/Data/Scripts/True10"]
 	path = Assets/Data/Scripts/True10
 	url = https://github.com/true-10/True10.git
-[submodule "Assets/Plugins/UniRX"]
-	path = Assets/Plugins/UniRX
-	url = https://github.com/neuecc/UniRx.git
