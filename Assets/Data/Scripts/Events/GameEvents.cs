@@ -15,14 +15,16 @@ namespace DontStopTheTrain.Events
         int ActionPointPrice { get; }
         int EventType { get; }
         //List<int> int_params;
-        //Action Fire { get; set; }
+        Action Fire { get; set; }
+        Action OnComplete { get; set; }
     }
 
     public enum GameEventStatus
     {
-        None,
-        Complete,
+        None, //бездействующие
+        Start,
         InProgress,
+        Complete,
         Fail
     }
 
@@ -45,7 +47,8 @@ namespace DontStopTheTrain.Events
 
     public interface IGameEventCallback
     {
-        int EventId { get; set; } 
+        int EventId { get; set; }
+        //IGameEvent GameEvent { get; set; }
         GameEventStatus EventStatus { get; set; }
     }
 

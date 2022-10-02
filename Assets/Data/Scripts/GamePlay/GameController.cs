@@ -12,7 +12,7 @@ namespace DontStopTheTrain.Gameplay
     public class GameController : MonoBehaviour
     {
         private ITrainController trainController;
-        private IGameEventsController gameEventsController;
+        //private IGameEventsController gameEventsController;
 
 
 

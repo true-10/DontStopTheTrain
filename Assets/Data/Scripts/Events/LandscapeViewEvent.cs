@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using True10.CameraSystem;
 using UnityEngine;
 using Zenject;
+using UniRx;
 
 namespace DontStopTheTrain.Events
 {
     public class LandscapeViewEvent : MonoBehaviour, IGameEvent
     {
+        [Inject] private IGameEventController gameEventController;
         [Inject] private ICameraController cameraController;
+       // [Inject] private IDispose 
 
         [SerializeField] private CameraHolder cameraHolder;
 
@@ -22,14 +25,15 @@ namespace DontStopTheTrain.Events
         public int EventType => 1;
 
         public Action Fire { get => FireEvent; set => throw new NotImplementedException(); }
+        public Action OnComplete { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        // Start is called before the first frame update
+
         void Start()
         {
-
+            gameEventController.AddEventToProcessor(this);
         }
 
-        // Update is called once per frame
+
         void Update()
         {
 
@@ -41,6 +45,8 @@ namespace DontStopTheTrain.Events
             //завершить событие и сообщить об этом
             //разные контроллеры обрабатывают свои ивент тайпы
             //если
+
+            var timer = Observable.
         }
     }
 }

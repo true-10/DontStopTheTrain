@@ -5,16 +5,13 @@ using UnityEngine;
 
 namespace DontStopTheTrain.Events
 {
-    public interface IGameEventController
+    public interface IGameEventController : IGameLifeCycle
     {
-        Action<IGameEventCallback> OnChangeEventStatus { get; set; }
+        public Action<IGameEvent> OnChangeEvent { get; set; }
+      //  Action<IGameEventCallback> OnChangeEventStatus { get; set; }
        // Action<IGameEventCallback> OnComplete { get; set; }
-        //Action<IGameEvent> OnChangeStatus { get; set; }
+        void AddEventToProcessor(IGameEvent gameEvent);
         void FireEvent(IGameEvent gameEvent);
     }
 
-    public interface IGameEventsController
-    {
-
-    }
 }

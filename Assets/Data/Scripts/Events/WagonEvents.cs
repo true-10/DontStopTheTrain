@@ -30,12 +30,4 @@ namespace DontStopTheTrain.Events
         IWagonType WagobType { get; } //на какой тип вагонов распространяется это событие
     }
 
-
-
-    public interface IWagonEventsController: IGameEventsController
-    {
-
-    }
-
-
 }
