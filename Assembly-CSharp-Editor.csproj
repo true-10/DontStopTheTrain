@@ -385,6 +385,12 @@
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.1\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
     </Reference>
+    <Reference Include="AssetStoreTools">
+      <HintPath>Assets\Plugins\UniRX\Assets\AssetStoreTools\Editor\AssetStoreTools.dll</HintPath>
+    </Reference>
+    <Reference Include="AssetStoreToolsExtra">
+      <HintPath>Assets\Plugins\UniRX\Assets\AssetStoreTools\Editor\AssetStoreToolsExtra.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
     </Reference>
@@ -944,6 +950,10 @@
       <Project>{92E2357B-E376-9192-9E19-25096DB030E2}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
+      <Project>{0F61B975-270C-1D1A-F32F-B2E983F7C552}</Project>
+      <Name>Assembly-CSharp-Editor-firstpass</Name>
+    </ProjectReference>
     <ProjectReference Include="Zenject-Editor.csproj">
       <Project>{03B7E68F-EF41-F285-62F2-1F0D4DFE8B74}</Project>
       <Name>Zenject-Editor</Name>
@@ -995,6 +1005,10 @@
     <ProjectReference Include="NaughtyAttributes.Core.csproj">
       <Project>{06DB6097-C4CE-937D-262A-EABABA1F514F}</Project>
       <Name>NaughtyAttributes.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniRx.csproj">
+      <Project>{FFBE3227-3761-23A0-E28E-4E4770063F23}</Project>
+      <Name>UniRx</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
