@@ -7,6 +7,14 @@ using UnityEngine;
 namespace DontStopTheTrain.Events
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
+    public interface IGameEventTriiger
+    {
+        Action<IGameEvent> OnTrigger { get; set; }
+    }
+
     public interface IGameEvent
     {
         int Id { get; }

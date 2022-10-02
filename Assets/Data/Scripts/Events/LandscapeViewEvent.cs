@@ -8,7 +8,22 @@ using UniRx;
 
 namespace DontStopTheTrain.Events
 {
-    public class LandscapeViewEvent : MonoBehaviour, IGameEvent
+    public class EventByTimer : IGameEvent
+    {
+        public int Id => throw new NotImplementedException();
+
+        public GameEventStatus Status { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public int ActionPointPrice => throw new NotImplementedException();
+
+        public int EventType => throw new NotImplementedException();
+
+        public Action Fire { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Action OnComplete { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    }
+
+
+    public class LandscapeViewEvent : MonoBehaviour, IGameEvent //EventByTimer
     {
        // [Inject] private IGameEventController gameEventController;
         [Inject] private ICameraController cameraController;
