@@ -57,10 +57,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
-    <Compile Include="Assets\Data\True10\Utils\DataFromGoogleSheets\Editor\GoogleSheetLoaderInspector.cs" />
     <Compile Include="Assets\Data\Scripts\Inter_Scriptors\DataModels\Editor\StaticDataInspector.cs" />
-    <Compile Include="Assets\Data\True10\Utils\DataFromGoogleSheets\Editor\GoogleSheetLoaderBehaviourInspector.cs" />
     <Compile Include="Assets\Camera Perspective Editor\Scripts\Editor\CameraPerspectiveEditorEditor.cs" />
+    <Compile Include="Assets\True10\Utils\DataFromGoogleSheets\Editor\GoogleSheetLoaderBehaviourInspector.cs" />
+    <Compile Include="Assets\True10\Utils\DataFromGoogleSheets\Editor\GoogleSheetLoaderInspector.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -986,6 +986,10 @@
     <ProjectReference Include="NaughtyAttributes.Core.csproj">
       <Project>{06DB6097-C4CE-937D-262A-EABABA1F514F}</Project>
       <Name>NaughtyAttributes.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniRx.csproj">
+      <Project>{FFBE3227-3761-23A0-E28E-4E4770063F23}</Project>
+      <Name>UniRx</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
