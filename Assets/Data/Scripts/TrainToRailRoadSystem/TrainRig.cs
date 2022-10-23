@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using PathCreation;
 
 
 namespace DontStopTheTrain.TrainToRailRoadSystem
@@ -9,7 +8,6 @@ namespace DontStopTheTrain.TrainToRailRoadSystem
 
     public class TrainRig : MonoBehaviour
     {
-        [SerializeField] private PathCreator pathCreator;
         [SerializeField] private TrainAxle frontAxle;
         [SerializeField] private TrainAxle rearAxle;
         [SerializeField] private float speed = 10f;
@@ -67,8 +65,8 @@ namespace DontStopTheTrain.TrainToRailRoadSystem
         private void SetAxleToPathAtDistance(TrainAxle axle, float distance) 
         {
             Vector3 angleVector = Vector3.forward * 90f;
-            axle.CachedTransform.position = pathCreator.path.GetPointAtDistance(distance) + Vector3.up * .1f;
-            axle.CachedTransform.rotation = pathCreator.path.GetRotationAtDistance(distance);
+          //  axle.CachedTransform.position = pathCreator.path.GetPointAtDistance(distance) + Vector3.up * .1f;
+            //axle.CachedTransform.rotation = pathCreator.path.GetRotationAtDistance(distance);
             axle.CachedTransform.Rotate(angleVector);
 
         }
