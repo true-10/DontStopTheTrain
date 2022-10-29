@@ -62,7 +62,7 @@ namespace DontStopTheTrain.Gameplay
             var hValue = Input.GetAxis(horizontalAxis);
             var vValue = Input.GetAxis(verticalAxis);
 
-            Debug.Log($"{name} hValue = {hValue} vValue = {vValue}");
+           // Debug.Log($"{name} hValue = {hValue} vValue = {vValue}");
 
             var direction = new Vector3 (hValue, 0f, vValue);
             Move(direction);

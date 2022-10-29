@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 17679.973, g: 13171.203, b: 15874.219, a: 1}
+  m_IndirectSpecularColor: {r: 17315.41, g: 13155.1875, b: 16748.469, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -170,9 +170,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4533757}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 859f3c5941155754d80c04c384963ff6, type: 3}
+  m_Script: {fileID: 11500000, guid: ef1855bc7cde769408f8edaa04c130ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraNameText: {fileID: 0}
+  defaultCamera: {fileID: 297127394}
 --- !u!1 &41306860
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,18 +738,6 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
---- !u!114 &173649282 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3422866347486239888, guid: fc5aa8b190a8a334ca3f1153a1204cc1,
-    type: 3}
-  m_PrefabInstance: {fileID: 3422866346131323360}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4962353a59d0ec4dad0facd4d0654e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &194440844
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +755,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &194440845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -836,9 +826,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 194440844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4962353a59d0ec4dad0facd4d0654e9, type: 3}
+  m_Script: {fileID: 11500000, guid: b39257f776f6df2429907c81b7baaf36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cinemachineVirtualCamera: {fileID: 194440845}
+  isDisabled: 0
+  group: 0
 --- !u!1001 &195644997
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6038,7 +6031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 100
-  cameraHolder: {fileID: 2051113469}
+  cameraHolder: {fileID: 0}
   turnLeftKey: 113
   turnRightKey: 101
 --- !u!114 &222354735
@@ -6059,7 +6052,7 @@ MonoBehaviour:
   useMouseScrollWheel: 1
   zoomInKey: 119
   zoomOutKey: 115
-  cameraHolder: {fileID: 2051113469}
+  cameraHolder: {fileID: 0}
 --- !u!114 &222354736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6102,7 +6095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 30
-  cameraHolder: {fileID: 2051113469}
+  cameraHolder: {fileID: 0}
   toTrainStartKey: 97
   toTrainEndKey: 100
 --- !u!114 &222354740
@@ -6252,7 +6245,7 @@ GameObject:
   m_Component:
   - component: {fileID: 280731500}
   - component: {fileID: 280731502}
-  - component: {fileID: 280731501}
+  - component: {fileID: 280731503}
   m_Layer: 0
   m_Name: CM SpeedUpCamera
   m_TagString: Untagged
@@ -6276,18 +6269,6 @@ Transform:
   m_Father: {fileID: 4533758}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &280731501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 280731499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4962353a59d0ec4dad0facd4d0654e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &280731502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6311,7 +6292,7 @@ MonoBehaviour:
   m_Lens:
     FieldOfView: 20.3
     OrthographicSize: 5
-    NearClipPlane: 0.1
+    NearClipPlane: 0.3
     FarClipPlane: 3000
     Dutch: 0
     ModeOverride: 0
@@ -6333,6 +6314,21 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 627164889}
+--- !u!114 &280731503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280731499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b39257f776f6df2429907c81b7baaf36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemachineVirtualCamera: {fileID: 280731502}
+  isDisabled: 0
+  group: 0
 --- !u!1 &282328622
 GameObject:
   m_ObjectHideFlags: 0
@@ -6465,10 +6461,10 @@ GameObject:
   m_Component:
   - component: {fileID: 297127388}
   - component: {fileID: 297127390}
-  - component: {fileID: 297127389}
   - component: {fileID: 297127391}
   - component: {fileID: 297127392}
   - component: {fileID: 297127393}
+  - component: {fileID: 297127394}
   m_Layer: 0
   m_Name: CM TrainCamera V3
   m_TagString: Untagged
@@ -6492,18 +6488,6 @@ Transform:
   m_Father: {fileID: 4533758}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &297127389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 297127387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4962353a59d0ec4dad0facd4d0654e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &297127390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6520,7 +6504,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 14
+  m_Priority: 56
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 885099272}
   m_Follow: {fileID: 749112119}
@@ -6619,6 +6603,21 @@ MonoBehaviour:
     m_FrequencyGain: 1
     m_Duration: 1
     m_NoiseOffsets: {x: 505.41327, y: -846.8103, z: -228.49622}
+--- !u!114 &297127394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297127387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b39257f776f6df2429907c81b7baaf36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemachineVirtualCamera: {fileID: 297127390}
+  isDisabled: 0
+  group: 0
 --- !u!1 &322787476
 GameObject:
   m_ObjectHideFlags: 0
@@ -6969,7 +6968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 50
-  cameraHolder: {fileID: 1085160139}
+  cameraHolder: {fileID: 0}
   toTrainStartKey: 97
   toTrainEndKey: 100
 --- !u!114 &459820240
@@ -7261,9 +7260,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttons:
   - SwitchToCameraButton: {fileID: 1942263813}
-    CameraHolder: {fileID: 729071923}
+    CameraHolder: {fileID: 0}
   - SwitchToCameraButton: {fileID: 322787478}
-    CameraHolder: {fileID: 173649282}
+    CameraHolder: {fileID: 0}
   numberText: {fileID: 1621689551}
   switchToNextWagon: {fileID: 1517707693}
   switchToPrevWagon: {fileID: 801799745}
@@ -7881,18 +7880,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693565221}
   m_CullTransparentMesh: 1
---- !u!114 &729071923 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9193013658478617086, guid: fc5aa8b190a8a334ca3f1153a1204cc1,
-    type: 3}
-  m_PrefabInstance: {fileID: 3422866346131323360}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4962353a59d0ec4dad0facd4d0654e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &749112118
 GameObject:
   m_ObjectHideFlags: 0
@@ -8307,7 +8294,7 @@ MonoBehaviour:
   locoUIView: {fileID: 1272766646}
   wagonUIView: {fileID: 538706229}
   FrontCameraUIView: {fileID: 519988752}
-  trainCameraHolder: {fileID: 2051113469}
+  trainCameraHolder: {fileID: 0}
 --- !u!114 &820255232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8652,14 +8639,6 @@ MonoBehaviour:
   - {fileID: 1740267995}
   - {fileID: 1516039600}
   - {fileID: 550941433}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &908817159
 GameObject:
   m_ObjectHideFlags: 0
@@ -9326,7 +9305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1085160138}
   - component: {fileID: 1085160140}
-  - component: {fileID: 1085160139}
+  - component: {fileID: 1085160141}
   m_Layer: 0
   m_Name: CM TrainCamera
   m_TagString: Untagged
@@ -9350,18 +9329,6 @@ Transform:
   m_Father: {fileID: 4533758}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1085160139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1085160137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4962353a59d0ec4dad0facd4d0654e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1085160140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9407,6 +9374,21 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1436872110}
+--- !u!114 &1085160141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085160137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b39257f776f6df2429907c81b7baaf36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemachineVirtualCamera: {fileID: 1085160140}
+  isDisabled: 0
+  group: 0
 --- !u!1 &1128188477
 GameObject:
   m_ObjectHideFlags: 0
@@ -10243,18 +10225,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1329935022 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3422866347759499632, guid: fc5aa8b190a8a334ca3f1153a1204cc1,
-    type: 3}
-  m_PrefabInstance: {fileID: 3422866346131323360}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4962353a59d0ec4dad0facd4d0654e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1407971446
 GameObject:
   m_ObjectHideFlags: 0
@@ -10460,7 +10430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1512634686
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10499,7 +10469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endTurnButton: {fileID: 693565223}
   locoCamButton: {fileID: 282328624}
-  locoCameraHolder: {fileID: 1329935022}
+  locoCameraHolder: {fileID: 0}
 --- !u!4 &1516039600 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4298690035770343529, guid: f61fc59e36aea2d45826e7d67e2234ed,
@@ -16040,7 +16010,7 @@ MonoBehaviour:
   useMouseScrollWheel: 1
   zoomInKey: 119
   zoomOutKey: 115
-  cameraHolder: {fileID: 2051113469}
+  cameraHolder: {fileID: 297127394}
 --- !u!114 &1769278594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16083,7 +16053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 10
-  cameraHolder: {fileID: 297127389}
+  cameraHolder: {fileID: 297127394}
   mouseDragController: {fileID: 820255232}
 --- !u!114 &1769278598
 MonoBehaviour:
@@ -16115,7 +16085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 30
-  cameraHolder: {fileID: 297127389}
+  cameraHolder: {fileID: 297127394}
   verticalAxis: Vertical
   horizontalAxis: Horizontal
 --- !u!114 &1769278600
@@ -16131,7 +16101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  cameraHolder: {fileID: 297127389}
+  cameraHolder: {fileID: 297127394}
   verticalAxis: Vertical
   horizontalAxis: Horizontal
   mouseDragController: {fileID: 820255232}
@@ -16344,14 +16314,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1809838849}
   - component: {fileID: 1809838851}
-  - component: {fileID: 1809838850}
+  - component: {fileID: 1809838852}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1809838849
 Transform:
   m_ObjectHideFlags: 0
@@ -16368,18 +16338,6 @@ Transform:
   m_Father: {fileID: 4533758}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1809838850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809838848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4962353a59d0ec4dad0facd4d0654e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1809838851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16425,6 +16383,21 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 675077529}
+--- !u!114 &1809838852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809838848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b39257f776f6df2429907c81b7baaf36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemachineVirtualCamera: {fileID: 1809838851}
+  isDisabled: 0
+  group: 0
 --- !u!1 &1823688464
 GameObject:
   m_ObjectHideFlags: 0
@@ -17659,7 +17632,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2051113468}
   - component: {fileID: 2051113470}
-  - component: {fileID: 2051113469}
+  - component: {fileID: 2051113471}
   m_Layer: 0
   m_Name: CM TrainCamera V2
   m_TagString: Untagged
@@ -17683,18 +17656,6 @@ Transform:
   m_Father: {fileID: 4533758}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2051113469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2051113467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4962353a59d0ec4dad0facd4d0654e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2051113470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17740,6 +17701,21 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1909067258}
+--- !u!114 &2051113471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051113467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b39257f776f6df2429907c81b7baaf36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemachineVirtualCamera: {fileID: 2051113470}
+  isDisabled: 0
+  group: 0
 --- !u!1001 &424333983646589836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18116,17 +18092,17 @@ PrefabInstance:
     - target: {fileID: 2392711964029472285, guid: fc5aa8b190a8a334ca3f1153a1204cc1,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.000000017206442
+      value: -0.000000017206343
       objectReference: {fileID: 0}
     - target: {fileID: 2392711964029472285, guid: fc5aa8b190a8a334ca3f1153a1204cc1,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -1.2532117e-11
+      value: 1.2532386e-11
       objectReference: {fileID: 0}
     - target: {fileID: 2392711964029472285, guid: fc5aa8b190a8a334ca3f1153a1204cc1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0007283383
+      value: 0.00072835817
       objectReference: {fileID: 0}
     - target: {fileID: 3422866347486239887, guid: fc5aa8b190a8a334ca3f1153a1204cc1,
         type: 3}
@@ -18510,26 +18486,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TestLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 2762411968923098887, guid: bc455976b653d2d46aa31ac512c4d8cd,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.48923758
-      objectReference: {fileID: 0}
-    - target: {fileID: 2762411968923098887, guid: bc455976b653d2d46aa31ac512c4d8cd,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.3019468
-      objectReference: {fileID: 0}
-    - target: {fileID: 2762411968923098887, guid: bc455976b653d2d46aa31ac512c4d8cd,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.6962811
-      objectReference: {fileID: 0}
-    - target: {fileID: 2762411968923098887, guid: bc455976b653d2d46aa31ac512c4d8cd,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.42972958
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc455976b653d2d46aa31ac512c4d8cd, type: 3}
