@@ -26,6 +26,7 @@ namespace DontStopTheTrain.TrainToRailRoadSystem
                 cachedTransform = GetComponent<Transform>();
             }
         }
+
         // Start is called before the first frame update
         void Start()
         {

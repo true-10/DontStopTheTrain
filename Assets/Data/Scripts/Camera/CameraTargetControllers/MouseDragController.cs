@@ -19,12 +19,12 @@ namespace DontStopTheTrain.Gameplay
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            Debug.Log($"{name} OnBeginDrag");
+         //   Debug.Log($"{name} OnBeginDrag");
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            Debug.Log($"{name} OnEndDrag");
+         //   Debug.Log($"{name} OnEndDrag");
         }
 
         public void OnDrag(PointerEventData eventData)

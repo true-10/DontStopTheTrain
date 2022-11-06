@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using True10.TriggerSystem;
 using UnityEngine;
+using static DontStopTheTrain.TriggerSystem.LevelTriggerTest;
 
-namespace DontStopTheTrain.Gameplay
+namespace DontStopTheTrain.TriggerSystem
 {
     public enum TriggerTypeEnum
     {
@@ -30,6 +31,9 @@ namespace DontStopTheTrain.Gameplay
             {
                 return;
             }
+
+            var splineCallBack = callback as OnSplineTriggerCallback;
+
             Debug.Log("Hello new chunk");
         }
 

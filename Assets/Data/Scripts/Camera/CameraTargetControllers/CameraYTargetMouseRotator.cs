@@ -76,7 +76,7 @@ namespace DontStopTheTrain.Gameplay
             {
                 return;
             }
-            Debug.Log($"{name} OnDrag eventData.delta.x = {eventData.delta.x} ");
+          //  Debug.Log($"{name} OnDrag eventData.delta.x = {eventData.delta.x} ");
             RotateAroundY(eventData.delta.x);// / rotationSpeed);
         }
 

@@ -22,6 +22,7 @@ namespace DontStopTheTrain.TrainToRailRoadSystem
         {
             rigTransform = GetComponent<Transform>();
         }
+
         private void OnValidate()
         {
             if (rigTransform == null)
