@@ -6550,7 +6550,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cinemachineVirtualCamera: {fileID: 8869454094328425965}
   isDisabled: 0
-  group: 0
+  group: 2
 --- !u!1 &8869454094677186984
 GameObject:
   m_ObjectHideFlags: 0
@@ -6636,7 +6636,7 @@ MonoBehaviour:
   wagonData:
     Number: 22
   cameras:
-  - {fileID: 0}
+  - {fileID: 2981318574265220673}
 --- !u!65 &2962377781646028248
 BoxCollider:
   m_ObjectHideFlags: 0

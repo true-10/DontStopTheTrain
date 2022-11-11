@@ -1796,8 +1796,8 @@ MonoBehaviour:
   wagonData:
     Number: 0
   cameras:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1756305147330607665}
+  - {fileID: 2483997673471556600}
 --- !u!114 &3693611161130305271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1856,7 +1856,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3422866347983659595
 Transform:
   m_ObjectHideFlags: 0
