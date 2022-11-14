@@ -1,10 +1,12 @@
 using DontStopTheTrain.Train;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace DontStopTheTrain.Events
 {
+
 
     public interface IWagonEventFabric
     {
@@ -27,7 +29,7 @@ namespace DontStopTheTrain.Events
     /// </summary>
     public interface IWagonEvent : IGameEvent
     {
-        IWagonType WagobType { get; } //на какой тип вагонов распространяется это событие
+        IWagonType WagonType { get; } //на какой тип вагонов распространяется это событие
     }
 
 }
