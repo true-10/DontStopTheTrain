@@ -212,8 +212,8 @@ Material:
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
     - _Smoothness: 0.784
-    - _SmoothnessRemapMax: 0.76173353
-    - _SmoothnessRemapMin: 0.432343
+    - _SmoothnessRemapMax: 0.33914763
+    - _SmoothnessRemapMin: 0.23004131
     - _SpecularAAScreenSpaceVariance: 0.1
     - _SpecularAAThreshold: 0.2
     - _SpecularOcclusionMode: 1
@@ -260,7 +260,7 @@ Material:
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _SpecularColor: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
+    - _SpecularColor: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}

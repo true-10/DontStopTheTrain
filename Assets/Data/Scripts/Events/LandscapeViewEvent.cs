@@ -5,6 +5,7 @@ using True10.CameraSystem;
 using UnityEngine;
 using Zenject;
 using UniRx;
+using DG.Tweening;
 
 namespace DontStopTheTrain.Events
 {
@@ -33,6 +34,8 @@ namespace DontStopTheTrain.Events
         [SerializeField] private CameraHolder defaultCameraHolder;
         [SerializeField] private float duration;
         [SerializeField] private AudioSource audioSource;
+        [SerializeField] private Transform startTransform;
+        [SerializeField] private Transform endTransform;
 
         public int Id => 1;
 
@@ -62,6 +65,8 @@ namespace DontStopTheTrain.Events
 
         private void FireEvent()
         {
+            eventCameraHolder.transform.position = startTransform.position;
+            eventCameraHolder.transform.DOLocalMoveZ(endTransform.position.z, duration);
             cameraController.SwitchToCamera(eventCameraHolder.HashCode);
             //завершить событие и сообщить об этом
             //разные контроллеры обрабатывают свои ивент тайпы

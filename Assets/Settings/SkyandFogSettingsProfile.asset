@@ -73,7 +73,7 @@ MonoBehaviour:
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   maxFogDistance:
     m_OverrideState: 1
-    m_Value: 500
+    m_Value: 1000
   mipFogMaxMip:
     m_OverrideState: 0
     m_Value: 0.494
@@ -88,10 +88,10 @@ MonoBehaviour:
     m_Value: 0
   maximumHeight:
     m_OverrideState: 1
-    m_Value: 200
+    m_Value: 300
   meanFreePath:
-    m_OverrideState: 0
-    m_Value: 400
+    m_OverrideState: 1
+    m_Value: 1000
   enableVolumetricFog:
     m_OverrideState: 0
     m_Value: 1
@@ -388,22 +388,22 @@ MonoBehaviour:
   active: 1
   rotation:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 23
   skyIntensityMode:
     m_OverrideState: 1
     m_Value: 1
   exposure:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 12.46
   multiplier:
     m_OverrideState: 0
     m_Value: 1
   upperHemisphereLuxValue:
     m_OverrideState: 0
-    m_Value: 1.2059417
+    m_Value: 2.9609232
   upperHemisphereLuxColor:
     m_OverrideState: 0
-    m_Value: {x: 0.16768783, y: 0.23338312, z: 0.5}
+    m_Value: {x: 0.33831766, y: 0.38131157, z: 0.5}
   desiredLuxValue:
     m_OverrideState: 1
     m_Value: 5000
@@ -418,9 +418,9 @@ MonoBehaviour:
     m_Value: 0
   hdriSky:
     m_OverrideState: 1
-    m_Value: {fileID: 8900000, guid: 77fdae36ba28ffe459be011c134c01fe, type: 3}
+    m_Value: {fileID: 8900000, guid: 78b605663118ba843ada4258e0ffbe97, type: 3}
   distortionMode:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 2
   flowmap:
     m_OverrideState: 0
