@@ -41,14 +41,14 @@ public class CharMovement : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        _controller.Move(move * _speed * GTime.gDeltaTime);
+        _controller.Move(move * _speed * Time.deltaTime);
 
         if(Input.GetButtonDown("Jump") )
         {
             _velocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
         }
 
-        _velocity.y += _gravity * GTime.gDeltaTime;
-        _controller.Move(_velocity *  GTime.gDeltaTime);
+        _velocity.y += _gravity * Time.deltaTime;
+        _controller.Move(_velocity *  Time.deltaTime);
     }
 }

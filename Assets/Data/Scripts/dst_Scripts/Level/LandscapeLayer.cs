@@ -44,7 +44,7 @@ public class LandscapeLayer : MonoBehaviour//не монобех?
         foreach(LayerChunk lc in _chunksQueue)
         {
             Vector3 pos = lc.GetLocalPos();// transform.localPosition;
-            pos.z += _scrollSpeed * GTime.gDeltaTime;
+            pos.z += _scrollSpeed * Time.deltaTime;
             if (pos.z < m_localZRange.x)
             {
                 lc.AlignToPrev();

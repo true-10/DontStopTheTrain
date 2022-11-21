@@ -6,6 +6,7 @@ using UnityEngine;
 using Zenject;
 using UniRx;
 using DG.Tweening;
+using DontStopTheTrain.Gameplay;
 
 namespace DontStopTheTrain.Events
 {
@@ -28,7 +29,8 @@ namespace DontStopTheTrain.Events
     {
        // [Inject] private IGameEventController gameEventController;
         [Inject] private ICameraController cameraController;
-       // [Inject] private IDispose 
+        [Inject] private ITurnController turnController;
+        // [Inject] private IDispose 
 
         [SerializeField] private CameraHolder eventCameraHolder;
         [SerializeField] private CameraHolder defaultCameraHolder;
@@ -46,16 +48,21 @@ namespace DontStopTheTrain.Events
         public int EventType => 1;
 
         public Action Fire { get => FireEvent; set => throw new NotImplementedException(); }
-        public Action OnComplete { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Action OnComplete { get; set; }
 
 
         void Start()
         {
             //gameEventController.AddEventToProcessor(this);
+            turnController.OnTurnEnd += OnTurnEndHandler;
         }
 
+        private void OnTurnEndHandler(ITurnCallback callback)
+        {
+            FireEvent();
+        }
 
-        void Update()
+            void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -75,8 +82,12 @@ namespace DontStopTheTrain.Events
             var timer = Observable.Timer(TimeSpan.FromSeconds(duration))
                 .Subscribe(x =>
                {
-                   audioSource.Play();
+                   if (audioSource != null)
+                   {
+                       audioSource?.Play();
+                   }
                    cameraController.SwitchToCamera(defaultCameraHolder.HashCode);
+                   OnComplete?.Invoke();
                }
                 );
 
