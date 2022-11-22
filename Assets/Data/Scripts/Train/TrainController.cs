@@ -12,7 +12,7 @@ namespace DontStopTheTrain.Train
 
         Action OnStart { get; set; }//поезд тронулся
         Action OnStop { get; set; }//поезд остановился
-        Action OnSwitchWagon { get; set; }
+        Action<WagonData> OnSwitchWagon { get; set; }
     }
 
 

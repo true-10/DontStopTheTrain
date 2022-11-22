@@ -6,6 +6,7 @@ using TMPro;
 using Zenject;
 using True10.CameraSystem;
 using System;
+using DontStopTheTrain.Train;
 
 namespace DontStopTheTrain.UI
 {
@@ -65,6 +66,11 @@ namespace DontStopTheTrain.UI
 
         private void SwitchToCameraHandler()
         {
+        }
+
+        private void OnWagonClick(WagonData data)
+        {
+            numberText.text = data.Number.ToString();
         }
     }
 }

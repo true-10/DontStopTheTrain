@@ -161,7 +161,7 @@ MonoBehaviour:
     m_Value: 0
   nearFocusEnd:
     m_OverrideState: 1
-    m_Value: 3
+    m_Value: 1
   farFocusStart:
     m_OverrideState: 1
     m_Value: 800
@@ -357,7 +357,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.3
+    m_Value: 0.4
   smoothness:
     m_OverrideState: 0
     m_Value: 0.2
@@ -738,7 +738,7 @@ MonoBehaviour:
     m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 3
+    m_Value: 0.5
   maximumVelocity:
     m_OverrideState: 0
     m_Value: 200

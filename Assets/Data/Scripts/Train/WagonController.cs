@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,6 +40,8 @@ namespace DontStopTheTrain.Train
     {
         [SerializeField] private Wagon locomotive;
         [SerializeField] private List<Wagon> wagons;
+
+        //public Action<WagonData> OnWagonClick { get; set; }
 
 
     }

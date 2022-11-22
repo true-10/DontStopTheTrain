@@ -7,13 +7,14 @@ using Zenject;
 
 namespace DontStopTheTrain.Gameplay
 {
-    
-    public class CameraYTargetMouseRotator : MonoBehaviour, ICameraTargetController
+
+    public class CameraXTargetMouseRotator : MonoBehaviour, ICameraTargetController
     {
         [Inject] private ICameraController cameraController;
 
         [SerializeField] float rotationSpeed = 10f;
         [SerializeField] CameraHolder cameraHolder;
+        [SerializeField] Transform target;
 
         private Transform cachedTransform;
         private Vector3 prevPosition = Vector3.zero;
@@ -24,7 +25,7 @@ namespace DontStopTheTrain.Gameplay
 
         void Start()
         {
-            cachedTransform = GetComponent<Transform>();
+            cachedTransform = target.GetComponent<Transform>();
 
         }
 
@@ -71,16 +72,16 @@ namespace DontStopTheTrain.Gameplay
 
         private void UpdateTransform(Vector3 inputPosition)
         {
-            var deltaX = inputPosition.x - prevPosition.x;
-            RotateAroundY(deltaX);
+            var deltaY = inputPosition.y - prevPosition.y;
+            RotateAroundX(-deltaY);
             prevPosition = inputPosition;
 
         }
-        public void RotateAroundY(float move)
+        public void RotateAroundX(float move)
         {
-            var angle = move / rotationSpeed;// /* rotationSpeed*/ * Time.deltaTime;
+            var angle = move / rotationSpeed;
 
-            cachedTransform.Rotate(Vector3.up * angle, Space.World);
+            cachedTransform.Rotate(cachedTransform.right * angle, Space.World);
         }
 
         public void Init()

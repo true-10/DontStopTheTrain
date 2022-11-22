@@ -13,6 +13,7 @@ namespace DontStopTheTrain.Train
     {
         public int Number;
         public IWagonType WagonType;
+        public List<int> wagonEvents;
     }
 
     public class Wagon : MonoBehaviour, IWagon, IPointerClickHandler
@@ -29,9 +30,19 @@ namespace DontStopTheTrain.Train
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            Debug.Log($"{name} OnPointerClick");
+            //Debug.Log($"{name} OnPointerClick");
             int hash = cameras[0].HashCode;
-            cameraController.SwitchToCamera(hash);
+            var button = eventData.button;
+            if (button == PointerEventData.InputButton.Left)
+            {
+                cameraController.SwitchToCamera(hash);
+            }
+        }
+
+
+        public void Update()
+        {
+            
         }
     }
 }
