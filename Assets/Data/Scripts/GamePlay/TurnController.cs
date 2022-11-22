@@ -88,6 +88,7 @@ namespace DontStopTheTrain.Gameplay
 
                 yield return null;
 
+                //если события не выполнены, то применяем штраф
 
                 OnTurnEnd?.Invoke(callback);
                 index++;

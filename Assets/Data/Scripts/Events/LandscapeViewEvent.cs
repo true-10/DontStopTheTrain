@@ -55,6 +55,7 @@ namespace DontStopTheTrain.Events
         {
             //gameEventController.AddEventToProcessor(this);
             turnController.OnTurnEnd += OnTurnEndHandler;
+            eventCameraHolder.transform.position = startTransform.position;
         }
 
         private void OnTurnEndHandler(ITurnCallback callback)
@@ -73,7 +74,10 @@ namespace DontStopTheTrain.Events
         private void FireEvent()
         {
             eventCameraHolder.transform.position = startTransform.position;
-            eventCameraHolder.transform.DOLocalMoveZ(endTransform.position.z, duration);
+            eventCameraHolder.transform
+                .DOLocalMoveZ(endTransform.position.z, duration)
+                .SetEase(Ease.Linear);
+
             cameraController.SwitchToCamera(eventCameraHolder.HashCode);
             //завершить событие и сообщить об этом
             //разные контроллеры обрабатывают свои ивент тайпы
@@ -87,6 +91,7 @@ namespace DontStopTheTrain.Events
                        audioSource?.Play();
                    }
                    cameraController.SwitchToCamera(defaultCameraHolder.HashCode);
+                   eventCameraHolder.transform.position = startTransform.position;
                    OnComplete?.Invoke();
                }
                 );
