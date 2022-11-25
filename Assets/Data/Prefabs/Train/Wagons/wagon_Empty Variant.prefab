@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 376445823996714408, guid: 2e1bcfd78a19c6d4d915dffe45018398,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3209453501354388173, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
       propertyPath: m_IsActive
@@ -41,27 +46,27 @@ PrefabInstance:
     - target: {fileID: 8869454094328425967, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8869454094328425967, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9359612
+      value: 0.4790357
       objectReference: {fileID: 0}
     - target: {fileID: 8869454094328425967, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.120046236
+      value: 0.074332565
       objectReference: {fileID: 0}
     - target: {fileID: 8869454094328425967, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.32831743
+      value: 0.86429906
       objectReference: {fileID: 0}
     - target: {fileID: 8869454094328425967, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.042109948
+      value: -0.13411438
       objectReference: {fileID: 0}
     - target: {fileID: 8869454094677186984, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
@@ -126,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 8869454094818834448, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
       propertyPath: m_Name
-      value: wagon_Empty
+      value: wagon_Empty Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8869454094818834448, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
