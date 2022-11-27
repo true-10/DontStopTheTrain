@@ -7,57 +7,7 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 759077673297574129, guid: 2e1bcfd78a19c6d4d915dffe45018398,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4174109170417082817, guid: 2e1bcfd78a19c6d4d915dffe45018398,
-        type: 3}
-      propertyPath: m_Materials.Array.data[2]
-      value: 
-      objectReference: {fileID: 2100000, guid: 24cdf9fe0bb577147a43fb0c42aeba61, type: 2}
-    - target: {fileID: 5138182837975006076, guid: 2e1bcfd78a19c6d4d915dffe45018398,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6921568971196757939, guid: 2e1bcfd78a19c6d4d915dffe45018398,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8869454094328425967, guid: 2e1bcfd78a19c6d4d915dffe45018398,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8869454094328425967, guid: 2e1bcfd78a19c6d4d915dffe45018398,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8869454094328425967, guid: 2e1bcfd78a19c6d4d915dffe45018398,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9359612
-      objectReference: {fileID: 0}
-    - target: {fileID: 8869454094328425967, guid: 2e1bcfd78a19c6d4d915dffe45018398,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.120046236
-      objectReference: {fileID: 0}
-    - target: {fileID: 8869454094328425967, guid: 2e1bcfd78a19c6d4d915dffe45018398,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.32831743
-      objectReference: {fileID: 0}
-    - target: {fileID: 8869454094328425967, guid: 2e1bcfd78a19c6d4d915dffe45018398,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.042109948
-      objectReference: {fileID: 0}
-    - target: {fileID: 8869454094677186984, guid: 2e1bcfd78a19c6d4d915dffe45018398,
+    - target: {fileID: 5187442621678937339, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -80,7 +30,7 @@ PrefabInstance:
     - target: {fileID: 8869454094818834447, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 82.899994
+      value: 82.78
       objectReference: {fileID: 0}
     - target: {fileID: 8869454094818834447, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
@@ -121,11 +71,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: wagon_pass3 Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 8869454094818834448, guid: 2e1bcfd78a19c6d4d915dffe45018398,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e1bcfd78a19c6d4d915dffe45018398, type: 3}

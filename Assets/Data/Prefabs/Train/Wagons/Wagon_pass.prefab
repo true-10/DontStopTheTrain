@@ -6973,7 +6973,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7795031, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -7317,6 +7317,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 137057358187991997, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 565440653880324531, guid: 4aa978948aab1e141bce218504c45515,
         type: 3}

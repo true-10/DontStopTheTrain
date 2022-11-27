@@ -142,8 +142,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AORemapMax: 0.8687172
-    - _AORemapMin: 0.67936325
+    - _AORemapMax: 0.7074542
+    - _AORemapMin: 0.5181003
     - _ATDistance: 1
     - _AddPrecomputedVelocity: 0
     - _AlbedoAffectEmissive: 0
@@ -214,8 +214,8 @@ Material:
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
     - _Smoothness: 0.064
-    - _SmoothnessRemapMax: 0.614699
-    - _SmoothnessRemapMin: 0.5645744
+    - _SmoothnessRemapMax: 0.7674745
+    - _SmoothnessRemapMin: 0.50091803
     - _SpecularAAScreenSpaceVariance: 0.1
     - _SpecularAAThreshold: 0.2
     - _SpecularOcclusionMode: 1
@@ -262,7 +262,7 @@ Material:
     - _EmissiveColorLDR: {r: 1, g: 1, b: 1, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _SpecularColor: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
+    - _SpecularColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
