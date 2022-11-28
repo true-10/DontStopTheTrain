@@ -6973,7 +6973,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7795031, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -7092,6 +7092,7 @@ MonoBehaviour:
     wagonEvents: 
   cameras:
   - {fileID: 2981318574265220673}
+  events: []
 --- !u!65 &2962377781646028248
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7378,6 +7379,76 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2632015924538776304}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2632015924538776304}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AlarmOff
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AlarmOn
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DontStopTheTrain.Train.WagonAlarm, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DontStopTheTrain.Train.WagonAlarm, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4aa978948aab1e141bce218504c45515, type: 3}
 --- !u!4 &4738712747332273909 stripped
@@ -7533,6 +7604,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5977075466708611497, guid: 1f451debdb99615418bac103247f548c,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7093850100092069012, guid: 1f451debdb99615418bac103247f548c,
         type: 3}
       propertyPath: m_Name
@@ -7541,10 +7617,22 @@ PrefabInstance:
     - target: {fileID: 7093850100092069012, guid: 1f451debdb99615418bac103247f548c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f451debdb99615418bac103247f548c, type: 3}
+--- !u!114 &2632015924538776304 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9150536729109058720, guid: 1f451debdb99615418bac103247f548c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6520068930407222864}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50a016904bab0bc4c9d0807967d5f20d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7048956054062198005 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4298998151199367845, guid: 1f451debdb99615418bac103247f548c,

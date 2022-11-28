@@ -1,3 +1,4 @@
+using DontStopTheTrain.Events;
 using System.Collections;
 using System.Collections.Generic;
 using True10.CameraSystem;
@@ -7,6 +8,7 @@ using Zenject;
 
 namespace DontStopTheTrain.Train
 {
+
 
     [System.Serializable]
     public class WagonData
@@ -21,6 +23,7 @@ namespace DontStopTheTrain.Train
         [Inject] private ICameraController cameraController;
         [SerializeField] private WagonData wagonData;
         [SerializeField] private List<CameraHolder> cameras;
+        [SerializeField] private List<AbstractMonoEvent> events;
         public int Number => wagonData.Number;
 
         public IWagonType WagonType => wagonData.WagonType;
