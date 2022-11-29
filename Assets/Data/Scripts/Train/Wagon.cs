@@ -20,10 +20,15 @@ namespace DontStopTheTrain.Train
 
     public class Wagon : MonoBehaviour, IWagon, IPointerClickHandler
     {
-        [Inject] private ICameraController cameraController;
-        [SerializeField] private WagonData wagonData;
-        [SerializeField] private List<CameraHolder> cameras;
-        [SerializeField] private List<AbstractMonoEvent> events;
+        [Inject] 
+        private ICameraController cameraController;
+        [SerializeField] 
+        private WagonDataScriptableObject wagonDataScriptableObject;
+        [SerializeField] 
+        private WagonData wagonData;
+        [SerializeField] 
+        private List<CameraHolder> cameras;
+        //[SerializeField] private List<AbstractMonoEvent> events;
         public int Number => wagonData.Number;
 
         public IWagonType WagonType => wagonData.WagonType;

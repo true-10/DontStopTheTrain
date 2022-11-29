@@ -15,16 +15,63 @@ namespace DontStopTheTrain.Events
         Action<IGameEvent> OnTrigger { get; set; }
     }
 
-    public interface IGameEvent
+    public interface IGameEventStaticData
     {
         int Id { get; }
-        GameEventStatus Status { get; set; }//??
-
         int ActionPointPrice { get; }
         int EventType { get; }
+       // int Weight { get; }
+        int Chance { get; }
+    }
+
+    public class GameEventStaticData : IGameEventStaticData
+    {
+        public int Id { get; set; }
+
+        public int ActionPointPrice { get; set; }
+
+        public int EventType { get; set; }
+        public int Chance { get; set; }
+    }
+
+    public interface IGameEvent
+    {
+
+        int HashCode { get; }
+        IGameEventStaticData StaticData { get; set; }//??
+        GameEventStatus Status { get; set; }//??
+
         //List<int> int_params;
-        Action Fire { get; set; }
+        void Start();
+        void Complete();
         Action OnComplete { get; set; }
+        Action OnStart { get; set; }
+        Action OnTick { get; set; }
+
+
+    }
+
+    public class BaseGameEvent : IGameEvent
+    {
+        public IGameEventStaticData StaticData { get; set; }
+        public GameEventStatus Status { get; set; }
+        public Action OnComplete { get; set; }
+        public Action OnStart { get; set; }
+        public Action OnTick { get; set; }
+
+        public int HashCode => $"{StaticData.Id}".GetHashCode();
+
+        public void Complete()
+        {
+            Status = GameEventStatus.Complete;
+            OnComplete?.Invoke();
+        }
+
+        public void Start()
+        {
+            Status = GameEventStatus.Start;
+            OnStart?.Invoke();
+        }
     }
 
     public enum GameEventStatus

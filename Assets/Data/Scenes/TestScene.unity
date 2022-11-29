@@ -7523,7 +7523,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297127387}
-  m_LocalRotation: {x: 0.06209355, y: 0.54459965, z: -0.04047827, w: 0.83541435}
+  m_LocalRotation: {x: 0.06209356, y: 0.54459965, z: -0.040478278, w: 0.83541435}
   m_LocalPosition: {x: -12.036385, y: 4.1284466, z: -5.7527018}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8526,6 +8526,7 @@ GameObject:
   m_Component:
   - component: {fileID: 517302984}
   - component: {fileID: 517302985}
+  - component: {fileID: 517302986}
   m_Layer: 5
   m_Name: EventsRodar
   m_TagString: Untagged
@@ -8569,6 +8570,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radarText: {fileID: 938951535}
   dayText: {fileID: 1942051690}
+--- !u!114 &517302986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517302983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86548c05cdf4c046b0ca383e2b48c23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519988752
 GameObject:
   m_ObjectHideFlags: 0
@@ -10434,6 +10447,7 @@ GameObject:
   m_Component:
   - component: {fileID: 820255230}
   - component: {fileID: 820255231}
+  - component: {fileID: 820255232}
   m_Layer: 5
   m_Name: UIController
   m_TagString: Untagged
@@ -10478,6 +10492,18 @@ MonoBehaviour:
   wagonUIView: {fileID: 538706229}
   FrontCameraUIView: {fileID: 519988752}
   trainCameraHolder: {fileID: 297127394}
+--- !u!114 &820255232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820255229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86548c05cdf4c046b0ca383e2b48c23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &820424163
 GameObject:
   m_ObjectHideFlags: 0
@@ -22507,8 +22533,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1276292622}
+  - component: {fileID: 1276292623}
   m_Layer: 0
-  m_Name: EventController
+  m_Name: GameEventController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22531,6 +22558,19 @@ Transform:
   m_Father: {fileID: 282838701}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1276292623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276292621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6d7add29b3736b4192e1abf1f46566d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataEventManager: {fileID: 1868671458}
 --- !u!1 &1277483712
 GameObject:
   m_ObjectHideFlags: 0
@@ -22566,6 +22606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraController: {fileID: 4533759}
   turnController: {fileID: 592249938}
+  gameEventController: {fileID: 1276292623}
 --- !u!4 &1277483714
 Transform:
   m_ObjectHideFlags: 0
@@ -23076,6 +23117,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af371fd37cba1443959db945f86644b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventId: 0
+  OnEventStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEventEnd:
+    m_PersistentCalls:
+      m_Calls: []
   eventCameraHolder: {fileID: 995803980}
   defaultCameraHolder: {fileID: 297127394}
   duration: 2
@@ -30606,7 +30654,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823688464}
-  m_LocalRotation: {x: 0.06209355, y: 0.54459965, z: -0.04047827, w: 0.83541435}
+  m_LocalRotation: {x: 0.06209356, y: 0.54459965, z: -0.040478278, w: 0.83541435}
   m_LocalPosition: {x: -12.036385, y: 4.1284466, z: -5.7527018}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -33287,6 +33335,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6488569125137921418, guid: f61fc59e36aea2d45826e7d67e2234ed,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f61fc59e36aea2d45826e7d67e2234ed, type: 3}
 --- !u!1001 &3810051892648217168
@@ -33784,16 +33837,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 906207889}
     m_Modifications:
-    - target: {fileID: 4037929177584806596, guid: 2e1bcfd78a19c6d4d915dffe45018398,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8869454094328425965, guid: 2e1bcfd78a19c6d4d915dffe45018398,
-        type: 3}
-      propertyPath: m_Lens.m_SensorSize.x
-      value: 1.7777778
-      objectReference: {fileID: 0}
     - target: {fileID: 8869454094818834447, guid: 2e1bcfd78a19c6d4d915dffe45018398,
         type: 3}
       propertyPath: m_RootOrder

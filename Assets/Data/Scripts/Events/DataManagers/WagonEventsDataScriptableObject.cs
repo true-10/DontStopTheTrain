@@ -27,9 +27,24 @@ namespace DontStopTheTrain.Events.DataManagers
 
         public IWagonType WagonType => throw new NotImplementedException();
 
+        public IGameEventStaticData StaticData { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Action OnStart { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Action OnTick { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public int HashCode => throw new NotImplementedException();
+
         IWagonType IWagonEvent.WagonType => throw new NotImplementedException();
 
-        Action IGameEvent.Fire { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         Action IGameEvent.OnComplete { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public void Complete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Start()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

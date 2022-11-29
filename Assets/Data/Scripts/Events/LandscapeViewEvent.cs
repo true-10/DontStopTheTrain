@@ -10,7 +10,7 @@ using DontStopTheTrain.Gameplay;
 
 namespace DontStopTheTrain.Events
 {
-    public class EventByTimer : IGameEvent
+    public class EventByTimer //: IGameEvent
     {
         public int Id => throw new NotImplementedException();
 
@@ -25,9 +25,9 @@ namespace DontStopTheTrain.Events
     }
 
 
-    public class LandscapeViewEvent : MonoBehaviour, IGameEvent //EventByTimer
+    public class LandscapeViewEvent : AbstractMonoEvent
     {
-       // [Inject] private IGameEventController gameEventController;
+        [Inject] private IGameEventController gameEventController;
         [Inject] private ICameraController cameraController;
         [Inject] private ITurnController turnController;
         // [Inject] private IDispose 
@@ -41,14 +41,6 @@ namespace DontStopTheTrain.Events
 
         public int Id => 1;
 
-        public GameEventStatus Status { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public int ActionPointPrice => 0;
-
-        public int EventType => 1;
-
-        public Action Fire { get => FireEvent; set => throw new NotImplementedException(); }
-        public Action OnComplete { get; set; }
 
 
         void Start()
@@ -92,10 +84,30 @@ namespace DontStopTheTrain.Events
                    }
                    cameraController.SwitchToCamera(defaultCameraHolder.HashCode);
                    eventCameraHolder.transform.position = startTransform.position;
-                   OnComplete?.Invoke();
+                  // OnComplete?.Invoke();
                }
                 );
 
+        }
+
+        protected override void OnChangeEvent(IGameEvent gameEvent)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void OnComplete()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void OnStart()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void OnTick()
+        {
+            throw new NotImplementedException();
         }
     }
 }

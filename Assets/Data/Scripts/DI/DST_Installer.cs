@@ -1,3 +1,4 @@
+using DontStopTheTrain.Events;
 using DontStopTheTrain.Gameplay;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ public class DST_Installer : MonoInstaller
     #region fields
     [SerializeField] private CameraController cameraController;
     [SerializeField] private TurnController turnController;
+    [SerializeField] private GameEventController gameEventController;
 
     #endregion
     public override void InstallBindings()
@@ -17,7 +19,9 @@ public class DST_Installer : MonoInstaller
         //camera
         Container.Bind<ICameraController>().FromInstance(cameraController);
         Container.Bind<ITurnController>().FromInstance(turnController);
-        //Container.Bind<ICameraController>().To<CameraController>().AsSingle().NonLazy();
+        Container.Bind<IGameEventController>().FromInstance(gameEventController);
+        
+       // Container.Bind<IGameEventController>().To<GameEventController>().AsSingle().NonLazy();
 
 
         //Container.Bind<ICameraHolder>().To<CameraHolder>().AsSingle().NonLazy();

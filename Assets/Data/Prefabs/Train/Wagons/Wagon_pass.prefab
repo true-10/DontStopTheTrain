@@ -389,7 +389,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8046847551490840136}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6406853991603780776
 MeshFilter:
@@ -6651,7 +6651,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8046847551490840136}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8315988767016255535
 MeshFilter:
@@ -6921,6 +6921,7 @@ GameObject:
   - component: {fileID: 8869454094328425967}
   - component: {fileID: 8869454094328425965}
   - component: {fileID: 2981318574265220673}
+  - component: {fileID: 1714152296911927248}
   m_Layer: 0
   m_Name: CM Wagon Side
   m_TagString: Untagged
@@ -7004,6 +7005,18 @@ MonoBehaviour:
   cinemachineVirtualCamera: {fileID: 8869454094328425965}
   isDisabled: 0
   group: 2
+--- !u!114 &1714152296911927248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8869454094328425968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86548c05cdf4c046b0ca383e2b48c23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8869454094677186984
 GameObject:
   m_ObjectHideFlags: 0
@@ -7087,12 +7100,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8ccce559d3a454f9cd3a03ced85a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wagonDataScriptableObject: {fileID: 11400000, guid: b62dae2af8186f54cb8dd96d6eaee570,
+    type: 2}
   wagonData:
     Number: 22
     wagonEvents: 
   cameras:
   - {fileID: 2981318574265220673}
-  events: []
 --- !u!65 &2962377781646028248
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7182,6 +7196,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351712586734775748, guid: fac90364e4de2b1459be53a633a8ac5c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4891251830825103696, guid: fac90364e4de2b1459be53a633a8ac5c,
         type: 3}
@@ -7294,6 +7313,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlinkerAlarm
       objectReference: {fileID: 0}
+    - target: {fileID: 5349314752131055959, guid: fac90364e4de2b1459be53a633a8ac5c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494959944862188581, guid: fac90364e4de2b1459be53a633a8ac5c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7906717326503198413, guid: fac90364e4de2b1459be53a633a8ac5c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -7304,6 +7333,12 @@ PrefabInstance:
 --- !u!4 &1600283240320047341 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2826905305173479898, guid: fac90364e4de2b1459be53a633a8ac5c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3534892796790032695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7722773880571890962 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6494959944862188581, guid: fac90364e4de2b1459be53a633a8ac5c,
     type: 3}
   m_PrefabInstance: {fileID: 3534892796790032695}
   m_PrefabAsset: {fileID: 0}
@@ -7382,71 +7417,86 @@ PrefabInstance:
     - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
         type: 3}
       propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
         type: 3}
       propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
-        type: 3}
-      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
-        type: 3}
-      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2632015924538776304}
-    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
-        type: 3}
-      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
-        type: 3}
-      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2632015924538776304}
-    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
-        type: 3}
-      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
         type: 3}
-      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2632015924538776304}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2632015924538776304}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: AlarmOff
       objectReference: {fileID: 0}
     - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
         type: 3}
-      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
         type: 3}
-      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: AlarmOn
       objectReference: {fileID: 0}
     - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
         type: 3}
-      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: DontStopTheTrain.Train.WagonAlarm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
         type: 3}
-      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: DontStopTheTrain.Train.WagonAlarm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
         type: 3}
-      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
+        type: 3}
+      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
         type: 3}
-      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7619,6 +7669,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9150536729109058720, guid: 1f451debdb99615418bac103247f548c,
+        type: 3}
+      propertyPath: alarmObject
+      value: 
+      objectReference: {fileID: 7722773880571890962}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f451debdb99615418bac103247f548c, type: 3}
 --- !u!114 &2632015924538776304 stripped

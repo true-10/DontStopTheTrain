@@ -5,20 +5,25 @@ using UnityEngine;
 namespace DontStopTheTrain.Events
 {
     [System.Serializable]
-    public class GameEventStaticData
+    public class GameEventScriptableStaticData//: IGameEventStaticData
     {
         public string Name;
-       // public string Comment;
-        public int Id;
-        public int EventType;
-        public int ActionPointPrice;
+
+        public int Id;// { get; private set; }
+
+        public int ActionPointPrice;// { get; private set; }
+
+        public int EventType;// { get; private set; }
+                             // public string Comment;
 
     }
 
     [CreateAssetMenu(fileName = "EventsList", menuName = "DST/EventsListScriptableObject")]
     public class EventsListScriptableObject : ScriptableObject
     {
-        public List<GameEventStaticData> events;
+        public List<GameEventScriptableStaticData> events;
+
+
 
     }
 }
