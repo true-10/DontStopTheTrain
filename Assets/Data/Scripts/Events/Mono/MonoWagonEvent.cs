@@ -36,7 +36,7 @@ namespace DontStopTheTrain.Events
 
         protected override void OnTick()
         {
-            throw new System.NotImplementedException();
+
         }
 
         private void Update()

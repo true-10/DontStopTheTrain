@@ -43,28 +43,43 @@ namespace DontStopTheTrain.Events
 
 
 
-        void Start()
+
+        private void OnTurnEndHandler(ITurnCallback callback)
         {
-            //gameEventController.AddEventToProcessor(this);
+
+        }
+
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (gameEvent == null)
+                {
+                    return;
+                }
+                gameEvent.Start();
+            }
+        }
+
+
+        protected override void Init()
+        {
+            base.Init();
             turnController.OnTurnEnd += OnTurnEndHandler;
             eventCameraHolder.transform.position = startTransform.position;
         }
 
-        private void OnTurnEndHandler(ITurnCallback callback)
+        protected override void OnChangeEvent(IGameEvent gameEvent)
         {
-            FireEvent();
         }
 
-            void Update()
+        protected override void OnComplete()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                FireEvent();
-            }
         }
 
-        private void FireEvent()
+        protected override void OnStart()
         {
+            OnEventStart?.Invoke();
             eventCameraHolder.transform.position = startTransform.position;
             eventCameraHolder.transform
                 .DOLocalMoveZ(endTransform.position.z, duration)
@@ -77,37 +92,20 @@ namespace DontStopTheTrain.Events
 
             var timer = Observable.Timer(TimeSpan.FromSeconds(duration))
                 .Subscribe(x =>
-               {
-                   if (audioSource != null)
-                   {
-                       audioSource?.Play();
-                   }
-                   cameraController.SwitchToCamera(defaultCameraHolder.HashCode);
-                   eventCameraHolder.transform.position = startTransform.position;
-                  // OnComplete?.Invoke();
-               }
+                {
+                    if (audioSource != null)
+                    {
+                        audioSource?.Play();
+                    }
+                    cameraController.SwitchToCamera(defaultCameraHolder.HashCode);
+                    eventCameraHolder.transform.position = startTransform.position;
+                    gameEvent.Complete();
+                }
                 );
-
-        }
-
-        protected override void OnChangeEvent(IGameEvent gameEvent)
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override void OnComplete()
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override void OnStart()
-        {
-            throw new NotImplementedException();
         }
 
         protected override void OnTick()
         {
-            throw new NotImplementedException();
         }
     }
 }

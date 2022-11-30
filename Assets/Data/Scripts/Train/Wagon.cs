@@ -8,7 +8,17 @@ using Zenject;
 
 namespace DontStopTheTrain.Train
 {
+    public interface IWagonDynamicData
+    {
+        //staticData
+    }
 
+    public interface IWagon_
+    {
+        IWagonDynamicData Data { get; }
+
+        //Action OnWhat?
+    }
 
     [System.Serializable]
     public class WagonData
@@ -24,6 +34,8 @@ namespace DontStopTheTrain.Train
         private ICameraController cameraController;
         [SerializeField] 
         private WagonDataScriptableObject wagonDataScriptableObject;
+        [SerializeField]
+        private List<MonoWagonEvent> eventsPresenter;
         [SerializeField] 
         private WagonData wagonData;
         [SerializeField] 
