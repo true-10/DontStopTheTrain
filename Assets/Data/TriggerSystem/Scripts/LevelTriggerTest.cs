@@ -8,13 +8,14 @@ namespace DontStopTheTrain.TriggerSystem
 {
     public class LevelTriggerTest : LevelTrigger
     {
-        [SerializeField, Min(1)] private SplineComputer splineComputer;
+        [SerializeField, Min(1)] 
+        private SplineComputer splineComputer;
 
         public class OnSplineTriggerCallback : IOnTriggerCallback
         {
             public int TriggetType { get; set; }
             public SplineComputer SplineComputer { get; set; }
-
+           // public List<GameObject> DataObjects { get; set; }
         }
 
         protected override IOnTriggerCallback GetTriggerCallback()
@@ -22,6 +23,7 @@ namespace DontStopTheTrain.TriggerSystem
             var callback = new OnSplineTriggerCallback()
             {
                 TriggetType = triggerType,
+               // DataObjects = gameObjects,
                 SplineComputer = splineComputer
             };
             return callback;
