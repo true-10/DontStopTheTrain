@@ -1,5 +1,6 @@
 using DontStopTheTrain.Events;
 using DontStopTheTrain.Gameplay;
+using DontStopTheTrain.UI;
 using System.Collections;
 using System.Collections.Generic;
 using True10.CameraSystem;
@@ -18,6 +19,8 @@ public class DST_Installer : MonoInstaller
     private GameEventController gameEventController;
     [SerializeField] 
     private LevelScrollSpeedController levelScrollSpeedController;
+    [SerializeField] 
+    private UIFabric uIFabric;
 
     #endregion
     public override void InstallBindings()
@@ -27,6 +30,7 @@ public class DST_Installer : MonoInstaller
         Container.Bind<ITurnController>().FromInstance(turnController);
         Container.Bind<IGameEventController>().FromInstance(gameEventController);
         Container.Bind<ILevelScrollSpeedController>().FromInstance(levelScrollSpeedController);
+        Container.Bind<IUIFabric>().FromInstance(uIFabric);
         
        // Container.Bind<IGameEventController>().To<GameEventController>().AsSingle().NonLazy();
 

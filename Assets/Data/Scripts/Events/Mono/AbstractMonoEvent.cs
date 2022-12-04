@@ -17,6 +17,8 @@ namespace DontStopTheTrain.Events
 
         [SerializeField]
         protected int eventId = 0;
+        [SerializeField]
+        private int eventType = 0;
 
         [SerializeField] 
         protected UnityEvent OnEventStart;
@@ -53,6 +55,17 @@ namespace DontStopTheTrain.Events
             gameEvent.OnComplete += OnComplete;
             gameEvent.OnStart += OnStart;
             gameEvent.OnTick += OnTick;
+        }
+
+
+        protected void StartEvent()
+        {
+            gameEvent?.Start();
+        }
+
+        protected void CompleteEvent()
+        {
+            gameEvent?.Complete();
         }
     }
 }
