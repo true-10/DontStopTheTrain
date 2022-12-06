@@ -7575,7 +7575,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297127387}
-  m_LocalRotation: {x: 0.06209355, y: 0.5446, z: -0.040478315, w: 0.8354141}
+  m_LocalRotation: {x: 0.06209353, y: 0.5446, z: -0.040478297, w: 0.8354141}
   m_LocalPosition: {x: -19.506384, y: 4.1284466, z: -142.8527}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7613,7 +7613,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7765151, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -11186,35 +11186,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6617f292c14fb3c489ae6c54b330c608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localJump:
-    isEnable: 1
-    loopType: 2
-    snapping: 0
-    duration: 2
-    jumpPower: 0.07
-    numJumps: 3
-  shakeRotation:
-    isEnable: 1
-    loopType: 1
-    shakeStrength: 1
-    shakeDuration: 0.8
-    shakeVibrato: 2
-    shakeRandomness: 20
-    shakeFadeOut: 1
-  punchRotation:
-    isEnable: 1
-    loopType: 0
-    punchVector: {x: 0, y: 0.3, z: 0}
-    duration: 2
-    vibrato: 3
-    elasticity: 3
-    shakeFadeOut: 1
-  goToZero:
-    isEnable: 0
-    loopType: 0
-    snapping: 0
-    duration: 1
-  wagonRigs:
+  localJumpData:
+    IsEnable: 1
+    LoopType: 2
+    Duration: 2
+    Snapping: 0
+    JumpPower: 0.07
+    NumJumps: 3
+  shakeRotationData:
+    IsEnable: 1
+    LoopType: 1
+    Duration: 0.8
+    Strength: 1
+    Vibrato: 2
+    Randomness: 20
+    FadeOut: 1
+  punchRotationData:
+    IsEnable: 1
+    LoopType: 0
+    Duration: 2
+    PunchVector: {x: 0, y: 0.3, z: 0}
+    Vibrato: 3
+    Elasticity: 3
+    ShakeFadeOut: 1
+  goToZeroData:
+    IsEnable: 1
+    LoopType: 0
+    Duration: 1
+    Snapping: 0
+  wagonRigsTransform:
   - {fileID: 543508429}
   - {fileID: 1177079840}
   - {fileID: 607916198}
@@ -30698,7 +30698,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823688464}
-  m_LocalRotation: {x: 0.06209355, y: 0.5446, z: -0.040478315, w: 0.8354141}
+  m_LocalRotation: {x: 0.06209353, y: 0.5446, z: -0.040478297, w: 0.8354141}
   m_LocalPosition: {x: -19.506384, y: 4.1284466, z: -142.8527}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -33291,12 +33291,12 @@ PrefabInstance:
     - target: {fileID: 3422866347486239887, guid: fc5aa8b190a8a334ca3f1153a1204cc1,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -1.3442406e-10
+      value: 1.3442406e-10
       objectReference: {fileID: 0}
     - target: {fileID: 3422866347486239887, guid: fc5aa8b190a8a334ca3f1153a1204cc1,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -4.62252e-13
+      value: 4.62252e-13
       objectReference: {fileID: 0}
     - target: {fileID: 3422866347486239887, guid: fc5aa8b190a8a334ca3f1153a1204cc1,
         type: 3}
