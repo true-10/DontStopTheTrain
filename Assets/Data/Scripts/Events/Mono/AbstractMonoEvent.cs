@@ -27,7 +27,7 @@ namespace DontStopTheTrain.Events
 
         protected IGameEvent gameEvent = null;
 
-        void Start()
+        private void Start()
         {
             Init();
         }

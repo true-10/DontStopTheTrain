@@ -6936,8 +6936,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8869454094328425968}
-  m_LocalRotation: {x: 0.07433258, y: 0.86429906, z: -0.13411437, w: 0.47903574}
-  m_LocalPosition: {x: -8, y: 5, z: 8}
+  m_LocalRotation: {x: 0.07433257, y: 0.86429906, z: -0.13411437, w: 0.47903574}
+  m_LocalPosition: {x: -7.9999995, y: 5, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7102,6 +7102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wagonDataScriptableObject: {fileID: 11400000, guid: b62dae2af8186f54cb8dd96d6eaee570,
     type: 2}
+  eventsPresenter: []
   wagonData:
     Number: 22
     wagonEvents: 
@@ -7416,89 +7417,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
         type: 3}
-      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
-        type: 3}
-      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
-        type: 3}
-      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
-        type: 3}
       propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 2632015924538776304}
     - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
         type: 3}
-      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
-        type: 3}
       propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 2632015924538776304}
-    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
-        type: 3}
-      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
-        type: 3}
-      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: AlarmOff
-      objectReference: {fileID: 0}
-    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
-        type: 3}
-      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
-        type: 3}
-      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: AlarmOn
-      objectReference: {fileID: 0}
-    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
-        type: 3}
-      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: DontStopTheTrain.Train.WagonAlarm, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
-        type: 3}
-      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
-        type: 3}
-      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
-        type: 3}
-      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: DontStopTheTrain.Train.WagonAlarm, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
-        type: 3}
-      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
-        type: 3}
-      propertyPath: OnEventEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2989400211472420162, guid: 4aa978948aab1e141bce218504c45515,
-        type: 3}
-      propertyPath: OnEventStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4aa978948aab1e141bce218504c45515, type: 3}
 --- !u!4 &4738712747332273909 stripped

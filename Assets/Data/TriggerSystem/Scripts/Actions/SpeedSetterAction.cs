@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using True10.Animation;
 using True10.DayLightSystem;
 using True10.LevelScrollSystem;
 using True10.LevelScrollSystem.ESC;
@@ -21,6 +22,10 @@ namespace True10.TriggerSystem
 
         public override void OnEnterAction(IOnTriggerCallback callback)
         {
+            if (IsEnable == false)
+            {
+                return;
+            }
             //Debug.Log($"SpeedSetterAction: Pretending to change speed = {levelScrollSpeedController.Multilplayer} on enter");
             levelScrollSpeedController.SetMultiplayer(speedMult);
         }

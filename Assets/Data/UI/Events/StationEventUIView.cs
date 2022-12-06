@@ -11,7 +11,6 @@ namespace DontStopTheTrain.UI
     //BaseEventUIView
     public class StationEventUIView : MonoBehaviour
     {
-
         [SerializeField]
         private Button departButton; 
 

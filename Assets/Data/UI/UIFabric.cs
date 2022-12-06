@@ -22,21 +22,10 @@ namespace DontStopTheTrain.UI
             switch(uiType)
             {
                 default:
-                    var go = Instantiate(StationUIPrefab);
+                    var go = Instantiate(StationUIPrefab, uiRoot);
                     return go.gameObject;
             }
         }
 
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }

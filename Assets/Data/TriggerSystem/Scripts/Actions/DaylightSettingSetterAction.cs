@@ -16,7 +16,10 @@ namespace True10.TriggerSystem
 
         public override void OnEnterAction(IOnTriggerCallback callback)
         {
-
+            if (IsEnable == false)
+            {
+                return;
+            }
         }
 
         public override void OnExitAction(IOnTriggerCallback callback)

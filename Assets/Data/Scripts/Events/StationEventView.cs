@@ -1,6 +1,7 @@
 using DontStopTheTrain.UI;
 using System.Collections;
 using System.Collections.Generic;
+using True10.Animation;
 using True10.DayLightSystem;
 using True10.LevelScrollSystem;
 using UnityEngine;
@@ -34,16 +35,6 @@ namespace DontStopTheTrain.Events
        // [SerializeField]
         //private StationEventUIView StationEventUIViewPrefab;
 
-        void Start()
-        {
-
-        }
-
-        void Update()
-        {
-
-        }
-
         protected override void OnChangeEvent(IGameEvent gameEvent)
         {
 
@@ -66,6 +57,14 @@ namespace DontStopTheTrain.Events
             if (uiGO.TryGetComponent<StationEventUIView>(out var stationUI))
             {
                 stationUI.OnDepartButtonClick += OnDepartButtonClick;
+            }
+
+            gameEvent.OnComplete += DestroyUI;
+
+            void DestroyUI()
+            {
+                Destroy(uiGO);
+                gameEvent.OnComplete -= DestroyUI;
             }
         }
 
