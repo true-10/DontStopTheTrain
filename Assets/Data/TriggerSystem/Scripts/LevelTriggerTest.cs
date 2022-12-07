@@ -13,6 +13,7 @@ namespace DontStopTheTrain.TriggerSystem
 
         public class OnSplineTriggerCallback : IOnTriggerCallback
         {
+            //public AbstractTriggerMonoObject TriggerObject { get; }
             public int TriggetType { get; set; }
             public SplineComputer SplineComputer { get; set; }
            // public List<GameObject> DataObjects { get; set; }

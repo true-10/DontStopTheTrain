@@ -268,22 +268,30 @@ namespace DontStopTheTrain.Train
     public class GoToZeroData : AbstractTransformModifierData
     {
         public bool Snapping = true;
+        public RotateMode RotateMode = RotateMode.Fast;
     }
 
     [System.Serializable]
     public class GoToZero : AbstractTransformModifier
     {
         private bool snapping = true;
-
+        private RotateMode rotateMode = RotateMode.Fast;
+        Sequence sequence = null;
         public GoToZero(GoToZeroData data) : base(data)
         {
             snapping = data.Snapping;
+            rotateMode = data.RotateMode;
         }
         protected override void Modify(Transform target)
         {
-            tween = target.DOLocalMove(Vector3.zero, duration, snapping)
-                //.SetLoops(-1, loopType);
+            sequence = DOTween.Sequence();
+
+            sequence
+                .Append(target.DOLocalMove(Vector3.zero, duration, snapping) )
+                .Join(target.DOLocalRotate(Vector3.zero, duration, rotateMode))
                .OnComplete(OnTweenComplete);
+
+            tween = sequence;
         }
 
         protected override void Init(Transform target)

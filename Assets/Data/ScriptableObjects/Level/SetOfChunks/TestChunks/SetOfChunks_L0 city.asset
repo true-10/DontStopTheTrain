@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chunkList:
   - {fileID: 8302013540663583547, guid: 88947914de807f34f83deb9c456c37cc, type: 3}
+  - {fileID: 7853811148814476012, guid: 6d57f537c33a0dd43a491d2a6bb91aa3, type: 3}
+  - {fileID: 4519231724457175992, guid: 2851d3ea9af35584c9b9afa5374d2498, type: 3}
+  - {fileID: 8724655323767576070, guid: c4458051152b4a74d8afdc627b7c934e, type: 3}

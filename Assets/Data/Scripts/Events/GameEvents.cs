@@ -63,12 +63,20 @@ namespace DontStopTheTrain.Events
 
         public void Complete()
         {
+            if (Status == GameEventStatus.Complete)
+            {
+                //     return;
+            }
             Status = GameEventStatus.Complete;
             OnComplete?.Invoke();
         }
 
         public void Start()
         {
+            if (Status == GameEventStatus.Start)
+            {
+           //     return;
+            }
             Status = GameEventStatus.Start;
             OnStart?.Invoke();
         }

@@ -28,7 +28,8 @@ namespace True10.TriggerSystem
             {
                 return;
             }
-            Debug.Log($"gameEvent?.Start();");
+
+            Debug.Log($"{name}: gameEvent?.Start();");
             gameEvent?.Start();
         }
 
