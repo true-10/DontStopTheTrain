@@ -9,7 +9,7 @@ using Zenject;
 namespace True10.TriggerSystem
 {
 
-    public class SwitchCameraAction : AbstractTriggerMonoActionObject
+    public class SwitchCameraAction : AbstractTriggerActivatorMonoActionObject
     {
         [Inject]
         private ICameraController cameraController;

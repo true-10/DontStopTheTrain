@@ -1,25 +1,23 @@
-using System.Collections;
 using System.Collections.Generic;
-using True10.DayLightSystem;
+using True10.TriggerSystem;
 using UnityEngine;
-
+using Zenject;
 
 namespace True10.TriggerSystem
 {
-    public class DaylightSettingSetterAction : AbstractTriggerActivatorMonoActionObject
+
+
+
+    public class SequenceAction : AbstractTriggerActivatorMonoActionObject
     {
         [SerializeField]
-        private DayLightSettingsScriptableObject data;
+        public List<AbstractTriggerActivatorMonoActionObject> actions = new();
 
-
-        public override int TriggerType => 0; //speedType?
+        public override int TriggerType => 0;
 
         public override void OnEnterAction(IOnTriggerCallback callback)
         {
-            if (IsEnable == false)
-            {
-                return;
-            }
+
         }
 
         public override void OnExitAction(IOnTriggerCallback callback)

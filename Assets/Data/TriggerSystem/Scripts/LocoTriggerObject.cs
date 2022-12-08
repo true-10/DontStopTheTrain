@@ -14,7 +14,7 @@ namespace DontStopTheTrain.TriggerSystem
     }
 
     [RequireComponent(typeof(Rigidbody))]
-    public class LocoTriggerObject : AbstractTriggerMonoObject
+    public class LocoTriggerObject : AbstractMonoTriggerActivator
     {
         [SerializeField] private TriggerTypeEnum triggerType = TriggerTypeEnum.General;
         [SerializeField] private Locomotiv loco;

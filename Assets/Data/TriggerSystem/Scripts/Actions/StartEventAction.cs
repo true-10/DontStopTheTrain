@@ -8,7 +8,7 @@ using Zenject;
 namespace True10.TriggerSystem
 {
 
-    public class StartEventAction : AbstractTriggerMonoActionObject
+    public class StartEventAction : AbstractTriggerActivatorMonoActionObject
     {
         [Inject]
         protected IGameEventController gameEventController;

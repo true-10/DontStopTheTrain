@@ -11,7 +11,7 @@ namespace DontStopTheTrain.Gameplay
     /// <summary>
     /// повторяем изгиб сплайна, не меняя координату Z
     /// </summary>
-    public class SplineSnapper : AbstractTriggerMonoObject
+    public class SplineSnapper : AbstractMonoTriggerActivator
     {
         [SerializeField] private SplineProjector splineProjector;
         //[SerializeField] private SplineComputer splineComputer;

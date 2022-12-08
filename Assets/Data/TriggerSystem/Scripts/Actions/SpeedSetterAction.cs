@@ -10,7 +10,7 @@ using Zenject;
 
 namespace True10.TriggerSystem
 {
-    public class SpeedSetterAction : AbstractTriggerMonoActionObject
+    public class SpeedSetterAction : AbstractTriggerActivatorMonoActionObject
     {
         [Inject]
         private ILevelScrollSpeedController levelScrollSpeedController;
