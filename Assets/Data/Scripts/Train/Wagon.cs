@@ -40,6 +40,8 @@ namespace DontStopTheTrain.Train
         private WagonData wagonData;
         [SerializeField] 
         private List<CameraHolder> cameras;
+        [SerializeField] 
+        private GameObject uiObject;
         //[SerializeField] private List<AbstractMonoEvent> events;
         public int Number => wagonData.Number;
 
@@ -59,10 +61,22 @@ namespace DontStopTheTrain.Train
             }
         }
 
-
+        
         public void Update()
         {
-            
+            var isShow = Input.GetKeyDown(KeyCode.Tab);
+            if (isShow)
+            {
+                ShowUI(!uiObject.activeInHierarchy);
+            }
+        }
+
+        private void ShowUI(bool isShow)
+        {
+            if (uiObject.activeInHierarchy != isShow)
+            {
+                uiObject.SetActive(isShow);
+            }
         }
     }
 }
