@@ -57,7 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
-    <Compile Include="Assets\Data\Scripts\Inter_Scriptors\DataModels\Editor\StaticDataInspector.cs" />
     <Compile Include="Assets\True10\Utils\DataFromGoogleSheets\Editor\GoogleSheetLoaderBehaviourInspector.cs" />
     <Compile Include="Assets\True10\Utils\DataFromGoogleSheets\Editor\GoogleSheetLoaderInspector.cs" />
     <Compile Include="Assets\Camera Perspective Editor\Scripts\Editor\CameraPerspectiveEditorEditor.cs" />

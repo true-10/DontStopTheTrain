@@ -29,4 +29,14 @@ namespace DontStopTheTrain.Gameplay
         public int Score { get; } //сколько очков заработал
         public List<IPerk> Perks { get; }
     }
+
+    public class PlayerDataDynamicManager
+    {
+        //добавляем перки
+        //добавляем опыт
+        //поднимаем уровень
+        //
+        //восстанавливаем/отнимает очки действия каждый ход? 
+
+    }
 }

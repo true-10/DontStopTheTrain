@@ -22,6 +22,8 @@ namespace DontStopTheTrain.Events
         int EventType { get; }
        // int Weight { get; }
         int Chance { get; }
+
+        //List<ICondition> Conditions;
     }
 
     public class GameEventStaticData : IGameEventStaticData
