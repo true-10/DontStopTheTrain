@@ -23,7 +23,9 @@ namespace DontStopTheTrain.Gameplay
         // Start is called before the first frame update
         void Start()
         {
-
+            var pos = target.localPosition;
+            pos.z = minMax.x;
+            target.localPosition = pos;
         }
 
         private void OnEnable()
@@ -50,17 +52,20 @@ namespace DontStopTheTrain.Gameplay
         void Update()
         {
             var move = 0f;
-            if (Input.GetKey(zoomInKey))
-            {
-                move = 1f;
-            }
-            if (Input.GetKey(zoomOutKey))
-            {
-                move = -1f;
-            }
             if (useMouseScrollWheel)
             {
                 move = Input.GetAxis("Mouse ScrollWheel") * 10f;
+            }
+            else
+            {
+                if (Input.GetKey(zoomInKey))
+                {
+                    move = 1f;
+                }
+                if (Input.GetKey(zoomOutKey))
+                {
+                    move = -1f;
+                }
             }
             ZoomTargetAlongZ(move);
         }
@@ -68,7 +73,7 @@ namespace DontStopTheTrain.Gameplay
         public void ZoomTargetAlongZ(float value)
         {
             var pos = target.localPosition;
-            pos.z += value;
+            pos.z += value * zoomSpeed;
             pos.z = Mathf.Clamp(pos.z, minMax.x, minMax.y);
             target.localPosition = pos;
         }

@@ -66,7 +66,7 @@ namespace DontStopTheTrain.Gameplay
 
             var direction = new Vector3 (hValue, 0f, vValue);
            // direction = ClampDirection(direction);
-            Move(direction);
+            Move(direction); 
         }
 
         public Vector3 ClampDirection(Vector3 direction)

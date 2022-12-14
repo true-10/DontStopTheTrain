@@ -106,7 +106,7 @@ namespace DontStopTheTrain.Train
     }
 
     [System.Serializable]
-    public abstract class AbstractTransformModifier
+    public abstract class AbstractTransformModifier //: ScriptableObject
     {
         protected bool isEnable = false;
         protected LoopType loopType = LoopType.Restart;
