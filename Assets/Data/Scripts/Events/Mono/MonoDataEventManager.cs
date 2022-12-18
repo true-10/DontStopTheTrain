@@ -29,6 +29,7 @@ namespace DontStopTheTrain.Events
 
                 var newGameEvent = eventFabric.CreateEvent(gameEventStaticData);
                 gameEvents.Add(newGameEvent);
+
             }
         }
 

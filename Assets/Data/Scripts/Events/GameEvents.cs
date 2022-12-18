@@ -15,31 +15,15 @@ namespace DontStopTheTrain.Events
         Action<IGameEvent> OnTrigger { get; set; }
     }
 
-    public interface IGameEventStaticData
-    {
-        int Id { get; }
-        int ActionPointPrice { get; }
-        int EventType { get; }
-       // int Weight { get; }
-        int Chance { get; }
-
-        //List<ICondition> Conditions;
-    }
-
-    public class GameEventStaticData : IGameEventStaticData
-    {
-        public int Id { get; set; }
-
-        public int ActionPointPrice { get; set; }
-
-        public int EventType { get; set; }
-        public int Chance { get; set; }
-    }
+    
 
     public interface IGameEvent
     {
 
         int HashCode { get; }
+
+        //не только очки действия вкладывать, но и ресурсы? да
+        List<ICondition> Conditions { get; } //условия, которые должны быть выполнены для завершения ивента
         IGameEventStaticData StaticData { get; set; }//??
         GameEventStatus Status { get; set; }//??
 
@@ -62,6 +46,8 @@ namespace DontStopTheTrain.Events
         public Action OnTick { get; set; }
 
         public int HashCode => $"{StaticData.Id}".GetHashCode();
+
+        public List<ICondition> Conditions => throw new NotImplementedException();
 
         public void Complete()
         {
@@ -110,16 +96,4 @@ namespace DontStopTheTrain.Events
 
     }
 
-    public interface IGameEventCallback
-    {
-        int EventId { get; set; }
-        //IGameEvent GameEvent { get; set; }
-        GameEventStatus EventStatus { get; set; }
-    }
-
-    public class GameEventCallback : IGameEventCallback
-    {
-        public int EventId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public GameEventStatus EventStatus { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    }
 }

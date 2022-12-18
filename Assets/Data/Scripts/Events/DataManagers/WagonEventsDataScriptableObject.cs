@@ -33,6 +33,8 @@ namespace DontStopTheTrain.Events.DataManagers
 
         public int HashCode => throw new NotImplementedException();
 
+        public List<ICondition> Conditions => throw new NotImplementedException();
+
         IWagonType IWagonEvent.WagonType => throw new NotImplementedException();
 
         Action IGameEvent.OnComplete { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

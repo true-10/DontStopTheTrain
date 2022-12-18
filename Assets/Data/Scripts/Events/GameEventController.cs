@@ -52,65 +52,73 @@ namespace DontStopTheTrain.Events
 
         public Action<IGameEvent> OnChangeEvent { get; set; }
         public Action<IGameEventCallback> OnChangeEventStatus { get; set; }
-        public Action OnInit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Action OnInit { get; set; }
 
-        private Dictionary<int, AbstractEventProccessor> processors = new();
 
-        // Start is called before the first frame update
+
         void Start()
         {
 
         }
 
-        // Update is called once per frame
         void Update()
         {
 
         }
+
+        private void OnEventChangeStatus(IGameEvent gameEvent)
+        {
+            // OnChangeEventStatus?.Invoke(gameEvent);
+            OnChangeEvent?.Invoke(gameEvent);
+        }
+
         public IGameEvent GetGameEventById(int id)
         {
             return dataEventManager.GameEvents.FirstOrDefault(x => x.StaticData.Id == id);
+        }
+      
+        public void Init()
+        {
+            var allEvents = dataEventManager.GameEvents;
+
+            foreach (var gameEvent in allEvents)
+            {
+                AddEventToProcessor(gameEvent);
+            }
+
+            foreach (var processor in EventStaticProcessorFabric.GetAllProcessor())
+            {
+                processor.OnEventChangeStatus += OnEventChangeStatus;
+                processor.Init();
+            }
+        }
+        public void Dispose()
+        {
+            foreach (var processor in EventStaticProcessorFabric.GetAllProcessor())
+            {
+                processor.OnEventChangeStatus -= OnEventChangeStatus;
+            }
+
+            EventStaticProcessorFabric.Dispose();
+        }
+        public void AddEventToProcessor(IGameEvent gameEvent)
+        {
+            var processor = EventStaticProcessorFabric.GetProcessor(gameEvent.StaticData.EventType);
+            if (processor != null)
+            {
+                processor.AddEvent(gameEvent);
+            }
+            else
+            {
+                Debug.LogError(
+                    $"[QuestController] - нет процессора для события [{gameEvent.StaticData.Id}] по типу [{gameEvent.StaticData.EventType}]");
+            }
         }
         public void FireEvent(IGameEvent gameEvent)
         {
             //var callback = new GameEventCallback();
 
-          //  OnChangeEventStatus?.Invoke(callback);
-        }
-
-        /*public void AddEventToProcessor(IGameEvent gameEvent)
-        {
-            if (processors.ContainsKey(gameEvent.StaticData.EventType))
-            {
-                processors[gameEvent.StaticData.EventType].AddEvent();
-            }
-            else
-            {
-
-            }
-        }*/
-
-        public void Init()
-        {
-            /*  foreach (var processor in GetAllProcessor())
-               {
-                   processor.OnChangeEvent += OnChangeEventHandler;
-                   processor.Init();
-               }
-            */
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public void OnChangeEventHandler(IGameEvent gameEvent) 
-        {
-
-
-            OnChangeEvent.Invoke(gameEvent);
+            //  OnChangeEventStatus?.Invoke(callback);
         }
 
     }
