@@ -16,7 +16,7 @@ MonoBehaviour:
   comment: "\u0434\u0432\u0438\u0433\u0430\u0435\u043C \u0444\u043E\u043B\u043B\u043E\u0432
     \u043E\u0431\u044A\u0435\u043A\u0442 \u0432\u0434\u043E\u043B\u044C \u043B\u043E\u043A\u0430\u043B\u044C\u043D\u043E\u0439
     \u043E\u0441\u0438 Z"
-  zoomSpeed: 10
+  zoomSpeed: 100
   minMax: {x: -50, y: -3}
   useMouseScrollWheel: 1
   zoomInKey: 119

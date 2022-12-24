@@ -55,7 +55,7 @@ namespace DontStopTheTrain.Gameplay.CameraComponents
         public void ZoomTargetAlongZ(float value)
         {
             var pos = target.localPosition;
-            pos.z += value * zoomSpeed;
+            pos.z += value * zoomSpeed * Time.deltaTime;
             pos.z = Mathf.Clamp(pos.z, minMax.x, minMax.y);
             target.localPosition = pos;
         }

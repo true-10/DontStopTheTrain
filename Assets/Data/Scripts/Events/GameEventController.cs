@@ -49,6 +49,8 @@ namespace DontStopTheTrain.Events
         [SerializeField]
         private MonoDataEventManager dataEventManager;
 
+        private List<IGameEvent> allGameEvents => dataEventManager.GameEvents;
+        private List<IGameEvent> activeGameEvents = new();
 
         public Action<IGameEvent> OnChangeEvent { get; set; }
         public Action<IGameEventCallback> OnChangeEventStatus { get; set; }
@@ -74,14 +76,13 @@ namespace DontStopTheTrain.Events
 
         public IGameEvent GetGameEventById(int id)
         {
-            return dataEventManager.GameEvents.FirstOrDefault(x => x.StaticData.Id == id);
+            return allGameEvents.FirstOrDefault(x => x.StaticData.Id == id);
+            return activeGameEvents.FirstOrDefault(x => x.StaticData.Id == id);//?
         }
       
         public void Init()
         {
-            var allEvents = dataEventManager.GameEvents;
-
-            foreach (var gameEvent in allEvents)
+            foreach (var gameEvent in allGameEvents)
             {
                 AddEventToProcessor(gameEvent);
             }
@@ -114,13 +115,20 @@ namespace DontStopTheTrain.Events
                     $"[QuestController] - нет процессора для события [{gameEvent.StaticData.Id}] по типу [{gameEvent.StaticData.EventType}]");
             }
         }
-        public void FireEvent(IGameEvent gameEvent)
+        public void FireEvent(int gameEventId)
         {
-            //var callback = new GameEventCallback();
+            var gameEvent = GetGameEventById(gameEventId);
+            if (gameEvent == null)
+            {
+                return;
+            }
 
-            //  OnChangeEventStatus?.Invoke(callback);
+            activeGameEvents.Add(gameEvent);
         }
-
+        public bool IsEventTheMostHeaviest(IGameEvent gameEvent)//, int type = 0)//0 - всех типов
+        {
+            return false;
+        }
     }
 }
 

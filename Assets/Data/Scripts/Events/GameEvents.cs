@@ -20,8 +20,10 @@ namespace DontStopTheTrain.Events
     public interface IGameEvent
     {
 
+        int Id => StaticData.Id;
         int HashCode { get; }
 
+        int Weight { get; }
         //не только очки действия вкладывать, но и ресурсы? да
         List<ICondition> Conditions { get; } //условия, которые должны быть выполнены для завершения ивента
         IGameEventStaticData StaticData { get; set; }//??
@@ -48,6 +50,10 @@ namespace DontStopTheTrain.Events
         public int HashCode => $"{StaticData.Id}".GetHashCode();
 
         public List<ICondition> Conditions => throw new NotImplementedException();
+
+        public int Id => throw new NotImplementedException();
+
+        public int Weight => throw new NotImplementedException();
 
         public void Complete()
         {

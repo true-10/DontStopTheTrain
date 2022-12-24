@@ -35,6 +35,8 @@ namespace DontStopTheTrain.Events.DataManagers
 
         public List<ICondition> Conditions => throw new NotImplementedException();
 
+        public int Weight => throw new NotImplementedException();
+
         IWagonType IWagonEvent.WagonType => throw new NotImplementedException();
 
         Action IGameEvent.OnComplete { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

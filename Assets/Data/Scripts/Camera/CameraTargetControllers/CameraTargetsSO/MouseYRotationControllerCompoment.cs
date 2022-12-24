@@ -42,7 +42,7 @@ namespace DontStopTheTrain.Gameplay.CameraComponents
         }
         public void RotateAroundY(float move)
         {
-            var angle = move / rotationSpeed;// /* rotationSpeed*/ * Time.deltaTime;
+            var angle = move / rotationSpeed;
 
             cachedTransform.Rotate(Vector3.up * angle, Space.World);
         }

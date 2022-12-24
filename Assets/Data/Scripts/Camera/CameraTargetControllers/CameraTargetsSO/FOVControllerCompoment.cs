@@ -78,7 +78,7 @@ namespace DontStopTheTrain.Gameplay.CameraComponents
             {
                 value *= -1f;
             }
-            currentFov += value * zoomSpeed;
+            currentFov += value * zoomSpeed * Time.deltaTime;
             currentFov = Mathf.Clamp(currentFov, minMax.x, minMax.y);
             //currentFov = Mathf.Clamp(currentFov, minMax.y, minMax.x);
             cameraHolder.SetFOV(currentFov);
