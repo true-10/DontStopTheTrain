@@ -47,7 +47,7 @@ MonoBehaviour:
   spawnData:
   - Chunks: {fileID: 11400000, guid: 76002361994280a4ba75866da01be489, type: 2}
     Root: {fileID: 2762411968320184605}
-    Count: 6
+    Count: 60
   - Chunks: {fileID: 11400000, guid: ce239b2405c7190449d93665f47a9f19, type: 2}
     Root: {fileID: 2762411968805211361}
     Count: 4
@@ -5290,7 +5290,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7763915, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
