@@ -17,7 +17,6 @@ MonoBehaviour:
     \u0430\u043D\u0430\u043B\u043E\u0433\u0438\u0447\u043D\u044B\u0445 \u0432\u0435\u0440\u0441\u0441\u0438\u0438
     3"
   components:
-  - {fileID: 11400000, guid: 056a4ec4b4e2b4f4cbd5aac66bcdafc0, type: 2}
   - {fileID: 11400000, guid: 6f505c4ca0c2ed84695e0d3364eb7ea1, type: 2}
   - {fileID: 11400000, guid: c809fc0af8bfd1842b356ce17df83ba2, type: 2}
   - {fileID: 11400000, guid: 4ac33d2c31e841248b320689d92dc577, type: 2}
