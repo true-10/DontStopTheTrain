@@ -3459,15 +3459,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 167006390}
-  m_LocalRotation: {x: 0, y: -0.9264301, z: 0, w: 0.37646687}
-  m_LocalPosition: {x: 0.6, y: 1.1, z: 177.42}
+  m_LocalRotation: {x: 0, y: -0.8919554, z: 0, w: 0.45212343}
+  m_LocalPosition: {x: 11.3, y: 4.52, z: 180.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 280455160}
   m_Father: {fileID: 1018191376}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: -135.77, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -126.24, z: 0}
 --- !u!114 &167006392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10776,8 +10776,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297127387}
-  m_LocalRotation: {x: -0.012953392, y: 0.92588156, z: -0.03187641, w: -0.37624398}
-  m_LocalPosition: {x: 4.060935, y: 3.4454994, z: 43.87522}
+  m_LocalRotation: {x: -0.015556545, y: 0.89142764, z: -0.030690225, w: -0.4518551}
+  m_LocalPosition: {x: 15.30179, y: 6.8654995, z: 46.163166}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15740,36 +15740,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26d6499a6bd256e47b859377446493a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IsGlobal: 1
+  m_IsGlobal: 0
   fadeRadius: 0
-  priority: 348.4
+  priority: 339.25
   customPasses:
   - rid: 4135463947586502656
   - rid: 4135463947586502658
-  injectionPoint: 3
-  m_TargetCamera: {fileID: 0}
-  useTargetCamera: 0
+  - rid: 1684966716224569344
+  injectionPoint: 0
+  m_TargetCamera: {fileID: 1823688466}
+  useTargetCamera: 1
   references:
     version: 2
     RefIds:
-    - rid: 4135463947586502656
-      type: {class: FullScreenCustomPass, ns: UnityEngine.Rendering.HighDefinition,
-        asm: Unity.RenderPipelines.HighDefinition.Runtime}
-      data:
-        m_Name: Custom Pass
-        enabled: 0
-        targetColorBuffer: 0
-        targetDepthBuffer: 0
-        clearFlags: 0
-        passFoldout: 0
-        m_Version: 0
-        fullscreenPassMaterial: {fileID: 2100000, guid: 82ca4ac70c73ad7479ddbe79609cc82f,
-          type: 2}
-        materialPassIndex: 0
-        materialPassName: ShadowCaster
-        fetchColorBuffer: 0
-    - rid: 4135463947586502658
-      type: {class: DrawRenderersCustomPass, ns: UnityEngine.Rendering.HighDefinition,
+    - rid: 1684966716224569344
+      type: {class: ObjectIDCustomPass, ns: UnityEngine.Rendering.HighDefinition,
         asm: Unity.RenderPipelines.HighDefinition.Runtime}
       data:
         m_Name: Custom Pass
@@ -15784,14 +15769,55 @@ MonoBehaviour:
         renderQueueType: 9
         layerMask:
           serializedVersion: 2
-          m_Bits: 704
-        sortingCriteria: -1
-        overrideMaterial: {fileID: 2100000, guid: c912c575b304c164e9aecf5f539ea139,
-          type: 2}
+          m_Bits: 193
+        sortingCriteria: 59
+        overrideMaterial: {fileID: 0}
         overrideMaterialPassIndex: 0
-        overrideMaterialPassName: ShadowCaster
+        overrideMaterialPassName: ForwardOnly
         overrideDepthState: 0
         depthCompareFunction: 4
+        depthWrite: 1
+        shaderPass: 0
+    - rid: 4135463947586502656
+      type: {class: FullScreenCustomPass, ns: UnityEngine.Rendering.HighDefinition,
+        asm: Unity.RenderPipelines.HighDefinition.Runtime}
+      data:
+        m_Name: Custom Pass
+        enabled: 0
+        targetColorBuffer: 0
+        targetDepthBuffer: 0
+        clearFlags: 0
+        passFoldout: 0
+        m_Version: 0
+        fullscreenPassMaterial: {fileID: 2100000, guid: 82ca4ac70c73ad7479ddbe79609cc82f,
+          type: 2}
+        materialPassIndex: 0
+        materialPassName: Custom Pass 0
+        fetchColorBuffer: 0
+    - rid: 4135463947586502658
+      type: {class: DrawRenderersCustomPass, ns: UnityEngine.Rendering.HighDefinition,
+        asm: Unity.RenderPipelines.HighDefinition.Runtime}
+      data:
+        m_Name: Custom Pass
+        enabled: 0
+        targetColorBuffer: 0
+        targetDepthBuffer: 0
+        clearFlags: 0
+        passFoldout: 0
+        m_Version: 0
+        filterFoldout: 1
+        rendererFoldout: 1
+        renderQueueType: 5
+        layerMask:
+          serializedVersion: 2
+          m_Bits: 2147483647
+        sortingCriteria: -1
+        overrideMaterial: {fileID: 2100000, guid: 6d3c926293e42ad469e8945df3da5fb8,
+          type: 2}
+        overrideMaterialPassIndex: 0
+        overrideMaterialPassName: FullScreenDebug
+        overrideDepthState: 0
+        depthCompareFunction: 8
         depthWrite: 1
         shaderPass: 0
 --- !u!1 &613901089
@@ -83247,8 +83273,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823688464}
-  m_LocalRotation: {x: -0.012953392, y: 0.92588156, z: -0.03187641, w: -0.37624398}
-  m_LocalPosition: {x: 4.060935, y: 3.4454994, z: 43.87522}
+  m_LocalRotation: {x: -0.015556545, y: 0.89142764, z: -0.030690225, w: -0.4518551}
+  m_LocalPosition: {x: 15.30179, y: 6.8654995, z: 46.163166}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -83450,7 +83476,7 @@ MonoBehaviour:
   aspectScale: {x: 1, y: 1}
   clippingPlaneSkew: {x: 0, y: 0}
   dollyZoom: 0
-  dollyZoomFocalDistance: 12.303957
+  dollyZoomFocalDistance: 130.30872
   dollyZoomFocalTarget: {fileID: 524044503}
 --- !u!1 &1826758205
 GameObject:
@@ -90456,7 +90482,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942826554}
-  m_LocalRotation: {x: -0.12818338, y: 0.7840456, z: -0.17259991, w: -0.58228076}
+  m_LocalRotation: {x: -0.12818342, y: 0.7840456, z: -0.17259993, w: -0.5822808}
   m_LocalPosition: {x: 15.6, y: 9.54, z: 7.709999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
