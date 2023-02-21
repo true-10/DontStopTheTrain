@@ -34,7 +34,6 @@ Material:
   - _MATERIAL_FEATURE_SPECULAR_COLOR
   - _NORMALMAP
   - _NORMALMAP_TANGENT_SPACE
-  - _SPECULARCOLORMAP
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -56,7 +55,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColorMap:
-        m_Texture: {fileID: 2800000, guid: 01fe9ba52199eff4b930985efb0dd94a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 169fcc233dab0534ba4e8e1e1735d226, type: 3}
         m_Scale: {x: 5000, y: 5000}
         m_Offset: {x: 0, y: 0}
     - _BentNormalMap:
@@ -92,11 +91,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 01fe9ba52199eff4b930985efb0dd94a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 169fcc233dab0534ba4e8e1e1735d226, type: 3}
         m_Scale: {x: 5000, y: 5000}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
-        m_Texture: {fileID: 2800000, guid: 01fe9ba52199eff4b930985efb0dd94a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 169fcc233dab0534ba4e8e1e1735d226, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
@@ -108,7 +107,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularColorMap:
-        m_Texture: {fileID: 2800000, guid: 5153490f352031e4a91716f300f1ff42, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SubsurfaceMaskMap:
@@ -149,8 +148,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AORemapMax: 0.064184844
-    - _AORemapMin: 0
+    - _AORemapMax: 0.64259106
+    - _AORemapMin: 0.57840616
     - _ATDistance: 1
     - _AddPrecomputedVelocity: 0
     - _AlbedoAffectEmissive: 0
@@ -172,9 +171,9 @@ Material:
     - _CullModeForward: 2
     - _Cutoff: 0.5
     - _DepthOffsetEnable: 0
-    - _DetailAlbedoScale: 0.64
-    - _DetailNormalScale: 0
-    - _DetailSmoothnessScale: 0
+    - _DetailAlbedoScale: 1
+    - _DetailNormalScale: 0.33
+    - _DetailSmoothnessScale: 0.23
     - _DiffusionProfile: 0
     - _DiffusionProfileHash: 0
     - _DisplacementLockObjectScale: 1
@@ -225,7 +224,7 @@ Material:
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
     - _Smoothness: 0.5
-    - _SmoothnessRemapMax: 0
+    - _SmoothnessRemapMax: 0.21422455
     - _SmoothnessRemapMin: 0
     - _SpecularAAScreenSpaceVariance: 0.1
     - _SpecularAAThreshold: 0.2
@@ -264,9 +263,9 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.8396226, g: 0.55219305, b: 0.2883232, a: 1}
+    - _BaseColor: {r: 0.3679245, g: 0.34811014, b: 0.13675684, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0.8396226, g: 0.552193, b: 0.28832316, a: 1}
+    - _Color: {r: 0.36792448, g: 0.3481101, b: 0.13675681, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
@@ -274,7 +273,7 @@ Material:
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _SpecularColor: {r: 0.8396226, g: 0.7824596, b: 0.15366672, a: 1}
+    - _SpecularColor: {r: 0.661, g: 0.661, b: 0.661, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}

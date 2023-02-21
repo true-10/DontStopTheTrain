@@ -31,10 +31,12 @@ Material:
   - _DETAIL_MAP
   - _DISABLE_SSR_TRANSPARENT
   - _MASKMAP
+  - _MATERIAL_FEATURE_CLEAR_COAT
   - _MATERIAL_FEATURE_SPECULAR_COLOR
   - _NORMALMAP
   - _NORMALMAP_TANGENT_SPACE
   - _SPECULARCOLORMAP
+  - _SPECULAR_OCCLUSION_FROM_BENT_NORMAL_MAP
   m_InvalidKeywords: []
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
@@ -56,7 +58,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColorMap:
-        m_Texture: {fileID: 2800000, guid: 5153490f352031e4a91716f300f1ff42, type: 3}
+        m_Texture: {fileID: 2800000, guid: 01fe9ba52199eff4b930985efb0dd94a, type: 3}
         m_Scale: {x: 1000, y: 1000}
         m_Offset: {x: 0, y: 0}
     - _BentNormalMap:
@@ -92,11 +94,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 5153490f352031e4a91716f300f1ff42, type: 3}
+        m_Texture: {fileID: 2800000, guid: 01fe9ba52199eff4b930985efb0dd94a, type: 3}
         m_Scale: {x: 1000, y: 1000}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
-        m_Texture: {fileID: 2800000, guid: 5153490f352031e4a91716f300f1ff42, type: 3}
+        m_Texture: {fileID: 2800000, guid: 01fe9ba52199eff4b930985efb0dd94a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
@@ -108,7 +110,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularColorMap:
-        m_Texture: {fileID: 2800000, guid: 5153490f352031e4a91716f300f1ff42, type: 3}
+        m_Texture: {fileID: 2800000, guid: 169fcc233dab0534ba4e8e1e1735d226, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SubsurfaceMaskMap:
@@ -149,8 +151,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AORemapMax: 0.6537935
-    - _AORemapMin: 0.5310562
+    - _AORemapMax: 1
+    - _AORemapMin: 0.8772627
     - _ATDistance: 1
     - _AddPrecomputedVelocity: 0
     - _AlbedoAffectEmissive: 0
@@ -167,13 +169,13 @@ Material:
     - _AlphaToMaskInspectorValue: 0
     - _Anisotropy: 0
     - _BlendMode: 0
-    - _CoatMask: 0
+    - _CoatMask: 0.27
     - _CullMode: 2
     - _CullModeForward: 2
     - _Cutoff: 0.5
     - _DepthOffsetEnable: 0
-    - _DetailAlbedoScale: 0.33
-    - _DetailNormalScale: 0
+    - _DetailAlbedoScale: 2
+    - _DetailNormalScale: 2
     - _DetailSmoothnessScale: 0
     - _DiffusionProfile: 0
     - _DiffusionProfileHash: 0
@@ -211,7 +213,7 @@ Material:
     - _MetallicRemapMax: 0.4680851
     - _MetallicRemapMin: 0.2858051
     - _NormalMapSpace: 0
-    - _NormalScale: 0.3
+    - _NormalScale: 0.4
     - _ObjectSpaceUVMapping: 0
     - _ObjectSpaceUVMappingEmissive: 0
     - _OpaqueCullMode: 2
@@ -225,11 +227,11 @@ Material:
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
     - _Smoothness: 0.5
-    - _SmoothnessRemapMax: 0.058449745
+    - _SmoothnessRemapMax: 0.06426733
     - _SmoothnessRemapMin: 0
     - _SpecularAAScreenSpaceVariance: 0.1
     - _SpecularAAThreshold: 0.2
-    - _SpecularOcclusionMode: 1
+    - _SpecularOcclusionMode: 2
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 8
@@ -274,7 +276,7 @@ Material:
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _SpecularColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
+    - _SpecularColor: {r: 0.4811321, g: 0.37101692, b: 0.15160197, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
