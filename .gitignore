@@ -5,6 +5,12 @@ Assets/Plugins/Zenject/Source/Util/ZenPools.cs.meta
 Assets/Plugins/
 Assets/NaughtyAttributes/Scripts/Test/NaughtyAttributes.Test.asmdef
 Assets/NaughtyAttributes/
+Assets/Camera Perspective Editor/
+Assets/PathCreator/
+Assets/TextMesh Pro/Sprites.meta
+Assets/TextMesh Pro/
+Assets/Dreamteck/
+Assets/DSTModelsSource/
 NaughtyAttributes.Core.csproj
 NaughtyAttributes.Editor.csproj
 NaughtyAttributes.Test.csproj
@@ -16,22 +22,18 @@ Zenject-PoolMonitor-Editor.csproj
 Zenject-ReflectionBaking-Editor.csproj
 Zenject-TestFramework.csproj
 Zenject-UnitTests-Editor.csproj
+.vs/
 .vs/DontStopTheTrain/v17/.suo
 .vs/DontStopTheTrain/v17/fileList.bin
 .vs/DontStopTheTrain_0/FileContentIndex/1a4cd2c8-c167-417c-aec4-0c0b514b0663.vsidx
 .vs/DontStopTheTrain_0/FileContentIndex/read.lock
 .vs/DontStopTheTrain_0/v17/.suo
 Logs/
-.vs/
 UserSettings/Layouts/CurrentMaximizeLayout.dwlt
-Assets/Camera Perspective Editor/
-Assets/PathCreator/
-Assets/TextMesh Pro/Sprites.meta
-Assets/TextMesh Pro/
 Assembly-CSharp.csproj
 Assembly-CSharp-firstpass.csproj
-UserSettings/
-Assets/Dreamteck/
 Dreamteck.Splines.csproj
-Assets/DSTModelsSource/
-Assets/
+UserSettings/
+Assets/DSTModels.7z
+Assets/Samples/
+Assets/DSTModels/
