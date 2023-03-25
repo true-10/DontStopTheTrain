@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0775cbb206825d541bf6c0297ee524ca, type: 3}
   m_Name: SplitToning
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   shadows:
     m_OverrideState: 1
     m_Value: {r: 0.19320041, g: 0.40945238, b: 0.6320754, a: 1}
@@ -784,13 +784,13 @@ MonoBehaviour:
     m_Value: 1
   upperHemisphereLuxValue:
     m_OverrideState: 1
-    m_Value: 2.9609232
+    m_Value: 0.54058415
   upperHemisphereLuxColor:
     m_OverrideState: 1
-    m_Value: {x: 0.33831766, y: 0.38131157, z: 0.5}
+    m_Value: {x: 0.16490552, y: 0.2690299, z: 0.5}
   desiredLuxValue:
     m_OverrideState: 1
-    m_Value: 500
+    m_Value: 130000
   updateMode:
     m_OverrideState: 0
     m_Value: 0
@@ -802,7 +802,7 @@ MonoBehaviour:
     m_Value: 0
   hdriSky:
     m_OverrideState: 1
-    m_Value: {fileID: 8900000, guid: 78b605663118ba843ada4258e0ffbe97, type: 3}
+    m_Value: {fileID: 8900000, guid: d14829779b8e72146be3413a788d14a1, type: 3}
   distortionMode:
     m_OverrideState: 0
     m_Value: 2
@@ -1547,7 +1547,7 @@ MonoBehaviour:
     m_Value: 1
   fixedExposure:
     m_OverrideState: 1
-    m_Value: 11.628936
+    m_Value: 15
   compensation:
     m_OverrideState: 0
     m_Value: 0
