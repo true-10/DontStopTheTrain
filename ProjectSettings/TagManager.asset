@@ -6,6 +6,7 @@ TagManager:
   tags:
   - asteroid
   - ship
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Wagons
   - CameraObstacles
   - Ground
-  - 
-  - 
+  - Enemy
+  - Bolid
   - 
   - 
   - 

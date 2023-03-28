@@ -7,22 +7,36 @@ public class TSS_Bolid : MonoBehaviour
     [SerializeField]
     private Transform cachedTransform;
     [SerializeField]
+    private Rigidbody rigidbody;
+    [SerializeField]
     private float speed;
 
 
     public void Move()
     {
-        cachedTransform.position += cachedTransform.forward * speed * Time.deltaTime;
+        rigidbody.velocity = cachedTransform.forward * speed * Time.fixedDeltaTime;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Move();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        var unit = collision.gameObject.GetComponent<TSS_Unit>();
+        Debug.Log($"TSS_Bolid: OnCollisionEnter collision = {collision.gameObject}");
+        OnContact(collision.gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log($"TSS_Bolid: OnTriggerEnter other = {other.gameObject}");
+        OnContact(other.gameObject);
+    }
+
+    private void OnContact(GameObject gameObject)
+    {
+        var unit = gameObject.GetComponent<TSS_Unit>();
         if (unit != null)
         {
             Destroy(unit.gameObject);

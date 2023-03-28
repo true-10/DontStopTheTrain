@@ -34,7 +34,7 @@ public class TSS_DefenseControls : MonoBehaviour
 
     private void InputUpdate()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             Fire();
         }

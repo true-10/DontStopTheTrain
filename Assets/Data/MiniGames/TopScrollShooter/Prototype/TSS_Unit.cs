@@ -7,15 +7,17 @@ public class TSS_Unit : MonoBehaviour
     [SerializeField]
     private Transform cachedTransform;
     [SerializeField]
-    private float speed;
+    private Rigidbody rigidbody;
+    [SerializeField]
+    private float speed = 1000f;
 
 
     public void Move()
     {
-        cachedTransform.position += Vector3.forward * speed * Time.deltaTime;
+        rigidbody.velocity = cachedTransform.forward * speed * Time.fixedDeltaTime;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Move();
     }
