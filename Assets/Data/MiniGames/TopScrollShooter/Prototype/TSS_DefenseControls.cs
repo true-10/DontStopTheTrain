@@ -10,7 +10,11 @@ public class TSS_DefenseControls : MonoBehaviour
     private float rotationSpeed = 30f;
 
     [SerializeField]
-    private Transform bulletPrefab;
+    private GameObject muzzleFlash;
+    [SerializeField]
+    private GameObject bulletPrefab;
+    [SerializeField]
+    private float cooldown = .5f;
 
     [SerializeField]
     private Transform startBulletPosition;
@@ -19,30 +23,55 @@ public class TSS_DefenseControls : MonoBehaviour
     [SerializeField]
     private Camera camera;
 
+    private bool isEnabled = false;
+    private float currentTime = 0;
+    private float cooldownTime = 0;
+
+    private List<GameObject> bullets = new();
 
     private void Update()
     {
+        if (isEnabled == false)
+        {
+            return;
+        }
+
+        currentTime += Time.deltaTime;
         InputUpdate();
     }
 
-    private void Fire()
-    {
-        var pos = startBulletPosition.transform.position;
-        var rot = startBulletPosition.transform.rotation;
-        var unit = Instantiate(bulletPrefab, pos, rot, bulletRoot);
-    }
+    public void SetActive(bool isEnabled) => this.isEnabled = isEnabled;
 
     private void InputUpdate()
     {
-        if (Input.GetMouseButton(0))
+        var isFire = Input.GetMouseButton(0);
+        muzzleFlash.SetActive(isFire);
+        if (isFire)
         {
             Fire();
         }
 
         LookAtMouseCursor();
-
-       
     }
+
+    private void Fire()
+    {
+        if (currentTime < cooldownTime)
+        {
+            return;
+        }
+        cooldownTime = currentTime + cooldown;
+        SpawnBullet();
+    }
+
+    private void SpawnBullet()
+    {
+        var pos = startBulletPosition.transform.position;
+        var rot = startBulletPosition.transform.rotation;
+        var unit = Instantiate(bulletPrefab, pos, rot, bulletRoot);
+        bullets.Add(unit);
+    }
+
 
     public void LookAtMouseCursor()
     {
@@ -59,6 +88,12 @@ public class TSS_DefenseControls : MonoBehaviour
            // turretTransform.rotation = Quaternion.Lerp(turretTransform.rotation,
              //   Quaternion.LookRotation(lookDir.normalized), rotationSpeed * Time.deltaTime);
         }
+    }
+
+    public void Clear()
+    {
+        bullets.ForEach(x => Destroy(x.gameObject));
+        bullets.Clear();
     }
 
 }

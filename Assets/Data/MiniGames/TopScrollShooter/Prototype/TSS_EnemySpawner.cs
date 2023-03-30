@@ -39,6 +39,24 @@ public class TSS_EnemySpawner : MonoBehaviour
                 }).AddTo(this);
         }
     }
+    public void StopAndClear()
+    {
+        StopSpawn();
+        Clear();
+    }
+
+    public void StopSpawn()
+    {
+        spawnInterval?.Dispose();
+        spawnInterval = null;
+    }
+
+    public void Clear()
+    {
+
+        enemies.ForEach(x => Destroy(x.gameObject));
+        enemies.Clear();
+    }
 
     private void SpawnUnit()
     {

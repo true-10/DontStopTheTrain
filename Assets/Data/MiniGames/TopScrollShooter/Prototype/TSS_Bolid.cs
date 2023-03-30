@@ -28,11 +28,11 @@ public class TSS_Bolid : MonoBehaviour
         OnContact(collision.gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
+   /* private void OnTriggerEnter(Collider other)
     {
         Debug.Log($"TSS_Bolid: OnTriggerEnter other = {other.gameObject}");
         OnContact(other.gameObject);
-    }
+    }*/
 
     private void OnContact(GameObject gameObject)
     {
@@ -40,7 +40,7 @@ public class TSS_Bolid : MonoBehaviour
         if (unit != null)
         {
             Destroy(unit.gameObject);
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

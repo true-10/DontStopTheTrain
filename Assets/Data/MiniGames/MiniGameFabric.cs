@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace DontStopTheTrain.MiniGames
 {
     public interface IMiniGame
     {
-
+        void StartMiniGame();
+        void StopMiniGame();
     }
 
     public class MiniGameFabric
