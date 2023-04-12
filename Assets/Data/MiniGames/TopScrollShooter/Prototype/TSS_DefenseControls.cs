@@ -12,14 +12,12 @@ public class TSS_DefenseControls : MonoBehaviour
     [SerializeField]
     private GameObject muzzleFlash;
     [SerializeField]
-    private GameObject bulletPrefab;
+    private MG_ProtoSpawner protoSpawner;
     [SerializeField]
     private float cooldown = .5f;
 
     [SerializeField]
     private Transform startBulletPosition;
-    [SerializeField]
-    private Transform bulletRoot;
     [SerializeField]
     private Camera camera;
 
@@ -27,7 +25,6 @@ public class TSS_DefenseControls : MonoBehaviour
     private float currentTime = 0;
     private float cooldownTime = 0;
 
-    private List<GameObject> bullets = new();
 
     private void Update()
     {
@@ -61,15 +58,15 @@ public class TSS_DefenseControls : MonoBehaviour
             return;
         }
         cooldownTime = currentTime + cooldown;
-        SpawnBullet();
-    }
-
-    private void SpawnBullet()
-    {
         var pos = startBulletPosition.transform.position;
         var rot = startBulletPosition.transform.rotation;
-        var unit = Instantiate(bulletPrefab, pos, rot, bulletRoot);
-        bullets.Add(unit);
+
+        protoSpawner.SpawnBullet(pos, rot);
+    }
+
+    public void Clear()
+    {
+        protoSpawner.ClearBullets();
     }
 
 
@@ -90,10 +87,6 @@ public class TSS_DefenseControls : MonoBehaviour
         }
     }
 
-    public void Clear()
-    {
-        bullets.ForEach(x => Destroy(x.gameObject));
-        bullets.Clear();
-    }
+
 
 }
