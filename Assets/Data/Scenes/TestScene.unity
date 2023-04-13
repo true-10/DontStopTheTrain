@@ -20881,7 +20881,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 398530659}
-  m_LocalRotation: {x: 4.6718185e-13, y: 0.9999941, z: -0.0034387396, w: 1.3596946e-10}
+  m_LocalRotation: {x: -4.5563553e-13, y: 0.9999941, z: -0.0034387396, w: -1.330136e-10}
   m_LocalPosition: {x: 0, y: 4.3, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -40558,6 +40558,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &816801822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40648,6 +40649,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!23 &818934315
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -40723,7 +40725,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819124159}
-  m_LocalRotation: {x: -4.5563553e-13, y: 0.9999941, z: -0.0034387396, w: -1.330136e-10}
+  m_LocalRotation: {x: 4.6718185e-13, y: 0.9999941, z: -0.0034387396, w: 1.3596946e-10}
   m_LocalPosition: {x: 0, y: 4.3, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -41222,7 +41224,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842779681}
-  m_LocalRotation: {x: -1.25324195e-11, y: 0.99999976, z: 0.0007283382, w: 0.000000017206503}
+  m_LocalRotation: {x: 1.25321975e-11, y: 0.99999976, z: 0.00072835805, w: -0.000000017206276}
   m_LocalPosition: {x: -3.6379788e-11, y: 5.7, z: 2.4600067}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -41380,6 +41382,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &847973330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44277,7 +44280,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 941290297}
-  m_LocalRotation: {x: 1.25321975e-11, y: 0.99999976, z: 0.00072835805, w: -0.000000017206276}
+  m_LocalRotation: {x: -1.25324195e-11, y: 0.99999976, z: 0.0007283382, w: 0.000000017206503}
   m_LocalPosition: {x: 4.5474735e-11, y: 5.7, z: 2.4599915}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -56237,6 +56240,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!23 &1029299920
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -63261,6 +63265,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1132984454
 MonoBehaviour:
   m_ObjectHideFlags: 19
@@ -74886,6 +74891,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!23 &1379356526
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -75086,6 +75092,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!23 &1389596791
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -85060,6 +85067,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1608757474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90583,6 +90591,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!23 &1621739556
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -93067,6 +93076,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!23 &1696947119
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -98400,6 +98410,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!23 &1721319172
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -112744,6 +112755,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!23 &1899999261
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -119148,7 +119160,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942826554}
-  m_LocalRotation: {x: -0.12818338, y: 0.7840456, z: -0.17259991, w: -0.58228076}
+  m_LocalRotation: {x: -0.12818342, y: 0.7840456, z: -0.17259993, w: -0.5822808}
   m_LocalPosition: {x: 15.6, y: 9.54, z: 7.709999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -130124,6 +130136,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!33 &2032790072030414161
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -130739,7 +130752,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2150078183794867002}
-  m_LocalRotation: {x: 0.09015308, y: 0.82547444, z: -0.13784544, w: 0.5398732}
+  m_LocalRotation: {x: 0.09015307, y: 0.82547444, z: -0.13784544, w: 0.5398732}
   m_LocalPosition: {x: -8, y: 5, z: 8.000003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -132480,6 +132493,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!23 &3627344359115119514
 MeshRenderer:
   m_ObjectHideFlags: 0
