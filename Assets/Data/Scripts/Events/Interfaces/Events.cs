@@ -27,12 +27,12 @@ namespace DontStopTheTrain.Events
         EventStatus Status { get; set; }//??
 
         //List<int> int_params;
-        void Initialize(IEventData data);
+        void Initialize(IEventInitData data);
         //void Complete();
 
 
     }
-    public interface IEventData
+    public interface IEventInitData
     {
 
     }

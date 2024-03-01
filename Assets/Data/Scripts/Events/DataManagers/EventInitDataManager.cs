@@ -9,7 +9,7 @@ namespace DontStopTheTrain.Events
         //[SerializeField]
         //private KillNightmaresData killNightmaresData;
 
-        public IEventData GetInitData(IEvent gameEvent)
+        public IEventInitData GetInitData(IEvent gameEvent)
         {
             switch (gameEvent.StaticData.Type)
             {

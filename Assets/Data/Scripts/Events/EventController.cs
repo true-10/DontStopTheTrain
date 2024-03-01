@@ -16,8 +16,13 @@ namespace DontStopTheTrain.Events
 
         public void StartEvent(IEvent gameEvent)
         {
-            var missionData = _eventInitDataManager.GetInitData(gameEvent);
-            gameEvent.Initialize(missionData);
+            var initData = _eventInitDataManager.GetInitData(gameEvent);
+            StartEvent(gameEvent, initData);
+        }      
+        
+        public void StartEvent(IEvent gameEvent, IEventInitData initData)
+        {
+            gameEvent.Initialize(initData);
             gameEvent.OnComplete += OnEventComplete;
             OnStart?.Invoke(gameEvent);
         }
@@ -28,112 +33,53 @@ namespace DontStopTheTrain.Events
             gameEvent.OnComplete -= OnEventComplete;
         }
     }
-    /* public interface IEventFabric
-     {
-         IEvent CreateEvent(IEventStaticData staticData);
-     }
 
-      public class EventFabric : IEventFabric
-      {
-          public IEvent CreateEvent(IEventStaticData staticData)
-          {
-              var eventType = staticData.Type;
-              switch (eventType)
-              {
-                  default: return new BaseGameEvent() 
-                  { 
-                      StaticData = staticData,
-                      Status = EventStatus.None                     
-                  };
-              }
-          }
-      }
+    public sealed class EventStarter : IInitializable, IDisposable
+    {
+        [Inject]
+        private TurnBasedController _turnBasedController;
+        [Inject]
+        private Player _player;
+        [Inject]
+        private EventController _eventController;
+        [Inject]
+        private EventGenerator _eventGenerator;
 
-      public class GameEventController_ : MonoBehaviour//, IGameEventController
-      {
-          [SerializeField]
-          private MonoDataEventManager dataEventManager;
+        private int _playerLevel => _player.Level.Value;
 
-          private List<IEvent> allGameEvents => dataEventManager.GameEvents;
-          private List<IEvent> activeGameEvents = new();
-
-          public Action<IEvent> OnChangeEvent { get; set; }
-          public Action<IGameEventCallback> OnChangeEventStatus { get; set; }
-          public Action OnInit { get; set; }
+        public void Initialize()
+        {
+            _turnBasedController.OnTurnStart += TryToStartEvents;
+        }
 
 
+        public void Dispose()
+        {
+            _turnBasedController.OnTurnStart -= TryToStartEvents;
+        }
 
-          void Start()
-          {
+        private void TryToStartEvents(ITurnCallback callback)
+        {
+            var events = _eventGenerator.GetEvents(_playerLevel, 3);
 
-          }
+            foreach (var eventToStart in events)
+            {
+                _eventController.StartEvent(eventToStart);
+            }
+        }
 
-          void Update()
-          {
+    }
+    public sealed class EventGenerator
+    {
+        public IEvent GetEvent(int level)
+        {
+            return null;
+        }
 
-          }
-
-          private void OnEventChangeStatus(IEvent gameEvent)
-          {
-              // OnChangeEventStatus?.Invoke(gameEvent);
-              OnChangeEvent?.Invoke(gameEvent);
-          }
-
-          public IEvent GetGameEventById(int id)
-          {
-              return allGameEvents.FirstOrDefault(x => x.StaticData.Id == id);
-              return activeGameEvents.FirstOrDefault(x => x.StaticData.Id == id);//?
-          }
-
-          public void Init()
-          {
-              foreach (var gameEvent in allGameEvents)
-              {
-                  AddEventToProcessor(gameEvent);
-              }
-
-              foreach (var processor in EventStaticProcessorFabric.GetAllProcessor())
-              {
-                  processor.OnEventChangeStatus += OnEventChangeStatus;
-                  processor.Init();
-              }
-          }
-          public void Dispose()
-          {
-              foreach (var processor in EventStaticProcessorFabric.GetAllProcessor())
-              {
-                  processor.OnEventChangeStatus -= OnEventChangeStatus;
-              }
-
-              EventStaticProcessorFabric.Dispose();
-          }
-          public void AddEventToProcessor(IEvent gameEvent)
-          {
-              var processor = EventStaticProcessorFabric.GetProcessor(gameEvent.StaticData.Type);
-              if (processor != null)
-              {
-                  processor.AddEvent(gameEvent);
-              }
-              else
-              {
-                  Debug.LogError(
-                      $"[QuestController] - нет процессора для события [{gameEvent.StaticData.Id}] по типу [{gameEvent.StaticData.Type}]");
-              }
-          }
-          public void FireEvent(int gameEventId)
-          {
-              var gameEvent = GetGameEventById(gameEventId);
-              if (gameEvent == null)
-              {
-                  return;
-              }
-
-              activeGameEvents.Add(gameEvent);
-          }
-          public bool IsEventTheMostHeaviest(IEvent gameEvent)//, int type = 0)//0 - всех типов
-          {
-              return false;
-          }
-      }*/
+        public List<IEvent> GetEvents(int level, int count)
+        {
+            return null;
+        }
+    }
 }
 
