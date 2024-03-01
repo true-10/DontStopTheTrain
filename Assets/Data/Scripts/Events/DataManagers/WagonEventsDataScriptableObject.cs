@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace DontStopTheTrain.Events.DataManagers
 {
-    public class WagonEventsDataScriptableObject : ScriptableObject
+  /*  public class WagonEventsDataScriptableObject : ScriptableObject
     {
 
         public List<WagonEventData> events;
@@ -16,7 +16,7 @@ namespace DontStopTheTrain.Events.DataManagers
     {
         public int Id => throw new NotImplementedException();
 
-        public GameEventStatus Status { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public EventStatus Status { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public int ActionPointPrice => throw new NotImplementedException();
 
@@ -27,7 +27,7 @@ namespace DontStopTheTrain.Events.DataManagers
 
         public IWagonType WagonType => throw new NotImplementedException();
 
-        public IGameEventStaticData StaticData { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public IEventStaticData StaticData { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public Action OnStart { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public Action OnTick { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
@@ -39,7 +39,7 @@ namespace DontStopTheTrain.Events.DataManagers
 
         IWagonType IWagonEvent.WagonType => throw new NotImplementedException();
 
-        Action IGameEvent.OnComplete { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        Action IEvent.OnComplete { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public void Complete()
         {
@@ -50,5 +50,5 @@ namespace DontStopTheTrain.Events.DataManagers
         {
             throw new NotImplementedException();
         }
-    }
+    }*/
 }

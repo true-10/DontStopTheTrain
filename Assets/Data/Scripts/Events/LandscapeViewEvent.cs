@@ -10,11 +10,12 @@ using DontStopTheTrain.Gameplay;
 
 namespace DontStopTheTrain.Events
 {
+    /*
     public class EventByTimer //: IGameEvent
     {
         public int Id => throw new NotImplementedException();
 
-        public GameEventStatus Status { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public EventStatus Status { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public int ActionPointPrice => throw new NotImplementedException();
 
@@ -29,7 +30,7 @@ namespace DontStopTheTrain.Events
     {
         [Inject] private IGameEventController gameEventController;
         [Inject] private ICameraController cameraController;
-        [Inject] private ITurnController turnController;
+        [Inject] private ITurnBasedController turnController;
         // [Inject] private IDispose 
 
         [SerializeField] private CameraHolder eventCameraHolder;
@@ -69,7 +70,7 @@ namespace DontStopTheTrain.Events
             eventCameraHolder.transform.position = startTransform.position;
         }
 
-        protected override void OnChangeEvent(IGameEvent gameEvent)
+        protected override void OnChangeEvent(IEvent gameEvent)
         {
         }
 
@@ -108,4 +109,5 @@ namespace DontStopTheTrain.Events
         {
         }
     }
+*/
 }

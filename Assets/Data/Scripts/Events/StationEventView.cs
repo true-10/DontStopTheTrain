@@ -9,7 +9,7 @@ using Zenject;
 
 namespace DontStopTheTrain.Events
 {
-    public interface IStationEvent : IGameEvent
+    public interface IStationEvent : IEvent
     {
         //какие действия на станции?
         //получение заданий/заказов/контрактов,
@@ -23,7 +23,7 @@ namespace DontStopTheTrain.Events
     /// <summary>
     /// тут отоброжаем ивент станции. ивент заканчивается с UI (кнопка отправление)
     /// </summary>
-    public class StationEventView : AbstractMonoEvent
+ /*   public class StationEventView : AbstractMonoEvent
     {
         [Inject]
         private IUIFabric uiFabric;
@@ -35,7 +35,7 @@ namespace DontStopTheTrain.Events
        // [SerializeField]
         //private StationEventUIView StationEventUIViewPrefab;
 
-        protected override void OnChangeEvent(IGameEvent gameEvent)
+        protected override void OnChangeEvent(IEvent gameEvent)
         {
 
         }
@@ -49,7 +49,7 @@ namespace DontStopTheTrain.Events
         protected override void OnStart()
         {
             //создаем юай
-            var uiGO = uiFabric.CreateUI(gameEvent.StaticData.EventType);
+            var uiGO = uiFabric.CreateUI(gameEvent.StaticData.Type);
             if (uiGO == null)
             {
                 return;
@@ -79,5 +79,5 @@ namespace DontStopTheTrain.Events
 
         }
 
-    }
+    }*/
 }

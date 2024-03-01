@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/*
 public class StationPlayerGUI : MonoBehaviour
 {
     #region fields
@@ -33,3 +33,4 @@ public class StationPlayerGUI : MonoBehaviour
         _player = player;
     }
 }
+*/

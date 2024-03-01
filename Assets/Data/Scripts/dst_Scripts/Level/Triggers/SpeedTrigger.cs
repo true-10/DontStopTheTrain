@@ -26,7 +26,7 @@ public class SpeedTrigger : MonoBehaviour
         }
         if(_cam != null )
         {
-            CameraManager.Singleton.SetMainCamera(_cam);
+           // CameraManager.Singleton.SetMainCamera(_cam);
         }
         
     }

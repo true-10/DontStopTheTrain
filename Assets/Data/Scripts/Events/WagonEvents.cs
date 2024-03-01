@@ -17,7 +17,7 @@ namespace DontStopTheTrain.Events
     public interface IWagonEventCallback
     {
         IWagonEvent WagonEvent { get; set; } //или только айдишник?,
-        GameEventStatus Status { get; set; }
+        EventStatus Status { get; set; }
         //статус
     }
 
@@ -27,9 +27,9 @@ namespace DontStopTheTrain.Events
     ///сломались тормоза
     ///взорвалась жопа
     /// </summary>
-    public interface IWagonEvent : IGameEvent
+    public interface IWagonEvent : IEvent
     {
-        IWagonType WagonType { get; } //на какой тип вагонов распространяется это событие
+        WagonType WagonType { get; } //на какой тип вагонов распространяется это событие
     }
 
 }

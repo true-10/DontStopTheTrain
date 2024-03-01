@@ -17,6 +17,6 @@ public class ChunkCheckPoint : MonoBehaviour
     {
         TrainManager tm = other.GetComponent<TrainManager>();
         if (tm == null) return;
-        tm.AddExpo(_expo);
+      //  tm.AddExpo(_expo);
     }
 }

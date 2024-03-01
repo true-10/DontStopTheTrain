@@ -12,7 +12,7 @@ namespace DontStopTheTrain.UI
     public class TrainUIView : MonoBehaviour
     {
         [Inject] private ICameraController cameraController;
-        [Inject] private ITurnController turnController;
+        [Inject] private TurnBasedController turnController;
 
 
         [SerializeField] private Button endTurnButton;

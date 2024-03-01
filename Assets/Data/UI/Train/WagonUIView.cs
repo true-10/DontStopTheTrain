@@ -68,9 +68,9 @@ namespace DontStopTheTrain.UI
         {
         }
 
-        private void OnWagonClick(WagonData data)
+        /*private void OnWagonClick(WagonData data)
         {
             numberText.text = data.Number.ToString();
-        }
+        }*/
     }
 }

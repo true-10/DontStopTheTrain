@@ -10,7 +10,7 @@ namespace DontStopTheTrain.UI
 {
     public class EventRadarUI : MonoBehaviour
     {
-        [Inject] private ITurnController turnController;
+        [Inject] private TurnBasedController turnController;
 
         [SerializeField] private TextMeshProUGUI radarText;
         [SerializeField] private TextMeshProUGUI dayText;
@@ -24,7 +24,7 @@ namespace DontStopTheTrain.UI
 
         private void OnTurnStartHandler(ITurnCallback callback)
         {
-            dayText.text = callback.Index.ToString();
+            dayText.text = callback.Number.ToString();
         }
 
         private void OnTurnEndHandler(ITurnCallback callback)

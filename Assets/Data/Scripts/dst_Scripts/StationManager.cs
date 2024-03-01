@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-
+/*
 public class StationManager : MonoBehaviour
 {
     #region fields
@@ -41,7 +41,7 @@ public class StationManager : MonoBehaviour
     public void OnEnter()
     {
         Debug.Log("StationState OnEnter");
-        CameraManager.Singleton.SetMainCamera(_camera);
+      //  CameraManager.Singleton.SetMainCamera(_camera);
         SetStationCamera();
         _playerGUI.UpdateGUI();
         ShowGUI(true);
@@ -146,3 +146,4 @@ public class Supplies
 {//припасы
 
 }
+*/

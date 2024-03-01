@@ -10,12 +10,12 @@ namespace DontStopTheTrain.Events
     {
         int EventId { get; }
         //IGameEvent GameEvent { get; set; }
-        GameEventStatus EventStatus { get;}
+        EventStatus EventStatus { get;}
     }
 
     public class GameEventCallback : IGameEventCallback
     {
         public int EventId { get; }
-        public GameEventStatus EventStatus { get;}
+        public EventStatus EventStatus { get;}
     }
 }

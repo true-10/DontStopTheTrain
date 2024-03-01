@@ -6,8 +6,6 @@ namespace DontStopTheTrain.Events
 {
     public class MonoDataEventGenerator : MonoBehaviour
     {
-        [SerializeField] 
-        private MonoDataEventManager dataEventManager;
         // Start is called before the first frame update
         void Start()
         {
@@ -25,7 +23,7 @@ namespace DontStopTheTrain.Events
         /// </summary>
         /// <param name="turn"></param>
         /// <returns></returns>
-        public IGameEvent GenerateEvent(int turn)
+        public IEvent GenerateEvent(int turn)
         {
 
             return null;

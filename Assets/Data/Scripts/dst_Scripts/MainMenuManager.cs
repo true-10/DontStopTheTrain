@@ -39,7 +39,7 @@ public class MainMenuManager : MonoBehaviour
     public void OnEnter()
     {
         Debug.Log("MainMenuManager OnEnter");
-        CameraManager.Singleton.SetMainCamera(_camera);
+        // CameraManager.Singleton.SetMainCamera(_camera);
         _readyToStartGame = false;
         _mainMenuGUI.SetActive(true);
     }

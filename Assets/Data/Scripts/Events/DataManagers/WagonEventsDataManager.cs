@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace DontStopTheTrain.Events.DataManagers
-{
+{/*
     public interface IEventsManager
     {
         void Init();
-        IGameEvent GetEvent(int id);
+        IEvent GetEvent(int id);
     }
 
 
@@ -24,7 +24,7 @@ namespace DontStopTheTrain.Events.DataManagers
             }
         }
 
-        public IGameEvent GetEvent(int id)
+        public IEvent GetEvent(int id)
         {
             throw new System.NotImplementedException();
         }
@@ -40,5 +40,5 @@ namespace DontStopTheTrain.Events.DataManagers
         {
         
         }
-    }
+    }*/
 }

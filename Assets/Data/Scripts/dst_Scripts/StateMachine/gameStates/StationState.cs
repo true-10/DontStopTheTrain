@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-
+/*
 public class StationState : IState
 {
     #region fields
@@ -30,4 +30,4 @@ public class StationState : IState
     {
         _stationManager.OnExit();
     }
-}
+}*/
