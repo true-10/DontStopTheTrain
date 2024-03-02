@@ -2,13 +2,13 @@
 {
     public interface IConditionResourceRequire : ICondition
     {
-        int ResourceId { get; }
+        ItemId ResourceId { get; }
         int Count { get; }
     }
 
     public class ConditionResourceRequire : IConditionResourceRequire
     {
-        public int ResourceId => _staticData.ResourceId;
+        public ItemId ResourceId => _staticData.ResourceId;
 
         public int Count => _staticData.Count;
 

@@ -40,6 +40,8 @@ namespace DontStopTheTrain
         private Inventory _inventory;
         [Inject]
         private TurnBasedController _turnBasedController;
+        [Inject]
+        private LevelsStaticManager _levelsStaticManager;
 
         private ReactiveProperty<int> _expo = new();
         private ReactiveProperty<int> _level = new();
@@ -50,13 +52,16 @@ namespace DontStopTheTrain
         private CompositeDisposable _disposables = new CompositeDisposable();
 
         private ActionPointsCalculator _actionPointsCalculator = new();
-        private LevelUpCalculator _levelUpCalculator = new();
+        private LevelUpCalculator _levelUpCalculator;
 
         public void Initialize()
         {
+            _levelUpCalculator = new(_levelsStaticManager);
+
             //подписываемся на реворд контроллер? получаем награду
             _inventory.OnInventoryChanged += OnInventoryChanged;
             _turnBasedController.OnTurnStart += OnTurnStart;
+            _turnBasedController.OnTurnEnd += OnTurnEnd;
             //_turnBasedController.OnTurnEnd += TryToLevelUp?;
 
             Expo.Subscribe(x => TryToLevelUp())
@@ -82,7 +87,13 @@ namespace DontStopTheTrain
         private void OnTurnStart(ITurnCallback callback)
         {
             _days.Value = callback.Number;
+            _expo.Value += 100;
             ResetActionPoints();
+        }
+
+        private void OnTurnEnd(ITurnCallback callback)
+        {
+           // TryToLevelUp();
         }
 
         private void ResetActionPoints()
@@ -127,7 +138,11 @@ namespace DontStopTheTrain
 
         private void TryToLevelUp()
         {
-            _level.Value = _levelUpCalculator.GetLevel(Expo.Value);
+            var newLevel = _levelUpCalculator.GetLevel(Expo.Value);
+            if (newLevel > _level.Value)
+            {
+                _level.Value = newLevel;
+            }            
         }
 
     }

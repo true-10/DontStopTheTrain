@@ -19,6 +19,7 @@ namespace DontStopTheTrain
         private TextMeshProUGUI _turnNumberText;
 
         private CompositeDisposable _disposables = new CompositeDisposable();
+
         private void OnEnable()
         {
             _turnBasedController.OnTurnStart += OnTurnStarted;

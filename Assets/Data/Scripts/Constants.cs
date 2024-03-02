@@ -11,16 +11,17 @@ namespace DontStopTheTrain
             public const string EVENTS_PATH = "EventsStorage";
             public const string ITEMS_PATH = "ItemsStorage";
             public const string REWARDS_PATH = "RewardsStorage";
+            public const string LEVELS_PATH = "LevelsStorage";
         }
 
 
         public static class Inventory
         {
-            public static class Items
+           /* public static class Items
             {
                 public const int CREDITS = 1;
                 public const int EXPO = 2;
-            }
+            }*/
         }
     }
 }

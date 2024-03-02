@@ -15,4 +15,14 @@
     {
 
     }
+
+    public interface IEngineSystem : IWagonSystem
+    {
+
+    }
+
+    public interface IBrakeSystem : IWagonSystem
+    {
+
+    }
 }

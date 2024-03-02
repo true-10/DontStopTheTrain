@@ -6,12 +6,12 @@ namespace DontStopTheTrain.Events
     public class ConditionStaticDataResourceRequire : ConditionBase, IConditionResourceRequireStaticData
     {
         public override ConditionType Type => ConditionType.ResourceRequire;
-        public int ResourceId => _resourceId;
+        public ItemId ResourceId => _resourceId;
 
         public int Count => _count;
 
         [SerializeField]
-        private int _resourceId;
+        private ItemId _resourceId;
         [SerializeField]
         private int _count;
     }

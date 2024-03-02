@@ -2,7 +2,7 @@
 {
     public interface IConditionResourceRequireStaticData : IConditionStaticData
     {
-        int ResourceId { get; }
+        ItemId ResourceId { get; }
 
         int Count { get; }
     }

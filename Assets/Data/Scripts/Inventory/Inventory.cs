@@ -16,7 +16,8 @@ namespace DontStopTheTrain
         [Inject]
         private ItemsStaticManager _itemsStaticManager;
 
-        private Dictionary<int, InventoryItem> _idInventoryItems = new();
+
+        private Dictionary<ItemId, InventoryItem> _idInventoryItems = new();
         //capacity?
 
         public void Initialize(List<InventoryItem> inventoryItems)
@@ -80,7 +81,7 @@ namespace DontStopTheTrain
             OnInventoryChanged?.Invoke(callback);
         }
        
-        public bool IsEnough(int itemId, int count)
+        public bool IsEnough(ItemId itemId, int count)
         {
             if (_idInventoryItems.ContainsKey(itemId) == false)
             {
@@ -89,7 +90,7 @@ namespace DontStopTheTrain
             return _idInventoryItems[itemId].Count >= count;
         }
 
-        public bool TryGetCountById(int itemId, out int count)
+        public bool TryGetCountById(ItemId itemId, out int count)
         {
             count = 0;
             if (_idInventoryItems.ContainsKey(itemId) == false)
