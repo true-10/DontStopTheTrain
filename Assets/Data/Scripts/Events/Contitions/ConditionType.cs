@@ -1,10 +1,10 @@
-﻿
-namespace DontStopTheTrain.Events
+﻿namespace DontStopTheTrain.Events
 {
     public enum ConditionType
     {
         None = 0,
         ResourceRequire = 1,
-        ActionPointsRequire = 2,
+        BotRequire = 2,
+        //ActionPointsRequire = 2,
     }
 }

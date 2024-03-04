@@ -1,3 +1,4 @@
+using DontStopTheTrain.Events;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -42,6 +43,8 @@ namespace DontStopTheTrain
         private TurnBasedController _turnBasedController;
         [Inject]
         private LevelsStaticManager _levelsStaticManager;
+        [Inject]
+        private EventController _eventController;
 
         private ReactiveProperty<int> _expo = new();
         private ReactiveProperty<int> _level = new();
@@ -62,6 +65,7 @@ namespace DontStopTheTrain
             _inventory.OnInventoryChanged += OnInventoryChanged;
             _turnBasedController.OnTurnStart += OnTurnStart;
             _turnBasedController.OnTurnEnd += OnTurnEnd;
+            _eventController.OnComplete += OnEventComplete;
             //_turnBasedController.OnTurnEnd += TryToLevelUp?;
 
             Expo.Subscribe(x => TryToLevelUp())
@@ -76,6 +80,8 @@ namespace DontStopTheTrain
         {
             _inventory.OnInventoryChanged -= OnInventoryChanged;
             _turnBasedController.OnTurnStart -= OnTurnStart;
+            _turnBasedController.OnTurnEnd -= OnTurnEnd;
+            _eventController.OnComplete -= OnEventComplete;
 
             _disposables.Clear();
         }
@@ -87,13 +93,20 @@ namespace DontStopTheTrain
         private void OnTurnStart(ITurnCallback callback)
         {
             _days.Value = callback.Number;
-            _expo.Value += 100;
             ResetActionPoints();
         }
 
         private void OnTurnEnd(ITurnCallback callback)
         {
-           // TryToLevelUp();
+            // TryToLevelUp();
+        }
+        private void OnEventComplete(IEvent eventData)
+        {
+            _actionPoints.Value -= eventData.StaticData.ActionPointPrice;
+            //выполнить требования условий (списать ресурс, например)
+          //  var resourcedToRemove = new InventoryItem(null, 1);
+            //_inventory.TryToRemove(resourcedToRemove);
+
         }
 
         private void ResetActionPoints()

@@ -1,6 +1,7 @@
 using DontStopTheTrain;
 using DontStopTheTrain.Events;
 using DontStopTheTrain.Gameplay;
+using DontStopTheTrain.UI;
 using System;
 using True10.CameraSystem;
 using UnityEngine;
@@ -12,14 +13,18 @@ public class DSTSceneInstaller : MonoInstaller
     private CameraController _cameraController;
     [SerializeField] 
     private TurnBasedController _turnBasedController;
+  //  [SerializeField] 
+    //private EventInitDataManager _eventInitDataManager;
     [SerializeField] 
-    private EventInitDataManager _eventInitDataManager;
+    private UIController _uiController;
 
     public override void InstallBindings()
     {
         InstallStaticDataManagers();
         InstallManagers();
-        InstallControllers();
+        InstallControllers(); 
+        InstallFabrics();
+        InstallServices();
     }
 
     private void InstallStaticDataManagers()
@@ -32,7 +37,7 @@ public class DSTSceneInstaller : MonoInstaller
 
     private void InstallManagers()
     {
-        Container.Bind<EventInitDataManager>().FromInstance(_eventInitDataManager).AsSingle();
+        //Container.Bind<EventInitDataManager>().FromInstance(_eventInitDataManager).AsSingle();
         Container.Bind<EventsManager>().AsSingle();
         
     }
@@ -42,7 +47,21 @@ public class DSTSceneInstaller : MonoInstaller
         Container.Bind<Inventory>().AsSingle();
         Container.Bind<TurnBasedController>().FromInstance(_turnBasedController).AsSingle();       
         Container.Bind<ICameraController>().FromInstance(_cameraController).AsSingle();
+        Container.Bind<UIController>().FromInstance(_uiController).AsSingle();
         Container.Bind<Player>().AsSingle();
+        Container.Bind<EventController>().AsSingle();
+        Container.Bind<RewardController>().AsSingle();
+        Container.Bind<EventStarter>().AsSingle();
+    }
+
+    private void InstallFabrics()
+    {
+        Container.Bind<ConditionFabric>().AsSingle();
+        Container.Bind<EventFabric>().AsSingle();
+    }
+    private void InstallServices()
+    {
+        Container.Bind<EventsService>().AsSingle();
     }
 
 }

@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1a5b65dcef4b6949b2ca1b6876f1c61, type: 3}
-  m_Name: CreditsRequire
+  m_Script: {fileID: 11500000, guid: 1b0a4d85a5edc224f9cb56e01d473be6, type: 3}
+  m_Name: CreditRewardStaticData
   m_EditorClassIdentifier: 
-  _id: 1
-  _weight: 1
-  _resourceId: 1
+  _rewardId: 1
+  _itemId: 1
   _count: 1000
+  _isVisible: 0
+  _icon: {fileID: 0}

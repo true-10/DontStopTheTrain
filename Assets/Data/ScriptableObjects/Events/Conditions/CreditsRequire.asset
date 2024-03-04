@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7deef26fe82947545b4d782b8e40f842, type: 3}
-  m_Name: RewardsStorage
+  m_Script: {fileID: 11500000, guid: c1a5b65dcef4b6949b2ca1b6876f1c61, type: 3}
+  m_Name: CreditsRequire
   m_EditorClassIdentifier: 
-  _datas:
-  - {fileID: 11400000, guid: 6cafab19d9e587d40a5cd1dd3ae3fb70, type: 2}
-  - {fileID: 11400000, guid: 05e2ff71ae26ed048baa54715041b176, type: 2}
+  _weight: 1
+  _resourceId: 1
+  _count: 200

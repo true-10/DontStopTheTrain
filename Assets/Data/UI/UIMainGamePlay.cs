@@ -1,3 +1,6 @@
+using DontStopTheTrain.Events;
+using DontStopTheTrain.UI;
+using System.Linq;
 using TMPro;
 using UniRx;
 using UnityEngine;
@@ -12,14 +15,44 @@ namespace DontStopTheTrain
         private Player _player;
         [Inject]
         private TurnBasedController _turnBasedController;
+        [Inject]
+        private UIController _uiController;
+        [Inject]
+        private EventController _eventController;
 
+
+        [SerializeField]
+        private GameObject _root;
         [SerializeField]
         private Button _completeButton;
         [SerializeField]
         private TextMeshProUGUI _turnNumberText;
 
+        ////////////TEST
+        [SerializeField]
+        private EventId _startEventTestId;
+        [Inject]
+        private EventFabric _eventFabric;
+        [Inject]
+        private EventsStaticManager _eventsStaticManager;
+        public void StartTestEvent()
+        {
+            var eventStatic = _eventsStaticManager.EventsStaticData.FirstOrDefault(ev => ev.Id == _startEventTestId);
+            var eventData = _eventFabric.CreateEvent(eventStatic);
+            _eventController.StartEvent(eventData);
+            _uiController.WagonEvent.Show(eventData);
+            _eventController.OnComplete += _ => Show(true);
+            Show(false);
+
+        }
+        ////////////endTest
+
         private CompositeDisposable _disposables = new CompositeDisposable();
 
+        public void Show(bool isActive)
+        {
+            _root.SetActive(isActive);
+        }
         private void OnEnable()
         {
             _turnBasedController.OnTurnStart += OnTurnStarted;
@@ -56,7 +89,9 @@ namespace DontStopTheTrain
 
         private void UpdateTurnText(int turn)
         {
-            _turnNumberText.text = $"{turn}";
+            var text = $"{turn}";
+            _turnNumberText.text = text;
+            _uiController.Message.ShowMessage(text, 1f);
         }
     }
 

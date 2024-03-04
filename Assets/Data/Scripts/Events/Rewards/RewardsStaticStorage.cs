@@ -1,4 +1,5 @@
-﻿using True10.StaticData;
+﻿using System.Linq;
+using True10.StaticData;
 using UnityEngine;
 
 namespace DontStopTheTrain.Events
@@ -7,5 +8,10 @@ namespace DontStopTheTrain.Events
     public sealed class RewardsStaticStorage : StaticStorage<RewardStaticData>
     {
 
+        /*
+        private void OnValidate()
+        {
+            _datas = FindObjectsByType<RewardStaticData>().ToList();
+        }*/
     }
 }

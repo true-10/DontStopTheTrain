@@ -1,11 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace DontStopTheTrain.Events
 {
-
     public sealed class EventsManager
     {
         public List<IEvent> Events { get; private set; } = new();
@@ -20,7 +18,7 @@ namespace DontStopTheTrain.Events
             Events.Add(newEvent);
         }
 
-        public IEvent GetMissionById(int id)
+        public IEvent GetEventById(EventId id)
         {
             return Events
                 //.Where(m => m.StaticData.Id == id)

@@ -17,51 +17,56 @@ namespace DontStopTheTrain.UI
 
     public class UIController : MonoBehaviour
     {
-        [Inject] private ICameraController cameraController;
+        //[Inject] private ICameraController cameraController;
 
-        [SerializeField] private TrainUIView trainUIView;
+        public UIMessage Message => _message;
+        public UIWagonEvent WagonEvent => _wagonEvent;
+
+        [SerializeField] private UIMessage _message;
+        [SerializeField] private UIWagonEvent _wagonEvent;
+        /*[SerializeField] private TrainUIView trainUIView;
         [SerializeField] private LocoUIView locoUIView;
         [SerializeField] private WagonUIView wagonUIView;
         [SerializeField] private GameObject FrontCameraUIView;
         // Start is called before the first frame update
         [SerializeField] private CameraHolder trainCameraHolder;
-
+        
         private int currentGroup = 0;
-
+        */
         void OnEnable()
         {
-            cameraController.OnCameraOn += OnCameraOnHandler;
-            cameraController.OnCameraOff += OnCameraOffHandler;
+           // cameraController.OnCameraOn += OnCameraOnHandler;
+            //cameraController.OnCameraOff += OnCameraOffHandler;
         }
 
         private void OnDisable()
         {
-            cameraController.OnCameraOn += OnCameraOnHandler;
-            cameraController.OnCameraOff += OnCameraOffHandler;
+        //    cameraController.OnCameraOn += OnCameraOnHandler;
+          //  cameraController.OnCameraOff += OnCameraOffHandler;
         }
 
         // Update is called once per frame
-        void Update()
+      /*  void Update()
         {
             /*if (Input.GetKey(KeyCode.Escape))
             {
                 cameraController.SwitchToCamera(trainCameraHolder.HashCode);
             }*/
-            if (Input.GetKeyDown(KeyCode.Tab))
+         /*   if (Input.GetKeyDown(KeyCode.Tab))
             {
               var isShow = !trainUIView.gameObject.activeInHierarchy;
               trainUIView.gameObject.SetActive(isShow);
             }
-        }
+        }*/
 
         private void DisableUI()
         {
-            trainUIView.gameObject.SetActive(false);
+            /*trainUIView.gameObject.SetActive(false);
             locoUIView.gameObject.SetActive(false);
             wagonUIView.gameObject.SetActive(false);
-            FrontCameraUIView.gameObject.SetActive(false);
+            FrontCameraUIView.gameObject.SetActive(false);*/
         }
-
+/*
         private void OnCameraOnHandler(ICameraCallback callback)
         {
             if (currentGroup == callback.camHolder.Group)
@@ -106,6 +111,7 @@ namespace DontStopTheTrain.UI
             }
 
         }
+*/
     }
 
 }

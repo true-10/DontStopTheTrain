@@ -8,6 +8,6 @@ namespace True10.StaticData
         public IReadOnlyCollection<T> Datas => _datas.AsReadOnly();
 
         [SerializeField]
-        private List<T> _datas;
+        protected List<T> _datas;
     }
 }

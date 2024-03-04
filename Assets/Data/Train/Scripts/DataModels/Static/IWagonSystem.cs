@@ -11,6 +11,16 @@
     //опциональные:
     //-
 
+    public enum WagonSystemType
+    {
+
+    }
+
+    public enum WagonSystemId
+    {
+
+    }
+
     public interface IWagonSystem
     {
 

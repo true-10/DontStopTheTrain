@@ -2,6 +2,8 @@
 {
     public sealed class ActionPointsCalculator
     {
+        //private Inventory _inventory;
+
         public ActionPointsCalculator(/*список перков, бафов, уровень*/)
         {
 
