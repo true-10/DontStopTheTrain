@@ -32,6 +32,8 @@ namespace DontStopTheTrain.Events
         private EventsManager _eventsManager;
         [Inject]
         private EventFabric _eventsFabric;
+        [Inject]
+        private Train.Train _train;
 
         public IEvent GetEvent(int level)
         {
@@ -40,6 +42,8 @@ namespace DontStopTheTrain.Events
 
         public List<IEvent> GetEvents(int level, int count)
         {
+            //берем события по уровню
+            //смотрим какие можем стартануть
             return null;
         }
     }

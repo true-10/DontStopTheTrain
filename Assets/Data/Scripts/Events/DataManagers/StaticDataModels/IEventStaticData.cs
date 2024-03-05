@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace DontStopTheTrain.Events
 {
@@ -10,7 +11,7 @@ namespace DontStopTheTrain.Events
         // int Weight { get; }
         int Chance { get; }
         IReadOnlyList<RewardId> RewardIds { get; }
-
+        GameObject EventPrefab { get; } 
         IReadOnlyCollection<IConditionStaticData> Conditions { get; }
     }
 }

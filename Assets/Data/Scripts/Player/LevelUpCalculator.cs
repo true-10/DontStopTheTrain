@@ -4,7 +4,6 @@ namespace DontStopTheTrain
 {
     public sealed class LevelUpCalculator
     {
-
         public LevelUpCalculator(LevelsStaticManager levelsStaticManager)
         {
             _levelsStaticManager = levelsStaticManager;

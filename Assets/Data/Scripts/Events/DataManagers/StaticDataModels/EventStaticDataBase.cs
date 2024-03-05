@@ -6,14 +6,11 @@ namespace DontStopTheTrain.Events
     public class EventStaticDataBase : ScriptableObject, IEventStaticData
     {
         public EventId Id => _id;
-
         public int ActionPointPrice => _actionPointPrice;
-
         public virtual EventType Type => EventType.None;
-
         public int Chance => _chance;
         public IReadOnlyList<RewardId> RewardIds => _rewardIds.AsReadOnly();
-
+        public GameObject EventPrefab => _eventPrefab;
         public IReadOnlyCollection<IConditionStaticData> Conditions => _conditions.AsReadOnly();
 
         [SerializeField, Min(0)]
@@ -26,5 +23,7 @@ namespace DontStopTheTrain.Events
         private List<RewardId> _rewardIds;
         [SerializeField]
         private List<ConditionBase> _conditions;
+        [SerializeField]
+        private GameObject _eventPrefab;
     }
 }

@@ -1,6 +1,7 @@
 using DontStopTheTrain;
 using DontStopTheTrain.Events;
 using DontStopTheTrain.Gameplay;
+using DontStopTheTrain.Train;
 using DontStopTheTrain.UI;
 using System;
 using True10.CameraSystem;
@@ -13,8 +14,8 @@ public class DSTSceneInstaller : MonoInstaller
     private CameraController _cameraController;
     [SerializeField] 
     private TurnBasedController _turnBasedController;
-  //  [SerializeField] 
-    //private EventInitDataManager _eventInitDataManager;
+    [SerializeField] 
+    private Train _train;
     [SerializeField] 
     private UIController _uiController;
 
@@ -25,6 +26,7 @@ public class DSTSceneInstaller : MonoInstaller
         InstallControllers(); 
         InstallFabrics();
         InstallServices();
+        InstallTrain();
     }
 
     private void InstallStaticDataManagers()
@@ -37,7 +39,6 @@ public class DSTSceneInstaller : MonoInstaller
 
     private void InstallManagers()
     {
-        //Container.Bind<EventInitDataManager>().FromInstance(_eventInitDataManager).AsSingle();
         Container.Bind<EventsManager>().AsSingle();
         
     }
@@ -59,9 +60,15 @@ public class DSTSceneInstaller : MonoInstaller
         Container.Bind<ConditionFabric>().AsSingle();
         Container.Bind<EventFabric>().AsSingle();
     }
+
     private void InstallServices()
     {
         Container.Bind<EventsService>().AsSingle();
+    }
+
+    private void InstallTrain()
+    {
+        Container.Bind<Train>().FromInstance(_train).AsSingle();
     }
 
 }
