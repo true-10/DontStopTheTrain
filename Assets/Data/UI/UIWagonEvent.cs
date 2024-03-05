@@ -1,5 +1,6 @@
 using DontStopTheTrain;
 using DontStopTheTrain.Events;
+using DontStopTheTrain.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +15,8 @@ public class UIWagonEvent : MonoBehaviour
 {
     [Inject]
     private EventsService _eventsService;
+    [Inject]
+    private UIController _uiController;
 
     [SerializeField]
     private GameObject _root;
@@ -29,7 +32,6 @@ public class UIWagonEvent : MonoBehaviour
     public void Show(IEvent eventData)
     {
         _eventData = eventData;
-        //@event.OnComplete
         UpdateConditionsText(eventData.Conditions, eventData.StaticData.ActionPointPrice);
         TryToActivateButton(eventData);
         _root.SetActive(true);
@@ -39,7 +41,7 @@ public class UIWagonEvent : MonoBehaviour
     private void UpdateConditionsText(List<ICondition> conditions, int actionPoints)
     {
         string conditionsTexts = string.Empty;
-        conditionsTexts += $"ActionPoints: {actionPoints}\n";
+        conditionsTexts += $"ActionPoints: {actionPoints} \n";
         foreach (var condition in conditions)
         {
             conditionsTexts += $"{ConditionToTextConverter.GetText(condition)}\n";
@@ -56,6 +58,7 @@ public class UIWagonEvent : MonoBehaviour
 
     private void OnCloseEventUI()
     {
+        _uiController.MainGamePlay.Show(true);
         _root.SetActive(false);
     }
 
@@ -63,7 +66,7 @@ public class UIWagonEvent : MonoBehaviour
     {
         if (_eventData.TryToComplete())
         {
-            _root.SetActive(false);
+            OnCloseEventUI();
         }
     }
 
@@ -75,13 +78,13 @@ public class UIWagonEvent : MonoBehaviour
     private void OnEnable()
     {
         _completeEventButton.onClick.AddListener(OnCompleteEventClick);
-        _completeEventButton.onClick.AddListener(OnCloseEventUI) ;
+        _closeEventButton.onClick.AddListener(OnCloseEventUI) ;
     }
 
     private void OnDisable()
     {
         _completeEventButton.onClick.RemoveAllListeners();
-        _completeEventButton.onClick.RemoveAllListeners();
+        _closeEventButton.onClick.RemoveAllListeners();
     }
 
 }
@@ -89,7 +92,6 @@ public class UIWagonEvent : MonoBehaviour
 
 public static class ConditionToTextConverter
 {
-
     public static string GetText(ICondition condition)
     {
         switch (condition.StaticData.Type)

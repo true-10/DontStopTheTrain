@@ -41,7 +41,7 @@ namespace DontStopTheTrain
             var eventData = _eventFabric.CreateEvent(eventStatic);
             _eventController.StartEvent(eventData);
             _uiController.WagonEvent.Show(eventData);
-            _eventController.OnComplete += _ => Show(true);
+           // _eventController.OnComplete += _ => Show(true);
             Show(false);
 
         }
@@ -53,6 +53,7 @@ namespace DontStopTheTrain
         {
             _root.SetActive(isActive);
         }
+
         private void OnEnable()
         {
             _turnBasedController.OnTurnStart += OnTurnStarted;

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
 namespace DontStopTheTrain.Events
@@ -26,20 +25,5 @@ namespace DontStopTheTrain.Events
         protected abstract void OnStartEvent(IEvent @event);
 
         protected abstract void OnCompleteEvent(IEvent @event);
-    }
-
-    public class WagonEventViewer : AbstractEventViewer
-    {
-        public override EventType Type => EventType.Wagon;
-
-        protected override void OnCompleteEvent(IEvent @event)
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override void OnStartEvent(IEvent @event)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -57,11 +57,12 @@ namespace DontStopTheTrain
         private ActionPointsCalculator _actionPointsCalculator = new();
         private LevelUpCalculator _levelUpCalculator;
 
+        private int cachedItemCount = 0;
+
         public void Initialize()
         {
             _levelUpCalculator = new(_levelsStaticManager);
 
-            //подписываемся на реворд контроллер? получаем награду
             _inventory.OnInventoryChanged += OnInventoryChanged;
             _turnBasedController.OnTurnStart += OnTurnStart;
             _turnBasedController.OnTurnEnd += OnTurnEnd;
@@ -72,9 +73,7 @@ namespace DontStopTheTrain
                 .AddTo(_disposables);
 
             TryToLevelUp();
-
         }
-
 
         public void Dispose()
         {
@@ -100,13 +99,10 @@ namespace DontStopTheTrain
         {
             // TryToLevelUp();
         }
+
         private void OnEventComplete(IEvent eventData)
         {
             _actionPoints.Value -= eventData.StaticData.ActionPointPrice;
-            //выполнить требования условий (списать ресурс, например)
-          //  var resourcedToRemove = new InventoryItem(null, 1);
-            //_inventory.TryToRemove(resourcedToRemove);
-
         }
 
         private void ResetActionPoints()
@@ -124,29 +120,35 @@ namespace DontStopTheTrain
             switch (callback.ItemStaticData.Type)
             {
                 case ItemType.Player:
-                    if(_inventory.TryGetCountById(callback.ItemStaticData.Id, out var itemCount))
+                    if(_inventory.TryGetCountById(callback.ItemStaticData.Id, out cachedItemCount))
                     {
-                        if (callback.ItemStaticData is IPlayerItemStaticData)
-                        {
-                            var playerItemType = (callback.ItemStaticData as IPlayerItemStaticData).PlayerItemType;
-
-                            switch (playerItemType)
-                            {
-                                case PlayerItemType.Expo:
-                                    _expo.Value = itemCount;
-                                    break;
-                                case PlayerItemType.Credits:
-                                    _credits.Value = itemCount;
-                                    break;
-                                case PlayerItemType.Score:
-                                    _score.Value = itemCount;
-                                    break;
-                            }
-                        }
+                        ProcessPlayerItem(callback);
                     }
                     break;
                 
             }
+        }
+
+        private void ProcessPlayerItem(InventoryCallback callback)
+        {
+            var playerItemStaticData = callback.ItemStaticData as IPlayerItemStaticData;
+            if (playerItemStaticData == null)
+            {
+                return;
+            }
+            switch (playerItemStaticData.PlayerItemType)
+            {
+                case PlayerItemType.Expo:
+                    _expo.Value = cachedItemCount;
+                    break;
+                case PlayerItemType.Credits:
+                    _credits.Value = cachedItemCount;
+                    break;
+                case PlayerItemType.Score:
+                    _score.Value = cachedItemCount;
+                    break;
+            }
+            
         }
 
         private void TryToLevelUp()

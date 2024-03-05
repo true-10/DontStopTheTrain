@@ -221,6 +221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 143771645}
+  - component: {fileID: 143771646}
   m_Layer: 0
   m_Name: Train
   m_TagString: Untagged
@@ -244,6 +245,20 @@ Transform:
   - {fileID: 842836888}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &143771646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143771644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37ae52e476871164e91e6bdca70bff40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wagons:
+  - {fileID: 842836890}
 --- !u!1 &157207112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,6 +1790,7 @@ GameObject:
   m_Component:
   - component: {fileID: 842836888}
   - component: {fileID: 842836890}
+  - component: {fileID: 842836891}
   m_Layer: 0
   m_Name: Wagon
   m_TagString: Untagged
@@ -1810,8 +1826,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8ccce559d3a454f9cd3a03ced85a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventViewers: []
+  _eventViewers:
+  - {fileID: 842836891}
   uiObject: {fileID: 0}
+--- !u!114 &842836891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842836887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf7f4a5800828a84f8c72f9b82c0a8ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &899446660
 GameObject:
   m_ObjectHideFlags: 0
@@ -3096,6 +3125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _message: {fileID: 214328709}
   _wagonEvent: {fileID: 1632141314}
+  _mainGamePlay: {fileID: 3567505}
 --- !u!1 &1783168686
 GameObject:
   m_ObjectHideFlags: 0

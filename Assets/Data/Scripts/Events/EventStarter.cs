@@ -11,7 +11,7 @@ namespace DontStopTheTrain.Events
         private Player _player;
         [Inject]
         private EventController _eventController;
-       // [Inject]
+        //[Inject]
         //private EventGenerator _eventGenerator;
 
         private int _playerLevel => _player.Level.Value;
