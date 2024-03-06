@@ -29,20 +29,20 @@ namespace DontStopTheTrain
         private TextMeshProUGUI _turnNumberText;
 
         ////////////TEST
-        [SerializeField]
-        private EventId _startEventTestId;
-        [Inject]
-        private EventFabric _eventFabric;
-        [Inject]
-        private EventsStaticManager _eventsStaticManager;
+        /* [SerializeField]
+         private EventId _startEventTestId;
+         [Inject]
+         private EventFabric _eventFabric;
+         [Inject]
+         private EventsStaticManager _eventsStaticManager;*/
         public void StartTestEvent()
         {
-            var eventStatic = _eventsStaticManager.EventsStaticData.FirstOrDefault(ev => ev.Id == _startEventTestId);
+          /*  var eventStatic = _eventsStaticManager.EventsStaticData.FirstOrDefault(ev => ev.Id == _startEventTestId);
             var eventData = _eventFabric.CreateEvent(eventStatic);
             _eventController.StartEvent(eventData);
             _uiController.WagonEvent.Show(eventData);
            // _eventController.OnComplete += _ => Show(true);
-            Show(false);
+            Show(false);*/
 
         }
         ////////////endTest
@@ -73,12 +73,12 @@ namespace DontStopTheTrain
 
         private void OnTurnEnded(ITurnCallback callback)
         {
-            Debug.Log($"Turn[{callback.Number}] is ended");
+            //Debug.Log($"Turn[{callback.Number}] is ended");
         }
 
         private void OnTurnStarted(ITurnCallback callback)
         {
-            Debug.Log($"Turn[{callback.Number}] is started");
+            //Debug.Log($"Turn[{callback.Number}] is started");
             _turnBasedController.StartTurn();
         }
 

@@ -26,5 +26,14 @@ namespace DontStopTheTrain
 
             _eventStarter.Initialize();
         }
+
+        public void Dispose()
+        {
+            _player.Dispose();
+            _rewardController.Dispose();
+            //_inventory.Dispose();
+
+            _eventStarter.Dispose();
+        }
     }
 }

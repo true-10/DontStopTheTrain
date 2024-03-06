@@ -57,6 +57,11 @@ namespace DontStopTheTrain.Events
                 _inventory.TryToRemove(item);
             }
         }
+
+        public bool IsAvailableForPlayerLevel(IEventStaticData staticData)
+        {
+            return staticData.Levels.Contains(_player.Level.Value);
+        }
     }
 }
 

@@ -7,7 +7,7 @@ using UnityEngine;
 public class TrainPart : MonoBehaviour
 {
     #region fields
-    [SerializeField] private TrainPartData _data;//данные о запчасти
+    //[SerializeField] private TrainPartData _data;//данные о запчасти
     [SerializeField] private float _deterioration;//износ //износ
     //условие износа (типа нельзя нагружать много или ехать быстро)
     private float _deteriorations_speed;//множитель износа
@@ -33,7 +33,7 @@ public class TrainPart : MonoBehaviour
 
     public void Repair()
     {
-        _deterioration = _data._deterioration;
+       // _deterioration = _data._deterioration;
         _isBroken = false;
     }
 }

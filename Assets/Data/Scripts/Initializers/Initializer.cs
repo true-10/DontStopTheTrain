@@ -22,6 +22,13 @@ namespace DontStopTheTrain
             Initialize();
         }
 
+        private void OnDestroy()
+        {
+            _initializerControllers.Dispose();
+            _managersInitializer.Dispose();
+            _staticManagersInitializer.Dispose();
+        }
+
         private void Initialize()
         {
             _staticManagersInitializer.Initialize();

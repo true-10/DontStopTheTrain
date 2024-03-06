@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: ExpInventoryItemData
   m_EditorClassIdentifier: 
   _id: 2
-  _icon: {fileID: 0}
+  _info:
+    _name: Experience
+    _description: "\u0411\u0435\u0441\u0446\u0435\u043D\u043D\u044B\u0439 \u043E\u043F\u044B\u0442"
+    _icon: {fileID: 0}
   _isVisible: 0
   _playerItemType: 1

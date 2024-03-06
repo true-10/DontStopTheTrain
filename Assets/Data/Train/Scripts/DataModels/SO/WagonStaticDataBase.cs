@@ -6,6 +6,7 @@ namespace DontStopTheTrain.Train
     public class WagonStaticDataBase : ScriptableObject, IWagonStaticData
     {
         public int Id => _id;
+        public Information Info => _info;
 
 
         public virtual WagonType Type => WagonType.Empty;
@@ -14,5 +15,7 @@ namespace DontStopTheTrain.Train
 
         [SerializeField, Min(0)]
         private int _id;
+        [SerializeField]
+        private Information _info;
     }
 }

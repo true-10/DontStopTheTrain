@@ -22,6 +22,14 @@ namespace DontStopTheTrain
             _eventsStaticManager.Initialize();
             _levelsStaticManager.Initialize();
         }
+
+        public void Dispose()
+        {
+            //_itemsStaticManager.Dispose();
+            //_rewardsStaticManager.Dispose();
+            //_eventsStaticManager.Dispose();
+            //_levelsStaticManager.Dispose();
+        }
     }
 
 }

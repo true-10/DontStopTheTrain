@@ -8,8 +8,4 @@ namespace DontStopTheTrain.Events
         public override EventType Type => EventType.Wagon;
     }
 
-    public enum WagonEventType
-    {
-
-    }
 }

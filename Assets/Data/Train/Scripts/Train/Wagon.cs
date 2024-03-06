@@ -1,7 +1,9 @@
 using DontStopTheTrain.Events;
+using DontStopTheTrain.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace DontStopTheTrain.Train
 {
@@ -9,21 +11,29 @@ namespace DontStopTheTrain.Train
     {
         public List<WagonEventViewer> EventViewers => _eventViewers;
 
+        [Inject]
+        private UIController _uiController;
+
         [SerializeField]
         private List<WagonEventViewer> _eventViewers;
         [SerializeField] 
-        private WagonData wagonData;
+        private WagonData _wagonData;
         [SerializeField] 
-        private GameObject uiObject;
-
-
-        //перенести
-        private void ShowUI(bool isShow)
+        private ClickOnObject _clicker;
+        
+        private void OnWagonClick()
         {
-            if (uiObject.activeInHierarchy != isShow)
-            {
-                uiObject.SetActive(isShow);
-            }
+
+        }
+
+        private void OnEnable()
+        {
+            _clicker.OnClick += OnWagonClick;
+        }
+
+        private void OnDisable()
+        {
+            _clicker.OnClick -= OnWagonClick;
         }
     }
 

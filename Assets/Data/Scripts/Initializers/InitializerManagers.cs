@@ -12,7 +12,12 @@ namespace DontStopTheTrain
 
         public void Initialize()
         {
-            // _rewardsStaticManager.Initialize();
+
+        }
+
+        public void Dispose()
+        {
+
         }
     }
 }

@@ -1,14 +1,19 @@
-﻿namespace DontStopTheTrain.Train
+﻿using UnityEngine;
+
+namespace DontStopTheTrain.Train
 {
     //что делают вагоны?
     //везут груз
     //везут пассажиров
     //хранят роботов ремонтников/инструменты
 
+
     public interface IWagonStaticData
     {
         int Id { get; }
-        WagonType Type { get; } 
+        WagonType Type { get; }
+        Information Info { get; } 
+        //int Price { get; }//цена покупки
         //systems
     }
 

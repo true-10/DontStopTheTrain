@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 using Zenject;
 
 namespace DontStopTheTrain.Events
@@ -7,14 +8,14 @@ namespace DontStopTheTrain.Events
     {
         [Inject]
         private TurnBasedController _turnBasedController;
-        [Inject]
-        private Player _player;
+        //[Inject]
+        //private Player _player;
         [Inject]
         private EventController _eventController;
-        //[Inject]
-        //private EventGenerator _eventGenerator;
+        [Inject]
+        private EventGenerator _eventGenerator;
 
-        private int _playerLevel => _player.Level.Value;
+      // private int _playerLevel => _player.Level.Value;
 
         public void Initialize()
         {
@@ -29,12 +30,19 @@ namespace DontStopTheTrain.Events
 
         private void TryToStartEvents(ITurnCallback callback)
         {
-           /* var events = _eventGenerator.GetEvents(_playerLevel, 3);
-
+            if (callback.Number < 2)
+            {
+                return;
+            }
+            var events = _eventGenerator.GetEvents(3);
+            if (events.Count == 0)
+            {
+                Debug.Log($"No Events To Start");
+            }
             foreach (var eventToStart in events)
             {
                 _eventController.StartEvent(eventToStart);
-            }*/
+            }
         }
 
     }

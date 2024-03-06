@@ -53,6 +53,7 @@ public class DSTSceneInstaller : MonoInstaller
         Container.Bind<EventController>().AsSingle();
         Container.Bind<RewardController>().AsSingle();
         Container.Bind<EventStarter>().AsSingle();
+        Container.Bind<EventGenerator>().AsSingle();
     }
 
     private void InstallFabrics()
