@@ -8,7 +8,7 @@ public class Locomotiv : TrainPart//: MonoBehaviour
     #region fields
     [SerializeField] private LocomotivData _locomotiv_data; //переписать трайпартдата как наследник?
     [SerializeField] private Transform _endJoint;
-    public Wagon _prev;
+    public Wagon_obsolete _prev;
 
     //[SerializeField]
     private float _speed = 0f;

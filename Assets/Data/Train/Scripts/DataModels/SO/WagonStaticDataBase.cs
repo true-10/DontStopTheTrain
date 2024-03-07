@@ -8,7 +8,6 @@ namespace DontStopTheTrain.Train
         public int Id => _id;
         public Information Info => _info;
 
-
         public virtual WagonType Type => WagonType.Empty;
        // public List<int> wagonEvents;
 

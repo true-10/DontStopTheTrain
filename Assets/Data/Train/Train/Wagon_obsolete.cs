@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Wagon : TrainPart //сам вагон изнашивается
+public class Wagon_obsolete : TrainPart //сам вагон изнашивается
 {
     #region fields
     [SerializeField] private Transform _startJoint;
     [SerializeField] private Transform _endJoint;
-    public Wagon _prev;
+    public Wagon_obsolete _prev;
     //вес вагона
     //вес груза
     #endregion

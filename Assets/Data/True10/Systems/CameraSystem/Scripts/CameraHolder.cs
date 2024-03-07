@@ -24,6 +24,9 @@ namespace True10.CameraSystem
         /// </summary>
         void InitCustomCameraController();
 
+        void TurnOn();
+        void TurnOff();
+
         void SetFOV(float fov);
     }
 
@@ -34,13 +37,13 @@ namespace True10.CameraSystem
 
         public string CameraName => gameObject.name;
         public int HashCode => gameObject.GetHashCode();//
-        public int Group => group;//
+        public int Group => _group;//
 
         public int Priority { get => _cinemachineVirtualCamera.m_Priority; set => _cinemachineVirtualCamera.m_Priority = value; }
         public bool IsDisabled { get => _isDisabled; set => _isDisabled = value; }
         public Transform Follow { get => _cinemachineVirtualCamera.Follow; set => _cinemachineVirtualCamera.Follow = value; }
         public Transform LookAt { get => _cinemachineVirtualCamera.LookAt; set => _cinemachineVirtualCamera.LookAt = value; }
-        public CameraRig CameraRig { get => cameraRig; set => cameraRig = value; }
+        public CameraRig CameraRig { get => _cameraRig; set => _cameraRig = value; }
         public int Weight { get; set; }
 
 
@@ -49,9 +52,9 @@ namespace True10.CameraSystem
         [SerializeField]
         private bool _isDisabled = false;
         [SerializeField]
-        private int group = 0;
+        private int _group = 0;
         [SerializeField]
-        private CameraRig cameraRig;
+        private CameraRig _cameraRig;
         [SerializeField]
         private List<ICameraTargetController> _cameraTargetControllers;
         [SerializeField]
@@ -65,11 +68,20 @@ namespace True10.CameraSystem
             }
             SetFOV(_defaultFOV);
         }
+        public void TurnOn()
+        {
+            _cameraController.SwitchToCamera(this);
+        }
 
-       public void ShakeControl()
-       {
+        public void TurnOff()
+        {
+            _cameraController.SwitchToDefaultCamera();
+        }
+
+        public void ShakeControl()
+        {
             //тут не место?
-       }
+        }
 
         public void SetFOV(float fov)
         {
@@ -90,5 +102,6 @@ namespace True10.CameraSystem
         {
             _cameraController.AddCamera(this);
         }
+
     }
 }

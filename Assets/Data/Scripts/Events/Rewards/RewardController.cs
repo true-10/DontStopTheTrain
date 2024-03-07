@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Zenject;
 
 namespace DontStopTheTrain.Events
@@ -20,12 +19,10 @@ namespace DontStopTheTrain.Events
             _eventController.OnComplete += OnComplete;
         }
 
-
         public void Dispose()
         {
             _eventController.OnComplete -= OnComplete;
         }
-
 
         private void OnComplete(IEvent eventData)
         {

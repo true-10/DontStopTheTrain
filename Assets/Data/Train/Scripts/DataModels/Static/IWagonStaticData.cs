@@ -35,7 +35,7 @@ namespace DontStopTheTrain.Train
 
     public interface ICrewWagonStaticData : IWagonStaticData
     {
-
+        //кол-во сотрудников? но это в системе есть
     }
     public interface IServiceWagonStaticData : IWagonStaticData
     {

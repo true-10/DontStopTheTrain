@@ -9,14 +9,14 @@ namespace DontStopTheTrain.Events
     {
         [Inject]
         private EventsStaticManager _eventsStaticManager;
-        [Inject]
-        private EventsManager _eventsManager;
+       // [Inject]
+        //private EventsManager _eventsManager;
         [Inject]
         private EventFabric _eventsFabric;
         [Inject]
-        private EventsService _eventsService;
-        [Inject]
-        private Train.Train _train;
+        private EventsService _eventsService;       
+       // [Inject]
+        //private EventViewersManager _eventViewersManager;//или в стартер?
 
         public IEvent GetEvent()
         {
@@ -26,12 +26,11 @@ namespace DontStopTheTrain.Events
             return eventData;
         }
 
-        public List<IEvent> GetEvents(/*int level, */int count)
+        public List<IEvent> GetEvents()
         {
-            //берем события по уровню
-            var availableEventForLevel = GetEventStaticDatasByLevel();
+            var availableEventByLevel = GetEventStaticDatasByLevel();
             List<IEvent> events = new();
-            foreach (var staticData in availableEventForLevel)
+            foreach (var staticData in availableEventByLevel)
             {
                 var eventData = _eventsFabric.CreateEvent(staticData);
                 if (events.Contains(eventData))
@@ -40,7 +39,6 @@ namespace DontStopTheTrain.Events
                 }
                 events.Add(eventData);
             }
-
             return events;
         }
 

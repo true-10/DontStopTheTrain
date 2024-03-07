@@ -11,7 +11,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class UIWagonEvent : MonoBehaviour
+public class UIWagonEvent : UIScreen
 {
     [Inject]
     private EventsService _eventsService;
@@ -19,11 +19,9 @@ public class UIWagonEvent : MonoBehaviour
     private UIController _uiController;
 
     [SerializeField]
-    private GameObject _root;
-    [SerializeField]
     private Button _completeEventButton;
     [SerializeField]
-    private Button _closeEventButton;
+    private Button _closeButton;
     [SerializeField]
     private TextMeshProUGUI _conditionText;
 
@@ -34,8 +32,8 @@ public class UIWagonEvent : MonoBehaviour
         _eventData = eventData;
         UpdateConditionsText(eventData.Conditions, eventData.StaticData.ActionPointPrice);
         TryToActivateButton(eventData);
-        _root.SetActive(true);
-        
+        Show();
+
     }
 
     private void UpdateConditionsText(List<ICondition> conditions, int actionPoints)
@@ -58,8 +56,8 @@ public class UIWagonEvent : MonoBehaviour
 
     private void OnCloseEventUI()
     {
-        _uiController.MainGamePlay.Show(true);
-        _root.SetActive(false);
+        _uiController.Wagon.Show(); 
+        Hide();
     }
 
     private void OnCompleteEventClick()
@@ -70,21 +68,22 @@ public class UIWagonEvent : MonoBehaviour
         }
     }
 
+
     private void Start()
     {
-        _root.SetActive(false);
+        Hide();
     }
 
     private void OnEnable()
     {
         _completeEventButton.onClick.AddListener(OnCompleteEventClick);
-        _closeEventButton.onClick.AddListener(OnCloseEventUI) ;
+        _closeButton.onClick.AddListener(OnCloseEventUI) ;
     }
 
     private void OnDisable()
     {
         _completeEventButton.onClick.RemoveAllListeners();
-        _closeEventButton.onClick.RemoveAllListeners();
+        _closeButton.onClick.RemoveAllListeners();
     }
 
 }

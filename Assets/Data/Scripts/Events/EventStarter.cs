@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using True10.Extentions;
 using UnityEngine;
 using Zenject;
 
@@ -14,8 +17,11 @@ namespace DontStopTheTrain.Events
         private EventController _eventController;
         [Inject]
         private EventGenerator _eventGenerator;
+        [Inject]
+        private EventViewersManager _eventViewersManager;
 
-      // private int _playerLevel => _player.Level.Value;
+
+        List<AbstractEventViewer> usedViewers = new();
 
         public void Initialize()
         {
@@ -34,12 +40,55 @@ namespace DontStopTheTrain.Events
             {
                 return;
             }
-            var events = _eventGenerator.GetEvents(3);
+            var maxPosibleEventsCount = _eventViewersManager.Viewers.Where(v => v.IsFree).Count();
+                        
+            var events = _eventGenerator.GetEvents();
+
             if (events.Count == 0)
             {
-                Debug.Log($"No Events To Start");
+                Debug.Log($"No Events To Start. maxPosibleEventsCount = {maxPosibleEventsCount}");
+                return;
             }
-            foreach (var eventToStart in events)
+
+            var wagonEvents = events
+                .Where(eventData => eventData.StaticData.Type == EventType.Wagon)
+                .ToList();
+            TryToStartWagonEvents(wagonEvents);
+
+            var viewEvents = events
+                .Where(eventData => eventData.StaticData.Type == EventType.View)
+                .ToList();
+            TryToStartViewEvents(viewEvents);
+        }
+
+        private void TryToStartWagonEvents(List<IEvent> wagonEvents)
+        {
+            var eventViewers = _eventViewersManager.Viewers.Where(viewer => viewer.Type == EventType.Wagon);
+            
+            foreach (var eventToStart in wagonEvents)
+            {
+                var wagonEventStatic = eventToStart.StaticData as IWagonEventStaticData;
+                var wagonEventType = wagonEventStatic.WagonEventType;
+                var view = eventViewers
+                    .Where(view => (view as WagonEventViewer).WagonEventTypes.Contains(wagonEventType))
+                    .Where(view => view.IsFree)
+                    .ToList()
+                    .GetRandomElement();
+
+                if (view != null && usedViewers.Contains(view) == false)
+                {
+                    view.TryToSetEventData(eventToStart);
+                    usedViewers.Add(view);
+                    _eventController.StartEvent(eventToStart);
+                }
+            }
+        }
+
+        private void TryToStartViewEvents(List<IEvent> viewEvents)
+        {
+            var eventViewers = _eventViewersManager.Viewers.Where(viewer => viewer.Type == EventType.View);
+
+            foreach (var eventToStart in viewEvents)
             {
                 _eventController.StartEvent(eventToStart);
             }

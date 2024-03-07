@@ -6,32 +6,34 @@ namespace DontStopTheTrain.Events
 {
     public sealed class EventsManager
     {
-        public List<IEvent> Events { get; private set; } = new();
+        public IReadOnlyCollection<IEvent> Events => _events;
+
+        private List<IEvent> _events = new();
 
         public void Add(IEvent newEvent)
         {
-            if (Events.Contains(newEvent))
+            if (_events.Contains(newEvent))
             {
-                UnityEngine.Debug.Log($"Mission already[id = {newEvent.StaticData.Id}] added ");
+                UnityEngine.Debug.Log($"Event already[id = {newEvent.StaticData.Id}] added ");
                 return;
             }
-            Events.Add(newEvent);
+            _events.Add(newEvent);
         }
 
         public IEvent GetEventById(EventId id)
         {
-            return Events
+            return _events
                 //.Where(m => m.StaticData.Id == id)
                 .FirstOrDefault(m => m.StaticData.Id == id);
         }
 
         public void Remove(IEvent eventToRemove)
         {
-            if (Events.Contains(eventToRemove))
+            if (_events.Contains(eventToRemove))
             {
                 return;
             }
-            Events.Remove(eventToRemove);
+            _events.Remove(eventToRemove);
         }
     }
 

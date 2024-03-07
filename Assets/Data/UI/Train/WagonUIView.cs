@@ -48,12 +48,6 @@ namespace DontStopTheTrain.UI
             }
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         private void SwitchToNextWagonHandler()
         {
 
@@ -67,10 +61,5 @@ namespace DontStopTheTrain.UI
         private void SwitchToCameraHandler()
         {
         }
-
-        /*private void OnWagonClick(WagonData data)
-        {
-            numberText.text = data.Number.ToString();
-        }*/
     }
 }

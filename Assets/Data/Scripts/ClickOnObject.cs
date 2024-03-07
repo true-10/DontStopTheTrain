@@ -15,12 +15,13 @@ namespace DontStopTheTrain
         [SerializeField]
         private PointerEventData.InputButton _inputButton = PointerEventData.InputButton.Left;
 
+        private BoxCollider _boxCollider;
+
         public void OnPointerClick(PointerEventData eventData)
         {
             var button = eventData.button;
             if (button == _inputButton)
             {
-                //Debug.Log($"Click");
                 OnClick?.Invoke();
             }                
         }

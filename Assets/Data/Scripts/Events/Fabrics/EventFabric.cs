@@ -15,6 +15,8 @@ namespace DontStopTheTrain.Events
             {
                 case EventType.Wagon:
                     return new WagonEvent(staticData, _conditionFabric, _eventsService);
+                case EventType.View:
+                case EventType.ChangeBiom:
                 default:
                     return null;
             }

@@ -40,6 +40,7 @@ public class DSTSceneInstaller : MonoInstaller
     private void InstallManagers()
     {
         Container.Bind<EventsManager>().AsSingle();
+        Container.Bind<EventViewersManager>().AsSingle();
         
     }
 

@@ -10,48 +10,50 @@ namespace DontStopTheTrain.Events
     public class WagonEventViewer : AbstractEventViewer
     {
         public override EventType Type => EventType.Wagon;
+        public IReadOnlyCollection<WagonEventType> WagonEventTypes => _wagonEventTypes.AsReadOnly();
 
-        public bool IsFree => _eventData == null;
+        public bool IsClickable { get; set; } = false;
+
 
         [Inject]
         private UIController _uiController;
 
         [SerializeField]
-        private List<WagonEventType> _wagonEventType;
+        private List<WagonEventType> _wagonEventTypes;
         [SerializeField]
         private Transform _eventPrefabRoot;
         [SerializeField]
         private ClickOnObject _clicker;
 
         private GameObject _eventPrefabGO;
-        private IEvent _eventData;
 
         private void OnEventClick()
         {
-            if (_eventData == null)
+            //на ПКМ попап меню показывать вместо полноэкранного?
+            //при наведении показывать описание проблемы и требования для починки?
+            if (IsFree || IsClickable == false)
             {
                 return;
             }
 
             _uiController.WagonEvent.Show(_eventData);
-            _uiController.MainGamePlay.Show(false);
+            _uiController.Wagon.Hide();
         }
 
-        private void SpawnPrefab(IEvent eventData)
+        private void SpawnPrefab()
         {
-            //Debug.Log("HELLO");
-            var prefab = eventData.StaticData.EventPrefab;
+            var prefab = _eventData.StaticData.EventPrefab;
             if (prefab == null)
             {
                 Debug.Log($"No event prefab found");
                 return;
             }
             _eventPrefabGO = Instantiate(prefab, _eventPrefabRoot);
+            _eventPrefabGO.transform.localPosition = Vector3.zero;
         }
 
         private void ClearAll()
         {
-            //Debug.Log("GOODBYE");
             if (_eventPrefabGO != null)
             {
                 Destroy(_eventPrefabGO);
@@ -61,12 +63,21 @@ namespace DontStopTheTrain.Events
 
         protected override void OnStartEvent(IEvent eventData)
         {
-            _eventData = eventData;
-            SpawnPrefab(eventData);
+            //if (eventData.StaticData.Type != Type || IsFree == false)
+            if (eventData != _eventData)
+            {
+                return;
+            }
+            SpawnPrefab();
         }
 
         protected override void OnCompleteEvent(IEvent eventData)
         {
+            //if (eventData.StaticData.Type != Type || IsFree)
+            if (eventData != _eventData)
+            {
+                return;
+            }
             ClearAll();
         }
 

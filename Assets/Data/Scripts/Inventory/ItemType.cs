@@ -1,0 +1,10 @@
+﻿namespace DontStopTheTrain
+{
+    public enum ItemType
+    {
+        None = 0,
+        Player = 1,
+        Tools = 2,
+        Resource = 3,
+    }
+}

@@ -17,7 +17,7 @@ public class TrainManager : MonoBehaviour
     //[SerializeField] private CharMovement _char;//
     private bool _FPSModeOn = false;
     private bool _gameMenuTime = false;
-    [SerializeField] private List<Wagon> _wagons;//кол-во вагонов
+    [SerializeField] private List<Wagon_obsolete> _wagons;//кол-во вагонов
     //
     //private Player _player;
     #endregion
@@ -112,7 +112,7 @@ public class TrainManager : MonoBehaviour
         return _gameMenuTime;
     }
 
-    public void AddWagon(Wagon newWagon)
+    public void AddWagon(Wagon_obsolete newWagon)
     {
 
     }

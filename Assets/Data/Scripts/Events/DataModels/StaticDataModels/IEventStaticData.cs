@@ -6,27 +6,33 @@ namespace DontStopTheTrain.Events
     public interface IEventStaticData
     {
         EventId Id { get; }
-        int ActionPointPrice { get; }
         EventType Type { get; }
         // int Weight { get; }
-        int Chance { get; }
+        int Chance { get; }//Weight?
+        int ActionPointPrice { get; }
         IReadOnlyList<RewardId> RewardIds { get; }
-        GameObject EventPrefab { get; } 
         IReadOnlyCollection<IConditionStaticData> Conditions { get; }
         IReadOnlyCollection<int> Levels { get; }
         public Information Info { get; }
+        GameObject EventPrefab { get; }
     }
 
     public interface IWagonEventStaticData : IEventStaticData
     {
         WagonEventType WagonEventType { get; }
     }
-
+    /// <summary>
+    ///некое событие, которое может произойти в вагоне
+    ///накрылась система вентиляции
+    ///сломались тормоза
+    ///взорвалась жопа
+    /// </summary>
     public enum WagonEventType
     {
         None = 0,
-        Fire = 1,
-        SystemFailure = 2,
+        Fire = 1,//может перекидываться на другие вагоны?
+        ShortCircuit = 2,
+        SystemFailure = 3,
 
 
     }
