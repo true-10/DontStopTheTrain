@@ -1,5 +1,6 @@
 using DontStopTheTrain.Events;
 using DontStopTheTrain.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using True10.CameraSystem;
@@ -10,7 +11,9 @@ namespace DontStopTheTrain.Train
 {
     public sealed class Wagon : MonoBehaviour
     {
-        public List<WagonEventViewer> EventViewers => _eventViewers;
+        public Action OnEnter { get; set; }
+        public Action OnExit { get; set; }
+        public List<WagonEventViewer> EventViewers => _eventViewers;//надо ли?
         public IWagon WagonData => _wagonData;
 
         [Inject]
@@ -33,6 +36,7 @@ namespace DontStopTheTrain.Train
             _boxCollider.enabled = true;
             _uiController.MainGamePlay.Show();
             _eventViewers.ForEach(viewer => viewer.IsClickable = false);
+            OnExit?.Invoke();
         }
 
         private void OnWagonClick()
@@ -42,6 +46,7 @@ namespace DontStopTheTrain.Train
             _uiController.Wagon.Show(this);
             _uiController.MainGamePlay.Hide();
             _eventViewers.ForEach(viewer => viewer.IsClickable = true);
+            OnEnter?.Invoke();
         }
 
         private void OnEnable()
@@ -64,16 +69,5 @@ namespace DontStopTheTrain.Train
             _boxCollider ??= GetComponent<BoxCollider>();
         }
     }
-
-    public class WagonData : IWagon
-    {
-        public int Number => throw new System.NotImplementedException();
-
-        public IWagonStaticData StaticData => throw new System.NotImplementedException();
-
-        public int Deterioration => throw new System.NotImplementedException();
-
-        public int Next { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        public int Prev { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-    }
+   
 }

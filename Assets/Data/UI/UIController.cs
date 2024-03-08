@@ -40,9 +40,9 @@ namespace DontStopTheTrain.UI
         }
 
      
-        private void DisableUI()
+        public void DisableUI()
         {
-
+            
         }
 
     }
