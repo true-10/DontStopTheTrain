@@ -2,52 +2,56 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowTransform : MonoBehaviour
+namespace True10
 {
-    [SerializeField]
-    private Transform targetTransform;
-    [SerializeField]
-    private bool followPosition = true;
-    [SerializeField]
-    private bool followRotaion = false;
 
-
-    private Transform cachedTransform;
-
-    private void OnValidate()
+    public class FollowTransform : MonoBehaviour
     {
-        cachedTransform = GetComponent<Transform>();
-    }
-
-    private void Start()
-    {
-        cachedTransform = GetComponent<Transform>();
-    }
-
-    public void SetTarget(Transform target) => targetTransform = target;
-
-    void LateUpdate()
-    {
-        Follow();
-    }
+        [SerializeField]
+        private Transform targetTransform;
+        [SerializeField]
+        private bool followPosition = true;
+        [SerializeField]
+        private bool followRotaion = false;
 
 
-    [ContextMenu("Follow Now")]
-    private void Follow()
-    {
-        if (targetTransform == null)
+        private Transform cachedTransform;
+
+        private void OnValidate()
         {
-           // UIDebugSingletone.Instance.Log($"targetTransform == null");
-            return;
-
+            cachedTransform = GetComponent<Transform>();
         }
-        if (followPosition)
+
+        private void Start()
         {
-            cachedTransform.position = targetTransform.position;
+            cachedTransform = GetComponent<Transform>();
         }
-        if (followRotaion)
+
+        public void SetTarget(Transform target) => targetTransform = target;
+
+        void LateUpdate()
         {
-            cachedTransform.rotation = targetTransform.rotation;
+            Follow();
+        }
+
+
+        [ContextMenu("Follow Now")]
+        private void Follow()
+        {
+            if (targetTransform == null)
+            {
+                // UIDebugSingletone.Instance.Log($"targetTransform == null");
+                return;
+
+            }
+            if (followPosition)
+            {
+                cachedTransform.position = targetTransform.position;
+            }
+            if (followRotaion)
+            {
+                cachedTransform.rotation = targetTransform.rotation;
+            }
         }
     }
 }

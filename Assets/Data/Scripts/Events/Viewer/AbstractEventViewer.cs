@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Zenject;
 
 namespace DontStopTheTrain.Events
 {
     public abstract class AbstractEventViewer : MonoBehaviour
     {
+        public Action<IEvent> OnSetEvent { get; set; }
         public virtual EventType Type => EventType.None;
 
         public bool IsFree => _eventData == null;
@@ -23,6 +25,7 @@ namespace DontStopTheTrain.Events
                 return false;
             }
             _eventData = eventData;
+            OnSetEvent?.Invoke(eventData);
             return true;
         }
 

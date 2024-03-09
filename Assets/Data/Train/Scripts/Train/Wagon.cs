@@ -3,6 +3,8 @@ using DontStopTheTrain.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using True10;
 using True10.CameraSystem;
 using UnityEngine;
 using Zenject;
@@ -18,6 +20,8 @@ namespace DontStopTheTrain.Train
 
         [Inject]
         private UIController _uiController;
+        [Inject]
+        private EventController _eventController;
 
         [SerializeField]
         private List<WagonEventViewer> _eventViewers;
@@ -29,6 +33,8 @@ namespace DontStopTheTrain.Train
         private ClickOnObject _clicker;
         [SerializeField] 
         private BoxCollider _boxCollider;
+        [SerializeField] 
+        private WagonAlarm _alarm;
         
         public void Exit()
         {
@@ -49,14 +55,31 @@ namespace DontStopTheTrain.Train
             OnEnter?.Invoke();
         }
 
+        private void OnSetEvent(IEvent eventData)
+        {
+            //(eventData as IWagonEvent).SetWagon()
+            _alarm.AlarmOn();
+        }
+        private void OnEventComplete(IEvent eventData)
+        {
+            if (_eventViewers.All(viewer => viewer.IsFree))
+            {
+                _alarm.AlarmOff();
+            }
+        }
+
         private void OnEnable()
         {
             _clicker.OnClick += OnWagonClick;
+            _eventController.OnComplete += OnEventComplete;
+            _eventViewers.ForEach(viewer => viewer.OnSetEvent += OnSetEvent);
         }
 
         private void OnDisable()
         {
             _clicker.OnClick -= OnWagonClick;
+            _eventController.OnComplete -= OnEventComplete;
+            _eventViewers.ForEach(viewer => viewer.OnSetEvent -= OnSetEvent);
         }
 
         private void OnValidate()

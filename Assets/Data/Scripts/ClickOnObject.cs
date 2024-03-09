@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace DontStopTheTrain
+namespace True10
 {
     /// <summary>
     /// Don't forget to put PhysicsRaycaster on camera

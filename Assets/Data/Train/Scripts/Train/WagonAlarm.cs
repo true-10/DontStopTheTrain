@@ -7,25 +7,26 @@ namespace DontStopTheTrain.Train
     public class WagonAlarm : MonoBehaviour
     {
         [SerializeField]
-        private AudioSource alarmSource;
+        private AudioSource _alarmSource;
         [SerializeField]
-        private GameObject alarmObject;//лампочка
+        private GameObject _alarmObject;//лампочка
                                        
         void Start()
         {
-
+            AlarmOff();
         }
 
 
         public void AlarmOn()
         {
-            alarmObject.SetActive(true);
-            alarmSource.Play();
+            _alarmObject.SetActive(true);
+            _alarmSource.Play();
         }
+
         public void AlarmOff()
         {
-            alarmObject.SetActive(false);
-            alarmSource.Stop();
+            _alarmObject.SetActive(false);
+            _alarmSource.Stop();
         }
     }
 }

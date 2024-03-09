@@ -1,6 +1,7 @@
 ﻿using DontStopTheTrain.UI;
 using System;
 using System.Collections.Generic;
+using True10;
 using UnityEngine;
 using Zenject;
 
@@ -14,7 +15,6 @@ namespace DontStopTheTrain.Events
 
         public bool IsClickable { get; set; } = false;
 
-
         [Inject]
         private UIController _uiController;
 
@@ -26,6 +26,12 @@ namespace DontStopTheTrain.Events
         private ClickOnObject _clicker;
 
         private GameObject _eventPrefabGO;
+        private int _wagonNumber;
+
+        public void SetWagonNumber(int wagonNumber)
+        {
+            _wagonNumber = wagonNumber;
+        }
 
         private void OnEventClick()
         {
