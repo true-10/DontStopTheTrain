@@ -8,12 +8,12 @@ namespace DontStopTheTrain.Animation
 {
     public class AxleRotator : MonoBehaviour
     {
-        [Inject]
-        private ILevelScrollSpeedController levelScrollSpeedController;
+       // [Inject]
+        //private ILevelScrollSpeedController levelScrollSpeedController;
 
         public static float speed = -3f;
 
-        private float multiplayer => levelScrollSpeedController != null ? levelScrollSpeedController.Multilplayer : 1f;
+        private float multiplayer => 1f;// levelScrollSpeedController != null ? levelScrollSpeedController.Multilplayer : 1f;
         private Transform cachedTransform;
         // Start is called before the first frame update
         void Start()

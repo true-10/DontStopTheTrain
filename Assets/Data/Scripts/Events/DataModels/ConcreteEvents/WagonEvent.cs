@@ -4,6 +4,12 @@ using UnityEditor.MPE;
 
 namespace DontStopTheTrain.Events
 {
+    public interface IWagonEvent : IEvent
+    {
+        int WagonNumber { get; set; }
+
+        void SetWagon(int number);
+    }
 
     public class WagonEvent : IEvent
     {

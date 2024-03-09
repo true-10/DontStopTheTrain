@@ -9,14 +9,10 @@ namespace DontStopTheTrain.Events
     {
         [Inject]
         private EventsStaticManager _eventsStaticManager;
-       // [Inject]
-        //private EventsManager _eventsManager;
         [Inject]
         private EventFabric _eventsFabric;
         [Inject]
         private EventsService _eventsService;       
-       // [Inject]
-        //private EventViewersManager _eventViewersManager;//или в стартер?
 
         public IEvent GetEvent()
         {
