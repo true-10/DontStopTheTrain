@@ -17,7 +17,7 @@ namespace DontStopTheTrain
         public IReadOnlyReactiveProperty<int> ActionPoints => _actionPoints;
         public IReadOnlyReactiveProperty<int> Score => _score; //сколько очков заработал
         public IReadOnlyReactiveProperty<int> Credits => _credits; //сколько денег
-        public List<IPerk> Perks { get; private set; }
+        public IReadOnlyCollection<IPerk> Perks => _perks;
 
         [Inject]
         private Inventory _inventory;
@@ -34,6 +34,8 @@ namespace DontStopTheTrain
         private ReactiveProperty<int> _score = new();
         private ReactiveProperty<int> _credits = new();
         private ReactiveProperty<int> _days = new();
+
+        private List<IPerk> _perks;
 
         private CompositeDisposable _disposables = new CompositeDisposable();
         private ActionPointsCalculator _actionPointsCalculator = new();

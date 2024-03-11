@@ -1,4 +1,7 @@
-﻿namespace DontStopTheTrain
+﻿using DontStopTheTrain.Events;
+using System.Collections.Generic;
+
+namespace DontStopTheTrain
 {
     ///
     public interface IUnlock
@@ -20,7 +23,7 @@
     public interface IPerkStaticData
     {
         PerkType Type { get; }
-        int UnlockId { get; }
+        IReadOnlyCollection<IConditionStaticData> UnlockConditions { get; }
         Information Info { get; }
 
     }
@@ -33,5 +36,4 @@
         //торговец - снижаем цены на покупки
         //ремонтник - снижаем цену за ремонт
     }
-
 }

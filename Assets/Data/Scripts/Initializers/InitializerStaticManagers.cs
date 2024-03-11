@@ -14,6 +14,8 @@ namespace DontStopTheTrain
         private EventsStaticManager _eventsStaticManager;
         [Inject]
         private LevelsStaticManager _levelsStaticManager;
+        [Inject]
+        private PerkStaticManager _perkStaticManager;
 
         public void Initialize()
         {
@@ -21,6 +23,7 @@ namespace DontStopTheTrain
             _rewardsStaticManager.Initialize();
             _eventsStaticManager.Initialize();
             _levelsStaticManager.Initialize();
+            _perkStaticManager.Initialize();
         }
 
         public void Dispose()
@@ -29,6 +32,7 @@ namespace DontStopTheTrain
             //_rewardsStaticManager.Dispose();
             //_eventsStaticManager.Dispose();
             //_levelsStaticManager.Dispose();
+            //_perkStaticManager.Dispose();
         }
     }
 

@@ -35,6 +35,7 @@ public class DSTSceneInstaller : MonoInstaller
         Container.Bind<RewardsStaticManager>().AsSingle();
         Container.Bind<EventsStaticManager>().AsSingle();
         Container.Bind<LevelsStaticManager>().AsSingle();
+        Container.Bind<PerkStaticManager>().AsSingle();
     }
 
     private void InstallManagers()
