@@ -6,8 +6,6 @@ namespace DontStopTheTrain.Events
     {
        // public ConditionId Id => _id;
 
-        public int Weight => _weight;
-
         public virtual ConditionType Type => ConditionType.None;
 
 

@@ -21,11 +21,14 @@ namespace DontStopTheTrain.UI
         public UIWagonEvent WagonEvent => _wagonEvent;
         public UIMainGamePlay MainGamePlay => _mainGamePlay;
         public UIWagon Wagon => _wagon;
+        public UIEventInfoPopup EventInfoPopup => _eventInfoPopup;
 
         [SerializeField] 
         private UIMessage _message;
         [SerializeField] 
         private UIWagonEvent _wagonEvent;
+        [SerializeField] 
+        private UIEventInfoPopup _eventInfoPopup;
         [SerializeField] 
         private UIMainGamePlay _mainGamePlay;
         [SerializeField] 

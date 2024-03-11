@@ -1,4 +1,6 @@
-﻿namespace DontStopTheTrain.Events
+﻿using Zenject.SpaceFighter;
+
+namespace DontStopTheTrain.Events
 {
     public interface IConditionResourceRequire : ICondition
     {
@@ -27,7 +29,5 @@
         {
             return _inventory.IsEnough(_staticData.ResourceId, _staticData.Count);
         }
-
     }
-    
 }

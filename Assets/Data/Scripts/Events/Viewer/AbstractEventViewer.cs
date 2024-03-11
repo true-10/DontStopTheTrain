@@ -32,6 +32,7 @@ namespace DontStopTheTrain.Events
         public void RemoveEventData()
         {
             _eventData = null;
+            OnSetEvent?.Invoke(null);
         }
 
         protected abstract void OnStartEvent(IEvent eventData);

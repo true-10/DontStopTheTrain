@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 565440653880324531}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FireEvent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2099337999440476084}
   - component: {fileID: 3477230419994373540}
   - component: {fileID: 2615767168092852402}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FirePs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4874,7 +4874,7 @@ GameObject:
   - component: {fileID: 7189703765518302021}
   - component: {fileID: 1383799810307090371}
   - component: {fileID: 5882324702669333956}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5091,7 +5091,7 @@ GameObject:
   - component: {fileID: 7736367946265515722}
   - component: {fileID: 4051449015347963821}
   - component: {fileID: 8860886630334447970}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9921,7 +9921,7 @@ GameObject:
   - component: {fileID: 2901568222671269625}
   - component: {fileID: 3536287526416655317}
   - component: {fileID: 6988862453895909791}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SmokePs
   m_TagString: Untagged
   m_Icon: {fileID: 0}

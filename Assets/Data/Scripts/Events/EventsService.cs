@@ -17,7 +17,7 @@ namespace DontStopTheTrain.Events
 
         public bool IsEnoughActionPoints(IEvent eventData)
         {
-            return _player.ActionPoints.Value > eventData.StaticData.ActionPointPrice;
+            return _player.ActionPoints.Value >= eventData.StaticData.ActionPointPrice;
         }
 
         public bool IsAllConditionsAreMet(IEvent eventData)
@@ -60,7 +60,11 @@ namespace DontStopTheTrain.Events
 
         public bool IsAvailableForPlayerLevel(IEventStaticData staticData)
         {
-            return staticData.Levels.Contains(_player.Level.Value);
+            var levelConditions = staticData.Conditions
+                .Where(condition => (condition is IConditionLevelRequireStaticData))
+                .Where(condition => (condition as IConditionLevelRequireStaticData).IsMet(_player.Level.Value) )
+                .ToList();
+            return levelConditions.Count > 0;
         }
     }
 }

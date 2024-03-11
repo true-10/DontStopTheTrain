@@ -5,7 +5,6 @@ using True10;
 using UnityEngine;
 using Zenject;
 
-
 namespace DontStopTheTrain.Events
 {
     public class WagonEventViewer : AbstractEventViewer
@@ -24,19 +23,20 @@ namespace DontStopTheTrain.Events
         private Transform _eventPrefabRoot;
         [SerializeField]
         private ClickOnObject _clicker;
+        [SerializeField]
+        private MouseOverObject _mouseOver;
 
         private GameObject _eventPrefabGO;
         private int _wagonNumber;
 
-        public void SetWagonNumber(int wagonNumber)
+     /*  public void SetWagonNumber(int wagonNumber)
         {
             _wagonNumber = wagonNumber;
-        }
+        }*/
 
         private void OnEventClick()
         {
             //на ПКМ попап меню показывать вместо полноэкранного?
-            //при наведении показывать описание проблемы и требования для починки?
             if (IsFree || IsClickable == false)
             {
                 return;
@@ -44,6 +44,24 @@ namespace DontStopTheTrain.Events
 
             _uiController.WagonEvent.Show(_eventData);
             _uiController.Wagon.Hide();
+        }
+
+        private void OnMouseOverExit()
+        {
+            if (IsFree || IsClickable == false)
+            {
+                return;
+            }
+            _uiController.EventInfoPopup.Hide();
+        }
+
+        private void OnMouseOverEnter()
+        {
+            if (IsFree || IsClickable == false)
+            {
+                return;
+            }
+            _uiController.EventInfoPopup.Show(_eventData, transform);
         }
 
         private void SpawnPrefab()
@@ -65,11 +83,11 @@ namespace DontStopTheTrain.Events
                 Destroy(_eventPrefabGO);
             }
             _eventData = null;
+            OnSetEvent?.Invoke(null);
         }
 
         protected override void OnStartEvent(IEvent eventData)
         {
-            //if (eventData.StaticData.Type != Type || IsFree == false)
             if (eventData != _eventData)
             {
                 return;
@@ -79,7 +97,6 @@ namespace DontStopTheTrain.Events
 
         protected override void OnCompleteEvent(IEvent eventData)
         {
-            //if (eventData.StaticData.Type != Type || IsFree)
             if (eventData != _eventData)
             {
                 return;
@@ -90,11 +107,15 @@ namespace DontStopTheTrain.Events
         private void OnEnable()
         {
             _clicker.OnClick += OnEventClick;
+            _mouseOver.OnEnter += OnMouseOverEnter;
+            _mouseOver.OnExit += OnMouseOverExit;
         }
 
         private void OnDisable()
         {
             _clicker.OnClick -= OnEventClick;
+            _mouseOver.OnEnter -= OnMouseOverEnter;
+            _mouseOver.OnExit -= OnMouseOverExit;
         }
     }
 }

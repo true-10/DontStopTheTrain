@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62a14d07458b48b43a0d7b3c6ac06f4a, type: 3}
-  m_Name: EventsStorage
+  m_Script: {fileID: 11500000, guid: 4f79b33e80d0fdb44b65bd604baf6f72, type: 3}
+  m_Name: Level 1 to 5 Require
   m_EditorClassIdentifier: 
-  _datas:
-  - {fileID: 11400000, guid: 3b902e5fc29eff942a8251d454db46a2, type: 2}
-  - {fileID: 11400000, guid: 5e487b7f80470ff48b18ca2c2f8b31e7, type: 2}
+  _weight: 0
+  _levelMin: 1
+  _levelMax: 5

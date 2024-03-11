@@ -12,7 +12,7 @@ namespace DontStopTheTrain.Events
         public IReadOnlyList<RewardId> RewardIds => _rewardIds.AsReadOnly();
         public GameObject EventPrefab => _eventPrefab;
         public IReadOnlyCollection<IConditionStaticData> Conditions => _conditions.AsReadOnly();
-        public IReadOnlyCollection<int> Levels => _levels.AsReadOnly();
+
         public Information Info => _info;
 
         [SerializeField, Min(0)]
@@ -27,8 +27,6 @@ namespace DontStopTheTrain.Events
         private List<ConditionBase> _conditions;
         [SerializeField]
         private GameObject _eventPrefab;
-        [SerializeField]
-        private List<int> _levels;
         [SerializeField]
         private Information _info;
     }

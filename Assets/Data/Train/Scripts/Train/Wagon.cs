@@ -20,8 +20,6 @@ namespace DontStopTheTrain.Train
 
         [Inject]
         private UIController _uiController;
-        [Inject]
-        private EventController _eventController;
 
         [SerializeField]
         private List<WagonEventViewer> _eventViewers;
@@ -57,28 +55,26 @@ namespace DontStopTheTrain.Train
 
         private void OnSetEvent(IEvent eventData)
         {
-            //(eventData as IWagonEvent).SetWagon()
-            _alarm.AlarmOn();
-        }
-        private void OnEventComplete(IEvent eventData)
-        {
-            if (_eventViewers.All(viewer => viewer.IsFree))
+            if (eventData == null)
             {
-                _alarm.AlarmOff();
+                if (_eventViewers.All(viewer => viewer.IsFree))
+                {
+                    _alarm.AlarmOff();
+                }
+                return;
             }
+            _alarm.AlarmOn();
         }
 
         private void OnEnable()
         {
             _clicker.OnClick += OnWagonClick;
-            _eventController.OnComplete += OnEventComplete;
             _eventViewers.ForEach(viewer => viewer.OnSetEvent += OnSetEvent);
         }
 
         private void OnDisable()
         {
             _clicker.OnClick -= OnWagonClick;
-            _eventController.OnComplete -= OnEventComplete;
             _eventViewers.ForEach(viewer => viewer.OnSetEvent -= OnSetEvent);
         }
 

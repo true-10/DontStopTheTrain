@@ -4,7 +4,8 @@
     {
         None = 0,
         ResourceRequire = 1,
-        BotRequire = 2,
+        LevelRequire = 2,
+       // BotRequire = ,
         //ActionPointsRequire = 2,
     }
 }

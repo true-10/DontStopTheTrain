@@ -1,31 +1,10 @@
 using DontStopTheTrain.Train;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace DontStopTheTrain
-{
-
-    public class UIScreen : MonoBehaviour
-    {
-        [SerializeField]
-        protected GameObject _root;
-
-        public void Show()
-        {
-            _root.SetActive(true);
-        }
-
-        public void Hide(Action onHide = null)
-        {
-            onHide?.Invoke();
-            _root.SetActive(false);
-        }
-    }
-
+{ 
     public class UIWagon : UIScreen
     {
         [SerializeField]
@@ -34,6 +13,7 @@ namespace DontStopTheTrain
         private TextMeshProUGUI _wagonInfo;
 
         private Wagon _wagon;
+
         public void Show(Wagon wagon)
         {
             _wagon = wagon;
@@ -62,5 +42,4 @@ namespace DontStopTheTrain
             _closeButton.onClick.RemoveAllListeners();
         }
     }
-
 }

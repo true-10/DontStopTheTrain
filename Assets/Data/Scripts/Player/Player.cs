@@ -8,24 +8,6 @@ using Zenject;
 
 namespace DontStopTheTrain
 {
-    ///
-    public interface IUnlock
-    {
-        int Id { get; }
-        int MinimalLevelPlayer { get; }//minimal user player for unlocking this perk 
-
-    }
-
-    public interface IPerk
-    {
-        int UnlockId { get; }
-
-    }
-    public interface IInfuencers
-    {
-        //временный баф/дебаф
-    }
-
     [System.Serializable]
     public sealed class Player: IInitializable, IDisposable
     {
@@ -52,8 +34,8 @@ namespace DontStopTheTrain
         private ReactiveProperty<int> _score = new();
         private ReactiveProperty<int> _credits = new();
         private ReactiveProperty<int> _days = new();
-        private CompositeDisposable _disposables = new CompositeDisposable();
 
+        private CompositeDisposable _disposables = new CompositeDisposable();
         private ActionPointsCalculator _actionPointsCalculator = new();
         private LevelUpCalculator _levelUpCalculator;
 

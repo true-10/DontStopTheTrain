@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimerManager : AbstractManager
+public class TimerManager : MonoBehaviour//AbstractManager
 {
     #region excluded timers
     private const string TICK_TIMER = "Tick";
@@ -26,16 +26,15 @@ public class TimerManager : AbstractManager
         Dispose();
     }
 
-    public override void Init()
+    public void Init()
     {
         if (timers == null) timers = new List<TimerData>();
 
-        base.Init();
         OnInited?.Invoke();
     }
 
 
-    public override void Dispose()
+    public void Dispose()
     {
         ClearTimers();
     }

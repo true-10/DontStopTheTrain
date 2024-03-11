@@ -12,7 +12,6 @@ namespace DontStopTheTrain.Events
     public interface IConditionStaticData
     {
       //  ConditionId Id { get; }
-        int Weight { get; }
         ConditionType Type { get; }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Zenject;
 
-public class TickManager : AbstractManager
+public class TickManager : MonoBehaviour// AbstractManager
 {
     private Dictionary<ITick, int> ticks = new Dictionary<ITick, int>();
 

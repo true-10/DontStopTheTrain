@@ -12,7 +12,6 @@ namespace DontStopTheTrain.Events
         int ActionPointPrice { get; }
         IReadOnlyList<RewardId> RewardIds { get; }
         IReadOnlyCollection<IConditionStaticData> Conditions { get; }
-        IReadOnlyCollection<int> Levels { get; }
         public Information Info { get; }
         GameObject EventPrefab { get; }
     }
@@ -33,7 +32,5 @@ namespace DontStopTheTrain.Events
         Fire = 1,//может перекидываться на другие вагоны?
         ShortCircuit = 2,
         SystemFailure = 3,
-
-
     }
 }

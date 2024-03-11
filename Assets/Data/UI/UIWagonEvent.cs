@@ -1,109 +1,77 @@
-using DontStopTheTrain;
 using DontStopTheTrain.Events;
 using DontStopTheTrain.UI;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
-using UnityEditor.MPE;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class UIWagonEvent : UIScreen
+namespace DontStopTheTrain
 {
-    [Inject]
-    private EventsService _eventsService;
-    [Inject]
-    private UIController _uiController;
-
-    [SerializeField]
-    private Button _completeEventButton;
-    [SerializeField]
-    private Button _closeButton;
-    [SerializeField]
-    private TextMeshProUGUI _conditionText;
-
-    private IEvent _eventData;
-
-    public void Show(IEvent eventData)
+    public class UIWagonEvent : UIScreen
     {
-        _eventData = eventData;
-        UpdateConditionsText(eventData.Conditions, eventData.StaticData.ActionPointPrice);
-        TryToActivateButton(eventData);
-        Show();
+        [Inject]
+        private EventsService _eventsService;
+        [Inject]
+        private UIController _uiController;
 
-    }
+        [SerializeField]
+        private Button _completeEventButton;
+        [SerializeField]
+        private Button _closeButton;
+        [SerializeField]
+        private TextMeshProUGUI _conditionText;
 
-    private void UpdateConditionsText(List<ICondition> conditions, int actionPoints)
-    {
-        string conditionsTexts = string.Empty;
-        conditionsTexts += $"ActionPoints: {actionPoints} \n";
-        foreach (var condition in conditions)
+        private IEvent _eventData;
+
+        public void Show(IEvent eventData)
         {
-            conditionsTexts += $"{ConditionToTextConverter.GetText(condition)}\n";
+            _eventData = eventData;
+            UpdateConditionsText(eventData.Conditions, eventData.StaticData.ActionPointPrice);
+            TryToActivateButton(eventData);
+            Show();
         }
 
-        _conditionText.text = conditionsTexts;
-    }
-
-    private void TryToActivateButton(IEvent eventData)
-    {
-        var isAcive = _eventsService.IsAllConditionsAreMet(eventData) && _eventsService.IsEnoughActionPoints(eventData);
-        _completeEventButton.gameObject.SetActive(isAcive);
-    }
-
-    private void OnCloseEventUI()
-    {
-        _uiController.Wagon.Show(); 
-        Hide();
-    }
-
-    private void OnCompleteEventClick()
-    {
-        if (_eventData.TryToComplete())
+        private void UpdateConditionsText(List<ICondition> conditions, int actionPoints)
         {
-            OnCloseEventUI();
+            _conditionText.text = ConditionToTextConverter.GetText(conditions, actionPoints);
         }
-    }
 
-
-    private void Start()
-    {
-        Hide();
-    }
-
-    private void OnEnable()
-    {
-        _completeEventButton.onClick.AddListener(OnCompleteEventClick);
-        _closeButton.onClick.AddListener(OnCloseEventUI) ;
-    }
-
-    private void OnDisable()
-    {
-        _completeEventButton.onClick.RemoveAllListeners();
-        _closeButton.onClick.RemoveAllListeners();
-    }
-
-}
-
-
-public static class ConditionToTextConverter
-{
-    public static string GetText(ICondition condition)
-    {
-        switch (condition.StaticData.Type)
+        private void TryToActivateButton(IEvent eventData)
         {
-            case ConditionType.ResourceRequire:
-                return GetResourceRequireText(condition.StaticData as IConditionResourceRequireStaticData);
-            default:
-                return string.Empty;
+            var isAcive = _eventsService.IsAllConditionsAreMet(eventData) && _eventsService.IsEnoughActionPoints(eventData);
+            _completeEventButton.gameObject.SetActive(isAcive);
         }
-    }
 
-    private static string GetResourceRequireText(IConditionResourceRequireStaticData staticData)
-    {
-        return $"resource: {staticData.ResourceId} count: { staticData.Count}";
+        private void OnCloseEventUI()
+        {
+            _uiController.Wagon.Show();
+            Hide();
+        }
+
+        private void OnCompleteEventClick()
+        {
+            if (_eventData.TryToComplete())
+            {
+                OnCloseEventUI();
+            }
+        }
+
+        private void Start()
+        {
+            Hide();
+        }
+
+        private void OnEnable()
+        {
+            _completeEventButton.onClick.AddListener(OnCompleteEventClick);
+            _closeButton.onClick.AddListener(OnCloseEventUI);
+        }
+
+        private void OnDisable()
+        {
+            _completeEventButton.onClick.RemoveAllListeners();
+            _closeButton.onClick.RemoveAllListeners();
+        }
     }
 }

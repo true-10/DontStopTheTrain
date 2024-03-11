@@ -63,7 +63,10 @@ namespace DontStopTheTrain.Events
 
         private void TryToStartWagonEvents(List<IEvent> wagonEvents)
         {
-            var eventViewers = _eventViewersManager.Viewers.Where(viewer => viewer.Type == EventType.Wagon);
+            usedViewers.Clear();
+            var eventViewers = _eventViewersManager.Viewers
+                .Where(viewer => viewer.Type == EventType.Wagon)
+                .ToList();
             
             foreach (var eventToStart in wagonEvents)
             {
