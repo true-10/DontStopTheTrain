@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DontStopTheTrain.Events
+namespace DontStopTheTrain
 {
     [CreateAssetMenu(fileName = "LevelRequire", menuName = "DST/Events/Conditions/LevelRequire")]
     public class ConditionStaticDataLevelRequire : ConditionBase, IConditionLevelRequireStaticData

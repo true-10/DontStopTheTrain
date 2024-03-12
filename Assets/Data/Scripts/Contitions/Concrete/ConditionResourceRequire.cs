@@ -1,6 +1,6 @@
 ﻿using Zenject.SpaceFighter;
 
-namespace DontStopTheTrain.Events
+namespace DontStopTheTrain
 {
     public interface IConditionResourceRequire : ICondition
     {

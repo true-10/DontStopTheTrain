@@ -27,6 +27,8 @@ namespace DontStopTheTrain
         private LevelsStaticManager _levelsStaticManager;
         [Inject]
         private EventController _eventController;
+        [Inject]
+        private PerkController _perkController;
 
         private ReactiveProperty<int> _expo = new();
         private ReactiveProperty<int> _level = new();
@@ -38,7 +40,7 @@ namespace DontStopTheTrain
         private List<IPerk> _perks;
 
         private CompositeDisposable _disposables = new CompositeDisposable();
-        private ActionPointsCalculator _actionPointsCalculator = new();
+        private ActionPointsCalculator _actionPointsCalculator;
         private LevelUpCalculator _levelUpCalculator;
 
         private int cachedItemCount = 0;
@@ -46,6 +48,9 @@ namespace DontStopTheTrain
         public void Initialize()
         {
             _levelUpCalculator = new(_levelsStaticManager);
+            _actionPointsCalculator = new(_perkController);
+
+            _actionPointsCalculator.Calculate();
 
             _inventory.OnInventoryChanged += OnInventoryChanged;
             _turnBasedController.OnTurnStart += OnTurnStart;
@@ -109,8 +114,16 @@ namespace DontStopTheTrain
                         ProcessPlayerItem(callback);
                     }
                     break;
-                
+                case ItemType.Perk:
+                    ProcessPerkItem(callback);
+                    break;
+
             }
+        }
+
+        private void ProcessPerkItem(InventoryCallback callback)
+        {
+           // var perkItem = callback.
         }
 
         private void ProcessPlayerItem(InventoryCallback callback)
@@ -123,16 +136,15 @@ namespace DontStopTheTrain
             switch (playerItemStaticData.PlayerItemType)
             {
                 case PlayerItemType.Expo:
-                    _expo.Value = cachedItemCount;
+                    _expo.Value = cachedItemCount + cachedItemCount * _perkController.GetValue(PerkType.Experience);
                     break;
                 case PlayerItemType.Credits:
-                    _credits.Value = cachedItemCount;
+                    _credits.Value = cachedItemCount + cachedItemCount * _perkController.GetValue(PerkType.Credits);
                     break;
                 case PlayerItemType.Score:
-                    _score.Value = cachedItemCount;
+                    _score.Value = cachedItemCount + cachedItemCount * _perkController.GetValue(PerkType.Score);
                     break;
             }
-            
         }
 
         private void TryToLevelUp()

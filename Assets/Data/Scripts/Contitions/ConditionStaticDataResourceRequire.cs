@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DontStopTheTrain.Events
+namespace DontStopTheTrain
 {
     [CreateAssetMenu(fileName = "ResourceRequire", menuName = "DST/Events/Conditions/ResourceRequire")]
     public class ConditionStaticDataResourceRequire : ConditionBase, IConditionResourceRequireStaticData

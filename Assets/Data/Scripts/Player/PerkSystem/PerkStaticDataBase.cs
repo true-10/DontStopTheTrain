@@ -11,6 +11,12 @@ namespace DontStopTheTrain
         public IReadOnlyCollection<IConditionStaticData> UnlockConditions => _conditions;
         public Information Info => _info;
 
+        public int Value => _value;
+
+        public IReadOnlyCollection<InventoryItem> UpgradePrice => throw new System.NotImplementedException();
+
+        [SerializeField]
+        private int _value;
         [SerializeField]
         private Information _info;
         [SerializeField]

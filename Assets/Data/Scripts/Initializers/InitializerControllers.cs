@@ -14,12 +14,15 @@ namespace DontStopTheTrain
         private RewardController _rewardController;
         [Inject]
         private EventStarter _eventStarter;
+        [Inject]
+        private PerkController _perkController;
 
         [SerializeField]
         private InventoryStarterPackStorage _inventoryStartItemsStorage;
 
         public void Initialize()
         {
+            _perkController.Initialize();
             _player.Initialize();
             _rewardController.Initialize();
             _inventory.Initialize(_inventoryStartItemsStorage.GetStartItems());
@@ -34,6 +37,7 @@ namespace DontStopTheTrain
             //_inventory.Dispose();
 
             _eventStarter.Dispose();
+            _perkController.Dispose();
         }
     }
 }

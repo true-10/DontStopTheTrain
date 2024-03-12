@@ -10,20 +10,26 @@ namespace DontStopTheTrain
         int MinimalLevelPlayer { get; }//minimal user player for unlocking this perk 
 
     }
-    public interface IInfuencers
-    {
+    public interface IInfuencer : IPerk
+    {//это тот же перк, только временный?
         //временный баф/дебаф
+        IReadOnlyCollection<IConditionStaticData> StopConditions { get; }
     }
 
     public interface IPerk
     {
-        IPerkStaticData StaticData {get;}
+        int Value { get; }
+        int Level { get; }
+        IPerkStaticData StaticData { get; }
     }
 
     public interface IPerkStaticData
     {
         PerkType Type { get; }
+        int Value { get; }
         IReadOnlyCollection<IConditionStaticData> UnlockConditions { get; }
+        IReadOnlyCollection<InventoryItem> UpgradePrice { get; }
+
         Information Info { get; }
 
     }
@@ -32,8 +38,19 @@ namespace DontStopTheTrain
     {
         None = 0,
         ActionPoint = 1, //добавляем очки опыта
-        ExpMultiplayer = 2, //множитель опыта
-        //торговец - снижаем цены на покупки
+        Experience = 2, //множитель опыта
+        Credits = 3, //множитель денег
+        Score = 4, //множитель очков
+
+        Seller = 5,//торговец - снижаем цены на покупки
         //ремонтник - снижаем цену за ремонт
+        //хозяюшка - износ оборудования замедляется
+        //
+        BoostBuf = 10, //ускорение - баф
+    }
+    public enum PerkOperationType
+    {
+        Add = 0,
+        Mult = 1
     }
 }

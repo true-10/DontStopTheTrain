@@ -7,9 +7,14 @@
         Credits = 1,
         Expo = 2,
         Score = 3,
-        //Tools
+        //Tools 10
 
-        //Resource
+        //Resource 50
+
+        //perks 100
+        PerkActionPointX1 = 101,
+        PerkActionPointX2 = 102,
+        PerkActionPointX3 = 103,
 
     }
 }

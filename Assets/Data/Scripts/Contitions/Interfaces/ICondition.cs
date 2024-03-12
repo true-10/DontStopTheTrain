@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace DontStopTheTrain.Events
+namespace DontStopTheTrain
 {
     public interface ICondition
     {

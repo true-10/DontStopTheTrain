@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-namespace DontStopTheTrain.Events
+namespace DontStopTheTrain
 {
     public class ConditionFabric
     {
@@ -17,6 +17,8 @@ namespace DontStopTheTrain.Events
                     return new ConditionResourceRequire(staticData as IConditionResourceRequireStaticData, _inventory);
                 case ConditionType.LevelRequire:                    
                     return new ConditionLevelRequire(staticData as IConditionLevelRequireStaticData, _player);
+                case ConditionType.PerkRequire:
+
                 default:
                     UnityEngine.Debug.Log($"The type [{staticData.Type}] is not found");
                     return null;

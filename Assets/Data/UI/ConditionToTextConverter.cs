@@ -1,32 +1,38 @@
-﻿using DontStopTheTrain.Events;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-public static class ConditionToTextConverter
+namespace DontStopTheTrain
 {
-    public static string GetText(List<ICondition> conditions, int actionPoints)
+
+    public static class ConditionToTextConverter
     {
-        string conditionsTexts = string.Empty;
-        conditionsTexts += $"ActionPoints: {actionPoints} \n";
-        foreach (var condition in conditions)
+        public static string GetText(List<ICondition> conditions, int actionPoints)
         {
-            conditionsTexts += $"{GetText(condition)}\n";
+            string conditionsTexts = string.Empty;
+            conditionsTexts += $"ActionPoints: {actionPoints} \n";
+            foreach (var condition in conditions)
+            {
+                conditionsTexts += $"{GetText(condition)}\n";
+            }
+            return conditionsTexts;
         }
-        return conditionsTexts;
+
+        public static string GetText(ICondition condition)
+        {
+            switch (condition.StaticData.Type)
+            {
+                case ConditionType.ResourceRequire:
+                    return GetResourceRequireText(condition.StaticData as IConditionResourceRequireStaticData);
+                case ConditionType.LevelRequire:
+                case ConditionType.PerkRequire:
+                default:
+                    return string.Empty;
+            }
+        }
+
+        private static string GetResourceRequireText(IConditionResourceRequireStaticData staticData)
+        {
+            return $"resource: {staticData.ResourceId} count: {staticData.Count}";
+        }
     }
 
-    public static string GetText(ICondition condition)
-    {
-        switch (condition.StaticData.Type)
-        {
-            case ConditionType.ResourceRequire:
-                return GetResourceRequireText(condition.StaticData as IConditionResourceRequireStaticData);
-            default:
-                return string.Empty;
-        }
-    }
-
-    private static string GetResourceRequireText(IConditionResourceRequireStaticData staticData)
-    {
-        return $"resource: {staticData.ResourceId} count: { staticData.Count}";
-    }
 }
