@@ -3,9 +3,10 @@ using UnityEngine;
 
 namespace DontStopTheTrain
 {
-    [CreateAssetMenu(fileName = "LevelsStorage", menuName = "DST/Player/Levels/Storage", order = 0)]
+    [CreateAssetMenu(fileName = "LevelsStorage", menuName = "DST/Player/Levels/LevelsStorage", order = 0)]
     public sealed class LevelsStaticStorage : StaticStorage<LevelStaticData>
     {
 
     }
+
 }

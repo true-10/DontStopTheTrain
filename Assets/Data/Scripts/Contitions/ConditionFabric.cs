@@ -18,6 +18,7 @@ namespace DontStopTheTrain
                 case ConditionType.LevelRequire:                    
                     return new ConditionLevelRequire(staticData as IConditionLevelRequireStaticData, _player);
                 case ConditionType.PerkRequire:
+                //case ConditionType.:
 
                 default:
                     UnityEngine.Debug.Log($"The type [{staticData.Type}] is not found");

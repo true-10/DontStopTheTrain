@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2159.2512, g: 2262.9866, b: 3284.8442, a: 1}
+  m_IndirectSpecularColor: {r: 2182.2317, g: 2320.8538, b: 3465.442, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 159261771}
   - component: {fileID: 159261772}
   m_Layer: 5
-  m_Name: NewPerkWindow
+  m_Name: SelectNewPerkWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2174,7 +2174,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0417\u0430\u043A\u0440\u044B\u0442\u044C"
+  m_text: Apply
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4748,6 +4748,8 @@ MonoBehaviour:
   _turnBasedController: {fileID: 202013277}
   _train: {fileID: 143771646}
   _uiController: {fileID: 1666797149}
+  _perksLeveslStaticData: {fileID: 11400000, guid: 4e4e2346a4ebc8c47ab40e887403f566,
+    type: 2}
 --- !u!1 &1405863325
 GameObject:
   m_ObjectHideFlags: 0
@@ -5196,6 +5198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: {x: 0, y: 1, z: 2}
+  _offset2D: {x: 0, y: 0}
+  _useOffset2D: 1
 --- !u!114 &1622459695
 MonoBehaviour:
   m_ObjectHideFlags: 0

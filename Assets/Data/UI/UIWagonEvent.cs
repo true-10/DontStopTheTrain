@@ -39,6 +39,7 @@ namespace DontStopTheTrain
 
         private void TryToActivateButton(IEvent eventData)
         {
+            //TODO в условии уровня стоит мин и макс, и когда уровень игрока больше макс, то условие не выполняется
             var isAcive = _eventsService.IsAllConditionsAreMet(eventData) && _eventsService.IsEnoughActionPoints(eventData);
             _completeEventButton.gameObject.SetActive(isAcive);
         }

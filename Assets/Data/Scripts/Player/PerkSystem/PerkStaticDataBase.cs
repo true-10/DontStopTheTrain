@@ -1,5 +1,4 @@
-﻿using DontStopTheTrain.Events;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace DontStopTheTrain

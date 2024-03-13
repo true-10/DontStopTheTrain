@@ -18,6 +18,8 @@ public class DSTSceneInstaller : MonoInstaller
     private Train _train;
     [SerializeField] 
     private UIController _uiController;
+    [SerializeField] 
+    private PerksLeveslStaticData _perksLeveslStaticData;
 
     public override void InstallBindings()
     {
@@ -37,6 +39,8 @@ public class DSTSceneInstaller : MonoInstaller
         Container.Bind<LevelsStaticManager>().AsSingle();
         Container.Bind<PerksStaticManager>().AsSingle();
         Container.Bind<ConditionStaticManager>().AsSingle();
+
+        Container.Bind<PerksLeveslStaticData>().FromInstance(_perksLeveslStaticData).AsSingle();
     }
 
     private void InstallManagers()

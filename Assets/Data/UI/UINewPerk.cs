@@ -14,6 +14,8 @@ namespace DontStopTheTrain
         private Player _player;
         [Inject]
         private PerksManager _perksManager;
+        [Inject]
+        private PerksLeveslStaticData _perksLeveslStaticData;
 
         [SerializeField]
         private UIPerkElement _perkElement1;
@@ -32,6 +34,10 @@ namespace DontStopTheTrain
         private void OnLevelUp(int level)
         {
             //TODO: выдавать по уровню из статики. типа на 3, 5, 10 уровнях и тд
+            if (_perksLeveslStaticData.Levels.Contains(level) == false)
+            {
+                return;
+            }
             var perk1 = _perksManager.Items.GetRandomElement();
             var perk2 = _perksManager.Items.GetRandomElement();
 

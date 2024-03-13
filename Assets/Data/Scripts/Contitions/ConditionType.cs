@@ -8,5 +8,6 @@
         PerkRequire = 3,//
        // BotRequire = ,
         //ActionPointsRequire = 2,
+        TurnCount = 10, //buff/debuff timeCount
     }
 }

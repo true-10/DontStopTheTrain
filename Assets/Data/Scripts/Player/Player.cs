@@ -146,7 +146,7 @@ namespace DontStopTheTrain
                     _expo.Value = cachedItemCount + Mathf.RoundToInt( cachedItemCount * (_perkController.GetValue(PerkType.Experience) / 100f) );
                     break;
                 case PlayerItemType.Credits:
-                    _credits.Value = cachedItemCount + cachedItemCount * _perkController.GetValue(PerkType.Credits);
+                    _credits.Value = cachedItemCount + Mathf.RoundToInt(cachedItemCount * (_perkController.GetValue(PerkType.Credits) / 100f));                    
                     break;
                 case PlayerItemType.Score:
                     _score.Value = cachedItemCount + Mathf.RoundToInt(cachedItemCount * (_perkController.GetValue(PerkType.Score) / 100f));                    
