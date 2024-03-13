@@ -76,6 +76,9 @@ namespace DontStopTheTrain
 
         public void AddPerk(IPerk newPerk)
         {
+            //получаем уровень
+            //смотрим по уровню доступные перки и выдаем на выбор
+            //добавляем в перки выбранные
         }
 
         private void OnTurnStart(ITurnCallback callback)

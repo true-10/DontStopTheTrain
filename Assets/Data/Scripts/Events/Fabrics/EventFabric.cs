@@ -2,14 +2,15 @@
 
 namespace DontStopTheTrain.Events
 {
-    public class EventFabric
+
+    public sealed class EventFabric : IFabric<IEvent, IEventStaticData>
     {
         [Inject]
         private ConditionFabric _conditionFabric;
         [Inject]
         private EventsService _eventsService;
 
-        public IEvent CreateEvent(IEventStaticData staticData)
+        public IEvent Create(IEventStaticData staticData)
         {
             switch (staticData.Type)
             {

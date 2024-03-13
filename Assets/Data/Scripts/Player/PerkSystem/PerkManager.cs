@@ -1,36 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using True10.Managers;
+using Zenject;
 
 namespace DontStopTheTrain
 {
-    public sealed class PerkManager
+    public sealed class PerkManager : DataManager<IPerk>
     {
-        public Action<IPerk> OnPerkAdded { get; set; }
-        public Action<IPerk> OnPerkRemoved { get; set; }
+        [Inject]
+        private PerksFabric _fabric;
+        [Inject]
+        private PerksStaticManager _staticManager;
 
-        public IReadOnlyCollection<IPerk> Perks => _perks;
-
-        private List<IPerk> _perks = new();
-
-        public void Add(IPerk newPerk)
+        public override void Initialize()
         {
-            if (_perks.Contains(newPerk))
+            var staticDatas = _staticManager.Datas;
+            foreach (var staticData in staticDatas)
             {
-                UnityEngine.Debug.Log($"Perk already added ");
-                return;
+                var item = _fabric.Create(staticData);
+                TryToAdd(item);
             }
-            _perks.Add(newPerk);
-            OnPerkAdded?.Invoke(newPerk);
         }
 
-        public void Remove(IPerk perkToRemove)
+        public override void Dispose()
         {
-            if (_perks.Contains(perkToRemove))
-            {
-                return;
-            }
-            _perks.Remove(perkToRemove);
-            OnPerkRemoved?.Invoke(perkToRemove);
-        }
+            Clear();
+        }       
     }
 }

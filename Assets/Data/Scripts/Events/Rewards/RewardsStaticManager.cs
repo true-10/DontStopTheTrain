@@ -1,17 +1,13 @@
-using System.Collections.Generic;
 using True10.StaticData;
-using UnityEngine;
 
 namespace DontStopTheTrain.Events
 {
-    public sealed class RewardsStaticManager
+    public sealed class RewardsStaticManager : StaticManager<IRewardStaticData>
     {
-        public IReadOnlyCollection<IRewardStaticData> RewardsStaticData { get; private set; }
-
-        public void Initialize()
+        public override void Initialize()
         {
             var data = StaticDataLoader<RewardsStaticStorage>.LoadStaticData(Constants.StaticDataPaths.REWARDS_PATH);
-            RewardsStaticData = data.Datas;
+            Datas = data.Datas;
         }
     }
 }

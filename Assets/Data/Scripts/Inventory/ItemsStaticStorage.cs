@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DontStopTheTrain
 {
-    [CreateAssetMenu(fileName = "ItemsStorage", menuName = "DST/Items/Storage")]
+    [CreateAssetMenu(fileName = "ItemsStorage", menuName = "DST/Items/Storage", order = 0)]
     public sealed class ItemsStaticStorage : StaticStorage<ItemStaticDataBase>
     {
 

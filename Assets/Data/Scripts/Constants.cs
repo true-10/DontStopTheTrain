@@ -13,6 +13,7 @@ namespace DontStopTheTrain
             public const string REWARDS_PATH = "RewardsStorage";
             public const string LEVELS_PATH = "LevelsStorage";
             public const string PERKS_PATH = "PerksStorage";
+            public const string CONDITIONS_PATH = "ConditionsStorage";
         }
 
 

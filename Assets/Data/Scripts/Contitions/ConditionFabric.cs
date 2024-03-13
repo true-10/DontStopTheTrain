@@ -2,14 +2,14 @@
 
 namespace DontStopTheTrain
 {
-    public class ConditionFabric
+    public sealed class ConditionFabric: IFabric<ICondition, IConditionStaticData>
     {
         [Inject]
         private Inventory _inventory;
         [Inject]
         private Player _player;
 
-        public ICondition GetCondition(IConditionStaticData staticData)
+        public ICondition Create(IConditionStaticData staticData)
         {
             switch (staticData.Type)
             {

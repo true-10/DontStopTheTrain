@@ -74,7 +74,7 @@ namespace DontStopTheTrain
                 status = InventoryOperationStatus.Fail;
             }
 
-            var itemStaticData = _itemsStaticManager.ItemStaticDatas.FirstOrDefault(item => item.Id == itemId);
+            var itemStaticData = _itemsStaticManager.Datas.FirstOrDefault(item => item.Id == itemId);
 
             InventoryCallback callback = new(InventoryOperationType.Remove, status,
                 null, count, itemStaticData);

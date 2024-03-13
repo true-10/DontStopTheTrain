@@ -2,7 +2,7 @@
 
 namespace DontStopTheTrain
 {
-    [CreateAssetMenu(fileName = "LevelRequire", menuName = "DST/Events/Conditions/LevelRequire")]
+    [CreateAssetMenu(fileName = "LevelRequire", menuName = "DST/Conditions/LevelRequire")]
     public class ConditionStaticDataLevelRequire : ConditionBase, IConditionLevelRequireStaticData
     {
         public override ConditionType Type => ConditionType.LevelRequire;

@@ -7,7 +7,8 @@ namespace DontStopTheTrain
     [CreateAssetMenu(fileName = "Perk", menuName = "DST/Player/Perks/Perk")]
     public class PerkStaticDataBase : ScriptableObject, IPerkStaticData
     {
-        public virtual PerkType Type => PerkType.None;
+        //public virtual PerkType Type => PerkType.None;
+        public PerkType Type => _perkType;
         public IReadOnlyCollection<IConditionStaticData> UnlockConditions => _conditions;
         public Information Info => _info;
 
@@ -17,6 +18,8 @@ namespace DontStopTheTrain
 
         [SerializeField]
         private int _value;
+        [SerializeField]
+        private PerkType _perkType;
         [SerializeField]
         private Information _info;
         [SerializeField]

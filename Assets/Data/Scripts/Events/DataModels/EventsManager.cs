@@ -1,40 +1,49 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
+using True10.Managers;
+using Zenject;
 
 namespace DontStopTheTrain.Events
 {
-    public sealed class EventsManager
+    public sealed class EventsManager: DataManager<IEvent>
     {
-        public IReadOnlyCollection<IEvent> Events => _events;
+        [Inject]
+        private EventFabric _fabric;
+        [Inject]
+        private EventsStaticManager _staticManager;
 
-        private List<IEvent> _events = new();
-
-        public void Add(IEvent newEvent)
+        public override void Initialize()
         {
-            if (_events.Contains(newEvent))
+            var staticDatas = _staticManager.Datas;
+            foreach (var staticData in staticDatas)
             {
-                UnityEngine.Debug.Log($"Event already[id = {newEvent.StaticData.Id}] added ");
-                return;
+                var item = _fabric.Create(staticData);
+                TryToAdd(item);
             }
-            _events.Add(newEvent);
+        }
+
+        public override void Dispose()
+        {
+            Clear();
         }
 
         public IEvent GetEventById(EventId id)
         {
-            return _events
-                //.Where(m => m.StaticData.Id == id)
+            return Items
+                .FirstOrDefault(m => m.StaticData.Id == id);
+        }   
+
+        public IEvent GetFreeEventById(EventId id)
+        {
+            return GetAllFreeEvents()
                 .FirstOrDefault(m => m.StaticData.Id == id);
         }
 
-        public void Remove(IEvent eventToRemove)
+        public List<IEvent> GetAllFreeEvents()
         {
-            if (_events.Contains(eventToRemove))
-            {
-                return;
-            }
-            _events.Remove(eventToRemove);
+            return Items
+                .Where(ev => ev.Status == EventStatus.None)
+                .ToList();
         }
     }
-
 }

@@ -40,14 +40,14 @@ namespace DontStopTheTrain.Events
 
         private InventoryItem CreateInventoryItem(RewardId rewardId)
         {
-            var reward = _rewardsStaticManager.RewardsStaticData.FirstOrDefault(rewardStatic => rewardStatic.RewardId == rewardId);
+            var reward = _rewardsStaticManager.Datas.FirstOrDefault(rewardStatic => rewardStatic.RewardId == rewardId);
             if (reward == null)
             {
                 return null;
             }
             var itemId = reward.ItemId;
             var itemCount = reward.Count;
-            var itemStatic = _itemsStaticManager.ItemStaticDatas.FirstOrDefault(itemStatic => itemStatic.Id == itemId);
+            var itemStatic = _itemsStaticManager.Datas.FirstOrDefault(itemStatic => itemStatic.Id == itemId);
             if (itemStatic == null)
             {
                 return null;

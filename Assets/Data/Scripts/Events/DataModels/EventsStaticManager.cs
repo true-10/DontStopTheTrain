@@ -1,17 +1,13 @@
-using System.Collections.Generic;
 using True10.StaticData;
 
 namespace DontStopTheTrain.Events
 {
-    public sealed class EventsStaticManager
+    public sealed class EventsStaticManager : StaticManager<IEventStaticData>
     {
-        public IReadOnlyCollection<IEventStaticData> EventsStaticData { get; private set; }
-
-        public void Initialize()
+        public override void Initialize()        
         {
             var data = StaticDataLoader<EventsStaticStorage>.LoadStaticData(Constants.StaticDataPaths.EVENTS_PATH);
-            EventsStaticData = data.Datas;
+            Datas = data.Datas;
         }
     }
-
 }

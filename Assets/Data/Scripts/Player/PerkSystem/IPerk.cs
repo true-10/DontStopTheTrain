@@ -20,7 +20,26 @@ namespace DontStopTheTrain
     {
         int Value { get; }
         int Level { get; }
+
+        bool AvailableForPlayer { get; }
         IPerkStaticData StaticData { get; }
+    }
+
+    public class Perk : IPerk
+    {
+        public int Value => StaticData.Value;
+
+        public int Level => 1;
+
+        public IPerkStaticData StaticData { get; }
+
+        public bool AvailableForPlayer => false;
+
+        public Perk(IPerkStaticData staticData)
+        {
+            StaticData = staticData;
+        }
+
     }
 
     public interface IPerkStaticData

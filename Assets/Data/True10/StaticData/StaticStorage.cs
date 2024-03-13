@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace True10.StaticData
@@ -9,5 +10,16 @@ namespace True10.StaticData
 
         [SerializeField]
         protected List<T> _datas;
+
+      /*  private void OnValidate()
+        {
+            FindAllDatas();
+        }
+
+        [ContextMenu("Find All")]
+        public void FindAllDatas()
+        {
+            _datas = Resources.FindObjectsOfTypeAll<T>().ToList();
+        }*/
     }
 }

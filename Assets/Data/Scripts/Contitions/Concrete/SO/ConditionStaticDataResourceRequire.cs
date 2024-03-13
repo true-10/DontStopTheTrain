@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using DontStopTheTrain.Events;
+using UnityEngine;
 
 namespace DontStopTheTrain
 {
-    [CreateAssetMenu(fileName = "ResourceRequire", menuName = "DST/Events/Conditions/ResourceRequire")]
+    [CreateAssetMenu(fileName = "ResourceRequire", menuName = "DST/Conditions/ResourceRequire")]
     public class ConditionStaticDataResourceRequire : ConditionBase, IConditionResourceRequireStaticData
     {
         public override ConditionType Type => ConditionType.ResourceRequire;
@@ -15,4 +16,5 @@ namespace DontStopTheTrain
         [SerializeField]
         private int _count;
     }
+
 }

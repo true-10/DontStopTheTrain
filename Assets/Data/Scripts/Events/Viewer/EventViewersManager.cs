@@ -1,31 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using True10.Managers;
 
 namespace DontStopTheTrain.Events
 {
-    public class EventViewersManager
+    public class EventViewersManager : DataManager<AbstractEventViewer>
     {
-        public IReadOnlyCollection<AbstractEventViewer> Viewers => _viewers.AsReadOnly();
-
-        public List<AbstractEventViewer> _viewers = new();
-
-        public bool TryToAddViewer(AbstractEventViewer newViewer)
+        public override void Initialize()
         {
-            if (_viewers.Contains(newViewer))
-            {
-                return false;
-            }
-            _viewers.Add(newViewer);
-            return true;
+
         }
 
-        public bool TryToRemoveViewer(AbstractEventViewer newViewer)
+        public override void Dispose()
         {
-            if (_viewers.Contains(newViewer) == false)
-            {
-                return false;
-            }
-            _viewers.Remove(newViewer);
-            return true;
+            Clear();
         }
     }
 }

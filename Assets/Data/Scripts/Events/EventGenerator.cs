@@ -18,7 +18,7 @@ namespace DontStopTheTrain.Events
         {
             var availableEventForLevel = GetEventStaticDatasByLevel();
             var randomStatic = availableEventForLevel.GetRandomElement();
-            var eventData = _eventsFabric.CreateEvent(randomStatic);
+            var eventData = _eventsFabric.Create(randomStatic);
             return eventData;
         }
 
@@ -28,7 +28,7 @@ namespace DontStopTheTrain.Events
             List<IEvent> events = new();
             foreach (var staticData in availableEventByLevel)
             {
-                var eventData = _eventsFabric.CreateEvent(staticData);
+                var eventData = _eventsFabric.Create(staticData);
                 if (events.Contains(eventData))
                 {
                     continue;
@@ -41,7 +41,7 @@ namespace DontStopTheTrain.Events
         private List<IEventStaticData> GetEventStaticDatasByLevel()
         {
             return _eventsStaticManager
-                .EventsStaticData
+                .Datas
                 .Where(eventData => _eventsService.IsAvailableForPlayerLevel(eventData))
                 .ToList();
         }

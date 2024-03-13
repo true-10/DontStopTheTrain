@@ -1,4 +1,4 @@
-﻿namespace DontStopTheTrain.Events
+﻿namespace DontStopTheTrain
 {
     public enum RewardId
     {

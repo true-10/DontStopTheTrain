@@ -1,4 +1,5 @@
 ﻿using DontStopTheTrain.Events;
+using System.Collections.Generic;
 using System.Linq;
 using Zenject;
 
@@ -6,8 +7,6 @@ namespace DontStopTheTrain
 {
     public sealed class PerkController
     {
-        [Inject]
-        private PerksFabric _perkFabric;
         [Inject]
         private PerkManager _perkManager;
 
@@ -22,8 +21,9 @@ namespace DontStopTheTrain
 
         public int GetValue(PerkType perkType)
         {
-            var perks = _perkManager.Perks
+            var perks = _perkManager.Items
                 .Where(perk => perk.StaticData.Type == perkType)
+                .Where(perk => perk.AvailableForPlayer)
                 .ToList();
 
             if (perks.Count == 0)
@@ -50,6 +50,10 @@ namespace DontStopTheTrain
     {
         [Inject]
         private Inventory _inventory;
+        [Inject]
+        private PerksStaticManager _perkStaticManager;
+        [Inject]
+        private ConditionFabric _conditionFabric;
 
         public bool IsReadyToUpgrade(IPerk perkToUpgrade)
         {
@@ -59,6 +63,11 @@ namespace DontStopTheTrain
                 return true;
             }
             return false;
+        }
+
+        public List<IPerkStaticData> GettAvailablePerks()
+        {
+            return null;
         }
     }
     public sealed class PerkGiver

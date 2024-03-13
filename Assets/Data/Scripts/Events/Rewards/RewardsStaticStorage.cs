@@ -4,14 +4,8 @@ using UnityEngine;
 
 namespace DontStopTheTrain.Events
 {
-    [CreateAssetMenu(fileName = "RewardsStorage", menuName = "DST/Events/Rewards/Storage")]
+    [CreateAssetMenu(fileName = "RewardsStorage", menuName = "DST/Events/Rewards/Storage", order = 0)]
     public sealed class RewardsStaticStorage : StaticStorage<RewardStaticData>
     {
-
-        /*
-        private void OnValidate()
-        {
-            _datas = FindObjectsByType<RewardStaticData>().ToList();
-        }*/
     }
 }

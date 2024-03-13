@@ -1,17 +1,13 @@
-﻿using System.Collections.Generic;
-using True10.StaticData;
-using UnityEngine;
+﻿using True10.StaticData;
 
 namespace DontStopTheTrain
 {
-    public sealed class ItemsStaticManager
+    public sealed class ItemsStaticManager: StaticManager<IItemStaticData>
     {
-        public IReadOnlyCollection<IItemStaticData> ItemStaticDatas { get; private set; }
-
-        public void Initialize()
+        public override void Initialize()
         {
             var data = StaticDataLoader<ItemsStaticStorage>.LoadStaticData(Constants.StaticDataPaths.ITEMS_PATH);
-            ItemStaticDatas = data.Datas;
+            Datas = data.Datas;
         }
     }
 }

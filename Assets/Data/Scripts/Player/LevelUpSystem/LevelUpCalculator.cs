@@ -4,16 +4,16 @@ namespace DontStopTheTrain
 {
     public sealed class LevelUpCalculator
     {
-        public LevelUpCalculator(LevelsStaticManager levelsStaticManager)
+        public LevelUpCalculator(LevelsStaticManager staticManager)
         {
-            _levelsStaticManager = levelsStaticManager;
+            _staticManager = staticManager;
         }
 
-        private LevelsStaticManager _levelsStaticManager;
+        private LevelsStaticManager _staticManager;
 
         public int GetLevel(int exp)
         {
-            var level = _levelsStaticManager.LevelsStaticDatas.FirstOrDefault(x => exp >= x.Expo);
+            var level = _staticManager.Datas.FirstOrDefault(x => exp >= x.Expo);
             if (level == null)
             {
                 return 1;

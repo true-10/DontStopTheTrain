@@ -33,7 +33,7 @@ namespace DontStopTheTrain.Events
                 if (condition is IConditionResourceRequire)
                 {
                     var conditionResourceRequire = condition as IConditionResourceRequire;
-                    var itemStatic = _itemsStaticManager.ItemStaticDatas.FirstOrDefault(item => item.Id == conditionResourceRequire.ResourceId);
+                    var itemStatic = _itemsStaticManager.Datas.FirstOrDefault(item => item.Id == conditionResourceRequire.ResourceId);
                     if (itemStatic == null)
                     {
                         continue;

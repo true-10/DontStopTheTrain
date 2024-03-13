@@ -40,14 +40,14 @@ namespace DontStopTheTrain.Events
 
         private void Start()
         {
-            _eventViewersManager.TryToAddViewer(this);
+            _eventViewersManager.TryToAdd(this);
             _eventController.OnStart += OnStartEvent;
             _eventController.OnComplete += OnCompleteEvent;
         }
 
         private void OnDestroy()
         {
-            _eventViewersManager.TryToRemoveViewer(this);
+            _eventViewersManager.TryToRemove(this);
             _eventController.OnStart -= OnStartEvent;
             _eventController.OnComplete -= OnCompleteEvent;
         }

@@ -40,7 +40,7 @@ namespace DontStopTheTrain.Events
             {
                 return;
             }
-            var maxPosibleEventsCount = _eventViewersManager.Viewers.Where(v => v.IsFree).Count();
+            var maxPosibleEventsCount = _eventViewersManager.Items.Where(v => v.IsFree).Count();
                         
             var events = _eventGenerator.GetEvents();
 
@@ -64,7 +64,7 @@ namespace DontStopTheTrain.Events
         private void TryToStartWagonEvents(List<IEvent> wagonEvents)
         {
             usedViewers.Clear();
-            var eventViewers = _eventViewersManager.Viewers
+            var eventViewers = _eventViewersManager.Items
                 .Where(viewer => viewer.Type == EventType.Wagon)
                 .ToList();
             
@@ -89,7 +89,7 @@ namespace DontStopTheTrain.Events
 
         private void TryToStartViewEvents(List<IEvent> viewEvents)
         {
-            var eventViewers = _eventViewersManager.Viewers.Where(viewer => viewer.Type == EventType.View);
+            var eventViewers = _eventViewersManager.Items.Where(viewer => viewer.Type == EventType.View);
 
             foreach (var eventToStart in viewEvents)
             {

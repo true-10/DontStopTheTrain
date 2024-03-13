@@ -10,10 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cafbd005e60e6a0489885e125edf5ff4, type: 3}
-  m_Name: Perk
+  m_Name: Experience Perk
   m_EditorClassIdentifier: 
+  _value: 15
+  _perkType: 2
   _info:
-    _name: 
-    _description: 
+    _name: "\u041C\u043D\u043E\u0436\u0438\u0442\u0435\u043B\u044C \u043E\u043F\u044B\u0442\u0430
+      15%"
+    _description: "\u041F\u043E\u043B\u0443\u0447\u0430\u0435\u043C \u0431\u043E\u043B\u044C\u0448\u0435
+      \u043E\u043F\u044B\u0442\u0430"
     _icon: {fileID: 0}
   _conditions: []

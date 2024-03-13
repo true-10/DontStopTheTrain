@@ -40,7 +40,7 @@ namespace DontStopTheTrain.Events
             Conditions = new();
             foreach (var conditionStatic in StaticData.Conditions)
             {
-                Conditions.Add(_conditionFabric.GetCondition(conditionStatic));
+                Conditions.Add(_conditionFabric.Create(conditionStatic));
             }
         }
 
