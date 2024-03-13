@@ -1,6 +1,7 @@
 ﻿namespace True10.Extentions
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     public static class EnumeratorExtentions
     {
@@ -11,16 +12,18 @@
                 yield return enumerator.Current;
             }
         }
+        /// <summary>
+        /// Returns random element from collection
+        /// </summary>
+        public static T GetRandomElement<T>(this IEnumerable<T> list)
+        {
+            if (list.Count() == 0)
+            {
+                return default(T);
+            }
+            int randomIndex = UnityEngine.Random.Range(0, list.Count());
 
-        /*   public static T GetRandomElement<T>(this IEnumerable<T> list)
-           {
-               if (list.Count == 0)
-               {
-                   return default(T);
-               }
-               int randomIndex = Random.Range(0, list.Count);
-
-               return list[randomIndex];
-           }*/
+            return list.ElementAt(randomIndex);
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace DontStopTheTrain.Events
 
         int HashCode { get; }
         int Weight { get; }
-        List<ICondition> Conditions { get; }
+        IReadOnlyCollection<ICondition> Conditions { get; }
         EventStatus Status { get; }//??
 
         void Initialize();

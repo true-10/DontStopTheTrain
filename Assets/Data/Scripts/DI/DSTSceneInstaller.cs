@@ -43,7 +43,8 @@ public class DSTSceneInstaller : MonoInstaller
     {
         Container.Bind<EventsManager>().AsSingle();
         Container.Bind<EventViewersManager>().AsSingle();
-        Container.Bind<PerkManager>().AsSingle();
+        Container.Bind<PerksManager>().AsSingle();
+        Container.Bind<PlayerPerksManager>().AsSingle();
         Container.Bind<ConditionsManager>().AsSingle();
         
     }

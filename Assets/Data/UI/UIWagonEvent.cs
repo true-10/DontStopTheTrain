@@ -32,7 +32,7 @@ namespace DontStopTheTrain
             Show();
         }
 
-        private void UpdateConditionsText(List<ICondition> conditions, int actionPoints)
+        private void UpdateConditionsText(IReadOnlyCollection<ICondition> conditions, int actionPoints)
         {
             _conditionText.text = ConditionToTextConverter.GetText(conditions, actionPoints);
         }

@@ -1,4 +1,6 @@
-﻿using True10.Managers;
+﻿using System.Collections.Generic;
+using System.Linq;
+using True10.Managers;
 using Zenject;
 
 namespace DontStopTheTrain
@@ -23,6 +25,21 @@ namespace DontStopTheTrain
         public override void Dispose()
         {
             Clear();
+        }
+
+        public List<ICondition> GetConditions(IReadOnlyCollection<IConditionStaticData> staticConditions)
+        {
+            var conditions = new List<ICondition>();
+            foreach(var conditionStatic in staticConditions)
+            {
+                var condition = Items.FirstOrDefault(c => c.StaticData.HashCode == conditionStatic.HashCode);
+                if (condition != null)
+                {
+                    conditions.Add(condition);
+                }
+            }
+            return conditions;
+
         }
     }
 }

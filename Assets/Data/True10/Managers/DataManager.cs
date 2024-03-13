@@ -10,12 +10,13 @@ namespace True10.Managers
 
         public IReadOnlyCollection<T> Items => _items;
 
-        private List<T> _items = new();
+        protected List<T> _items = new();
+
 
         public abstract void Initialize();
         public abstract void Dispose();
 
-        public bool TryToAdd(T newItem)
+        public virtual bool TryToAdd(T newItem)
         {
             if (_items.Contains(newItem))
             {
@@ -27,7 +28,7 @@ namespace True10.Managers
             return true;
         }
 
-        public bool TryToRemove(T itemToRemove)
+        public virtual bool TryToRemove(T itemToRemove)
         {
             if (_items.Contains(itemToRemove))
             {
@@ -41,8 +42,11 @@ namespace True10.Managers
         public void Clear()
         {
             foreach (var item in Items)
-            {
-                TryToRemove(item);
+            {   
+                if (item != null)
+                {
+                    TryToRemove(item);
+                }
             }
             _items.Clear();
             _items = null;

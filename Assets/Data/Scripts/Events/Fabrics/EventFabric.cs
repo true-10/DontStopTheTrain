@@ -6,7 +6,7 @@ namespace DontStopTheTrain.Events
     public sealed class EventFabric : IFabric<IEvent, IEventStaticData>
     {
         [Inject]
-        private ConditionFabric _conditionFabric;
+        private ConditionsManager _conditionsManager;
         [Inject]
         private EventsService _eventsService;
 
@@ -15,7 +15,7 @@ namespace DontStopTheTrain.Events
             switch (staticData.Type)
             {
                 case EventType.Wagon:
-                    return new WagonEvent(staticData, _conditionFabric, _eventsService);
+                    return new WagonEvent(staticData, _conditionsManager.GetConditions(staticData.Conditions), _eventsService);
                 case EventType.View:
                 case EventType.ChangeBiom:
                 default:

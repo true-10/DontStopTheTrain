@@ -20,8 +20,6 @@ namespace DontStopTheTrain
     {
         int Value { get; }
         int Level { get; }
-
-        bool AvailableForPlayer { get; }
         IPerkStaticData StaticData { get; }
     }
 
@@ -32,8 +30,6 @@ namespace DontStopTheTrain
         public int Level => 1;
 
         public IPerkStaticData StaticData { get; }
-
-        public bool AvailableForPlayer => false;
 
         public Perk(IPerkStaticData staticData)
         {

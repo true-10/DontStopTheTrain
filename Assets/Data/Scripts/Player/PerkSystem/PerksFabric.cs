@@ -11,6 +11,8 @@ namespace DontStopTheTrain
 
         public IPerk Create(IPerkStaticData staticData)
         {
+            return new Perk(staticData);
+
             switch (staticData.Type)
             {
                 case PerkType.ActionPoint:
@@ -19,7 +21,6 @@ namespace DontStopTheTrain
                 case PerkType.Score:
                 case PerkType.Seller:
                     return new Perk(staticData);
-                //  return new ConditionResourceRequire(staticData as IConditionResourceRequireStaticData, _inventory);
                 default:
                     UnityEngine.Debug.Log($"The type [{staticData.Type}] is not found");
                     return null;

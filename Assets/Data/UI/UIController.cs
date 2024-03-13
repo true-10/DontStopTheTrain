@@ -22,6 +22,7 @@ namespace DontStopTheTrain.UI
         public UIMainGamePlay MainGamePlay => _mainGamePlay;
         public UIWagon Wagon => _wagon;
         public UIEventInfoPopup EventInfoPopup => _eventInfoPopup;
+        public UINewPerk NewPerk => _newPerk;
 
         [SerializeField] 
         private UIMessage _message;
@@ -31,6 +32,8 @@ namespace DontStopTheTrain.UI
         private UIEventInfoPopup _eventInfoPopup;
         [SerializeField] 
         private UIMainGamePlay _mainGamePlay;
+        [SerializeField] 
+        private UINewPerk _newPerk;
         [SerializeField] 
         private UIWagon _wagon;
 

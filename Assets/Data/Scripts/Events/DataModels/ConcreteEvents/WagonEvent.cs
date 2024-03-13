@@ -19,29 +19,29 @@ namespace DontStopTheTrain.Events
 
         public int Weight => 1;// StaticData.weig
 
-        public List<ICondition> Conditions { get; private set; }
+        public IReadOnlyCollection<ICondition> Conditions { get; private set; }
 
         public IEventStaticData StaticData { get; private set; }
         public EventStatus Status { get; private set; }
 
         
-        public WagonEvent(IEventStaticData staticData, ConditionFabric conditionFabric, EventsService eventsService)
+        public WagonEvent(IEventStaticData staticData, IReadOnlyCollection<ICondition> conditions, EventsService eventsService)
         {
             StaticData = staticData;
-            _conditionFabric = conditionFabric;
+            Conditions = conditions;
             _eventsService = eventsService;
         }
         
-        private ConditionFabric _conditionFabric;
+
         private EventsService _eventsService;
 
         public void Initialize()
         {
-            Conditions = new();
+          /*  Conditions = new();
             foreach (var conditionStatic in StaticData.Conditions)
             {
                 Conditions.Add(_conditionFabric.Create(conditionStatic));
-            }
+            }*/
         }
 
         public bool TryToComplete()

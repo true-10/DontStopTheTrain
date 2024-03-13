@@ -5,7 +5,7 @@ namespace DontStopTheTrain
 
     public static class ConditionToTextConverter
     {
-        public static string GetText(List<ICondition> conditions, int actionPoints)
+        public static string GetText(IReadOnlyCollection<ICondition> conditions, int actionPoints)
         {
             string conditionsTexts = string.Empty;
             conditionsTexts += $"ActionPoints: {actionPoints} \n";

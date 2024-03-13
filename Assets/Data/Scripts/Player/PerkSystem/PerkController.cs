@@ -8,7 +8,7 @@ namespace DontStopTheTrain
     public sealed class PerkController
     {
         [Inject]
-        private PerkManager _perkManager;
+        private PlayerPerksManager _perkManager;
 
 
         public void Initialize()
@@ -23,7 +23,6 @@ namespace DontStopTheTrain
         {
             var perks = _perkManager.Items
                 .Where(perk => perk.StaticData.Type == perkType)
-                .Where(perk => perk.AvailableForPlayer)
                 .ToList();
 
             if (perks.Count == 0)
@@ -51,7 +50,7 @@ namespace DontStopTheTrain
         [Inject]
         private Inventory _inventory;
         [Inject]
-        private PerksStaticManager _perkStaticManager;
+        private PerksManager _perksManager;
         [Inject]
         private ConditionFabric _conditionFabric;
 
@@ -65,8 +64,9 @@ namespace DontStopTheTrain
             return false;
         }
 
-        public List<IPerkStaticData> GettAvailablePerks()
+        public List<IPerk> GetAvailablePerks()
         {
+            //проверяем условия
             return null;
         }
     }

@@ -29,6 +29,8 @@ namespace DontStopTheTrain
         private EventController _eventController;
         [Inject]
         private PerkController _perkController;
+        [Inject]
+        private PlayerPerksManager _playerPerksManager;
 
         private ReactiveProperty<int> _expo = new();
         private ReactiveProperty<int> _level = new();
@@ -56,6 +58,8 @@ namespace DontStopTheTrain
             _turnBasedController.OnTurnStart += OnTurnStart;
             _turnBasedController.OnTurnEnd += OnTurnEnd;
             _eventController.OnComplete += OnEventComplete;
+            _playerPerksManager.OnItemAdded += OnPerkAddedOrRemoved;
+            _playerPerksManager.OnItemRemoved += OnPerkAddedOrRemoved;
             //_turnBasedController.OnTurnEnd += TryToLevelUp?;
 
             Expo.Subscribe(x => TryToLevelUp())
@@ -70,15 +74,15 @@ namespace DontStopTheTrain
             _turnBasedController.OnTurnStart -= OnTurnStart;
             _turnBasedController.OnTurnEnd -= OnTurnEnd;
             _eventController.OnComplete -= OnEventComplete;
+            _playerPerksManager.OnItemAdded -= OnPerkAddedOrRemoved;
+            _playerPerksManager.OnItemRemoved -= OnPerkAddedOrRemoved;
 
             _disposables.Clear();
         }
 
-        public void AddPerk(IPerk newPerk)
+        private void OnPerkAddedOrRemoved(IPerk perk)
         {
-            //получаем уровень
-            //смотрим по уровню доступные перки и выдаем на выбор
-            //добавляем в перки выбранные
+            _actionPointsCalculator.Calculate();
         }
 
         private void OnTurnStart(ITurnCallback callback)
@@ -139,13 +143,13 @@ namespace DontStopTheTrain
             switch (playerItemStaticData.PlayerItemType)
             {
                 case PlayerItemType.Expo:
-                    _expo.Value = cachedItemCount + cachedItemCount * _perkController.GetValue(PerkType.Experience);
+                    _expo.Value = cachedItemCount + Mathf.RoundToInt( cachedItemCount * (_perkController.GetValue(PerkType.Experience) / 100f) );
                     break;
                 case PlayerItemType.Credits:
                     _credits.Value = cachedItemCount + cachedItemCount * _perkController.GetValue(PerkType.Credits);
                     break;
                 case PlayerItemType.Score:
-                    _score.Value = cachedItemCount + cachedItemCount * _perkController.GetValue(PerkType.Score);
+                    _score.Value = cachedItemCount + Mathf.RoundToInt(cachedItemCount * (_perkController.GetValue(PerkType.Score) / 100f));                    
                     break;
             }
         }
