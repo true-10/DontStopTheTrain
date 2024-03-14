@@ -8,7 +8,7 @@ namespace DontStopTheTrain.Events
         public Action<IEvent> OnStart { get; set; }
         public Action<IEvent> OnComplete { get; set; }
 
-        public void StartEvent(IEvent gameEvent)
+        public void Start(IEvent gameEvent)
         {
             gameEvent.Initialize();
             gameEvent.OnComplete += OnEventComplete;

@@ -18,4 +18,13 @@ namespace DontStopTheTrain.Events
         void Initialize();
         bool TryToComplete();
     }
+
+    public enum EventStatus
+    {
+        None, //бездействующие
+        Start,
+        InProgress,
+        Complete,
+        Fail
+    }
 }

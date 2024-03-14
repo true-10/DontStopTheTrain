@@ -1,18 +1,6 @@
-using System;
-using System.Collections;
-using UnityEngine;
-
-
 namespace DontStopTheTrain.Events
 {
-    public enum EventStatus
-    {
-        None, //бездействующие
-        Start,
-        InProgress,
-        Complete,
-        Fail
-    }
+
 
     /// <summary>
     /// событие на трассе. типа снежная буря. это влияет на вентяляционные системы поезда. типа содержит список IWagonEvent

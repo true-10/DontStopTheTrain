@@ -4,6 +4,15 @@ using UnityEngine;
 
 namespace DontStopTheTrain
 {
+    /// <summary>
+    /// TODO:
+    /// - вагоны
+    /// - станцию
+    /// - магазин покупок/ремонта
+    /// - выезжающий UIмессадж сбоку. клик по нему - фокус на событии
+    /// </summary>
+    
+
     public static class Constants
     {
         public static class StaticDataPaths
@@ -14,6 +23,7 @@ namespace DontStopTheTrain
             public const string LEVELS_PATH = "LevelsStorage";
             public const string PERKS_PATH = "PerksStorage";
             public const string CONDITIONS_PATH = "ConditionsStorage";
+            public const string QUESTS_PATH = "QuestsStorage";
         }
 
 

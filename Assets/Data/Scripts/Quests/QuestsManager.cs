@@ -1,17 +1,14 @@
-﻿using System.Linq;
-using True10.Managers;
+﻿using True10.Managers;
 using Zenject;
 
 namespace DontStopTheTrain
 {
-    public sealed class PerksManager : DataManager<IPerk>
+    public sealed class QuestsManager : DataManager<IQuest>
     {
         [Inject]
-        private PerksFabric _fabric;
+        private QuestsFabric _fabric;
         [Inject]
-        private PerksStaticManager _staticManager;
-        [Inject]
-        private PlayerPerksManager _playerPerksManager;
+        private QuestStaticManager _staticManager;
 
         public override void Initialize()
         {
@@ -22,15 +19,9 @@ namespace DontStopTheTrain
                 TryToAdd(item);
             }
         }
-
         public override void Dispose()
         {
             Clear();
-        }       
-
-        public void SetPerkAvailable(IPerk perk)
-        {
-            _playerPerksManager.TryToAdd(perk);
         }
     }
 }

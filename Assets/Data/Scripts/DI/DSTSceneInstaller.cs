@@ -39,6 +39,7 @@ public class DSTSceneInstaller : MonoInstaller
         Container.Bind<LevelsStaticManager>().AsSingle();
         Container.Bind<PerksStaticManager>().AsSingle();
         Container.Bind<ConditionStaticManager>().AsSingle();
+        Container.Bind<QuestStaticManager>().AsSingle();
 
         Container.Bind<PerksLeveslStaticData>().FromInstance(_perksLeveslStaticData).AsSingle();
     }
@@ -50,6 +51,7 @@ public class DSTSceneInstaller : MonoInstaller
         Container.Bind<PerksManager>().AsSingle();
         Container.Bind<PlayerPerksManager>().AsSingle();
         Container.Bind<ConditionsManager>().AsSingle();
+        Container.Bind<QuestsManager>().AsSingle();
         
     }
 
@@ -65,6 +67,7 @@ public class DSTSceneInstaller : MonoInstaller
         Container.Bind<EventStarter>().AsSingle();
         Container.Bind<EventGenerator>().AsSingle();
         Container.Bind<PerksController>().AsSingle();
+        Container.Bind<QuestController>().AsSingle();
     }
 
     private void InstallFabrics()
@@ -72,6 +75,7 @@ public class DSTSceneInstaller : MonoInstaller
         Container.Bind<ConditionFabric>().AsSingle();
         Container.Bind<EventFabric>().AsSingle();
         Container.Bind<PerksFabric>().AsSingle();
+        Container.Bind<QuestsFabric>().AsSingle();
     }
 
     private void InstallServices()

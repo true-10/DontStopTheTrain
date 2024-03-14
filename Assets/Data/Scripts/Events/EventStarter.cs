@@ -85,7 +85,7 @@ namespace DontStopTheTrain.Events
                 {
                     view.TryToSetEventData(eventToStart);
                     usedViewers.Add(view);
-                    _eventController.StartEvent(eventToStart);
+                    _eventController.Start(eventToStart);
                 }
             }
         }
@@ -96,7 +96,7 @@ namespace DontStopTheTrain.Events
 
             foreach (var eventToStart in viewEvents)
             {
-                _eventController.StartEvent(eventToStart);
+                _eventController.Start(eventToStart);
             }
         }
 

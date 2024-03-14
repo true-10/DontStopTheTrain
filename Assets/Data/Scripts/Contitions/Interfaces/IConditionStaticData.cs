@@ -9,9 +9,9 @@ namespace DontStopTheTrain
         ConditionType Type { get; }
     }
 
-    public enum ConditionId
+  /*  public enum ConditionId
     {
         None = 0,
 
-    }
+    }*/
 }
