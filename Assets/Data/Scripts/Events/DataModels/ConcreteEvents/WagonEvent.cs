@@ -15,25 +15,30 @@ namespace DontStopTheTrain.Events
     {
         public Action<IEvent> OnComplete { get; set; }
 
-        public int HashCode => throw new NotImplementedException();
+        public int HashCode => GetHashCode();
 
+        public int ActionPointPrice => UnityEngine.Mathf.Clamp(_actionPointPrice, 0, StaticData.ActionPointPrice);
         public int Weight => 1;// StaticData.weig
 
-        public IReadOnlyCollection<ICondition> Conditions { get; private set; }
+        public IReadOnlyCollection<ICondition> ÑompleteConditions { get; private set; }
 
         public IEventStaticData StaticData { get; private set; }
         public EventStatus Status { get; private set; }
 
         
-        public WagonEvent(IEventStaticData staticData, IReadOnlyCollection<ICondition> conditions, EventsService eventsService)
+        public WagonEvent(IEventStaticData staticData, IReadOnlyCollection<ICondition> conditions, 
+            EventsService eventsService, PerksController perksController)
         {
             StaticData = staticData;
-            Conditions = conditions;
+            ÑompleteConditions = conditions;
             _eventsService = eventsService;
+            _perksController = perksController;
         }
-        
 
         private EventsService _eventsService;
+        private PerksController _perksController;
+
+        private int _actionPointPrice => StaticData.ActionPointPrice - _perksController.GetValue(PerkType.ReduceActionPointPrice);
 
         public void Initialize()
         {

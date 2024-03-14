@@ -15,7 +15,7 @@ namespace DontStopTheTrain
         [Inject]
         private EventStarter _eventStarter;
         [Inject]
-        private PerkController _perkController;
+        private PerksController _perkController;
 
         [SerializeField]
         private InventoryStarterPackStorage _inventoryStartItemsStorage;

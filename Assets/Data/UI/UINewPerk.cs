@@ -36,7 +36,7 @@ namespace DontStopTheTrain
             //TODO: выдавать по уровню из статики. типа на 3, 5, 10 уровнях и тд
             if (_perksLeveslStaticData.Levels.Contains(level) == false)
             {
-                return;
+            //    return;
             }
             var perk1 = _perksManager.Items.GetRandomElement();
             var perk2 = _perksManager.Items.GetRandomElement();

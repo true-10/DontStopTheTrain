@@ -11,7 +11,8 @@ namespace DontStopTheTrain.Events
         int Chance { get; }//Weight?
         int ActionPointPrice { get; }
         IReadOnlyList<RewardId> RewardIds { get; }
-        IReadOnlyCollection<IConditionStaticData> Conditions { get; }
+        IReadOnlyCollection<IConditionStaticData> ConditionsToComplete { get; }//условия завершения
+        IReadOnlyCollection<IConditionStaticData> ConditionsToStart { get; }//условия выдачи
         public Information Info { get; }
         GameObject EventPrefab { get; }
     }

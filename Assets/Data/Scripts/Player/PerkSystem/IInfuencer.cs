@@ -8,4 +8,9 @@ namespace DontStopTheTrain
         IReadOnlyCollection<IConditionStaticData> StopConditions { get; }
         //количество ходов/дней
     }
+
+    /*
+     * низкая мораль - уменьшает кол-во очков действия
+     * 
+     */
 }

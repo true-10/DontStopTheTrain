@@ -20,7 +20,7 @@ namespace DontStopTheTrain
         {
             _nameText.text = eventData.StaticData.Info.Name;
             _descriptionText.text = eventData.StaticData.Info.Description;
-            _conditionText.text = ConditionToTextConverter.GetText(eventData.Conditions, eventData.StaticData.ActionPointPrice);
+            _conditionText.text = ConditionToTextConverter.GetText(eventData.ÑompleteConditions, eventData.ActionPointPrice);
             _worldPostionSetter.SetPosition(lookAt);
             Show();
 

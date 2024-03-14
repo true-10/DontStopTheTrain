@@ -14,6 +14,8 @@ namespace DontStopTheTrain
         private EventsService _eventsService;
         [Inject]
         private UIController _uiController;
+        [Inject]
+        private PerksController _perksController;
 
         [SerializeField]
         private Button _completeEventButton;
@@ -27,7 +29,7 @@ namespace DontStopTheTrain
         public void Show(IEvent eventData)
         {
             _eventData = eventData;
-            UpdateConditionsText(eventData.Conditions, eventData.StaticData.ActionPointPrice);
+            UpdateConditionsText(eventData.ÑompleteConditions, eventData.ActionPointPrice);
             TryToActivateButton(eventData);
             Show();
         }

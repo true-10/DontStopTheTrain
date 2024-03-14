@@ -28,7 +28,7 @@ namespace DontStopTheTrain
         [Inject]
         private EventController _eventController;
         [Inject]
-        private PerkController _perkController;
+        private PerksController _perkController;
         [Inject]
         private PlayerPerksManager _playerPerksManager;
 
@@ -98,7 +98,7 @@ namespace DontStopTheTrain
 
         private void OnEventComplete(IEvent eventData)
         {
-            _actionPoints.Value -= eventData.StaticData.ActionPointPrice;
+            _actionPoints.Value -= eventData.ActionPointPrice;
         }
 
         private void ResetActionPoints()

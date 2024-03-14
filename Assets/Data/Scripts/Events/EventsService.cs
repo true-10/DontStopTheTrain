@@ -17,18 +17,18 @@ namespace DontStopTheTrain.Events
 
         public bool IsEnoughActionPoints(IEvent eventData)
         {
-            return _player.ActionPoints.Value >= eventData.StaticData.ActionPointPrice;
+            return _player.ActionPoints.Value >= eventData.ActionPointPrice;
         }
 
         public bool IsAllConditionsAreMet(IEvent eventData)
         {
-            return eventData.Conditions.All(condition => condition.IsMet());
+            return eventData.СompleteConditions.All(condition => condition.IsMet());
         }
 
         public List<InventoryItem> GetResourceFromConditions(IEvent eventData)
         {
             List<InventoryItem> resourcesToRemove = new();
-            foreach (var condition in eventData.Conditions)
+            foreach (var condition in eventData.СompleteConditions)
             {
                 if (condition is IConditionResourceRequire)
                 {
@@ -60,7 +60,7 @@ namespace DontStopTheTrain.Events
 
         public bool IsAvailableForPlayerLevel(IEventStaticData staticData)
         {
-            var levelConditions = staticData.Conditions
+            var levelConditions = staticData.ConditionsToStart
                 .Where(condition => (condition is IConditionLevelRequireStaticData))
                 .Where(condition => (condition as IConditionLevelRequireStaticData).IsMet(_player.Level.Value) )
                 .ToList();

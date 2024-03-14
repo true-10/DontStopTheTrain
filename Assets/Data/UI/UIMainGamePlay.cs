@@ -59,7 +59,7 @@ namespace DontStopTheTrain
         private void OnTurnStarted(ITurnCallback callback)
         {
             //Debug.Log($"Turn[{callback.Number}] is started");
-            _turnBasedController.StartTurn();
+           // _turnBasedController.StartTurn();
         }
 
         private void CompleteTurn()

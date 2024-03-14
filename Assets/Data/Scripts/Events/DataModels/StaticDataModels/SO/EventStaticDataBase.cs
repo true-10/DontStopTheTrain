@@ -11,9 +11,11 @@ namespace DontStopTheTrain.Events
         public int Chance => _chance;
         public IReadOnlyList<RewardId> RewardIds => _rewardIds.AsReadOnly();
         public GameObject EventPrefab => _eventPrefab;
-        public IReadOnlyCollection<IConditionStaticData> Conditions => _conditions.AsReadOnly();
+        public IReadOnlyCollection<IConditionStaticData> ConditionsToComplete => _conditionsToComplete.AsReadOnly();
+        public IReadOnlyCollection<IConditionStaticData> ConditionsToStart => _conditionsToStart.AsReadOnly();
 
         public Information Info => _info;
+
 
         [SerializeField, Min(0)]
         private EventId _id;
@@ -24,7 +26,9 @@ namespace DontStopTheTrain.Events
         [SerializeField, Min(0)]
         private List<RewardId> _rewardIds;
         [SerializeField]
-        private List<ConditionBase> _conditions;
+        private List<ConditionBase> _conditionsToComplete;
+        [SerializeField]
+        private List<ConditionBase> _conditionsToStart;
         [SerializeField]
         private GameObject _eventPrefab;
         [SerializeField]

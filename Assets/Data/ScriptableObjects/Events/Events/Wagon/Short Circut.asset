@@ -16,12 +16,12 @@ MonoBehaviour:
   _actionPointPrice: 5
   _chance: 1
   _rewardIds: 0100000006000000
-  _conditions:
+  _conditionsToComplete:
   - {fileID: 11400000, guid: 8df992a554c4e204c91727d4808b5a59, type: 2}
+  _conditionsToStart:
   - {fileID: 11400000, guid: 81e454d723fa766428c86cd18e68f21c, type: 2}
   _eventPrefab: {fileID: 1816277759470626242, guid: 547b0079d7a228e42a751a82fc3bd7ee,
     type: 3}
-  _levels: 0100000002000000
   _info:
     _name: Electro Sparks
     _description: "\u041A\u043E\u0440\u043E\u0442\u0438\u0442 \u0447\u0442\u043E

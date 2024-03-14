@@ -5,10 +5,12 @@ namespace DontStopTheTrain.Train
     //какие системы?
     //обязательные:
     //-тормозная система
+    //-климат контроль
 
     //специальные:
     //-Двигатель
-    //-
+    //-Генератор
+    //
 
     //опциональные:
     //-
@@ -28,6 +30,7 @@ namespace DontStopTheTrain.Train
         WagonSystemType Type { get; }
         public Sprite Icon { get; }
         int Price { get; }//цена
+        int EnergyConsumption { get; } //потребление энергии
     }
 
     public interface IEngineSystem : IWagonSystem
@@ -49,5 +52,10 @@ namespace DontStopTheTrain.Train
     public interface IPassangerSystem : IWagonSystem
     {
         //кол-во мест для пассажиров?
+    }
+
+    public interface IWeaponSystem : IWagonSystem
+    {
+
     }
 }

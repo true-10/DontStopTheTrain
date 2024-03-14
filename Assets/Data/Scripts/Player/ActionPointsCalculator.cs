@@ -4,9 +4,9 @@ namespace DontStopTheTrain
 {
     public sealed class ActionPointsCalculator
     {
-        private PerkController _perkController;
+        private PerksController _perkController;
 
-        public ActionPointsCalculator(PerkController perkController/*список перков, бафов, уровень*/)
+        public ActionPointsCalculator(PerksController perkController/*список перков, бафов, уровень*/)
         {
             _perkController = perkController;
 

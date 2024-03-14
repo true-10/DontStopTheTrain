@@ -36,8 +36,9 @@ namespace DontStopTheTrain.Events
 
         private void TryToStartEvents(ITurnCallback callback)
         {
-            if (callback.Number < 2)
+            if (callback.Number < 1)
             {
+                _turnBasedController.StartTurn();
                 return;
             }
             var maxPosibleEventsCount = _eventViewersManager.Items.Where(v => v.IsFree).Count();
@@ -47,6 +48,7 @@ namespace DontStopTheTrain.Events
             if (events.Count == 0)
             {
                 Debug.Log($"No Events To Start. maxPosibleEventsCount = {maxPosibleEventsCount}");
+                _turnBasedController.StartTurn();
                 return;
             }
 
@@ -59,6 +61,7 @@ namespace DontStopTheTrain.Events
                 .Where(eventData => eventData.StaticData.Type == EventType.View)
                 .ToList();
             TryToStartViewEvents(viewEvents);
+            _turnBasedController.StartTurn();
         }
 
         private void TryToStartWagonEvents(List<IEvent> wagonEvents)

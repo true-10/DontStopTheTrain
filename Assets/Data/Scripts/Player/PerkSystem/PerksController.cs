@@ -5,7 +5,7 @@ using Zenject;
 
 namespace DontStopTheTrain
 {
-    public sealed class PerkController
+    public sealed class PerksController
     {
         [Inject]
         private PlayerPerksManager _perkManager;

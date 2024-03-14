@@ -5,6 +5,8 @@ using Zenject;
 
 namespace DontStopTheTrain.Events
 {
+    //TODO: перенести в системы? если они износились, то вызываем событие?
+    //или проверяем через вьюверы состояние систем?
     public sealed class EventGenerator
     {
         [Inject]
