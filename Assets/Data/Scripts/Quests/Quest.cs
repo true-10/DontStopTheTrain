@@ -18,14 +18,19 @@ namespace DontStopTheTrain
             Status = QuestStatus.None;
         }
 
-        public void Initialize()
+        public void Start()
         {
-
+            Status = QuestStatus.InProgress;
         }
 
         public bool TryToComplete()
         {
             return false;
+        }
+        public void Reset()
+        {
+            Status = QuestStatus.None;
+
         }
     }
 }

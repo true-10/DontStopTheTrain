@@ -8,6 +8,7 @@ namespace True10.CameraSystem
         Action<ICameraCallback> OnCameraOn { get; set; }
         Action<ICameraCallback> OnCameraOff { get; set; }
 
+        void SetDefaultCamera(ICameraHolder cameraHolder);
         void SwitchToCamera(int hash);
         void SwitchToCamera(ICameraHolder cameraHolder);
         void SwitchToDefaultCamera();

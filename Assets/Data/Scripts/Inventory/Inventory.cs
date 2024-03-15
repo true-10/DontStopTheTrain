@@ -14,7 +14,7 @@ namespace DontStopTheTrain
         public Action<InventoryCallback> OnInventoryChanged { get; set; }
 
         [Inject]
-        private ItemsStaticManager _itemsStaticManager;
+        private ItemsStaticStorage _itemsStaticManager;
 
 
         private Dictionary<ItemId, InventoryItem> _idInventoryItems = new();

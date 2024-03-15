@@ -7,19 +7,20 @@ using System;
 using True10.CameraSystem;
 using UnityEngine;
 using Zenject;
-
 public class DSTSceneInstaller : MonoInstaller
 { 
     [SerializeField] 
-    private CameraController _cameraController;
+    private CameraControllerBehaviour _cameraController;
     [SerializeField] 
     private TurnBasedController _turnBasedController;
     [SerializeField] 
     private Train _train;
     [SerializeField] 
     private UIController _uiController;
-    [SerializeField] 
-    private PerksLeveslStaticData _perksLeveslStaticData;
+    [SerializeField]
+    private ConditionsStaticStorage _conditionsStaticStorage;
+    [SerializeField]
+    private QuestsStaticStorage _questsStaticStorage;
 
     public override void InstallBindings()
     {
@@ -33,54 +34,33 @@ public class DSTSceneInstaller : MonoInstaller
 
     private void InstallStaticDataManagers()
     {
-        Container.Bind<ItemsStaticManager>().AsSingle();
-        Container.Bind<RewardsStaticManager>().AsSingle();
-        Container.Bind<EventsStaticManager>().AsSingle();
-        Container.Bind<LevelsStaticManager>().AsSingle();
-        Container.Bind<PerksStaticManager>().AsSingle();
-        Container.Bind<ConditionStaticManager>().AsSingle();
-        Container.Bind<QuestStaticManager>().AsSingle();
-
-        Container.Bind<PerksLeveslStaticData>().FromInstance(_perksLeveslStaticData).AsSingle();
+        Container.Bind<ConditionsStaticStorage>().FromScriptableObject(_conditionsStaticStorage).AsSingle();
+        Container.Bind<QuestsStaticStorage>().FromScriptableObject(_questsStaticStorage).AsSingle();
     }
 
     private void InstallManagers()
     {
-        Container.Bind<EventsManager>().AsSingle();
-        Container.Bind<EventViewersManager>().AsSingle();
-        Container.Bind<PerksManager>().AsSingle();
-        Container.Bind<PlayerPerksManager>().AsSingle();
         Container.Bind<ConditionsManager>().AsSingle();
-        Container.Bind<QuestsManager>().AsSingle();
-        
+        Container.Bind<QuestsManager>().AsSingle();        
     }
 
     private void InstallControllers()
     {
-        Container.Bind<Inventory>().AsSingle();
         Container.Bind<TurnBasedController>().FromInstance(_turnBasedController).AsSingle();       
-        Container.Bind<ICameraController>().FromInstance(_cameraController).AsSingle();
+       // Container.Bind<ICameraController>().FromInstance(_cameraController).AsSingle();
+        Container.Bind<ICameraController>().To<CameraController>().AsSingle();
         Container.Bind<UIController>().FromInstance(_uiController).AsSingle();
-        Container.Bind<Player>().AsSingle();
-        Container.Bind<EventController>().AsSingle();
-        Container.Bind<RewardController>().AsSingle();
-        Container.Bind<EventStarter>().AsSingle();
-        Container.Bind<EventGenerator>().AsSingle();
-        Container.Bind<PerksController>().AsSingle();
-        Container.Bind<QuestController>().AsSingle();
+        Container.Bind<QuestController>().AsSingle();    
     }
 
     private void InstallFabrics()
     {
         Container.Bind<ConditionFabric>().AsSingle();
-        Container.Bind<EventFabric>().AsSingle();
-        Container.Bind<PerksFabric>().AsSingle();
         Container.Bind<QuestsFabric>().AsSingle();
     }
 
     private void InstallServices()
     {
-        Container.Bind<EventsService>().AsSingle();
     }
 
     private void InstallTrain()

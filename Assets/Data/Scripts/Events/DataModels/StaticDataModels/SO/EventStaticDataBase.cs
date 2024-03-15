@@ -5,6 +5,7 @@ namespace DontStopTheTrain.Events
 {
     public class EventStaticDataBase : ScriptableObject, IEventStaticData
     {
+        public int HashCode => GetHashCode();
         public EventId Id => _id;
         public int ActionPointPrice => _actionPointPrice;
         public virtual EventType Type => EventType.None;

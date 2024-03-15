@@ -10,7 +10,13 @@ namespace DontStopTheTrain.Events
         [Inject]
         private EventFabric _fabric;
         [Inject]
-        private EventsStaticManager _staticManager;
+        private EventsStaticStorage _staticManager;
+
+        
+        public void Reset(IEvent eventData)
+        {
+            eventData.Reset();         
+        }
 
         public override void Initialize()
         {
@@ -33,12 +39,25 @@ namespace DontStopTheTrain.Events
                 .FirstOrDefault(m => m.StaticData.Id == id);
         }   
 
+
         public IEvent GetFreeEventById(EventId id)
         {
             return GetAllFreeEvents()
                 .FirstOrDefault(m => m.StaticData.Id == id);
         }
 
+       /* public IEvent GetEventByHashCode(int hashCode)
+        {
+            return Items
+                .FirstOrDefault(m => m.StaticData.HashCode == hashCode);
+        }
+
+        public IEvent GetFreeEventByHashCode(int hashCode)
+        {
+            return GetAllFreeEvents()
+                .FirstOrDefault(m => m.StaticData.HashCode == hashCode);
+        }
+       */
         public List<IEvent> GetAllFreeEvents()
         {
             return Items

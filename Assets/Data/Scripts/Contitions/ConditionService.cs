@@ -7,8 +7,6 @@ namespace DontStopTheTrain
 {
     public sealed class ConditionService
     {
-        [Inject]
-        private ConditionFabric _conditionFabric;
 
         public bool IsMet(IConditionStaticData conditionStaticData)
         {

@@ -1,4 +1,5 @@
-﻿using True10.Managers;
+﻿using DontStopTheTrain.Events;
+using True10.Managers;
 using Zenject;
 
 namespace DontStopTheTrain
@@ -8,7 +9,12 @@ namespace DontStopTheTrain
         [Inject]
         private QuestsFabric _fabric;
         [Inject]
-        private QuestStaticManager _staticManager;
+        private QuestsStaticStorage _staticManager;
+
+        public void Reset(IQuest questData)
+        {
+            questData.Reset();
+        }
 
         public override void Initialize()
         {

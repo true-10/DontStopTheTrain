@@ -4,12 +4,12 @@ namespace DontStopTheTrain
 {
     public sealed class LevelUpCalculator
     {
-        public LevelUpCalculator(LevelsStaticManager staticManager)
+        public LevelUpCalculator(LevelsStaticStorage staticManager)
         {
             _staticManager = staticManager;
         }
 
-        private LevelsStaticManager _staticManager;
+        private LevelsStaticStorage _staticManager;
 
         public int GetLevel(int exp)
         {

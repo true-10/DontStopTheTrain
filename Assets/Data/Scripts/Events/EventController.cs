@@ -10,7 +10,7 @@ namespace DontStopTheTrain.Events
 
         public void Start(IEvent gameEvent)
         {
-            gameEvent.Initialize();
+            gameEvent.Start();
             gameEvent.OnComplete += OnEventComplete;
             OnStart?.Invoke(gameEvent);
         }      

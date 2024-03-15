@@ -40,13 +40,14 @@ namespace DontStopTheTrain.Events
 
         private int _actionPointPrice => StaticData.ActionPointPrice - _perksController.GetValue(PerkType.ReduceActionPointPrice);
 
-        public void Initialize()
+        public void Start()
         {
-          /*  Conditions = new();
-            foreach (var conditionStatic in StaticData.Conditions)
-            {
-                Conditions.Add(_conditionFabric.Create(conditionStatic));
-            }*/
+            Status = EventStatus.InProgress;
+        }
+
+        public void Reset()
+        {
+            Status = EventStatus.None;
         }
 
         public bool TryToComplete()

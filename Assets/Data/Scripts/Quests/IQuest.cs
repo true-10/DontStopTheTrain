@@ -11,12 +11,15 @@ namespace DontStopTheTrain
         IQuestStaticData StaticData { get; }
         QuestStatus Status { get; }
 
-        void Initialize();
+        void Start();
+        void Reset();
         bool TryToComplete();
     }
 
     public interface IQuestStaticData
     {
+        // int HashCode { get; }
+        QuestId Id { get; }
         QuestType Type { get; }
         IReadOnlyList<RewardId> RewardIds { get; }
         IReadOnlyCollection<IConditionStaticData> ConditionsToComplete { get; }
@@ -24,11 +27,18 @@ namespace DontStopTheTrain
 
     }
 
+
+    public enum QuestId
+    {
+        None = 0,
+
+    }
+
     public enum QuestType
     {
         Unknown = 0,
         GatherResources = 1,
-        CompleteEvent = 2,
+        CompleteEvent = 2,//??
 
     }
 

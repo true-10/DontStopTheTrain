@@ -24,7 +24,7 @@ namespace DontStopTheTrain
         [Inject]
         private TurnBasedController _turnBasedController;
         [Inject]
-        private LevelsStaticManager _levelsStaticManager;
+        private LevelsStaticStorage _levelsStaticManager;
         [Inject]
         private EventController _eventController;
         [Inject]

@@ -10,7 +10,7 @@ namespace DontStopTheTrain.Events
     public sealed class EventGenerator
     {
         [Inject]
-        private EventsStaticManager _eventsStaticManager;
+        private EventsStaticStorage _eventsStaticManager;
         [Inject]
         private EventFabric _eventsFabric;
         [Inject]
@@ -44,8 +44,9 @@ namespace DontStopTheTrain.Events
         {
             return _eventsStaticManager
                 .Datas
+                .Select(eventData => eventData as IEventStaticData)
                 .Where(eventData => _eventsService.IsAvailableForPlayerLevel(eventData))
-                .ToList();
+                .ToList();// as List<IEventStaticData>;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace DontStopTheTrain
     public sealed class ConditionsManager : DataManager<ICondition>
     {
         [Inject]
-        private ConditionStaticManager _staticManager;
+        private ConditionsStaticStorage _staticManager;
         [Inject]
         private ConditionFabric _fabric;
 

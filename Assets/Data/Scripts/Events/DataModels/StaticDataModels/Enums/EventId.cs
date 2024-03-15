@@ -4,5 +4,6 @@
     {
         None = 0,
         WagonFire = 1,
+        ShortCircut = 2,
     }
 }

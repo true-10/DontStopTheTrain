@@ -5,6 +5,7 @@ namespace DontStopTheTrain.Events
 {
     public interface IEventStaticData
     {
+        int HashCode { get; }
         EventId Id { get; }
         EventType Type { get; }
         // int Weight { get; }

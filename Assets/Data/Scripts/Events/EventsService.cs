@@ -9,7 +9,7 @@ namespace DontStopTheTrain.Events
         [Inject]
         private Player _player;
         [Inject]
-        private ItemsStaticManager _itemsStaticManager;
+        private ItemsStaticStorage _itemsStaticManager;
         [Inject]
         private Inventory _inventory;
 

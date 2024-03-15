@@ -8,7 +8,7 @@ namespace DontStopTheTrain
 {
     public class InitializerStaticManagers : MonoBehaviour
     {
-        [Inject]
+     /*   [Inject]
         private ItemsStaticManager _itemsStaticManager;
         [Inject]
         private RewardsStaticManager _rewardsStaticManager;
@@ -22,17 +22,19 @@ namespace DontStopTheTrain
         private ConditionStaticManager _conditionStaticManager;
         [Inject]
         private QuestStaticManager _questStaticManager;
-
+        [Inject]
+        private BuffsStaticManager _buffsStaticManager;
+     */
         public void Initialize()
         {
-           // var itemsData = StaticDataLoader<ItemsStaticStorage>.LoadStaticData(Constants.StaticDataPaths.ITEMS_PATH);
-            _itemsStaticManager.Initialize();// itemsData.Datas.ToList());
-            _rewardsStaticManager.Initialize();
-            _eventsStaticManager.Initialize();
-            _levelsStaticManager.Initialize();
-            _perkStaticManager.Initialize();
-            _conditionStaticManager.Initialize();
-            _questStaticManager.Initialize();
+            /*_itemsStaticManager.Initialize(Constants.StaticDataPaths.ITEMS_PATH);
+            _rewardsStaticManager.Initialize(Constants.StaticDataPaths.REWARDS_PATH);
+            _eventsStaticManager.Initialize(Constants.StaticDataPaths.EVENTS_PATH);
+            _levelsStaticManager.Initialize(Constants.StaticDataPaths.LEVELS_PATH);
+            _perkStaticManager.Initialize(Constants.StaticDataPaths.PERKS_PATH);
+            _conditionStaticManager.Initialize(Constants.StaticDataPaths.CONDITIONS_PATH);
+            _questStaticManager.Initialize(Constants.StaticDataPaths.QUESTS_PATH);
+            _buffsStaticManager.Initialize(Constants.StaticDataPaths.BUFFS_PATH);*/
         }
 
         public void Dispose()

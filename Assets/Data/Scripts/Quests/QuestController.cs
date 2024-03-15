@@ -13,7 +13,7 @@ namespace DontStopTheTrain
 
         public void Start(IQuest quest)
         {
-            quest.Initialize();
+            quest.Start();
             quest.OnComplete += Complete;
             OnStart?.Invoke(quest);
         }

@@ -1,4 +1,5 @@
 ﻿using DontStopTheTrain.Events;
+using True10.CameraSystem;
 using UnityEngine;
 using Zenject;
 
@@ -16,9 +17,13 @@ namespace DontStopTheTrain
         private EventStarter _eventStarter;
         [Inject]
         private PerksController _perkController;
+        [Inject]
+        private ICameraController _cameraController;
 
         [SerializeField]
         private InventoryStarterPackStorage _inventoryStartItemsStorage;
+        [SerializeField]
+        private CameraHolder _defaultCameraHolder;
 
         public void Initialize()
         {
@@ -28,6 +33,7 @@ namespace DontStopTheTrain
             _inventory.Initialize(_inventoryStartItemsStorage.GetStartItems());
 
             _eventStarter.Initialize();
+            _cameraController.SetDefaultCamera(_defaultCameraHolder);
         }
 
         public void Dispose()
