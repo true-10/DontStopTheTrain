@@ -12,6 +12,8 @@ namespace DontStopTheTrain
         public Action<ITurnCallback> OnTurnStart { get; set; }
         public Action<ITurnCallback> OnTurnTick { get; set; }
 
+        public int CurrentTurn { get; private set; }
+
         private Coroutine _turnLoopCoroutine = null;
 
         private bool _turnIsComleted = false;
@@ -27,7 +29,7 @@ namespace DontStopTheTrain
 
         private IEnumerator TurnLoopCoroutine()
         {
-            int index = 0;
+            CurrentTurn = 0;
 
 
             //некое событие
@@ -36,8 +38,8 @@ namespace DontStopTheTrain
             {
                 _turnIsComleted = false;
                 _continueAfterStart = false;
-                int groupId = GetTurnGroup(index); //выдаем группу, чей ход
-                TurnCallback callback = new(index, groupId)
+                int groupId = GetTurnGroup(CurrentTurn); //выдаем группу, чей ход
+                TurnCallback callback = new(CurrentTurn, groupId)
                 {
                      //- общее кол-во ходов или индекс Index с начала
                                    //turnGroup - группа хода. кто входит в эту группу, тот и ходит
@@ -58,7 +60,7 @@ namespace DontStopTheTrain
                 //если события не выполнены, то применяем штраф
 
                 OnTurnEnd?.Invoke(callback);
-                index++;
+                CurrentTurn++;
                 yield return null;
                 //некое событие
                 //проверка на левел ап, если да, то выбираем перк?
@@ -70,12 +72,6 @@ namespace DontStopTheTrain
         private void InitCallbacks()
         {
 
-        }
-
-        //убрать отсюда
-        void OnEventComplete(IGameEventCallback callback)
-        {
-            //тут списываем очки действия за ивент
         }
 
         private int GetTurnGroup(int index)
@@ -122,7 +118,6 @@ namespace DontStopTheTrain
     /// </summary>
     public interface ITurnBasedController
     {
-
         Action<ITurnCallback> OnTurnEnd { get; set; }
         Action<ITurnCallback> OnTurnStart { get; set; }
         // Action<ITurnCallback> OnTurnTick { get; set; }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using True10.Enums;
 using UnityEngine;
 
 
@@ -10,12 +11,12 @@ namespace DontStopTheTrain.Events
     {
         int EventId { get; }
         //IGameEvent GameEvent { get; set; }
-        EventStatus EventStatus { get;}
+        ProgressStatus EventStatus { get;}
     }
 
     public class GameEventCallback : IGameEventCallback
     {
         public int EventId { get; }
-        public EventStatus EventStatus { get;}
+        public ProgressStatus EventStatus { get;}
     }
 }

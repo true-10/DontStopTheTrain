@@ -8,7 +8,7 @@ using UnityEngine;
 using Zenject;
 
 namespace DontStopTheTrain
-{    
+{
     public sealed class Inventory
     {
         public Action<InventoryCallback> OnInventoryChanged { get; set; }
@@ -52,7 +52,6 @@ namespace DontStopTheTrain
             {
                 _idInventoryItems.Add(itemId, newInventoryItems);
             }
-            //var itemStaticData = _itemsStaticManager.ItemStaticDatas.FirstOrDefault(item => item.Id == itemId);
             InventoryCallback callback = new(InventoryOperationType.Add, status,
                 _idInventoryItems[itemId], count, itemStatic);
             OnInventoryChanged?.Invoke(callback);
@@ -99,19 +98,6 @@ namespace DontStopTheTrain
             }
             count = _idInventoryItems[itemId].Count;
             return true;
-        }
-    }
-
-    [Serializable]
-    public sealed class InventoryItem
-    {
-        public IItemStaticData StaticData { get; private set; }
-        public int Count { get; private set; }
-
-        public InventoryItem(IItemStaticData staticData, int count)
-        {
-            StaticData = staticData;
-            Count = count;
         }
     }
 

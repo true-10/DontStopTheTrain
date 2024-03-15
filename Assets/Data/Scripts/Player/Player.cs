@@ -28,9 +28,7 @@ namespace DontStopTheTrain
         [Inject]
         private EventController _eventController;
         [Inject]
-        private PerksController _perkController;
-        [Inject]
-        private PlayerPerksManager _playerPerksManager;
+        private BuffAndPerksService _buffAndPerksService;
 
         private ReactiveProperty<int> _expo = new();
         private ReactiveProperty<int> _level = new();
@@ -50,7 +48,7 @@ namespace DontStopTheTrain
         public void Initialize()
         {
             _levelUpCalculator = new(_levelsStaticManager);
-            _actionPointsCalculator = new(_perkController);
+            _actionPointsCalculator = new(_buffAndPerksService);
 
             _actionPointsCalculator.Calculate();
 
@@ -58,8 +56,7 @@ namespace DontStopTheTrain
             _turnBasedController.OnTurnStart += OnTurnStart;
             _turnBasedController.OnTurnEnd += OnTurnEnd;
             _eventController.OnComplete += OnEventComplete;
-            _playerPerksManager.OnItemAdded += OnPerkAddedOrRemoved;
-            _playerPerksManager.OnItemRemoved += OnPerkAddedOrRemoved;
+            _buffAndPerksService.OnChange += OnPerkOrBuffChanged;
             //_turnBasedController.OnTurnEnd += TryToLevelUp?;
 
             Expo.Subscribe(x => TryToLevelUp())
@@ -74,13 +71,12 @@ namespace DontStopTheTrain
             _turnBasedController.OnTurnStart -= OnTurnStart;
             _turnBasedController.OnTurnEnd -= OnTurnEnd;
             _eventController.OnComplete -= OnEventComplete;
-            _playerPerksManager.OnItemAdded -= OnPerkAddedOrRemoved;
-            _playerPerksManager.OnItemRemoved -= OnPerkAddedOrRemoved;
+            _buffAndPerksService.OnChange -= OnPerkOrBuffChanged;
 
             _disposables.Clear();
         }
 
-        private void OnPerkAddedOrRemoved(IPerk perk)
+        private void OnPerkOrBuffChanged()
         {
             _actionPointsCalculator.Calculate();
         }
@@ -103,7 +99,7 @@ namespace DontStopTheTrain
 
         private void ResetActionPoints()
         {
-            _actionPoints.Value = _actionPointsCalculator.GetActionPointsCount();
+            _actionPoints.Value = _actionPointsCalculator.ActionPoints;
         }
 
         private void OnInventoryChanged(InventoryCallback callback)
@@ -143,13 +139,13 @@ namespace DontStopTheTrain
             switch (playerItemStaticData.PlayerItemType)
             {
                 case PlayerItemType.Expo:
-                    _expo.Value = cachedItemCount + Mathf.RoundToInt( cachedItemCount * (_perkController.GetValue(PerkType.Experience) / 100f) );
+                    _expo.Value = cachedItemCount + Mathf.RoundToInt( cachedItemCount * (_buffAndPerksService.GetValue(PerkType.Experience) / 100f) );
                     break;
                 case PlayerItemType.Credits:
-                    _credits.Value = cachedItemCount + Mathf.RoundToInt(cachedItemCount * (_perkController.GetValue(PerkType.Credits) / 100f));                    
+                    _credits.Value = cachedItemCount + Mathf.RoundToInt(cachedItemCount * (_buffAndPerksService.GetValue(PerkType.Credits) / 100f));                    
                     break;
                 case PlayerItemType.Score:
-                    _score.Value = cachedItemCount + Mathf.RoundToInt(cachedItemCount * (_perkController.GetValue(PerkType.Score) / 100f));                    
+                    _score.Value = cachedItemCount + Mathf.RoundToInt(cachedItemCount * (_buffAndPerksService.GetValue(PerkType.Score) / 100f));                    
                     break;
             }
         }

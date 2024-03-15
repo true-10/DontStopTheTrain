@@ -1,33 +1,15 @@
-using DontStopTheTrain.Events;
-using System;
-using True10.Enums;
+﻿using System.Collections.Generic;
 
 namespace DontStopTheTrain
 {
-    public interface IQuest
+    public interface IQuestStaticData
     {
-        Action<IQuest> OnComplete { get; set; }
-        int HashCode { get; }
-        IQuestStaticData StaticData { get; }
-        ProgressStatus Status { get; }
-
-        void Start();
-        void Reset();
-        bool TryToComplete();
-    }
-
-
-    public enum QuestId
-    {
-        None = 0,
-
-    }
-
-    public enum QuestType
-    {
-        Unknown = 0,
-        GatherResources = 1,
-        CompleteEvent = 2,//??
+        // int HashCode { get; }
+        QuestId Id { get; }
+        QuestType Type { get; }
+        IReadOnlyList<RewardId> RewardIds { get; }
+        IReadOnlyCollection<IConditionStaticData> ConditionsToComplete { get; }
+        Information Info { get; }
 
     }
 

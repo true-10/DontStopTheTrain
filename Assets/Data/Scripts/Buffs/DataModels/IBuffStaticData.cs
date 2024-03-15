@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using True10.Enums;
 
 namespace DontStopTheTrain
 {
     public interface IBuffStaticData
     {
         BuffId Id { get; }
+        PositiveStatus PositiveStatus { get; }
         Information Info { get; }
         int Time { get; }//сколько ходов действует
         int BaseValue { get; }

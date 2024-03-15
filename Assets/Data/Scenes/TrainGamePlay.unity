@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2159.2512, g: 2262.9866, b: 3284.8442, a: 1}
+  m_IndirectSpecularColor: {r: 2182.4944, g: 2322.932, b: 3473.9497, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1798,6 +1798,7 @@ RectTransform:
   - {fileID: 1989075613}
   - {fileID: 1345083993}
   - {fileID: 89006829}
+  - {fileID: 1237365758}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3996,7 +3997,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1793144009}
-  - {fileID: 1237365758}
   - {fileID: 659009764}
   m_Father: {fileID: 3567504}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4253,6 +4253,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1237365758}
+  - component: {fileID: 1237365762}
   - component: {fileID: 1237365761}
   - component: {fileID: 1237365760}
   - component: {fileID: 1237365759}
@@ -4262,7 +4263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1237365758
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4276,11 +4277,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2109816358}
-  m_Father: {fileID: 986441947}
+  m_Father: {fileID: 480102501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -442, y: 50}
+  m_AnchoredPosition: {x: -1482, y: 50}
   m_SizeDelta: {x: 320, y: 90}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1237365759
@@ -4304,9 +4305,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_NormalColor: {r: 0.7351016, g: 0.754717, b: 0.45140618, a: 1}
+    m_HighlightedColor: {r: 0.8315803, g: 0.8490566, b: 0.57992166, a: 1}
+    m_PressedColor: {r: 0.52990675, g: 0.544, b: 0.32696375, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -4327,9 +4328,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3567505}
-        m_TargetAssemblyTypeName: DontStopTheTrain.UIMainGamePlay, Assembly-CSharp
-        m_MethodName: StartTestEvent
+      - m_Target: {fileID: 1237365762}
+        m_TargetAssemblyTypeName: DontStopTheTrain.UITestButton, Assembly-CSharp
+        m_MethodName: TestAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4377,6 +4378,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237365757}
   m_CullTransparentMesh: 1
+--- !u!114 &1237365762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237365757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05e945e8f52e0f449a04b6a45b474b2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1247060905
 GameObject:
   m_ObjectHideFlags: 0
@@ -4840,7 +4853,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1378196101}
-  - component: {fileID: 1378196102}
   m_Layer: 0
   m_Name: Cameras
   m_TagString: Untagged
@@ -4864,19 +4876,6 @@ Transform:
   - {fileID: 707947553}
   m_Father: {fileID: 122531124}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1378196102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1378196100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef1855bc7cde769408f8edaa04c130ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _defaultCameraInit: {fileID: 0}
 --- !u!1 &1380103097
 GameObject:
   m_ObjectHideFlags: 0
@@ -4921,7 +4920,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da614b6d18987d7478f0935b0ad327b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraController: {fileID: 1378196102}
   _turnBasedController: {fileID: 202013277}
   _train: {fileID: 143771646}
   _uiController: {fileID: 1666797149}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Dismorality DeBuff
   m_EditorClassIdentifier: 
   _buffId: 1
+  _positiveStatus: 1
   _value: -1
   _time: 5
   _type: 1

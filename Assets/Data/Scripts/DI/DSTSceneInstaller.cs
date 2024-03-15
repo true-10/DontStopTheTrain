@@ -10,8 +10,6 @@ using Zenject;
 public class DSTSceneInstaller : MonoInstaller
 { 
     [SerializeField] 
-    private CameraControllerBehaviour _cameraController;
-    [SerializeField] 
     private TurnBasedController _turnBasedController;
     [SerializeField] 
     private Train _train;
@@ -46,8 +44,7 @@ public class DSTSceneInstaller : MonoInstaller
 
     private void InstallControllers()
     {
-        Container.Bind<TurnBasedController>().FromInstance(_turnBasedController).AsSingle();       
-       // Container.Bind<ICameraController>().FromInstance(_cameraController).AsSingle();
+        Container.Bind<TurnBasedController>().FromInstance(_turnBasedController).AsSingle();    
         Container.Bind<ICameraController>().To<CameraController>().AsSingle();
         Container.Bind<UIController>().FromInstance(_uiController).AsSingle();
         Container.Bind<QuestController>().AsSingle();    
@@ -61,6 +58,7 @@ public class DSTSceneInstaller : MonoInstaller
 
     private void InstallServices()
     {
+        Container.Bind<BuffAndPerksService>().AsSingle();
     }
 
     private void InstallTrain()

@@ -1,4 +1,6 @@
-﻿namespace DontStopTheTrain
+﻿using True10.Enums;
+
+namespace DontStopTheTrain
 {
     public class Buff : IBuff
     {
@@ -20,11 +22,15 @@
         private PlayerBuffsManager _buffsManager;
         private int _endDay;
     
-        public void Activate(int currenDay)
+        public void Activate()
         {
+            if (Status == AcitveStatus.Active)
+            {
+                return;
+            }
             Status = AcitveStatus.Active;
             _turnBasedController.OnTurnStart += OnTurnStart;
-            _endDay = currenDay + StaticData.Time;
+            _endDay = _turnBasedController.CurrentTurn + StaticData.Time;
         }
     
         private void OnTurnStart(ITurnCallback callback)

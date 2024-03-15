@@ -65,7 +65,7 @@ namespace True10.CameraSystem
             DisableAllCameras();
             _currentCamera = _cameras[hash];
 
-            CameraCalback cameraCalback = new CameraCalback(_currentCamera);
+            CameraCallback cameraCalback = new CameraCallback(_currentCamera);
 
             OnCameraOn?.Invoke(cameraCalback);
             _currentCamera.Priority = Constants.MAX_PRIORITY;
@@ -92,7 +92,7 @@ namespace True10.CameraSystem
             {
                 if (camera.Value.Priority != 0)
                 {
-                    CameraCalback cameraCalback = new CameraCalback(camera.Value);
+                    CameraCallback cameraCalback = new CameraCallback(camera.Value);
 
                     camera.Value.Priority = Constants.MIN_PRIORITY;
                     OnCameraOff?.Invoke(cameraCalback);

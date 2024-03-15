@@ -4,27 +4,21 @@ namespace DontStopTheTrain
 {
     public sealed class ActionPointsCalculator
     {
-        private PerksController _perkController;
+        public int ActionPoints { get; private set; }
 
-        public ActionPointsCalculator(PerksController perkController/*список перков, бафов, уровень*/)
+        public ActionPointsCalculator(BuffAndPerksService buffAndPerksService)
         {
-            _perkController = perkController;
+            _buffAndPerksService = buffAndPerksService;
 
         }
 
-        private int _cachedActionPointsValue;
+        private BuffAndPerksService _buffAndPerksService;
         private int _baseActionPointsValue = 10;
 
         public void Calculate()
         {
             //считаем кол-во очков в заивисимости от прокачки и прочего
-            _cachedActionPointsValue = _baseActionPointsValue + _perkController.GetValue(PerkType.ActionPoint);
+            ActionPoints = _baseActionPointsValue + _buffAndPerksService.GetValue(PerkType.ActionPoint);
         }
-
-        public int GetActionPointsCount()
-        {
-            return _cachedActionPointsValue;
-        }
-
     }
 }

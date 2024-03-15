@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using True10.Enums;
 using True10.Managers;
 using Zenject;
 
@@ -61,7 +62,7 @@ namespace DontStopTheTrain.Events
         public List<IEvent> GetAllFreeEvents()
         {
             return Items
-                .Where(ev => ev.Status == EventStatus.None)
+                .Where(ev => ev.Status == ProgressStatus.None)
                 .ToList();
         }
     }

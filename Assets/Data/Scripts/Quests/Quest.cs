@@ -1,4 +1,5 @@
 ﻿using System;
+using True10.Enums;
 
 namespace DontStopTheTrain
 {
@@ -10,17 +11,17 @@ namespace DontStopTheTrain
 
         public IQuestStaticData StaticData { get; private set; }
 
-        public QuestStatus Status { get; private set; }
+        public ProgressStatus Status { get; private set; }
 
         public Quest(IQuestStaticData staticData)
         {
             StaticData = staticData;
-            Status = QuestStatus.None;
+            Status = ProgressStatus.None;
         }
 
         public void Start()
         {
-            Status = QuestStatus.InProgress;
+            Status = ProgressStatus.InProgress;
         }
 
         public bool TryToComplete()
@@ -29,7 +30,7 @@ namespace DontStopTheTrain
         }
         public void Reset()
         {
-            Status = QuestStatus.None;
+            Status = ProgressStatus.None;
 
         }
     }

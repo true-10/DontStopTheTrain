@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using True10.Enums;
+using UnityEngine;
 
 namespace DontStopTheTrain
 {
@@ -6,6 +7,7 @@ namespace DontStopTheTrain
     public class BuffStaticDataBase : ScriptableObject, IBuffStaticData
     {
         public BuffId Id => _buffId;
+        public PositiveStatus PositiveStatus => _positiveStatus;
 
         public Information Info => _info;
 
@@ -17,6 +19,8 @@ namespace DontStopTheTrain
 
         [SerializeField]
         private BuffId _buffId;
+        [SerializeField]
+        private PositiveStatus _positiveStatus;
         [SerializeField]
         private int _value = 1;
         [SerializeField]

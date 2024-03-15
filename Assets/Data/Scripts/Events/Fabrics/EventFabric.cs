@@ -10,7 +10,7 @@ namespace DontStopTheTrain.Events
         [Inject]
         private EventsService _eventsService;
         [Inject]
-        private PerksController _perksController;
+        private BuffAndPerksService _buffAndPerksService;
 
         public IEvent Create(IEventStaticData staticData)
         {
@@ -18,7 +18,7 @@ namespace DontStopTheTrain.Events
             {
                 case EventType.Wagon:
                     return new WagonEvent(staticData, _conditionsManager.GetConditions(staticData.ConditionsToComplete), 
-                        _eventsService, _perksController);
+                        _eventsService, _buffAndPerksService);
                 case EventType.View:
                 case EventType.ChangeBiom:
                 default:

@@ -9,6 +9,8 @@ namespace DontStopTheTrain
         private BuffFabric _fabric;
         [Inject]
         private BuffsStaticStorage _staticManager;
+        [Inject]
+        private PlayerBuffsManager _playerBuffsManager;
 
         public override void Initialize()
         {
@@ -23,6 +25,12 @@ namespace DontStopTheTrain
         public override void Dispose()
         {
             Clear();
+        }
+
+        public void Activate(IBuff buff)
+        {
+            _playerBuffsManager.TryToAdd(buff);
+            buff.Activate();
         }
 
     }

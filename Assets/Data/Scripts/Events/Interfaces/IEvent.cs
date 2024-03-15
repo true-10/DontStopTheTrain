@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using True10.Enums;
 
 namespace DontStopTheTrain.Events
 {
@@ -13,18 +14,11 @@ namespace DontStopTheTrain.Events
         int HashCode { get; }
         int Weight { get; }
         IReadOnlyCollection<ICondition> СompleteConditions { get; }
-        EventStatus Status { get; }//??
+        ProgressStatus Status { get; }//??
 
         void Start();
         bool TryToComplete(); 
         void Reset();
-    }
-
-    public enum EventStatus
-    {
-        None, //бездействующие
-        InProgress,
-        Complete
     }
 
     /// <summary>

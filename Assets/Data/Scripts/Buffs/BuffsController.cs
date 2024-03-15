@@ -29,16 +29,16 @@ namespace DontStopTheTrain
 
         public int GetValue(PerkType perkType)
         {
-            var perks = _buffsManager.Items
+            var buffs = _buffsManager.Items
                 .Where(perk => perk.StaticData.Type == perkType)
                 .ToList();
 
-            if (perks.Count == 0)
+            if (buffs.Count == 0)
             {
                 return 0;
             }
 
-            return perks.Sum(perk => perk.Value);
+            return buffs.Sum(buff => buff.Value);
         }
     }
 }

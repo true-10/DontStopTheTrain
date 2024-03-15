@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using True10.Enums;
 using UnityEditor.MPE;
 
 namespace DontStopTheTrain.Events
@@ -23,31 +24,31 @@ namespace DontStopTheTrain.Events
         public IReadOnlyCollection<ICondition> ÑompleteConditions { get; private set; }
 
         public IEventStaticData StaticData { get; private set; }
-        public EventStatus Status { get; private set; }
+        public ProgressStatus Status { get; private set; }
 
         
         public WagonEvent(IEventStaticData staticData, IReadOnlyCollection<ICondition> conditions, 
-            EventsService eventsService, PerksController perksController)
+            EventsService eventsService, BuffAndPerksService buffAndPerksService)
         {
             StaticData = staticData;
             ÑompleteConditions = conditions;
             _eventsService = eventsService;
-            _perksController = perksController;
+            _buffAndPerksService = buffAndPerksService;
         }
 
         private EventsService _eventsService;
-        private PerksController _perksController;
+        private BuffAndPerksService _buffAndPerksService;
 
-        private int _actionPointPrice => StaticData.ActionPointPrice - _perksController.GetValue(PerkType.ReduceActionPointPrice);
+        private int _actionPointPrice => StaticData.ActionPointPrice - _buffAndPerksService.GetValue(PerkType.ReduceActionPointPrice);
 
         public void Start()
         {
-            Status = EventStatus.InProgress;
+            Status = ProgressStatus.InProgress;
         }
 
         public void Reset()
         {
-            Status = EventStatus.None;
+            Status = ProgressStatus.None;
         }
 
         public bool TryToComplete()

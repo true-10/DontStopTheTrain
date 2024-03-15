@@ -14,8 +14,6 @@ namespace DontStopTheTrain
         private EventsService _eventsService;
         [Inject]
         private UIController _uiController;
-        [Inject]
-        private PerksController _perksController;
 
         [SerializeField]
         private Button _completeEventButton;
