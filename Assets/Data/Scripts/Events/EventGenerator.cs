@@ -1,4 +1,5 @@
 ﻿using DontStopTheTrain.Train;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using True10.Extentions;
@@ -27,6 +28,8 @@ namespace DontStopTheTrain.Events
 
         public List<IEvent> GetEvents()
         {
+            //есть лимит на события в день
+            //и лимит активных событий
             var availableEventByLevel = GetEventStaticDatasByLevel();
             List<IEvent> events = new();
             foreach (var staticData in availableEventByLevel)
@@ -54,11 +57,38 @@ namespace DontStopTheTrain.Events
     {
 
     }
-    public sealed class WagonEventGenerator
+    public sealed class WagonEventStarter
     {
-        WagonData wagonData;
+        public WagonEventStarter()
+        {
+
+        }
+        private WagonData _wagonData;
         //знаем список систем
-        //смотрим какая более изношенная или рандомно выбираем
+        //смотрим какая более изношенная или рандомно выбираем и вызываем ивент генерат
+        private EventGenerator _eventGenerator;
+        private TurnBasedController _turnBasedController;
+
+        public void Initialize()
+        {
+            _turnBasedController.OnTurnStart += OnTurnStart;
+        }
+
+
+        public void Dispose()
+        {
+            _turnBasedController.OnTurnStart -= OnTurnStart;
+
+        }
+        private void TryToStartEvents()
+        {
+            var events = _eventGenerator.GetEvents();
+        }
+
+        private void OnTurnStart(ITurnCallback callback)
+        {
+            TryToStartEvents();
+        }
 
     }
 }

@@ -21,7 +21,7 @@ namespace DontStopTheTrain.Events
         private EventViewersManager _eventViewersManager;
 
 
-        List<AbstractEventViewer> usedViewers = new();
+        private List<AbstractEventViewer> usedViewers = new();
 
         public void Initialize()
         {

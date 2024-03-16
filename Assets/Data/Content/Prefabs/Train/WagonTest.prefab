@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 67189224596026920}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14369467, y: -0.6229485, z: 0.11780145, w: 0.75987494}
-  m_LocalPosition: {x: 5, y: 3, z: -1}
+  m_LocalRotation: {x: 0.08918059, y: -0.65710324, z: 0.07872703, w: 0.7443549}
+  m_LocalPosition: {x: 4, y: 2, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -826,6 +826,7 @@ GameObject:
   - component: {fileID: 8409899977972878295}
   - component: {fileID: 8899843695003102741}
   - component: {fileID: 3926517647867581140}
+  - component: {fileID: 6325948935356913800}
   - component: {fileID: 3088270004826256957}
   m_Layer: 7
   m_Name: WagonTest
@@ -869,10 +870,12 @@ MonoBehaviour:
   - {fileID: 2678778608548386778}
   - {fileID: 2670747337887483889}
   - {fileID: 9204230550793652256}
+  _wagonStaticData: {fileID: 11400000, guid: 8934842743f107b4989740f4ca44d594, type: 2}
   _cameraHolder: {fileID: 7644704522891876618}
   _clicker: {fileID: 3926517647867581140}
   _boxCollider: {fileID: 3088270004826256957}
   _alarm: {fileID: 4569491646652785580}
+  _mouseOver: {fileID: 6325948935356913800}
 --- !u!114 &3926517647867581140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,6 +889,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputButton: 0
+--- !u!114 &6325948935356913800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5776011347189050655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab82c8da7f42c324fabebde86f335d9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &3088270004826256957
 BoxCollider:
   m_ObjectHideFlags: 0

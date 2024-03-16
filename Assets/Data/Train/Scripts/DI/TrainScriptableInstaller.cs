@@ -15,7 +15,7 @@ public class TrainScriptableInstaller : ScriptableObjectInstaller<TrainScriptabl
     public override void InstallBindings()
     {
         Container.Bind<WagonsStaticStorage>().FromScriptableObject(_wagonSystemsStaticStorage).AsSingle();
-        Container.Bind<WagonsStaticStorage>().FromScriptableObject(_wagonsStaticStorage).AsSingle();
+        Container.Bind<WagonSystemsStaticStorage>().FromScriptableObject(_wagonsStaticStorage).AsSingle();
 
         Container.Bind<WagonsFabric>().AsSingle();
         Container.Bind<WagonSystemsFabric>().AsSingle();

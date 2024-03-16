@@ -25,9 +25,12 @@ namespace DontStopTheTrain.Train
         public int Prev { get; set; }
 
 
-        public WagonData(IWagonStaticData wagonStaticData)
+        public WagonData(IWagonStaticData wagonStaticData, TurnBasedController turnBasedController,
+            BuffAndPerksService buffAndPerksService)
         {
             _staticData = wagonStaticData;
+            _turnBasedController = turnBasedController;
+            _buffAndPerksService = buffAndPerksService;
         }
 
         [Inject]
@@ -42,6 +45,7 @@ namespace DontStopTheTrain.Train
         public void Initialize()
         {
             _health.Value = 1000;
+            _maxHealth.Value = 1000;
             _turnBasedController.OnTurnEnd += OnTurnEnd;
         }
 
