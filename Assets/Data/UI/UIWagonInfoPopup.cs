@@ -21,6 +21,11 @@ namespace DontStopTheTrain
         [SerializeField]
         private Slider _healthSlider;
 
+        public void AnchorIt()
+        {
+
+        }
+
         public void Show(IWagon wagonData, Transform lookAt)
         {
             _nameText.text = wagonData.StaticData.Info.Name;

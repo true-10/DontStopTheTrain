@@ -25,5 +25,5 @@ MonoBehaviour:
   _info:
     _name: Roof Fire
     _description: "\u0447\u0442\u043E \u0442\u043E \u0433\u043E\u0440\u0438\u0442"
-    _icon: {fileID: 21300000, guid: f3a295cea9f0f7c4b9315151ddbfe11b, type: 3}
+    _icon: {fileID: 21300000, guid: 531ae25c20024a24ea1b6a041b4ee722, type: 3}
   _wagonEventType: 1

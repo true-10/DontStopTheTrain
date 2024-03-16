@@ -11,7 +11,6 @@ using Zenject;
 
 namespace DontStopTheTrain
 {
-
     public class UIAlarmController : MonoBehaviour
     {
         [Inject]
@@ -34,7 +33,6 @@ namespace DontStopTheTrain
             dictionaryIconEvent.Clear();
             eventController.OnStart -= OnEventStart;
         }
-
 
         public void ShowAlarm(IEvent eventData)
         {

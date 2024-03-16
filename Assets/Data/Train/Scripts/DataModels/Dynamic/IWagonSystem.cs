@@ -28,6 +28,9 @@ namespace DontStopTheTrain.Train
         int EnergyConsumption { get; } //потребление энергии
         int DeteriorationSpeed { get; } //скорость износа
         int Weight { get; }//масса системы для расчетов скорости/расхода топлива/торможения?
+
+        void Initialize();
+        void Dispose();
     }
 
     public interface IEngineSystem : IWagonSystem

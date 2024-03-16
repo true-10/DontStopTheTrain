@@ -17,7 +17,7 @@ namespace DontStopTheTrain.Train
         public IReadOnlyCollection<IWagonSystem> Systems { get; private set; }
         public int Price => 500;
         public int EnergyConsumption => StaticData.BaseEnergyConsumption + Systems.Sum(sys => sys.EnergyConsumption);
-        public int DeteriorationSpeed => 10;
+        public int DeteriorationSpeed => StaticData.BaseDeteriorationSpeed ;//+бафы перки
         public int Weight => StaticData.Weight + Systems.Sum(sys => sys.Weight);
         public IReadOnlyReactiveProperty<int> MaxHealth => _maxHealth;
         public IReadOnlyReactiveProperty<int> Health => _health;
@@ -33,19 +33,19 @@ namespace DontStopTheTrain.Train
             _buffAndPerksService = buffAndPerksService;
         }
 
-        [Inject]
+        //[Inject]
         private TurnBasedController _turnBasedController;
-        [Inject]
+        //[Inject]
         private BuffAndPerksService _buffAndPerksService;
 
         private IWagonStaticData _staticData;
-        private ReactiveProperty<int> _health = new();
-        private ReactiveProperty<int> _maxHealth = new();
+        private ReactiveProperty<int> _health;
+        private ReactiveProperty<int> _maxHealth;
 
         public void Initialize()
         {
-            _health.Value = 1000;
-            _maxHealth.Value = 1000;
+            _health = new(StaticData.MaxHealth);
+            _maxHealth = new(StaticData.MaxHealth);
             _turnBasedController.OnTurnEnd += OnTurnEnd;
         }
 

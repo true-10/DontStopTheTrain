@@ -19,7 +19,8 @@ namespace True10.CameraSystem
         /// </summary>
         void InitCustomCameraController();
         void TurnOn();
-        void TurnOff();
+        void TurnOff(); 
+        void TurnOnPrevious();
         void SetFOV(float fov);
     }
 }

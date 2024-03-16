@@ -8,7 +8,9 @@ namespace DontStopTheTrain.Train
         WagonSystemType Type { get; }
         Information Info { get; }
         int BaseEnergyConsumption { get; } //потребление энергии
+        int BaseDeteriorationSpeed { get; } //базовая скорость износа
         int Weight { get; }
+        int MaxHealth { get; }
         IReadOnlyCollection<WagonEventType> WagonEventTypes { get; }//допустимые события у это системы
     }
 

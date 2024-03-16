@@ -24,7 +24,7 @@ namespace True10.CameraSystem
         public CameraRig CameraRig { get => _cameraRig; set => _cameraRig = value; }
         public int Weight { get; set; }
 
-
+        
         [SerializeField]
         private CinemachineVirtualCamera _cinemachineVirtualCamera;
         [SerializeField]
@@ -56,6 +56,10 @@ namespace True10.CameraSystem
             _cameraController.SwitchToDefaultCamera();
         }
 
+        public void TurnOnPrevious()
+        {
+            _cameraController.SwitchToPreviousCamera();
+        }
         public void ShakeControl()
         {
             //тут не место?

@@ -10,19 +10,21 @@ namespace DontStopTheTrain
         [SerializeField]
         private Button _closeButton;
         [SerializeField]
+        private Button _fixButton;
+        [SerializeField]
         private TextMeshProUGUI _wagonInfo;
 
-        private Wagon _wagon;
+        private WagonView _wagonView;
 
-        public void Show(Wagon wagon)
+        public void Show(WagonView wagon)
         {
-            _wagon = wagon;
+            _wagonView = wagon;
             Show();
         }
 
         private void OnCloseUI()
         {
-            _wagon.Exit();
+            _wagonView.Exit();
           //  _wagon = null;
             Hide();
         }

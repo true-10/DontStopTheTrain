@@ -6,7 +6,7 @@ namespace DontStopTheTrain.Train
     public class InteriorShower : MonoBehaviour
     {
         [SerializeField]
-        private Wagon _wagon;
+        private WagonView _wagon;
         [SerializeField]
         private GameObject _frontWall;
 

@@ -12,9 +12,19 @@ namespace True10.CameraSystem
         private Dictionary<int, ICameraHolder> _cameras;
         private ICameraHolder _currentCamera;
         private ICameraHolder _defaultCamera;
+        private ICameraHolder _previousCamera;
         private List<int> _cameraHashesList;
         private int _currentCameraIndex = 0;
         private bool _isDisable = false;
+
+        public void SwitchToPreviousCamera()
+        {
+            if (_isDisable || _previousCamera == null)
+            {
+                return;
+            }
+            SwitchToCamera(_previousCamera.HashCode);
+        }
 
         public void SetDefaultCamera(ICameraHolder cameraHolder)
         {
@@ -63,6 +73,7 @@ namespace True10.CameraSystem
         {
             if (_isDisable) return;
             DisableAllCameras();
+            _previousCamera = _currentCamera;
             _currentCamera = _cameras[hash];
 
             CameraCallback cameraCalback = new CameraCallback(_currentCamera);

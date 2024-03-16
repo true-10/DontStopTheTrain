@@ -17,8 +17,6 @@ namespace DontStopTheTrain.Train
         int Next { get; set; } //номер следующего
         int Prev { get; set; } //номер пред
 
-        void Initialize();
-        void Dispose();
 
     }
 

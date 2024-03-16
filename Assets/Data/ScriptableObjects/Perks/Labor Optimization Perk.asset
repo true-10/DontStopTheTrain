@@ -18,5 +18,5 @@ MonoBehaviour:
     _name: "\u041E\u043F\u0442\u0438\u043C\u0438\u0437\u0430\u0446\u0438\u044F \u0442\u0440\u0443\u0434\u0430"
     _description: "\u043D\u0430 \u0441\u043E\u0431\u044B\u0442\u0438\u044F \u0442\u0440\u0430\u0442\u0438\u0442\u0441\u044F
       \u043C\u0435\u043D\u044C\u0448\u0435 \u043E\u0447\u043A\u043E\u0432"
-    _icon: {fileID: 21300000, guid: 1a1da36a104725048b8d2388fb8d321d, type: 3}
+    _icon: {fileID: 21300000, guid: 7a07813f77b605245aa2b0af0dbd10e9, type: 3}
   _conditions: []

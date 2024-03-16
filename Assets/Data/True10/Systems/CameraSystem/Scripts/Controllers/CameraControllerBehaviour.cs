@@ -22,6 +22,16 @@ namespace True10.CameraSystem
         private int _currentCameraIndex = 0;
         private bool _isDisable = false;
 
+        private ICameraHolder _previousCamera;
+        public void SwitchToPreviousCamera()
+        {
+            if (_isDisable || _previousCamera == null)
+            {
+                return;
+            }
+            SwitchToCamera(_previousCamera.HashCode);
+        }
+
         public void SwitchToDefaultCamera()
         {
             if (_isDisable || _defaultCamera == null)
@@ -61,6 +71,7 @@ namespace True10.CameraSystem
         {
             if (_isDisable) return;
             DisableAllCameras();
+            _previousCamera = _currentCamera;
             _currentCamera = _cameras[hash];
 
             CameraCallback cameraCalback = new CameraCallback(_currentCamera);

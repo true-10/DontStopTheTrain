@@ -19,8 +19,8 @@ namespace DontStopTheTrain.Train
 
     public class WagonController : MonoBehaviour
     {
-        [SerializeField] private Wagon locomotive;
-        [SerializeField] private List<Wagon> wagons;
+        [SerializeField] private WagonView locomotive;
+        [SerializeField] private List<WagonView> wagons;
 
         //public Action<WagonData> OnWagonClick { get; set; }
 

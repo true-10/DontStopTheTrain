@@ -12,6 +12,7 @@ namespace True10.CameraSystem
         void SwitchToCamera(int hash);
         void SwitchToCamera(ICameraHolder cameraHolder);
         void SwitchToDefaultCamera();
+        void SwitchToPreviousCamera();
         void SetTargetToCamera(int hash, Transform follow, Transform lookAt);
         void AddCamera(ICameraHolder cameraHolder);
 

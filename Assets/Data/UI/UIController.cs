@@ -18,19 +18,22 @@ namespace DontStopTheTrain.UI
     public class UIController : MonoBehaviour
     {
         public UIMessage Message => _message;
-        public UIWagonEvent WagonEvent => _wagonEvent;
+       // public UIWagonEvent WagonEvent => _wagonEvent;
         public UIMainGamePlay MainGamePlay => _mainGamePlay;
         public UIWagon Wagon => _wagon;
         public UIWagonInfoPopup WagonInfoPopup => _wagonInfoPopup;
         public UIEventInfoPopup EventInfoPopup => _eventInfoPopup;
+        public UISystemInfoPopup SystemInfoPopup => _systemInfoPopup;
         public UINewPerk NewPerk => _newPerk;
 
         [SerializeField] 
         private UIMessage _message;
-        [SerializeField] 
-        private UIWagonEvent _wagonEvent;
+       // [SerializeField] 
+        //private UIWagonEvent _wagonEvent;
         [SerializeField] 
         private UIEventInfoPopup _eventInfoPopup;
+        [SerializeField] 
+        private UISystemInfoPopup _systemInfoPopup;
         [SerializeField] 
         private UIMainGamePlay _mainGamePlay;
         [SerializeField] 

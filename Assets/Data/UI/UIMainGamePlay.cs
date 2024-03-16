@@ -47,7 +47,7 @@ namespace DontStopTheTrain
 
         private void UpdateTurnText(int turn)
         {
-            var text = $"{turn}";
+            var text = $"Day: {turn}";
             _turnNumberText.text = text;
             //_uiController.Message.ShowMessage(text, 1f);
         }

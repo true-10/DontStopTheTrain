@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 2
   _info:
-    _name: 
-    _description: 
-    _icon: {fileID: 0}
+    _name: BaseSystem
+    _description: "\u041A\u0430\u043A\u0430\u044F \u0442\u043E \u0441\u0438\u0441\u0442\u0435\u043C\u0430.
+      \u0447\u0442\u043E \u0442\u043E \u0434\u0435\u043B\u0430\u0435\u0442"
+    _icon: {fileID: 21300000, guid: 46748f665f5c92b41a55f7440c540d4a, type: 3}
   _baseEnergyConsumption: 1
+  _baseDeteriorationSpeed: 1
   _weight: 10
+  _maxHealth: 100
   _wagonEventTypes: 

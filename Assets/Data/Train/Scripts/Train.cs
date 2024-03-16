@@ -6,10 +6,10 @@ namespace DontStopTheTrain.Train
 {
     public class Train : MonoBehaviour
     {
-        public IReadOnlyCollection<Wagon> Wagons => _wagons.AsReadOnly();
+        public IReadOnlyCollection<WagonView> Wagons => _wagons.AsReadOnly();
 
         [SerializeField]
-        private List<Wagon> _wagons;
+        private List<WagonView> _wagons;
 
     }
 }
