@@ -15,7 +15,7 @@ namespace DontStopTheTrain
 
             switch (staticData.Type)
             {
-                case PerkType.ActionPoint:
+                case PerkType.ActionMan:
                 case PerkType.Experience:
                 case PerkType.Credits:
                 case PerkType.Score:

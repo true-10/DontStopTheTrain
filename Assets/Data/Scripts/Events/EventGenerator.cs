@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DontStopTheTrain.Train;
+using System.Collections.Generic;
 using System.Linq;
 using True10.Extentions;
 using Zenject;
@@ -48,6 +49,17 @@ namespace DontStopTheTrain.Events
                 .Where(eventData => _eventsService.IsAvailableForPlayerLevel(eventData))
                 .ToList();// as List<IEventStaticData>;
         }
+    }
+    public sealed class TrainEventStarter
+    {
+
+    }
+    public sealed class WagonEventGenerator
+    {
+        WagonData wagonData;
+        //знаем список систем
+        //смотрим какая более изношенная или рандомно выбираем
+
     }
 }
 

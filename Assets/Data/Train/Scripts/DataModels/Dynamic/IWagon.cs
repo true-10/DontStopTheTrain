@@ -1,18 +1,24 @@
-﻿namespace DontStopTheTrain.Train
+﻿using System.Collections.Generic;
+using UniRx;
+
+namespace DontStopTheTrain.Train
 {
-    public interface IDeteriorable
+    public interface IHealthable
     {
-        int Deterioration { get; } //износ
+        IReadOnlyReactiveProperty<int> MaxHealth { get; }
+        IReadOnlyReactiveProperty<int> Health { get; }
     }
 
-    public interface IWagon : IDeteriorable
+    public interface IWagon : IWagonSystem
     {
         int Number { get; } //номер вагона
-        IWagonStaticData StaticData { get; }
+        IReadOnlyCollection<IWagonSystem> Systems { get; }
 
-        //int Weight { get; }//масса вагона для расчетов скорости/расхода топлива/торможения?
         int Next { get; set; } //номер следующего
         int Prev { get; set; } //номер пред
+
+        void Initialize();
+        void Dispose();
 
     }
 

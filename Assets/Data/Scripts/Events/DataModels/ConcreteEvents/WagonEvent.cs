@@ -39,7 +39,7 @@ namespace DontStopTheTrain.Events
         private EventsService _eventsService;
         private BuffAndPerksService _buffAndPerksService;
 
-        private int _actionPointPrice => StaticData.ActionPointPrice - _buffAndPerksService.GetValue(PerkType.ReduceActionPointPrice);
+        private int _actionPointPrice => StaticData.ActionPointPrice - _buffAndPerksService.GetValue(PerkType.ReducePriceActionPoint);
 
         public void Start()
         {

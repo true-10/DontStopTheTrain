@@ -18,7 +18,7 @@ namespace DontStopTheTrain
         public void Calculate()
         {
             //считаем кол-во очков в заивисимости от прокачки и прочего
-            ActionPoints = _baseActionPointsValue + _buffAndPerksService.GetValue(PerkType.ActionPoint);
+            ActionPoints = _baseActionPointsValue + _buffAndPerksService.GetValue(PerkType.ActionMan);
         }
     }
 }

@@ -15,22 +15,19 @@ namespace DontStopTheTrain.Train
     //опциональные:
     //-
 
-    public enum WagonSystemType
-    {
-
-    }
 
     public enum WagonSystemId
     {
 
     }
 
-    public interface IWagonSystem : IDeteriorable
+    public interface IWagonSystem : IHealthable
     {
-        WagonSystemType Type { get; }
-        public Sprite Icon { get; }
+        IWagonSystemStaticData StaticData { get; }
         int Price { get; }//цена
         int EnergyConsumption { get; } //потребление энергии
+        int DeteriorationSpeed { get; } //скорость износа
+        int Weight { get; }//масса системы для расчетов скорости/расхода топлива/торможения?
     }
 
     public interface IEngineSystem : IWagonSystem

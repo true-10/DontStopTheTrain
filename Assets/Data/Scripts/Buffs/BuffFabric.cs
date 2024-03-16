@@ -17,7 +17,7 @@ namespace DontStopTheTrain
             return new Buff(staticData, _turnBasedController, _playerBuffsManager);
             switch (staticData.Type)
             {
-                case PerkType.ActionPoint:
+                case PerkType.ActionMan:
                 default:
                     UnityEngine.Debug.Log($"The type [{staticData.Type}] is not found");
                     return null;

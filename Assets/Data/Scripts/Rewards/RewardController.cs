@@ -6,7 +6,7 @@ namespace DontStopTheTrain.Events
     public class RewardController
     {
         [Inject]
-        private EventController _eventController;
+        private EventController _eventController;//убрать и добавть колбеков?
         [Inject]
         private RewardsStaticStorage _rewardsStaticStorage;
         [Inject]

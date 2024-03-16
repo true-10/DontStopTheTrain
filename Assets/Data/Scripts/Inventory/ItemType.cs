@@ -7,5 +7,6 @@
         Tools = 2,
         Resource = 3,
         Perk = 4,
+        Buff = 5,
     }
 }
