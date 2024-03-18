@@ -4,7 +4,14 @@ using Zenject;
 
 namespace DontStopTheTrain.Events
 {
-    public abstract class AbstractEventViewer : MonoBehaviour
+    public interface IEventViewer
+    {
+        Action<IEvent> OnSetEvent { get; set; }
+        bool IsFree { get; }
+        bool TryToSetEventData(IEvent eventData);
+    }
+
+    public abstract class AbstractEventViewer : MonoBehaviour, IEventViewer
     {
         public Action<IEvent> OnSetEvent { get; set; }
         public virtual EventType Type => EventType.None;

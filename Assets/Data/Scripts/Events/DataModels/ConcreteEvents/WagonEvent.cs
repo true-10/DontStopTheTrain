@@ -15,18 +15,13 @@ namespace DontStopTheTrain.Events
     public class WagonEvent : IEvent
     {
         public Action<IEvent> OnComplete { get; set; }
-
+        public int Chance => StaticData.Chance;
         public int HashCode => GetHashCode();
-
         public int ActionPointPrice => UnityEngine.Mathf.Clamp(_actionPointPrice, 0, StaticData.ActionPointPrice);
-        public int Weight => 1;// StaticData.weig
-
         public IReadOnlyCollection<ICondition> ÑompleteConditions { get; private set; }
-
         public IEventStaticData StaticData { get; private set; }
         public ProgressStatus Status { get; private set; }
 
-        
         public WagonEvent(IEventStaticData staticData, IReadOnlyCollection<ICondition> conditions, 
             EventsService eventsService, BuffAndPerksService buffAndPerksService)
         {

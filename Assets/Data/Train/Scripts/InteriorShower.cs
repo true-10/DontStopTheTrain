@@ -1,4 +1,5 @@
 using System;
+using True10;
 using UnityEngine;
 
 namespace DontStopTheTrain.Train
@@ -6,7 +7,7 @@ namespace DontStopTheTrain.Train
     public class InteriorShower : MonoBehaviour
     {
         [SerializeField]
-        private WagonView _wagon;
+        private ClickableView _clickableView;
         [SerializeField]
         private GameObject _frontWall;
 
@@ -22,14 +23,14 @@ namespace DontStopTheTrain.Train
 
         private void OnEnable()
         {
-            _wagon.OnEnter += OnEnterWagonView;
-            _wagon.OnExit += OnExitWagonView;
+            _clickableView.OnClick += OnEnterWagonView;
+            _clickableView.OnExitView += OnExitWagonView;
         }
 
         private void OnDisable()
         {
-            _wagon.OnEnter -= OnEnterWagonView;
-            _wagon.OnExit -= OnExitWagonView;
+            _clickableView.OnClick -= OnEnterWagonView;
+            _clickableView.OnExitView -= OnExitWagonView;
         }
     }
 }

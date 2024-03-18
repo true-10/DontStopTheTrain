@@ -1,5 +1,6 @@
 using DontStopTheTrain.Events;
 using DontStopTheTrain.UI;
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -8,6 +9,7 @@ using Zenject;
 
 namespace DontStopTheTrain
 {
+    [Obsolete]
     public class UIWagonEvent : UIScreen
     {
         [Inject]

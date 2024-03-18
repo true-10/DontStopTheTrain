@@ -22,7 +22,8 @@ namespace DontStopTheTrain
         }
         public override void Dispose()
         {
-            Clear();
+            _items.Clear();
+            _items = null;
         }
 
         public override void Initialize()

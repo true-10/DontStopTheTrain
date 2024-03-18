@@ -8,10 +8,6 @@ namespace True10.UI
     {
         [SerializeField]
         private Vector3 _offset;
-        [SerializeField]
-        private Vector2 _offset2D;
-        [SerializeField]
-        private bool _useOffset2D = true;
 
         private Transform _cachedTransform;
         private Camera _camera;
@@ -29,16 +25,6 @@ namespace True10.UI
             if (_cachedTransform.position != newPosition)
             {
                 _cachedTransform.position = newPosition;
-            }
-        }
-
-        public void SetPosition2d(Transform lookAt)
-        {
-            var newPosition = _camera.WorldToScreenPoint(lookAt.position);// + _offset);
-
-            if (_cachedTransform.position != newPosition)
-            {
-              //  _cachedTransform.position = newPosition + _offset2D;
             }
         }
     }

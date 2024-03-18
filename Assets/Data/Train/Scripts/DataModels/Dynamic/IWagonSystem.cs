@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DontStopTheTrain.Events;
+using UnityEngine;
 
 namespace DontStopTheTrain.Train
 {
@@ -23,6 +24,8 @@ namespace DontStopTheTrain.Train
 
     public interface IWagonSystem : IHealthable
     {
+        IEvent ActiveEvent { get; }
+        //IEventViewer EventViewer { get; }
         IWagonSystemStaticData StaticData { get; }
         int Price { get; }//цена
         int EnergyConsumption { get; } //потребление энергии

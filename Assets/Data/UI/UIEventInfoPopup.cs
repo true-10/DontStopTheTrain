@@ -1,5 +1,6 @@
 using DontStopTheTrain.Events;
 using TMPro;
+using True10;
 using True10.UI;
 using UnityEditor.MPE;
 using UnityEngine;
@@ -26,6 +27,7 @@ namespace DontStopTheTrain
         private Button _applyButton;
 
         private IEvent _eventData;
+        private ClickableView _clickableView;
 
         public override void AnchorIt()
         {
@@ -39,12 +41,14 @@ namespace DontStopTheTrain
             IsAnchored = false;
             _eventData = null;
             ShowButtons(IsAnchored);
+            _clickableView?.ExitView();
             Hide();
         }
 
-        public void Show(IEvent eventData, Transform lookAt)
+        public void Show(IEvent eventData, Transform lookAt, ClickableView clickableView)
         {
             _eventData = eventData;
+            _clickableView = clickableView;
             _nameText.text = eventData.StaticData.Info.Name;
             _descriptionText.text = eventData.StaticData.Info.Description;
             _icon.sprite = eventData.StaticData.Info.Icon;

@@ -74,6 +74,12 @@ namespace DontStopTheTrain
             _buffAndPerksService.OnChange -= OnPerkOrBuffChanged;
 
             _disposables.Clear();
+            _expo.Dispose();
+            _actionPoints.Dispose();
+            _level.Dispose();
+            _score.Dispose();
+            _credits.Dispose();
+            _days.Dispose();
         }
 
         private void OnPerkOrBuffChanged()

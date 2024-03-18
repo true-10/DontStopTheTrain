@@ -1,6 +1,7 @@
 ﻿using DontStopTheTrain.Events;
 using DontStopTheTrain.Train;
 using TMPro;
+using True10;
 using True10.BattleSystem;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,7 +22,7 @@ namespace DontStopTheTrain
         private Slider _healthSlider;
 
         private IWagonSystem _wagonSystem;
-       // private WagonSystemView _systemView;
+        private ClickableView _clickableView;
 
         public override void AnchorIt()
         {
@@ -35,14 +36,14 @@ namespace DontStopTheTrain
             IsAnchored = false;
             _wagonSystem = null;
             ShowButtons(IsAnchored);
-           // _systemView.Exit();
+            _clickableView?.ExitView();
             Hide();
         }
 
-        public void Show(IWagonSystem wagonSystem, Transform lookAt)//, WagonSystemView systemView)
+        public void Show(IWagonSystem wagonSystem, Transform lookAt, ClickableView clickableView)
         {
             _wagonSystem = wagonSystem;
-            //_systemView = systemView;
+            _clickableView = clickableView;
             _nameText.text = wagonSystem.StaticData.Info.Name;
             _descriptionText.text = wagonSystem.StaticData.Info.Description;
             _icon.sprite = wagonSystem.StaticData.Info.Icon;

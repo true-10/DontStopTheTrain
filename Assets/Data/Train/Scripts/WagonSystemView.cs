@@ -3,22 +3,37 @@ using DontStopTheTrain.Train;
 using DontStopTheTrain.UI;
 using System.Collections;
 using System.Collections.Generic;
+using True10;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
 namespace DontStopTheTrain
 {
-    public class WagonSystemView : BasicView
+    public class WagonSystemView : MonoBehaviour// BasicView
     {
         public IEvent ActiveEvent { get; private set; }
         public IWagonSystem WagonSystem { get; private set; }
+
+        public bool IsClickable
+        { 
+            get
+            {
+                return _clickableView.IsClickable;
+            }
+            set
+            {
+                _clickableView.IsClickable = value;
+            }
+}
 
         [Inject]
         private UIController _uiController;
         [Inject]
         private WagonSystemsFabric _fabric;
 
+        [SerializeField]
+        private ClickableView _clickableView;
         [SerializeField]
         private List<WagonEventType> _wagonEventTypes;
         [SerializeField]
@@ -28,37 +43,57 @@ namespace DontStopTheTrain
         [SerializeField]
         private WagonSystemStaticDataBase _wagonSystemStaticDataBase;
 
+        public void Initialize()
+        {
+            WagonSystem = _fabric.Create(_wagonSystemStaticDataBase);
+            WagonSystem.Initialize();
+            (WagonSystem as BaseWagonSystem).SetViewer(_wagonEventViewer);
+            //добавить систему в менеджер
+
+            _clickableView.OnClick += OnClickViewHandler;
+            _clickableView.OnExitView += OnExitViewHandler;
+            _clickableView.OnMouseOverEnter += OnMouseOverEnterHandler;
+            _clickableView.OnMouseOverExit += OnMouseOverExitHandler;
+
+            _wagonEventViewer.OnSetEvent += OnSetEvent;
+        }
+
+        public void Dispose()
+        {
+            WagonSystem.Dispose();
+
+            _clickableView.OnClick -= OnClickViewHandler;
+            _clickableView.OnExitView -= OnExitViewHandler;
+            _clickableView.OnMouseOverEnter -= OnMouseOverEnterHandler;
+            _clickableView.OnMouseOverExit -= OnMouseOverExitHandler;
+
+            _wagonEventViewer.OnSetEvent -= OnSetEvent;
+        }
+
         private void OnSetEvent(IEvent eventData)
         {
             ActiveEvent = eventData;
-            if (eventData == null)
-            {
-                if (_wagonEventViewer.IsFree)
-                {
-                   // _wagonEventViewer.
-                }
-            }
         }
 
-        public override void OnMouseOverEnterHandler()
+        private void OnMouseOverEnterHandler()
         {
             if (ActiveEvent != null)
             {
                 if (_uiController.EventInfoPopup.IsAnchored == false)
                 {
-                    _uiController.EventInfoPopup.Show(ActiveEvent, _lookAtTransform);
+                    _uiController.EventInfoPopup.Show(ActiveEvent, _lookAtTransform, _clickableView);
                 }
             }
             else 
             {
                 if (_uiController.SystemInfoPopup.IsAnchored == false)
                 {
-                    _uiController.SystemInfoPopup.Show(WagonSystem, _lookAtTransform);//, this);
+                    _uiController.SystemInfoPopup.Show(WagonSystem, _lookAtTransform, _clickableView);
                 }
             }
         }
 
-        public override void OnMouseOverExitHandler()
+        private void OnMouseOverExitHandler()
         {
             if (ActiveEvent != null)
             {
@@ -66,7 +101,6 @@ namespace DontStopTheTrain
                 {
                     _uiController.EventInfoPopup.CloseView();
                 }
-                ActiveEvent = null;
             }
             else
             {
@@ -77,7 +111,7 @@ namespace DontStopTheTrain
             }
         }
 
-        public override void OnEnterHandler()
+        private void OnClickViewHandler()
         {
             if (ActiveEvent != null)
             {
@@ -89,40 +123,19 @@ namespace DontStopTheTrain
             }
         }
 
-        public override void OnExitHandler()
+        private void OnExitViewHandler()
         {
-            _cameraHolder.TurnOnPrevious();
-            if (ActiveEvent != null)
-            {
-                _uiController.EventInfoPopup.CloseView();
-            }
-            else
-            {
-                _uiController.SystemInfoPopup.CloseView();
-            }
-            ActiveEvent = null;
-        }
-
-        public override void OnInitialize()
-        {
-            _wagonEventViewer.OnSetEvent += OnSetEvent;
-        }
-
-        public override void OnDispose()
-        {
-            _wagonEventViewer.OnSetEvent -= OnSetEvent;
+            //_cameraHolder.TurnOnPrevious();
         }
 
         private void Start()
         {
-            WagonSystem = _fabric.Create(_wagonSystemStaticDataBase);
-            WagonSystem.Initialize();
-            //добавить вагон в менеджер
+            Initialize();
         }
 
         private void OnDestroy()
         {
-            WagonSystem.Dispose();
+            Dispose();
         }
     }
 }

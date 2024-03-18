@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a24c6a6136fcba649977112fdfb474cc, type: 3}
-  m_Name: WagonFire
+  m_Name: WagonFireBig
   m_EditorClassIdentifier: 
   _id: 1
   _actionPointPrice: 3
-  _chance: 1
+  _chance: 20
   _rewardIds: 0100000005000000
   _conditionsToComplete:
   - {fileID: 11400000, guid: 8df992a554c4e204c91727d4808b5a59, type: 2}
@@ -23,7 +23,8 @@ MonoBehaviour:
   _eventPrefab: {fileID: 137057358187991997, guid: 4aa978948aab1e141bce218504c45515,
     type: 3}
   _info:
-    _name: Roof Fire
-    _description: "\u0447\u0442\u043E \u0442\u043E \u0433\u043E\u0440\u0438\u0442"
+    _name: Fire! Fire! Fire!
+    _description: "\u0447\u0442\u043E \u0442\u043E \u0441\u0438\u043B\u044C\u043D\u043E
+      \u0433\u043E\u0440\u0438\u0442"
     _icon: {fileID: 21300000, guid: 531ae25c20024a24ea1b6a041b4ee722, type: 3}
   _wagonEventType: 1

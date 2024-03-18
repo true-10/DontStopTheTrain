@@ -5,13 +5,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using True10;
+using True10.CameraSystem;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Zenject;
 
 namespace DontStopTheTrain.Train
 {
-    public sealed class WagonView : BasicView
+    public sealed class WagonView : MonoBehaviour// BasicView
     {
         public List<WagonEventViewer> EventViewers => _eventViewers;//надо ли?
         public IWagon WagonData => _wagonData;
@@ -22,6 +24,8 @@ namespace DontStopTheTrain.Train
         private WagonsFabric _fabric;
 
         [SerializeField]
+        private ClickableView _clickableView;
+        [SerializeField]
         private List<WagonEventViewer> _eventViewers;
         [SerializeField]
         private List<WagonSystemView> _systemViewers;
@@ -31,36 +35,65 @@ namespace DontStopTheTrain.Train
         private BoxCollider _boxCollider;
         [SerializeField] 
         private WagonAlarm _alarm;
+        [SerializeField]
+        private CameraHolder _cameraHolder;
 
         private IWagon _wagonData;
 
-        public override void OnExitHandler()
+        public void Initialize()
         {
-            _cameraHolder.TurnOff();
-            _boxCollider.enabled = true;
-            _uiController.MainGamePlay.Show();
-            //_eventViewers.ForEach(viewer => viewer.IsClickable = false);
-            _systemViewers.ForEach(viewer => viewer.IsClickable = false);
+            _boxCollider ??= GetComponent<BoxCollider>();
+            _wagonData = _fabric.Create(_wagonStaticData);
+            _wagonData.Initialize();
+
+            _clickableView.OnClick += OnClickViewHandler;
+            _clickableView.OnExitView += OnExitViewHandler;
+            _clickableView.OnMouseOverEnter += OnMouseOverEnterHandler;
+            _clickableView.OnMouseOverExit += OnMouseOverExitHandler;
+
+            _eventViewers.ForEach(viewer => viewer.OnSetEvent += OnSetEvent);
         }
 
-        public override void OnMouseOverExitHandler()
+        public void Dispose()
         {
-            _uiController.WagonInfoPopup.Hide();
+            _wagonData.Dispose();
+
+            _clickableView.OnClick -= OnClickViewHandler;
+            _clickableView.OnExitView -= OnExitViewHandler;
+            _clickableView.OnMouseOverEnter -= OnMouseOverEnterHandler;
+            _clickableView.OnMouseOverExit -= OnMouseOverExitHandler;
+
+            _eventViewers.ForEach(viewer => viewer.OnSetEvent -= OnSetEvent);
         }
 
-        public override void OnMouseOverEnterHandler()
-        {
-            _uiController.WagonInfoPopup.Show(_wagonData, transform);
-        }
-
-        public override void OnEnterHandler()
+        public void OnClickViewHandler()
         {
             _boxCollider.enabled = false;
-            _uiController.Wagon.Show(this);
+            _uiController.Wagon.Show(_clickableView);
             _uiController.MainGamePlay.Hide();
             _uiController.WagonInfoPopup.Hide();
             //_eventViewers.ForEach(viewer => viewer.IsClickable = true);
             _systemViewers.ForEach(viewer => viewer.IsClickable = true);
+            _cameraHolder?.TurnOn();
+        }
+
+        public void OnExitViewHandler()
+        {
+            _boxCollider.enabled = true;
+            _uiController.MainGamePlay.Show();
+            _cameraHolder?.TurnOff();
+            //_eventViewers.ForEach(viewer => viewer.IsClickable = false);
+            _systemViewers.ForEach(viewer => viewer.IsClickable = false);
+        }
+
+        public void OnMouseOverEnterHandler()
+        {
+            _uiController.WagonInfoPopup.Show(_wagonData, transform);
+        }
+
+        public void OnMouseOverExitHandler()
+        {
+            _uiController.WagonInfoPopup.Hide();
         }
 
         private void OnSetEvent(IEvent eventData)
@@ -83,26 +116,15 @@ namespace DontStopTheTrain.Train
 
         private void Start()
         {
-            _boxCollider ??= GetComponent<BoxCollider>();
-            _wagonData = _fabric.Create(_wagonStaticData);
-            _wagonData.Initialize();
+            Initialize();
             //добавить вагон в менеджер
         }
 
         private void OnDestroy()
         {
-            _wagonData.Dispose();
+            Dispose();
         }
 
-        public override void OnInitialize()
-        {
-            _eventViewers.ForEach(viewer => viewer.OnSetEvent += OnSetEvent);
-        }
-
-        public override void OnDispose()
-        {
-            _eventViewers.ForEach(viewer => viewer.OnSetEvent -= OnSetEvent);
-        }
     }
    
 }

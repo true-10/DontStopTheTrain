@@ -8,8 +8,7 @@ namespace DontStopTheTrain.Events
         int HashCode { get; }
         EventId Id { get; }
         EventType Type { get; }
-        // int Weight { get; }
-        int Chance { get; }//Weight?
+        int Chance { get; }
         int ActionPointPrice { get; }
         IReadOnlyList<RewardId> RewardIds { get; }
         IReadOnlyCollection<IConditionStaticData> ConditionsToComplete { get; }//условия завершения

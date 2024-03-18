@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a24c6a6136fcba649977112fdfb474cc, type: 3}
-  m_Name: Short Circut
+  m_Name: WagonFireMiddle
   m_EditorClassIdentifier: 
-  _id: 0
-  _actionPointPrice: 5
-  _chance: 10
-  _rewardIds: 0100000006000000
+  _id: 1
+  _actionPointPrice: 2
+  _chance: 40
+  _rewardIds: 0100000005000000
   _conditionsToComplete:
   - {fileID: 11400000, guid: 8df992a554c4e204c91727d4808b5a59, type: 2}
   _conditionsToStart:
   - {fileID: 11400000, guid: 81e454d723fa766428c86cd18e68f21c, type: 2}
-  _eventPrefab: {fileID: 1816277759470626242, guid: 547b0079d7a228e42a751a82fc3bd7ee,
+  _eventPrefab: {fileID: 137057358187991997, guid: 8f670b84b1829e24ab3e46ac643c7113,
     type: 3}
   _info:
-    _name: Electro Sparks
-    _description: "\u041A\u043E\u0440\u043E\u0442\u0438\u0442 \u0447\u0442\u043E
-      \u0442\u043E"
-    _icon: {fileID: 21300000, guid: 8da7272b8d748954dbfcd67f63969f20, type: 3}
-  _wagonEventType: 2
+    _name: 'Fire! Fire! '
+    _description: "\u0447\u0442\u043E \u0442\u043E  \u0441\u0440\u0435\u0434\u043D\u0435
+      \u0433\u043E\u0440\u0438\u0442"
+    _icon: {fileID: 21300000, guid: 531ae25c20024a24ea1b6a041b4ee722, type: 3}
+  _wagonEventType: 1

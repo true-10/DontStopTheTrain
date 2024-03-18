@@ -22,7 +22,7 @@ namespace DontStopTheTrain.Events
         private EventId _id;
         [SerializeField, Min(0)]
         private int _actionPointPrice;
-        [SerializeField, Min(0)]
+        [SerializeField, Min(1)]
         private int _chance;
         [SerializeField, Min(0)]
         private List<RewardId> _rewardIds;

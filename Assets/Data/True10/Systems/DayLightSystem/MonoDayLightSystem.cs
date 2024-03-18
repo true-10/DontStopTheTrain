@@ -11,6 +11,7 @@ using UniRx;
 
 namespace True10.DayLightSystem
 {
+
     public class MonoDayLightSystem : MonoBehaviour
     {
         [Inject]

@@ -1,5 +1,6 @@
 using DontStopTheTrain.Train;
 using TMPro;
+using True10;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,17 +15,17 @@ namespace DontStopTheTrain
         [SerializeField]
         private TextMeshProUGUI _wagonInfo;
 
-        private WagonView _wagonView;
+        private ClickableView _clickableView;
 
-        public void Show(WagonView wagon)
+        public void Show(ClickableView view)
         {
-            _wagonView = wagon;
+            _clickableView = view;
             Show();
         }
 
         private void OnCloseUI()
         {
-            _wagonView.Exit();
+            _clickableView.ExitView();
           //  _wagon = null;
             Hide();
         }

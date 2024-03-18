@@ -1,4 +1,5 @@
-﻿using DontStopTheTrain.Train;
+﻿using DontStopTheTrain.Events;
+using DontStopTheTrain.Train;
 using System.Collections.Generic;
 using System.Linq;
 using UniRx;
@@ -11,9 +12,7 @@ namespace DontStopTheTrain.Train
     {
         //здесь мы отслеживаем состояние вагона
         public int Number => 1;
-
         public IWagonSystemStaticData StaticData => _staticData;// { get; private set; }
-       // public IWagonStaticData WagonStaticData { get; private set; }
         public IReadOnlyCollection<IWagonSystem> Systems { get; private set; }
         public int Price => 500;
         public int EnergyConsumption => StaticData.BaseEnergyConsumption + Systems.Sum(sys => sys.EnergyConsumption);
@@ -24,6 +23,7 @@ namespace DontStopTheTrain.Train
         public int Next { get; set; }
         public int Prev { get; set; }
 
+        public IEvent ActiveEvent { get; private set; }
 
         public WagonData(IWagonStaticData wagonStaticData, TurnBasedController turnBasedController,
             BuffAndPerksService buffAndPerksService)
@@ -33,9 +33,7 @@ namespace DontStopTheTrain.Train
             _buffAndPerksService = buffAndPerksService;
         }
 
-        //[Inject]
         private TurnBasedController _turnBasedController;
-        //[Inject]
         private BuffAndPerksService _buffAndPerksService;
 
         private IWagonStaticData _staticData;
@@ -52,6 +50,8 @@ namespace DontStopTheTrain.Train
         public void Dispose()
         {
             _turnBasedController.OnTurnEnd -= OnTurnEnd;
+            _health.Dispose();
+            _maxHealth.Dispose();
         }
 
         private void OnTurnEnd(ITurnCallback callback)

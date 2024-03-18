@@ -9,10 +9,10 @@ namespace DontStopTheTrain.Events
         Action<IEvent> OnComplete { get; set; }
         EventId Id => StaticData.Id;
         int ActionPointPrice { get; }
+        int Chance { get; }
         IEventStaticData StaticData { get; }
 
         int HashCode { get; }
-        int Weight { get; }
         IReadOnlyCollection<ICondition> СompleteConditions { get; }
         ProgressStatus Status { get; }//??
 

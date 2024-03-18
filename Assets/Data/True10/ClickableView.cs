@@ -1,45 +1,34 @@
 ﻿using System;
-using True10;
 using True10.CameraSystem;
 using UnityEngine;
 
-namespace DontStopTheTrain.Train
+namespace True10
 {
-
-    /*public abstract class BasicView : MonoBehaviour 
-    { 
-
-    }*/
-    public abstract class BasicView : MonoBehaviour
+    public class ClickableView : MonoBehaviour
     {
         public Action OnClick { get; set; }
-        public Action OnExit { get; set; }
+       // public Action OnEnterView { get; set; }
+        public Action OnExitView { get; set; }
         public Action OnMouseOverEnter { get; set; }
         public Action OnMouseOverExit { get; set; }
-
+       // public Action OnInitialize { get; set; }
+        //public Action OnDispose { get; set; }
         public bool IsClickable { get; set; } = true;
 
-        [SerializeField]
-        protected ClickOnObject _clicker;
-        [SerializeField]
-        protected MouseOverObject _mouseOver;
-        [SerializeField]
-        protected CameraHolder _cameraHolder;
+       // public ICameraHolder CameraHolder => _cameraHolder;
 
+        [SerializeField]
+        private ClickOnObject _clicker;
+        [SerializeField]
+        private MouseOverObject _mouseOver;
+       // [SerializeField]
+        //private CameraHolder _cameraHolder;
 
-        public abstract void OnClickViewHandler();
-        public abstract void OnExitViewHandler();
-        public abstract void OnMouseOverExitHandler();
-        public abstract void OnMouseOverEnterHandler();
-        public abstract void OnInitialize();
-        public abstract void OnDispose();
-        
-        public void Exit()
+        public void ExitView()
         {
             IsClickable = true;
-           // _cameraHolder.TurnOnPrevious(); 
-            OnExitViewHandler();
-            OnExit?.Invoke();
+          //  _cameraHolder.TurnOnPrevious(); 
+            OnExitView?.Invoke();
         }
 
         private void OnViewClick()
@@ -49,8 +38,7 @@ namespace DontStopTheTrain.Train
                 return;
             }
             IsClickable = false;
-            _cameraHolder.TurnOn();
-            OnClickViewHandler();
+          //  _cameraHolder.TurnOn();
             OnClick?.Invoke();
         }
 
@@ -60,8 +48,7 @@ namespace DontStopTheTrain.Train
             {
                 return;
             }
-            OnMouseOverExitHandler(); 
-            OnMouseOverEnter?.Invoke();
+            OnMouseOverExit?.Invoke();
         }
 
         private void MouseOverEnter()
@@ -70,8 +57,7 @@ namespace DontStopTheTrain.Train
             {
                 return;
             }
-            OnMouseOverEnterHandler();
-            OnMouseOverExit?.Invoke();
+            OnMouseOverEnter?.Invoke();
         }
 
         public void Initialize()
@@ -80,7 +66,7 @@ namespace DontStopTheTrain.Train
             _mouseOver.OnEnter += MouseOverEnter;
             _mouseOver.OnExit += MouseOverExit;
             IsClickable = true;
-            OnInitialize();
+        //    OnInitialize?.Invoke();
         }
 
         public void Dispose()
@@ -89,7 +75,7 @@ namespace DontStopTheTrain.Train
             _mouseOver.OnEnter -= OnMouseOverEnter;
             _mouseOver.OnExit -= OnMouseOverExit;
             IsClickable = true;
-            OnDispose();
+         //   OnDispose?.Invoke();
         }
 
         private void OnEnable()
@@ -100,6 +86,12 @@ namespace DontStopTheTrain.Train
         private void OnDisable()
         {
             Dispose();
+        }
+
+        private void OnValidate()
+        {
+            _clicker ??= GetComponent<ClickOnObject>();
+            _mouseOver ??= GetComponent<MouseOverObject>();
         }
     }
    
