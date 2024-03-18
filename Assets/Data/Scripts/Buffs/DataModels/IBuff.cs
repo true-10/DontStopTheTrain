@@ -6,7 +6,7 @@ namespace DontStopTheTrain
     {
         int Value { get; }
         IBuffStaticData StaticData { get; }
-        AcitveStatus Status { get; }
+        ActiveStatus Status { get; }
         void Activate();
     }
 }

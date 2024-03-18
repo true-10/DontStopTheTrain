@@ -22,7 +22,6 @@ namespace DontStopTheTrain.Events
         [Inject]
         private EventViewersManager _eventViewersManager;
 
-
         private List<AbstractEventViewer> usedViewers = new();
         private int _overallWeight = 0;
         private int noEventChance = 80;
@@ -54,7 +53,7 @@ namespace DontStopTheTrain.Events
             int chance = GenerateChance(threshold);
             if (chance < noEventChance)
             {
-                Debug.Log($"No Chance [{chance}] To Start");
+                //Debug.Log($"No Chance [{chance}] To Start");
                 onGetEvent?.Invoke(null);
                 return false;
 

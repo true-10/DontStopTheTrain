@@ -33,7 +33,7 @@ namespace DontStopTheTrain
 
         private void OnCollisionEnter(Collision collision)
         {
-            Debug.Log($"ScrolledObject: OnCollisionEnter collision = {collision.gameObject}");
+           // Debug.Log($"ScrolledObject: OnCollisionEnter collision = {collision.gameObject}");
             OnContact(collision.gameObject);
         }
 

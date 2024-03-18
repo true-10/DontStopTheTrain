@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1683.5876, g: 2591.7134, b: 4653.512, a: 1}
+  m_IndirectSpecularColor: {r: 3367.1753, g: 5183.427, b: 9307.024, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -681,7 +681,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 130000
+  m_Intensity: 6346.535
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -758,7 +758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 130000
+  m_Intensity: 6346.535
   m_EnableSpotReflector: 0
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -3665,12 +3665,12 @@ PrefabInstance:
     - target: {fileID: 3757506175288925390, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.116732925
+      value: 0.11673294
       objectReference: {fileID: 0}
     - target: {fileID: 3757506175288925390, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.10920986
+      value: 0.10920988
       objectReference: {fileID: 0}
     - target: {fileID: 3769748894934294231, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}
@@ -4550,7 +4550,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 12
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -8469,6 +8469,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1416175204}
   - component: {fileID: 1416175205}
+  - component: {fileID: 1416175206}
   m_Layer: 0
   m_Name: SkyRotator
   m_TagString: Untagged
@@ -8504,6 +8505,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _volume: {fileID: 432432460}
+  _speed: 1
+--- !u!114 &1416175206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416175203}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df299e76f9f4d0469dc0a1216ea88fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _volume: {fileID: 432432460}
+  _sun: {fileID: 157207113}
+  _intensitySkyMinMax: {x: 9, y: 15}
+  _intensitySunMinMax: {x: 8000, y: 80000}
+  _intensityCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 3.7040539
+      outSlope: 3.7040539
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.033333335
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -4.3732386
+      outSlope: -4.3732386
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.024999976
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _sunsetSpeed: 2
 --- !u!1 &1421422383
 GameObject:
   m_ObjectHideFlags: 0
@@ -9826,7 +9869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1650212113
 Transform:
   m_ObjectHideFlags: 0
@@ -13739,7 +13782,7 @@ PrefabInstance:
     - target: {fileID: 9036475299525799939, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11673293
+      value: 0.11673295
       objectReference: {fileID: 0}
     - target: {fileID: 9036475299525799939, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}
@@ -13749,7 +13792,7 @@ PrefabInstance:
     - target: {fileID: 9036475299525799939, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.10920986
+      value: 0.109209865
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -8,11 +8,11 @@ namespace DontStopTheTrain
     
         public IBuffStaticData StaticData { get; private set; }
     
-        public AcitveStatus Status { get; private set; }
+        public ActiveStatus Status { get; private set; }
     
         public Buff(IBuffStaticData staticData, TurnBasedController turnBasedController, PlayerBuffsManager buffsManager)
         {
-            Status = AcitveStatus.Inactive;
+            Status = ActiveStatus.Inactive;
             StaticData = staticData;
             _turnBasedController = turnBasedController;
             _buffsManager = buffsManager;
@@ -24,11 +24,11 @@ namespace DontStopTheTrain
     
         public void Activate()
         {
-            if (Status == AcitveStatus.Active)
+            if (Status == ActiveStatus.Active)
             {
                 return;
             }
-            Status = AcitveStatus.Active;
+            Status = ActiveStatus.Active;
             _turnBasedController.OnTurnStart += OnTurnStart;
             _endDay = _turnBasedController.CurrentTurn + StaticData.Time;
         }
@@ -37,7 +37,7 @@ namespace DontStopTheTrain
         {
             if (callback.Number == _endDay)
             {
-                Status = AcitveStatus.Inactive;
+                Status = ActiveStatus.Inactive;
                 _buffsManager.TryToRemove(this);
                 _turnBasedController.OnTurnStart -= OnTurnStart;
             }
