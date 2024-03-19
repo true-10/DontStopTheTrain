@@ -13,11 +13,11 @@ namespace True10.LevelScrollSystem
     [System.Serializable]
     public class ChunkSetController
     {
-        private ChunkSet chunkSet;
+        private ChunkSet _chunkSet;
 
         public ChunkSetController(ChunkSet chunkSet)
         {
-            this.chunkSet = chunkSet;
+            _chunkSet = chunkSet;
         }
 
 

@@ -12,7 +12,13 @@ namespace True10.UI
         private Transform _cachedTransform;
         private Camera _camera;
 
-        private void Start()
+        private void OnValidate()
+        {
+            _cachedTransform ??= GetComponent<Transform>();
+            _camera = Camera.main;
+        }
+
+        private void OnEnable()
         {
             _cachedTransform ??= GetComponent<Transform>();
             _camera = Camera.main;
@@ -20,6 +26,10 @@ namespace True10.UI
 
         public void SetPosition(Transform lookAt)
         {
+            if (lookAt == null)
+            {
+                return;
+            }
             var newPosition = _camera.WorldToScreenPoint(lookAt.position + _offset);
 
             if (_cachedTransform.position != newPosition)

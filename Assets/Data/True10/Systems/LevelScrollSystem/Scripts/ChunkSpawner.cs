@@ -15,15 +15,16 @@ namespace True10.LevelScrollSystem
 
     public class ChunkSpawner : MonoBehaviour
     {
-        [SerializeField] private List<SpawnChunksData> spawnData;
+        [SerializeField] private List<SpawnChunksData> _spawnData;
 
         public void SpawnChunks(Action OnComplete)
         {
             StartCoroutine(SpawnChunksCoroutine(OnComplete));
         }
+
         IEnumerator SpawnChunksCoroutine(Action OnComplete)
         {
-            foreach (SpawnChunksData chunk in spawnData)
+            foreach (SpawnChunksData chunk in _spawnData)
             {
                 var setOfChunk = chunk.Chunks;
 

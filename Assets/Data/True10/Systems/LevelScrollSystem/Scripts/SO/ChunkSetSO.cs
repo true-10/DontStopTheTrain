@@ -7,6 +7,6 @@ namespace True10.LevelScrollSystem
     [CreateAssetMenu(fileName = "ChunkSetSO", menuName = "Interceptors/SO/ChunkSetSO", order = 2)]
     public class ChunkSetSO : ScriptableObject
     {
-        [SerializeField] private ChunkSet chunkSet;
+        [SerializeField] private ChunkSet _chunkSet;
     }
 }

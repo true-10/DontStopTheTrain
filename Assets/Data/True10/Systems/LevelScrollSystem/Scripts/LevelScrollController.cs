@@ -3,70 +3,65 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-
 namespace True10.LevelScrollSystem
 {
     public class LevelScrollController : MonoBehaviour
     {
-        #region properties
+        [SerializeField] 
+        private Vector3 _scrollDirection = default;//переделать в енум
+        [SerializeField] 
+        private float _chunkSize = 500f;//
+        [SerializeField] 
+        private float _scrollSpeed = 200f;//
+        [SerializeField]
+        private List<ObjectToScroll> _objectsToScroll;
         //[SerializeField]
-        private Vector3 startPosition = Vector3.zero;
+        private Vector3 _startPosition = Vector3.zero;
         //[SerializeField]
-        private Vector3 endPosition = Vector3.zero;
-        [SerializeField] private Vector3 scrollDirection = default;//переделать в енум
-        [SerializeField] private float chunkSize = 500f;//
-        [SerializeField] private float scrollSpeed = 200f;//
+        private Vector3 _endPosition = Vector3.zero;
 
-        #endregion
-
-        #region vars
-        [SerializeField] private List<ObjectToScroll> objectsToScroll;
-        #endregion
-       
-        // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
-            Init();
+            Initialize();
         }
         
-
-       void Init()
+        private void Initialize()
         {
             ObjectToScroll obj = null;
             ObjectToScroll prevObj = null;
-            for (int i = 1; i < objectsToScroll.Count; i++)
+            for (int i = 1; i < _objectsToScroll.Count; i++)
             {
-                obj = objectsToScroll[i];
-                prevObj = objectsToScroll[i - 1];
+                obj = _objectsToScroll[i];
+                prevObj = _objectsToScroll[i - 1];
                 obj.SnapTargetObject = prevObj;
                 obj.AlignToNext();
             }
 
-            obj = objectsToScroll[0];
-            prevObj = objectsToScroll[objectsToScroll.Count - 1];
+            obj = _objectsToScroll[0];
+            prevObj = _objectsToScroll[_objectsToScroll.Count - 1];
             obj.SnapTargetObject = prevObj;
             obj.AlignToNext();
 
-            var chunkNumb = objectsToScroll.Count;
-            var length = chunkNumb * chunkSize;
+            var chunkNumb = _objectsToScroll.Count;
+            var length = chunkNumb * _chunkSize;
 
-            startPosition.z = -Mathf.Sign(scrollSpeed) * length / 2f;
-            endPosition.z = Mathf.Sign(scrollSpeed) * length / 2f;
+            _startPosition.z = -Mathf.Sign(_scrollSpeed) * length / 2f;
+            _endPosition.z = Mathf.Sign(_scrollSpeed) * length / 2f;
         }
-       
-        void LateUpdate()
+
+        private void LateUpdate()
         {
             ScrollAnimation();
         }
 
         private void ScrollAnimation()
         {
-            for (int i = 0; i < objectsToScroll.Count; i++)
+            for (int i = 0; i < _objectsToScroll.Count; i++)
             {
-                ObjectToScroll obj = objectsToScroll[i];
+                ObjectToScroll obj = _objectsToScroll[i];
                 Vector3 pos = obj.transform.localPosition;
-                pos.z += scrollSpeed * Time.deltaTime;
-                if (pos.z < endPosition.z)
+                pos.z += _scrollSpeed * Time.deltaTime;
+                if (pos.z < _endPosition.z)
                 {
                     obj.AlignToNext();
                     return;

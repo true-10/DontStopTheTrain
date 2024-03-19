@@ -10,7 +10,7 @@ namespace True10
     /// <summary>
     /// Don't forget to put PhysicsRaycaster on camera
     /// </summary>
-    [RequireComponent(typeof(BoxCollider))]
+   // [RequireComponent(typeof(BoxCollider))]
     public class MouseOverObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public Action OnEnter { get; set; }

@@ -6,6 +6,7 @@ namespace DontStopTheTrain.Events
 {
     public interface IEventViewer
     {
+        IEvent ActiveEvent { get; }
         Action<IEvent> OnSetEvent { get; set; }
         bool IsFree { get; }
         bool TryToSetEventData(IEvent eventData);
@@ -13,6 +14,7 @@ namespace DontStopTheTrain.Events
 
     public abstract class AbstractEventViewer : MonoBehaviour, IEventViewer
     {
+        public IEvent ActiveEvent => _eventData;
         public Action<IEvent> OnSetEvent { get; set; }
         public virtual EventType Type => EventType.None;
 
@@ -32,6 +34,7 @@ namespace DontStopTheTrain.Events
                 return false;
             }
             _eventData = eventData;
+
             OnSetEvent?.Invoke(eventData);
             return true;
         }

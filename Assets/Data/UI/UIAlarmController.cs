@@ -5,47 +5,77 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using True10.Extentions;
+using True10.UI;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
+using static UnityEditor.Rendering.FilterWindow;
 
 namespace DontStopTheTrain
 {
+
     public class UIAlarmController : MonoBehaviour
     {
         [Inject]
         private EventController eventController;
-        [SerializeField]
-        private List<Image> _icons;
+        [Inject]
+        private EventViewersManager _eventViewersManager;
 
-        private Dictionary<Image, IEvent> dictionaryIconEvent = new();
+        [SerializeField]
+        private List<UIAlarmIconElement> _alarmIcons;
+        [SerializeField]
+        private Image _alarmIconPointer; //    
+        [SerializeField]
+        private SetWorldPosition _alarmSetWorldPosition; //при наведении на иконки событий указывать иконкой на view
+
+        private Dictionary<UIAlarmIconElement, IEvent> dictionaryIconEvent = new();
         public void Initialize()
         {
-            _icons.ForEach(x =>
+            _alarmSetWorldPosition.gameObject.SetActive(false);
+
+            _alarmIcons.ForEach(x =>
             {
                 dictionaryIconEvent.TryAdd(x, null);
                 x.gameObject.SetActive(false);
             });
             eventController.OnStart += OnEventStart;
         }
+
         public void Dispose()
         {
             dictionaryIconEvent.Clear();
             eventController.OnStart -= OnEventStart;
+            _alarmIcons.ForEach(element =>  element.OnMouseOverElement -= OnMouseOverIcon);
         }
 
         public void ShowAlarm(IEvent eventData)
         {
-            var image = GetRandomFreeImage();
-            if (image == null)
+            var element = GetRandomFreeElement();
+            if (element == null)
             {
                 return;
             }
-            dictionaryIconEvent[image] = eventData;
-            image.gameObject.SetActive(true);
-            image.sprite = eventData.StaticData.Info.Icon;
-
+            dictionaryIconEvent[element] = eventData;
+            element.Initialize(eventData);
+            element.OnMouseOverElement += OnMouseOverIcon;
             eventData.OnComplete += OnEventComplete;
+        }
+
+        private void OnMouseOverIcon(IEvent eventData)
+        {
+            if (eventData == null)
+            {
+                _alarmSetWorldPosition.gameObject.SetActive(false);
+                return;
+            }
+            _alarmSetWorldPosition.gameObject.SetActive(true);
+            _alarmIconPointer.sprite = eventData.StaticData.Info.Icon;
+
+            var viewer = _eventViewersManager.Items.FirstOrDefault(viewer => viewer.ActiveEvent == eventData);
+            if (viewer != null)
+            {
+                _alarmSetWorldPosition.SetPosition(viewer.transform);
+            }
         }
 
         private void OnEventStart(IEvent eventData)
@@ -55,13 +85,21 @@ namespace DontStopTheTrain
 
         private void OnEventComplete(IEvent eventData)
         {
-            var image = dictionaryIconEvent.FirstOrDefault(x => x.Value == eventData).Key;
-            dictionaryIconEvent[image] = null;
-            image.gameObject.SetActive(false);
             eventData.OnComplete -= OnEventComplete;
+            var element = dictionaryIconEvent.FirstOrDefault(x => x.Value == eventData).Key;
+            if (element == null)
+            {
+                return;
+            }
+            if (dictionaryIconEvent.ContainsKey(element))
+            {
+                dictionaryIconEvent[element] = null;
+            }
+            element.gameObject.SetActive(false);
+            element.OnMouseOverElement -= OnMouseOverIcon;
         }
 
-        private Image GetRandomFreeImage()
+        private UIAlarmIconElement GetRandomFreeElement()
         {
             return dictionaryIconEvent
                 .Where(x => x.Value == null)

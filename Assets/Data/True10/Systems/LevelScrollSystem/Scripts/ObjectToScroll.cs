@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace True10.LevelScrollSystem
 {
-    public class OnSnapCallBack
+    public class OnSnapCallback
     {
         public ObjectToScroll Host;
         public ObjectToScroll SnapTargetObject;
@@ -19,12 +19,11 @@ namespace True10.LevelScrollSystem
 
     public class ObjectToScroll : MonoBehaviour
     {
-        public Action<OnSnapCallBack> OnSnap { get; set; }
-        #region fields
+        public Action<OnSnapCallback> OnSnap { get; set; }
+
         public Transform startPoint;
         public Transform endPoint;
         public ObjectToScroll SnapTargetObject;
-        #endregion
 
 
         void AlignmentWithEndPoint(Transform pointToAlign)
@@ -40,7 +39,7 @@ namespace True10.LevelScrollSystem
             //transform.position += Quaternion.AngleAxis(pointToAlign.rotation.eulerAngles.y, Vector3.up) * -startPoint.localPosition;
             transform.position += Quaternion.AngleAxis(pointToAlign.rotation.eulerAngles.y, Vector3.up) * -endPoint.localPosition;
             
-            var callback = new OnSnapCallBack()
+            var callback = new OnSnapCallback()
             {
                 Host = this,
                 SnapTargetObject = SnapTargetObject
@@ -60,7 +59,7 @@ namespace True10.LevelScrollSystem
 
             transform.position += Quaternion.AngleAxis(pointToAlign.rotation.eulerAngles.y, Vector3.up) * -startPoint.localPosition;
             
-            var callback = new OnSnapCallBack()
+            var callback = new OnSnapCallback()
             {
                 Host = this,
                 SnapTargetObject = SnapTargetObject
