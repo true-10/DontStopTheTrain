@@ -393,7 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isLocal: 1
-  _xRotationSpeed: 1000
+  _xRotationSpeed: 0
   _yRotationSpeed: 0
   _zRotationSpeed: 0
 --- !u!1 &1489383221452073914
@@ -686,7 +686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isLocal: 1
-  _xRotationSpeed: 1000
+  _xRotationSpeed: 0
   _yRotationSpeed: 0
   _zRotationSpeed: 0
 --- !u!1 &2926767927313551206
@@ -1286,7 +1286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isLocal: 1
-  _xRotationSpeed: 1000
+  _xRotationSpeed: 0
   _yRotationSpeed: 0
   _zRotationSpeed: 0
 --- !u!1 &4930032644739269483
@@ -1580,6 +1580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6341849375994997699}
+  - component: {fileID: 1485575356731511809}
   - component: {fileID: 7960717758992695377}
   - component: {fileID: 799651732571059536}
   m_Layer: 6
@@ -1607,6 +1608,23 @@ Transform:
   - {fileID: 5885617875101044877}
   m_Father: {fileID: 8225478462349188403}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1485575356731511809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855411223102270924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 563a515ffe3d34047a9b799d419559e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _splineServiceBehaviour: {fileID: 0}
+  _wheels:
+  - {fileID: 2426673948290069630}
+  - {fileID: 8929799538548435450}
+  _speedRotation: 1500
 --- !u!114 &7960717758992695377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1619,7 +1637,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ee283578c27184abbbfad9fded3fd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splineServiceBehaviour: {fileID: 0}
+  _splineServiceBehaviour: {fileID: 0}
+  _wheels: []
+  _speedRotation: 0
   speed: 10
 --- !u!65 &799651732571059536
 BoxCollider:
@@ -2132,6 +2152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4788253767716810615}
+  - component: {fileID: 7450241930708857698}
   - component: {fileID: 3294625056322463721}
   - component: {fileID: 3333713186172828882}
   m_Layer: 6
@@ -2159,6 +2180,23 @@ Transform:
   - {fileID: 8197943226748108296}
   m_Father: {fileID: 8225478462349188403}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7450241930708857698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7588134856419409512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 563a515ffe3d34047a9b799d419559e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _splineServiceBehaviour: {fileID: 0}
+  _wheels:
+  - {fileID: 7522270454732086398}
+  - {fileID: 4256511234356701134}
+  _speedRotation: 1500
 --- !u!114 &3294625056322463721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2171,7 +2209,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ee283578c27184abbbfad9fded3fd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splineServiceBehaviour: {fileID: 0}
+  _splineServiceBehaviour: {fileID: 0}
+  _wheels: []
+  _speedRotation: 0
   speed: 10
 --- !u!65 &3333713186172828882
 BoxCollider:
@@ -2240,7 +2280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isLocal: 1
-  _xRotationSpeed: 1000
+  _xRotationSpeed: 0
   _yRotationSpeed: 0
   _zRotationSpeed: 0
 --- !u!1 &7704240529653932846

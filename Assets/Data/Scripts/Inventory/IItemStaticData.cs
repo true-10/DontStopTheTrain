@@ -1,4 +1,6 @@
-﻿namespace DontStopTheTrain
+﻿using True10.StaticData;
+
+namespace DontStopTheTrain
 {
     public interface IItemStaticData
     {

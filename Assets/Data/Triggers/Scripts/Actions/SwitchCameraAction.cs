@@ -11,9 +11,6 @@ namespace True10.TriggerSystem
 
     public class SwitchCameraAction : AbstractTriggerActivatorMonoActionObject
     {
-        [Inject]
-        private ICameraController cameraController;
-
         [SerializeField]
         private CameraHolder cameraHolderOnEnter;
         [SerializeField]
@@ -29,7 +26,7 @@ namespace True10.TriggerSystem
             }
             if (cameraHolderOnEnter != null)
             {
-                cameraController?.SwitchToCamera(cameraHolderOnEnter.HashCode);
+                cameraHolderOnEnter.TurnOn();
             }
         }
 
@@ -41,7 +38,7 @@ namespace True10.TriggerSystem
             }
             if (cameraHolderOnExit != null)
             {
-                cameraController?.SwitchToCamera(cameraHolderOnExit.HashCode);
+                cameraHolderOnExit.TurnOn();
             }
         }
 

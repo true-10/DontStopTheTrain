@@ -70,10 +70,7 @@ public class GeneratorWithMesh : MonoBehaviour
             newBlock.transform.localScale = prefabScale * Vector3.one;
             blocks.Add(newBlock);
         }
-
         Debug.Log($"verts.Count = {verts.Count} blocks.Count = {blocks.Count}");
-
-
     }
 
     void ClearAll()
@@ -82,7 +79,6 @@ public class GeneratorWithMesh : MonoBehaviour
         blocks.Clear();
         verts.Clear();
     }
-
 
     void UpdateBlocks(List<Vector3> verts)
     {

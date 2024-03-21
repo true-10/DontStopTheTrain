@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UniRx;
 using Zenject;
-using static UnityEditor.Progress;
 
 namespace DontStopTheTrain
 {

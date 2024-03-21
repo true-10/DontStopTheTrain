@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using True10.AnimationSystem;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Splines;
@@ -10,38 +11,40 @@ namespace DontStopTheTrain.TrainToRailRoadSystem
     public class TrainAxle : MonoBehaviour
     {
         [SerializeField]
-        protected SplineServiceBehaviour splineServiceBehaviour;
+        protected SplineServiceBehaviour _splineServiceBehaviour;
 
-        protected Transform cachedTransform;
-        protected Rigidbody rb;
-        public Transform CachedTransform { get => cachedTransform; }
+        [SerializeField]
+        protected List<ObjectRotation> _wheels;
+        [SerializeField]
+        protected float _speedRotation;
+
+        protected Transform _cachedTransform;
+        protected Rigidbody _rb;
+        public Transform CachedTransform { get => _cachedTransform; }
 
         protected void Awake()
         {
-            cachedTransform = GetComponent<Transform>();
+            _cachedTransform = GetComponent<Transform>();
         }
 
         protected void OnValidate()
         {
-            cachedTransform ??= GetComponent<Transform>();
-            rb ??= GetComponent<Rigidbody>();
+            _cachedTransform ??= GetComponent<Transform>();
+            _rb ??= GetComponent<Rigidbody>();
         }
 
         // Start is called before the first frame update
         protected void Start()
         {
-            cachedTransform ??= GetComponent<Transform>();
-            rb ??= GetComponent<Rigidbody>();
-        }
-
-        protected void FixedUpdate()
-        {
-        //    UpdateAxle();
+            _cachedTransform ??= GetComponent<Transform>();
+            _rb ??= GetComponent<Rigidbody>();
+            _wheels.ForEach(wheel => wheel.SetSpeedRotation(x: _speedRotation));
         }
 
         public void SetSpeed(float newSpeed)
         {
-           // splineFollower.followSpeed = newSpeed;
+            _wheels.ForEach(wheel => wheel.SetSpeedRotation(x: newSpeed));
+            // splineFollower.followSpeed = newSpeed;
         }
 
         public void SetFollow(bool isFollow)
