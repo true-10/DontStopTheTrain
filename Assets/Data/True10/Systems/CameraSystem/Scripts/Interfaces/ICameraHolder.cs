@@ -11,8 +11,8 @@ namespace True10.CameraSystem
         bool IsDisabled { get; set; }
         Transform Follow { get; set; }
         Transform LookAt { get; set; }
-        CameraRig CameraRig { get; set; }
-        int Weight { get; set; }
+        CameraRig CameraRig { get;}
+        int Weight { get;}
 
         /// <summary>
         /// start script for control camera (move target and aim around)

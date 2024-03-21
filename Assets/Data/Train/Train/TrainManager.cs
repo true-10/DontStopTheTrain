@@ -9,7 +9,7 @@ public class TrainManager : MonoBehaviour
 {
     #region fields
     [SerializeField] private Locomotiv _locomotiv;//локомотив
-    [SerializeField] private TrainGUI _trainGUI;//
+  //  [SerializeField] private TrainGUI _trainGUI;//
     [SerializeField] private CinemachineVirtualCamera _droneCam;//
     [SerializeField] private CinemachineVirtualCamera _fpsCam;//
     [SerializeField] private List<CinemachineVirtualCamera> _cams;//
@@ -24,7 +24,7 @@ public class TrainManager : MonoBehaviour
     public void Init()
     {
         _locomotiv.Init();
-        _trainGUI.SetLoco(_locomotiv);
+     //   _trainGUI.SetLoco(_locomotiv);
 
     }
     public void OnUpdate()
@@ -46,7 +46,7 @@ public class TrainManager : MonoBehaviour
         }
 
         _locomotiv.OnUpdate();
-        _trainGUI.OnUpdate();
+        //_trainGUI.OnUpdate();
         if(_FPSModeOn)
         {
             FPSUpdate();
@@ -91,7 +91,7 @@ public class TrainManager : MonoBehaviour
         Cursor.visible = false;
       //      CameraManager.Singleton.SetMainCamera(_droneCam);
         _locomotiv.Depart();
-        _trainGUI.gameObject.SetActive(true);
+      //  _trainGUI.gameObject.SetActive(true);
 
         _gameMenuTime = false;
         //установить камеру поезда
@@ -102,7 +102,7 @@ public class TrainManager : MonoBehaviour
         Debug.Log("TrainManager OnExit");
         Cursor.visible = true;
         _locomotiv.ReSetParams();
-        _trainGUI.gameObject.SetActive(false);
+      //  _trainGUI.gameObject.SetActive(false);
         _gameMenuTime = false;
     }
 

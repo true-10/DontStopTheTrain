@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DontStopTheTrain.Train;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using True10.Extentions;
@@ -21,29 +22,31 @@ namespace DontStopTheTrain.Events
         private EventGenerator _eventGenerator;
         [Inject]
         private EventViewersManager _eventViewersManager;
+        [Inject]
+        private EventsManager _eventManager;
 
-        private List<AbstractEventViewer> usedViewers = new();
+        private Queue<IEvent> _eventsToReset = new();
+        private List<AbstractEventViewer> _usedViewers = new();
+
         private int _overallWeight = 0;
         private int noEventChance = 80;
+
+
         public void Initialize()
         {
             _turnBasedController.OnTurnStart += TryToStartEvents;
+            _turnBasedController.OnTurnEnd += TryToResetEvents;
             _eventController.OnComplete += OnEventComplete;
-        }
-
-        private void OnEventComplete(IEvent eventData)
-        {
-            _overallWeight -= eventData.Chance;
-            if (_overallWeight < 0)
-            {
-                _overallWeight = 0;
-            }
         }
 
         public void Dispose()
         {
             _turnBasedController.OnTurnStart -= TryToStartEvents;
+            _turnBasedController.OnTurnEnd -= TryToResetEvents;
             _eventController.OnComplete -= OnEventComplete;
+            
+            _usedViewers.Clear();
+            _eventsToReset.Clear();
         }
 
         public bool TryToStartRandomWagonEvent(float threshold, 
@@ -59,7 +62,8 @@ namespace DontStopTheTrain.Events
 
             }
             //var maxPosibleEventsCount = _eventViewersManager.Items.Where(v => v.IsFree).Count();
-            var events = _eventGenerator.GetEvents();
+            //var events = _eventGenerator.GetEvents();
+            var events = _eventManager.GetAllFreeEvents();
             events = events
                 .Where(eventData => wagonEventTypes.Contains((eventData.StaticData as IWagonEventStaticData).WagonEventType))
                 .ToList();
@@ -83,21 +87,7 @@ namespace DontStopTheTrain.Events
             onGetEvent?.Invoke(null);
             return false;
         }
-
-        private IEvent GetRandomEventByChance(List<IEvent> events, float threshold, WagonEventViewer view)
-        {
-            var chance = GenerateChance(threshold);
-            var wagonEvents = events
-                .Where(eventData => eventData.StaticData.Type == EventType.Wagon)
-                .Where(eventData => eventData.Chance > chance)
-                //.Where(eventData => eventData.StaticData.Type == EventType.Wagon && eventData.Chance <= chance)
-                .ToList();
-
-            var eventToStart = wagonEvents
-                .FirstOrDefault(eventData => view.WagonEventTypes.Contains((eventData.StaticData as IWagonEventStaticData).WagonEventType));
-            return eventToStart;
-        }
-        
+                
         private IEvent GetRandomWeightedEvent(List<IEvent> wagonEvents)
         {
             wagonEvents = wagonEvents
@@ -154,7 +144,8 @@ namespace DontStopTheTrain.Events
             }
             var maxPosibleEventsCount = _eventViewersManager.Items.Where(v => v.IsFree).Count();
                         
-            var events = _eventGenerator.GetEvents();
+            //var events = _eventGenerator.GetEvents();
+            var events = _eventManager.GetAllFreeEvents();
 
             if (events.Count == 0)
             {
@@ -175,9 +166,43 @@ namespace DontStopTheTrain.Events
             _turnBasedController.StartTurn();
         }
 
+        private void TryToResetEvents(ITurnCallback callback)
+        {
+            if (_eventsToReset.Count > 0)
+            {
+                var eventToReset = _eventsToReset.Dequeue();
+                _eventManager.Reset(eventToReset);
+            }
+        }
+
+        private void OnEventComplete(IEvent eventData)
+        {
+            _eventsToReset.Enqueue(eventData);
+            /*
+            _overallWeight -= eventData.Chance;
+            if (_overallWeight < 0)
+            {
+                _overallWeight = 0;
+            }*/
+        }
+
+        private IEvent GetRandomEventByChance(List<IEvent> events, float threshold, WagonEventViewer view)
+        {
+            var chance = GenerateChance(threshold);
+            var wagonEvents = events
+                .Where(eventData => eventData.StaticData.Type == EventType.Wagon)
+                .Where(eventData => eventData.Chance > chance)
+                //.Where(eventData => eventData.StaticData.Type == EventType.Wagon && eventData.Chance <= chance)
+                .ToList();
+
+            var eventToStart = wagonEvents
+                .FirstOrDefault(eventData => view.WagonEventTypes.Contains((eventData.StaticData as IWagonEventStaticData).WagonEventType));
+            return eventToStart;
+        }
+
         private void TryToStartWagonEvents(List<IEvent> wagonEvents)
         {
-            usedViewers.Clear();
+            _usedViewers.Clear();
             var eventViewers = _eventViewersManager.Items
                 .Where(viewer => viewer.Type == EventType.Wagon)
                 .ToList();
@@ -192,10 +217,10 @@ namespace DontStopTheTrain.Events
                     .ToList()
                     .GetRandomElement();
 
-                if (view != null && usedViewers.Contains(view) == false)
+                if (view != null && _usedViewers.Contains(view) == false)
                 {
                     view.TryToSetEventData(eventToStart);
-                    usedViewers.Add(view);
+                    _usedViewers.Add(view);
                     _eventController.Start(eventToStart);
                 }
             }
@@ -210,6 +235,45 @@ namespace DontStopTheTrain.Events
             {
                 _eventController.Start(eventToStart);
             }*/
+        }
+
+    }
+    public sealed class TrainEventStarter
+    {
+
+    }
+    public sealed class WagonEventStarter
+    {
+        public WagonEventStarter()
+        {
+
+        }
+        private WagonData _wagonData;
+        //знаем список систем
+        //смотрим какая более изношенная или рандомно выбираем и вызываем ивент генерат
+        private EventGenerator _eventGenerator;
+        private TurnBasedController _turnBasedController;
+
+        public void Initialize()
+        {
+            _turnBasedController.OnTurnStart += OnTurnStart;
+        }
+
+
+        public void Dispose()
+        {
+            _turnBasedController.OnTurnStart -= OnTurnStart;
+
+        }
+        private void TryToStartEvents()
+        {
+            //var events = _eventGenerator.GetEvents();
+           // var events = _eventManager.GetAllFreeEvents();
+        }
+
+        private void OnTurnStart(ITurnCallback callback)
+        {
+            TryToStartEvents();
         }
 
     }

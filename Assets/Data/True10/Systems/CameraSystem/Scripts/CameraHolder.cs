@@ -22,9 +22,9 @@ namespace True10.CameraSystem
         public Transform Follow { get => _cinemachineVirtualCamera.Follow; set => _cinemachineVirtualCamera.Follow = value; }
         public Transform LookAt { get => _cinemachineVirtualCamera.LookAt; set => _cinemachineVirtualCamera.LookAt = value; }
         public CameraRig CameraRig { get => _cameraRig; set => _cameraRig = value; }
-        public int Weight { get; set; }
+        public int Weight => _weight;
 
-        
+
         [SerializeField]
         private CinemachineVirtualCamera _cinemachineVirtualCamera;
         [SerializeField]
@@ -37,6 +37,8 @@ namespace True10.CameraSystem
         private List<ICameraTargetController> _cameraTargetControllers;
         [SerializeField]
         private float _defaultFOV = 60;
+        [SerializeField]
+        private int _weight = 60;
 
         public void InitCustomCameraController()
         {

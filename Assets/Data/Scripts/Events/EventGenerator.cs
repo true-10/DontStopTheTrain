@@ -16,7 +16,9 @@ namespace DontStopTheTrain.Events
         [Inject]
         private EventFabric _eventsFabric;
         [Inject]
-        private EventsService _eventsService;       
+        private EventsService _eventsService; 
+        [Inject]
+        private EventsManager _eventsManager;       
 
         public IEvent GetEvent()
         {
@@ -52,44 +54,6 @@ namespace DontStopTheTrain.Events
                 .Where(eventData => _eventsService.IsAvailableForPlayerLevel(eventData))
                 .ToList();// as List<IEventStaticData>;
         }
-    }
-    public sealed class TrainEventStarter
-    {
-
-    }
-    public sealed class WagonEventStarter
-    {
-        public WagonEventStarter()
-        {
-
-        }
-        private WagonData _wagonData;
-        //знаем список систем
-        //смотрим какая более изношенная или рандомно выбираем и вызываем ивент генерат
-        private EventGenerator _eventGenerator;
-        private TurnBasedController _turnBasedController;
-
-        public void Initialize()
-        {
-            _turnBasedController.OnTurnStart += OnTurnStart;
-        }
-
-
-        public void Dispose()
-        {
-            _turnBasedController.OnTurnStart -= OnTurnStart;
-
-        }
-        private void TryToStartEvents()
-        {
-            var events = _eventGenerator.GetEvents();
-        }
-
-        private void OnTurnStart(ITurnCallback callback)
-        {
-            TryToStartEvents();
-        }
-
     }
 }
 

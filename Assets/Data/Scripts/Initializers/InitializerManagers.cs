@@ -1,10 +1,13 @@
 using Zenject;
 using UnityEngine;
+using DontStopTheTrain.Events;
 
 namespace DontStopTheTrain
 {
     public class InitializerManagers : MonoBehaviour
     {
+        [Inject]
+        private EventsManager _eventsManager;
         [Inject]
         private ConditionsManager _conditionsManager;
         [Inject]
@@ -18,6 +21,7 @@ namespace DontStopTheTrain
 
         public void Initialize()
         {
+            _eventsManager.Initialize();
             _conditionsManager.Initialize();
             _perkManager.Initialize();
             _buffsManager.Initialize();
@@ -27,6 +31,7 @@ namespace DontStopTheTrain
 
         public void Dispose()
         {
+            _eventsManager.Dispose();
             _conditionsManager.Dispose();
             _playerPerksManager.Dispose();
             _playerBuffsManager.Dispose();

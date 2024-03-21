@@ -1,91 +1,93 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 using System;
 
-
-
-public class StateMachine
+namespace True10
 {
-    #region fields
-    private IState _currentState;
-    private Dictionary<Type, List<Transition>> _transitions = new Dictionary<Type, List<Transition>>();
-    private List<Transition> _currentTransitions    = new List<Transition>();
-    private List<Transition> _anyTransitions        = new List<Transition>();
-    private static List<Transition> EmptyTransitions        = new List<Transition>();
-    #endregion
-
-    public void Tick()
+    public class StateMachine
     {
-        var transition = GetTransition();
-        if(transition != null )
+        private IState _currentState;
+        private Dictionary<Type, List<Transition>> _transitions = new Dictionary<Type, List<Transition>>();
+        private List<Transition> _currentTransitions = new List<Transition>();
+        private List<Transition> _anyTransitions = new List<Transition>();
+        private static List<Transition> _emptyTransitions = new List<Transition>();
+
+        public void Dispose()
         {
-            SetState(transition.To);
+            _transitions.Clear();
+            _currentTransitions.Clear();
+            _anyTransitions.Clear();
+            _emptyTransitions.Clear();
         }
 
-        _currentState?.Tick();
-    }
-
-    public void SetState(IState state)
-    {
-        if (state == _currentState)
-            return;
-
-        _currentState?.OnExit();
-        _currentState = state;
-
-        _transitions.TryGetValue(_currentState.GetType(), out _currentTransitions);
-        if(_currentTransitions == null )
+        public void Tick()
         {
-            _currentTransitions = EmptyTransitions;
-        }
-        _currentState.OnEnter();
-    }
+            var transition = GetTransition();
+            if (transition != null)
+            {
+                SetState(transition.To);
+            }
 
-    public void AddTransition(IState from, IState to, Func<bool> predicate)
-    {
-        if(_transitions.TryGetValue(from.GetType(), out var transitions ) == false )
-        {
-            transitions = new List<Transition>();
-            _transitions[from.GetType()] = transitions;
-        }
-        transitions.Add(new Transition(to, predicate));
-    }
-
-    public void AddAnyTransition(IState state, Func<bool> predicate)
-    {
-        _anyTransitions.Add(new Transition(state, predicate));
-    }
-
-    private class Transition
-    {
-        public Func<bool> Condition { get; }
-        public IState To { get; }
-
-        public Transition(IState to, Func<bool> predicate)
-        {
-            To = to;
-            Condition = predicate;
-
-        }
-    }
-
-    private Transition GetTransition()
-    {
-        foreach(var transition in _anyTransitions)
-        {
-            if (transition.Condition())
-                return transition;
-        }
-        foreach (var transition in _currentTransitions)
-        {
-            if (transition.Condition())
-                return transition;
+            _currentState?.Tick();
         }
 
-        return null;
-    }
+        public void SetState(IState state)
+        {
+            if (state == _currentState)
+                return;
 
+            _currentState?.OnExit();
+            _currentState = state;
+
+            _transitions.TryGetValue(_currentState.GetType(), out _currentTransitions);
+            if (_currentTransitions == null)
+            {
+                _currentTransitions = _emptyTransitions;
+            }
+            _currentState.OnEnter();
+        }
+
+        public void AddTransition(IState from, IState to, Func<bool> predicate)
+        {
+            if (_transitions.TryGetValue(from.GetType(), out var transitions) == false)
+            {
+                transitions = new List<Transition>();
+                _transitions[from.GetType()] = transitions;
+            }
+            transitions.Add(new Transition(to, predicate));
+        }
+
+        public void AddAnyTransition(IState state, Func<bool> predicate)
+        {
+            _anyTransitions.Add(new Transition(state, predicate));
+        }
+
+        private class Transition
+        {
+            public Func<bool> Condition { get; }
+            public IState To { get; }
+
+            public Transition(IState to, Func<bool> predicate)
+            {
+                To = to;
+                Condition = predicate;
+            }
+        }
+
+        private Transition GetTransition()
+        {
+            foreach (var transition in _anyTransitions)
+            {
+                if (transition.Condition())
+                    return transition;
+            }
+            foreach (var transition in _currentTransitions)
+            {
+                if (transition.Condition())
+                    return transition;
+            }
+            return null;
+        }
+    }
 }
 
 

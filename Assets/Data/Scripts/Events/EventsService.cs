@@ -15,15 +15,9 @@ namespace DontStopTheTrain.Events
 
         public int ActionPoints => _player.ActionPoints.Value;
 
-        public bool IsEnoughActionPoints(IEvent eventData)
-        {
-            return _player.ActionPoints.Value >= eventData.ActionPointPrice;
-        }
+        public bool IsEnoughActionPoints(IEvent eventData) => _player.ActionPoints.Value >= eventData.ActionPointPrice;
 
-        public bool IsAllConditionsAreMet(IEvent eventData)
-        {
-            return eventData.СompleteConditions.All(condition => condition.IsMet());
-        }
+        public bool IsAllConditionsAreMet(IEvent eventData) => eventData.СompleteConditions.All(condition => condition.IsMet());
 
         public List<InventoryItem> GetResourceFromConditions(IEvent eventData)
         {

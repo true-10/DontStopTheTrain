@@ -55,6 +55,7 @@ namespace DontStopTheTrain.Events
             }
             _eventsService.TryToRemoveRequredItems(this);
             OnComplete?.Invoke(this);
+            Status = ProgressStatus.Complete;
             return true;
         }
 
