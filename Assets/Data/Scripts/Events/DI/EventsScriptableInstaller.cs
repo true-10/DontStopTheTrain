@@ -18,5 +18,6 @@ public class EventsScriptableInstaller : ScriptableObjectInstaller<EventsScripta
         Container.Bind<EventStarter>().AsSingle();
         Container.Bind<EventGenerator>().AsSingle();
         Container.Bind<EventsService>().AsSingle();
+        Container.Bind<ViewEventController>().AsSingle();
     }
 }

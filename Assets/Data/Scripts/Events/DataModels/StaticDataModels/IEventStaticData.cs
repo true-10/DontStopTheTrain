@@ -9,9 +9,11 @@ namespace DontStopTheTrain.Events
         int HashCode { get; }
         EventId Id { get; }
         EventType Type { get; }
-        int Chance { get; }
+        int Weight { get; }
         int ActionPointPrice { get; }
-        IReadOnlyList<RewardId> RewardIds { get; }
+        int Time { get; }//время длительности, после которого завершается. если 0, то без ограничений
+        IReadOnlyList<RewardId> WinRewardIds { get; }
+        IReadOnlyList<RewardId> FailRewardIds { get; }
         IReadOnlyCollection<IConditionStaticData> ConditionsToComplete { get; }//условия завершения
         IReadOnlyCollection<IConditionStaticData> ConditionsToStart { get; }//условия выдачи
         public Information Info { get; }
@@ -34,5 +36,8 @@ namespace DontStopTheTrain.Events
         Fire = 1,//может перекидываться на другие вагоны?
         ShortCircuit = 2,
         SystemFailure = 3,
+        PassangersConflict = 4, //пассажиры чото не поделили
+        //CrewConflict = 4, //команда чото не поделила
+        //жалоба пассажиров? типа холодно, поддайте жару и прочее
     }
 }

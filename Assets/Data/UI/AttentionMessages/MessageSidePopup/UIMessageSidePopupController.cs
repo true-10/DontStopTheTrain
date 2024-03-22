@@ -14,6 +14,10 @@ namespace DontStopTheTrain
     {
         [Inject]
         private EventController _eventController;
+      //  [Inject]
+        //private BuffAndPerksService _buffAndPerksService;
+        [Inject]
+        private PlayerBuffsManager _playerBuffssManager;
 
         [SerializeField]
         private List<UIMessage> _messages;
@@ -27,11 +31,41 @@ namespace DontStopTheTrain
              //   message.
             }
             _eventController.OnStart += OnStartEvent;
+            _eventController.OnComplete += OnCompleteEvent;
+            _playerBuffssManager.OnItemAdded += OnBuffsAdded;
+            _playerBuffssManager.OnItemRemoved += OnBuffsRemoved;
         }
+
 
         public void Dispose()
         {
             _eventController.OnStart -= OnStartEvent;
+            _eventController.OnComplete -= OnCompleteEvent;
+            _playerBuffssManager.OnItemAdded -= OnBuffsAdded;
+            _playerBuffssManager.OnItemRemoved -= OnBuffsRemoved;
+        }
+
+
+        private void OnBuffsAdded(IBuff buff)
+        {
+            //BuffToMessageConverter
+            var text = $"{buff.StaticData.Info.Name} begins";
+            TryToShowMessage(text);
+        }
+
+        private void OnBuffsRemoved(IBuff buff)
+        {
+            var text = $"{buff.StaticData.Info.Name} is ended";
+            TryToShowMessage(text);
+        }
+
+        private void OnCompleteEvent(IEvent eventData)
+        {
+            if (eventData.Status == True10.Enums.ProgressStatus.Fail)
+            {
+                var text = $"{eventData.StaticData.Info.Name} failed =(";
+                TryToShowMessage(text);
+            }
         }
 
         private UIMessage GetFreeUIMessage()
@@ -39,7 +73,7 @@ namespace DontStopTheTrain
             return _messages.FirstOrDefault(message => message.gameObject.activeInHierarchy == false);
         }
 
-        private void OnStartEvent(IEvent eventData)
+        private void TryToShowMessage(string text)
         {
             var message = GetFreeUIMessage();
             if (message == null)
@@ -47,8 +81,14 @@ namespace DontStopTheTrain
                 return;
             }
             message.transform.SetAsFirstSibling();
-            var text = eventData.StaticData.Info.Name;
             message.ShowMessage(text, _timeToHide);
+        }
+
+        private void OnStartEvent(IEvent eventData)
+        {
+            var text = eventData.StaticData.Info.Name;
+            TryToShowMessage(text);
+
         }
 
         private void Start()

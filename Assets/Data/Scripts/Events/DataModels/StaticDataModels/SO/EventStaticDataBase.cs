@@ -10,8 +10,10 @@ namespace DontStopTheTrain.Events
         public EventId Id => _id;
         public int ActionPointPrice => _actionPointPrice;
         public virtual EventType Type => EventType.None;
-        public int Chance => _chance;
-        public IReadOnlyList<RewardId> RewardIds => _rewardIds.AsReadOnly();
+        public int Weight => _weight;
+        public int Time => _time;
+        public IReadOnlyList<RewardId> WinRewardIds => _rewardIds.AsReadOnly();
+        public IReadOnlyList<RewardId> FailRewardIds => _failRewardIds.AsReadOnly();
         public GameObject EventPrefab => _eventPrefab;
         public IReadOnlyCollection<IConditionStaticData> ConditionsToComplete => _conditionsToComplete.AsReadOnly();
         public IReadOnlyCollection<IConditionStaticData> ConditionsToStart => _conditionsToStart.AsReadOnly();
@@ -21,19 +23,23 @@ namespace DontStopTheTrain.Events
 
         [SerializeField, Min(0)]
         private EventId _id;
-        [SerializeField, Min(0)]
+        [SerializeField, Min(0), Tooltip("кол-во очков действия для завершения события")]
         private int _actionPointPrice;
         [SerializeField, Min(1)]
-        private int _chance;
+        private int _weight;
+        [SerializeField, Min(1), Tooltip("Длительность события в ходах. 0 - без ограничений")]
+        private int _time;
         [SerializeField, Min(0)]
         private List<RewardId> _rewardIds;
+        [SerializeField, Min(0)]
+        private List<RewardId> _failRewardIds;
         [SerializeField]
         private List<ConditionBase> _conditionsToComplete;
         [SerializeField]
         private List<ConditionBase> _conditionsToStart;
         [SerializeField]
         private GameObject _eventPrefab;
-        [SerializeField]
+        [SerializeField, Tooltip("Общая информация")]
         private Information _info;
     }
 }

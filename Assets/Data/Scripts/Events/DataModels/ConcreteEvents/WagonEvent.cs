@@ -14,7 +14,7 @@ namespace DontStopTheTrain.Events
     public class WagonEvent : IEvent
     {
         public Action<IEvent> OnComplete { get; set; }
-        public int Chance => StaticData.Chance;
+        public int Chance => StaticData.Weight;
         public int HashCode => GetHashCode();
         public int ActionPointPrice => UnityEngine.Mathf.Clamp(_actionPointPrice, 0, StaticData.ActionPointPrice);
         public IReadOnlyCollection<ICondition> ÑompleteConditions { get; private set; }
@@ -22,22 +22,27 @@ namespace DontStopTheTrain.Events
         public ProgressStatus Status { get; private set; }
 
         public WagonEvent(IEventStaticData staticData, IReadOnlyCollection<ICondition> conditions, 
-            EventsService eventsService, BuffAndPerksService buffAndPerksService)
+            EventsService eventsService, BuffAndPerksService buffAndPerksService, TurnBasedController turnBasedController)
         {
             StaticData = staticData;
             ÑompleteConditions = conditions;
             _eventsService = eventsService;
             _buffAndPerksService = buffAndPerksService;
+            _turnBasedController = turnBasedController;
         }
 
         private EventsService _eventsService;
         private BuffAndPerksService _buffAndPerksService;
+        private TurnBasedController _turnBasedController;
 
         private int _actionPointPrice => StaticData.ActionPointPrice - _buffAndPerksService.GetValue(PerkType.ReducePriceActionPoint);
+        private int timeToComplete = 0;
 
         public void Start()
         {
             Status = ProgressStatus.InProgress;
+            timeToComplete = StaticData.Time;
+            _turnBasedController.OnTurnStart += OnTurnStart;
         }
 
         public void Reset()
@@ -47,20 +52,43 @@ namespace DontStopTheTrain.Events
 
         public bool TryToComplete()
         {
+            if (StaticData.Time > 0 && timeToComplete == 0)
+            {
+                Complete(ProgressStatus.Fail);
+                return true;
+            }
             var isReadyToComplete = _eventsService.IsAllConditionsAreMet(this) && _eventsService.IsEnoughActionPoints(this);
             if (isReadyToComplete == false)
             {
                 return false;
             }
-            _eventsService.TryToRemoveRequredItems(this);
-            OnComplete?.Invoke(this);
-            Status = ProgressStatus.Complete;
+            Complete(ProgressStatus.Complete);
             return true;
+        }
+
+        private void Complete(ProgressStatus newStatus)
+        {
+            _eventsService.TryToRemoveRequredItems(this);
+            Status = newStatus;
+            _turnBasedController.OnTurnStart -= OnTurnStart;
+            OnComplete?.Invoke(this);
         }
 
         private void Dispose()
         {
+            _turnBasedController.OnTurnStart -= OnTurnStart;
+        }
 
+        private void OnTurnStart(ITurnCallback callback)
+        {
+            if (StaticData.Time > 0)
+            {
+                if (timeToComplete == 0)
+                {
+                    TryToComplete();
+                }
+                timeToComplete--;
+            }
         }
     }
 }

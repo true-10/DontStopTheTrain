@@ -12,8 +12,6 @@ namespace DontStopTheTrain.Events
     {
         [Inject]
         private TurnBasedController _turnBasedController;
-        //[Inject]
-        //private Player _player;
         [Inject]
         private EventController _eventController;
         [Inject]
@@ -24,7 +22,6 @@ namespace DontStopTheTrain.Events
         private EventsManager _eventManager;
 
         private Queue<IEvent> _eventsToReset = new();
-        private List<AbstractEventViewer> _usedViewers = new();
 
         private int _overallWeight = 0;
         private int noEventChance = 80;
@@ -32,24 +29,42 @@ namespace DontStopTheTrain.Events
 
         public void Initialize()
         {
-            _turnBasedController.OnTurnStart += TryToStartEvents;
             _turnBasedController.OnTurnEnd += TryToResetEvents;
             _eventController.OnComplete += OnEventComplete;
         }
 
         public void Dispose()
         {
-            _turnBasedController.OnTurnStart -= TryToStartEvents;
             _turnBasedController.OnTurnEnd -= TryToResetEvents;
             _eventController.OnComplete -= OnEventComplete;
             
-            _usedViewers.Clear();
             _eventsToReset.Clear();
         }
 
+
+        public bool TryToStartViewEvents()
+        {
+            var view = _eventViewersManager
+                .Items
+                .Where(viewer => viewer.Type == EventType.View)
+                .GetRandomElement();
+            if (view == null)
+            {
+                return false;
+            }
+            var events = _eventManager.GetAllFreeEvents()
+                .Where(eventData => eventData.StaticData.Type == EventType.View)
+                .ToList(); 
+            if (events.Count == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
         public bool TryToStartRandomWagonEvent(float threshold, 
             IReadOnlyCollection<WagonEventType> wagonEventTypes, 
-            Action<IEvent> onGetEvent) // , IWagonSystem initiator)
+            Action<IEvent> onGetEvent)
         {
             int chance = GenerateChance(threshold);
             if (chance < noEventChance)
@@ -59,16 +74,13 @@ namespace DontStopTheTrain.Events
                 return false;
 
             }
-            //var maxPosibleEventsCount = _eventViewersManager.Items.Where(v => v.IsFree).Count();
-            //var events = _eventGenerator.GetEvents();
             var events = _eventManager.GetAllFreeEvents();
             events = events
                 .Where(eventData => wagonEventTypes.Contains((eventData.StaticData as IWagonEventStaticData).WagonEventType))
                 .ToList();
             if (events.Count == 0)
             {
-                Debug.Log($"No Events To Start");//. maxPosibleEventsCount = {maxPosibleEventsCount}");
-              //  _turnBasedController.StartTurn();
+                Debug.Log($"No Events To Start");
                 onGetEvent?.Invoke(null);
                 return false;
             }
@@ -86,13 +98,13 @@ namespace DontStopTheTrain.Events
             return false;
         }
                 
-        private IEvent GetRandomWeightedEvent(List<IEvent> wagonEvents)
+        private IEvent GetRandomWeightedEvent(List<IEvent> events)
         {
-            wagonEvents = wagonEvents
+            events = events
                 .OrderByDescending(ev => ev.Chance)
                 .ToList();
 
-            int total = wagonEvents.Sum(ev => ev.Chance) + noEventChance;
+            int total = events.Sum(ev => ev.Chance) + noEventChance;
 
             int randomPoint = UnityEngine.Random.Range(0, total);
             var overallWeight = 0;
@@ -108,13 +120,13 @@ namespace DontStopTheTrain.Events
             }
             // randomPoint = 99
             // 80 50 40 30 20 10
-            for (int i = 0; i < wagonEvents.Count; i++)
+            for (int i = 0; i < events.Count; i++)
             {
-                var chance = wagonEvents[i].Chance;
+                var chance = events[i].Chance;
                 overallWeight += chance;
                 if (overallWeight >= randomPoint)
                 {
-                    return wagonEvents[i];
+                    return events[i];
                 }
             }
             return null;
@@ -133,37 +145,6 @@ namespace DontStopTheTrain.Events
             return chance;
         }
 
-        private void TryToStartEvents(ITurnCallback callback)
-        {
-            if (callback.Number < 1)
-            {
-                _turnBasedController.StartTurn();
-                return;
-            }
-            var maxPosibleEventsCount = _eventViewersManager.Items.Where(v => v.IsFree).Count();
-                        
-            //var events = _eventGenerator.GetEvents();
-            var events = _eventManager.GetAllFreeEvents();
-
-            if (events.Count == 0)
-            {
-                Debug.Log($"No Events To Start. maxPosibleEventsCount = {maxPosibleEventsCount}");
-                _turnBasedController.StartTurn();
-                return;
-            }
-
-       /*     var wagonEvents = events
-                .Where(eventData => eventData.StaticData.Type == EventType.Wagon)
-                .ToList();
-            TryToStartWagonEvents(wagonEvents);
-       */
-            var viewEvents = events
-                .Where(eventData => eventData.StaticData.Type == EventType.View)
-                .ToList();
-            TryToStartViewEvents(viewEvents);
-            _turnBasedController.StartTurn();
-        }
-
         private void TryToResetEvents(ITurnCallback callback)
         {
             if (_eventsToReset.Count > 0)
@@ -176,70 +157,9 @@ namespace DontStopTheTrain.Events
         private void OnEventComplete(IEvent eventData)
         {
             _eventsToReset.Enqueue(eventData);
-            /*
-            _overallWeight -= eventData.Chance;
-            if (_overallWeight < 0)
-            {
-                _overallWeight = 0;
-            }*/
         }
-
-        private IEvent GetRandomEventByChance(List<IEvent> events, float threshold, WagonEventViewer view)
-        {
-            var chance = GenerateChance(threshold);
-            var wagonEvents = events
-                .Where(eventData => eventData.StaticData.Type == EventType.Wagon)
-                .Where(eventData => eventData.Chance > chance)
-                //.Where(eventData => eventData.StaticData.Type == EventType.Wagon && eventData.Chance <= chance)
-                .ToList();
-
-            var eventToStart = wagonEvents
-                .FirstOrDefault(eventData => view.WagonEventTypes.Contains((eventData.StaticData as IWagonEventStaticData).WagonEventType));
-            return eventToStart;
-        }
-
-        private void TryToStartWagonEvents(List<IEvent> wagonEvents)
-        {
-            _usedViewers.Clear();
-            var eventViewers = _eventViewersManager.Items
-                .Where(viewer => viewer.Type == EventType.Wagon)
-                .ToList();
-            
-            foreach (var eventToStart in wagonEvents)
-            {
-                var wagonEventStatic = eventToStart.StaticData as IWagonEventStaticData;
-                var wagonEventType = wagonEventStatic.WagonEventType;
-                var view = eventViewers
-                    .Where(view => (view as WagonEventViewer).WagonEventTypes.Contains(wagonEventType))
-                    .Where(view => view.IsFree)
-                    .ToList()
-                    .GetRandomElement();
-
-                if (view != null && _usedViewers.Contains(view) == false)
-                {
-                    view.TryToSetEventData(eventToStart);
-                    _usedViewers.Add(view);
-                    _eventController.Start(eventToStart);
-                }
-            }
-        }
-
-        private void TryToStartViewEvents(List<IEvent> viewEvents)
-        {
-            Debug.Log($"TryToStartViewEvents: FAK YO");
-           /* var eventViewers = _eventViewersManager.Items.Where(viewer => viewer.Type == EventType.View);
-
-            foreach (var eventToStart in viewEvents)
-            {
-                _eventController.Start(eventToStart);
-            }*/
-        }
-
     }
-    public sealed class TrainEventStarter
-    {
 
-    }
     public sealed class WagonEventStarter
     {
         public WagonEventStarter()

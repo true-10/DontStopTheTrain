@@ -4,6 +4,7 @@
     {
         None, //бездействующие
         InProgress,
-        Complete
+        Complete,
+        Fail
     }
 }

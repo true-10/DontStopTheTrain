@@ -17,15 +17,13 @@ namespace DontStopTheTrain.Events
         public IEvent ActiveEvent => _eventData;
         public Action<IEvent> OnSetEvent { get; set; }
         public virtual EventType Type => EventType.None;
-
         public bool IsFree => _eventData == null;
 
+        protected IEvent _eventData;
         [Inject]
         private EventController _eventController;
         [Inject]
         private EventViewersManager _eventViewersManager;
-
-        protected IEvent _eventData;
 
         public bool TryToSetEventData(IEvent eventData)
         {
@@ -61,6 +59,5 @@ namespace DontStopTheTrain.Events
             _eventController.OnStart -= OnStartEvent;
             _eventController.OnComplete -= OnCompleteEvent;
         }
-
     }
 }

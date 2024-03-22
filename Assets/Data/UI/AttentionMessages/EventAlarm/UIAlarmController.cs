@@ -55,7 +55,26 @@ namespace DontStopTheTrain
             dictionaryIconEvent[element] = eventData;
             element.Initialize(eventData);
             element.OnMouseOverElement += OnMouseOverIcon;
+            element.OnClick += OnMouseClick;
             eventData.OnComplete += OnEventComplete;
+        }
+
+        private void OnMouseClick(IEvent eventData)
+        {
+            if (eventData == null)
+            {
+               // _alarmSetWorldPosition.gameObject.SetActive(false);
+                return;
+            }
+
+            var viewer = _eventViewersManager.Items.FirstOrDefault(viewer => viewer.ActiveEvent == eventData);
+            if (viewer != null)
+            {
+                //viewer.OnCl
+                //enter
+                //focus on event
+                _alarmSetWorldPosition.SetPosition(viewer.transform);
+            }
         }
 
         private void OnMouseOverIcon(IEvent eventData)
@@ -77,6 +96,7 @@ namespace DontStopTheTrain
 
         private void OnEventStart(IEvent eventData)
         {
+            //view ивент с желтым цветов? и при клике обзор и закрыть(завершить ивент)?
             ShowAlarm(eventData);
         }
 
@@ -94,6 +114,7 @@ namespace DontStopTheTrain
             }
             element.gameObject.SetActive(false);
             element.OnMouseOverElement -= OnMouseOverIcon;
+            element.OnClick -= OnMouseClick;
         }
 
         private UIAlarmIconElement GetRandomFreeElement()

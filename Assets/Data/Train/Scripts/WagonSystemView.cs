@@ -10,6 +10,11 @@ using Zenject;
 
 namespace DontStopTheTrain
 {
+    public abstract class BasicView : MonoBehaviour
+    {
+        public abstract void Enter();
+    }
+
     public class WagonSystemView : MonoBehaviour// BasicView
     {
         public IEvent ActiveEvent { get; private set; }

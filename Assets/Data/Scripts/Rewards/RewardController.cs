@@ -26,7 +26,11 @@ namespace DontStopTheTrain.Events
 
         private void OnComplete(IEvent eventData)
         {
-            var rewardIds = eventData.StaticData.RewardIds;
+            var rewardIds = eventData.StaticData.WinRewardIds;
+            if (eventData.Status == True10.Enums.ProgressStatus.Fail)
+            {
+                rewardIds = eventData.StaticData.FailRewardIds;
+            }
             foreach (var rewardId in rewardIds)
             {
                 var newItem = CreateInventoryItem(rewardId);

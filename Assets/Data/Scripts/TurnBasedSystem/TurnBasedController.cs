@@ -8,9 +8,9 @@ namespace DontStopTheTrain
 {
     public class TurnBasedController : MonoBehaviour, ITurnBasedController
     {
-        public Action<ITurnCallback> OnTurnEnd { get; set; }
         public Action<ITurnCallback> OnTurnStart { get; set; }
         public Action<ITurnCallback> OnTurnTick { get; set; }
+        public Action<ITurnCallback> OnTurnEnd { get; set; }
 
         public int CurrentTurn { get; private set; }
 
@@ -18,6 +18,7 @@ namespace DontStopTheTrain
 
         private bool _turnIsComleted = false;
         private bool _continueAfterStart = false;
+        private bool _startNextTurn = false;
 
 
         void Start()
@@ -38,6 +39,7 @@ namespace DontStopTheTrain
             {
                 _turnIsComleted = false;
                 _continueAfterStart = false;
+                _startNextTurn = false;
                 int groupId = GetTurnGroup(CurrentTurn); //выдаем группу, чей ход
                 TurnCallback callback = new(CurrentTurn, groupId)
                 {
@@ -57,16 +59,18 @@ namespace DontStopTheTrain
 
                 yield return null;
 
-                //если события не выполнены, то применяем штраф
+                //если события не выполнены, то применяем штраф (дебафф?)
 
                 OnTurnEnd?.Invoke(callback);
+
+               /* while (_startNextTurn == false)
+                {
+                    //пока событие обзора показывается
+                    yield return null;
+                }*/
                 CurrentTurn++;
                 yield return null;
-                //некое событие
-                //проверка на левел ап, если да, то выбираем перк?
-                yield return null;
             }
-            //turnLoopCoroutine = StartCoroutine(TurnLoopCoroutine());
         }
 
         private void InitCallbacks()
@@ -88,6 +92,10 @@ namespace DontStopTheTrain
         public void StartTurn()
         {
             _continueAfterStart = true;
+        }
+        public void NextTurn()
+        {
+            _startNextTurn = true;
         }
     }
 

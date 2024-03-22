@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 0
   _actionPointPrice: 5
-  _chance: 10
+  _weight: 10
+  _time: 3
   _rewardIds: 0100000006000000
+  _failRewardIds: 
   _conditionsToComplete:
   - {fileID: 11400000, guid: 8df992a554c4e204c91727d4808b5a59, type: 2}
   _conditionsToStart:
