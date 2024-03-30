@@ -13,6 +13,7 @@ namespace DontStopTheTrain.Events
 
     public class WagonEvent : IEvent
     {
+        public Action<IEvent> OnFocus { get; set; }
         public Action<IEvent> OnComplete { get; set; }
         public int Chance => StaticData.Weight;
         public int HashCode => GetHashCode();
@@ -48,6 +49,11 @@ namespace DontStopTheTrain.Events
         public void Reset()
         {
             Status = ProgressStatus.None;
+        }
+
+        public void TryToFocus()
+        {
+            OnFocus?.Invoke(this);
         }
 
         public bool TryToComplete()

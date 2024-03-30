@@ -7,11 +7,13 @@ namespace DontStopTheTrain.Events
     {
         public Action<IEvent> OnStart { get; set; }
         public Action<IEvent> OnComplete { get; set; }
+        public Action<IEvent> OnFocus { get; set; }
 
         public void Start(IEvent gameEvent)
         {
             gameEvent.Start();
             gameEvent.OnComplete += OnEventComplete;
+            gameEvent.OnFocus += OnFocusEvent;
             OnStart?.Invoke(gameEvent);
         }      
 
@@ -19,6 +21,12 @@ namespace DontStopTheTrain.Events
         {
             OnComplete?.Invoke(gameEvent);
             gameEvent.OnComplete -= OnEventComplete;
+            gameEvent.OnFocus -= OnFocusEvent;
+        }
+
+        private void OnFocusEvent(IEvent gameEvent)
+        {
+            OnFocus?.Invoke(gameEvent);
         }
     }
 }

@@ -7,6 +7,7 @@ namespace DontStopTheTrain.Events
     public interface IEvent
     {
         Action<IEvent> OnComplete { get; set; }
+        Action<IEvent> OnFocus { get; set; }
         EventId Id => StaticData.Id;
         int ActionPointPrice { get; }
         int Chance { get; }
@@ -18,6 +19,7 @@ namespace DontStopTheTrain.Events
 
         void Start();
         bool TryToComplete(); 
+        void TryToFocus(); 
         void Reset();
     }
 

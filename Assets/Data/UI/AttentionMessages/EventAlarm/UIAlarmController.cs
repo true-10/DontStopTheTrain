@@ -67,6 +67,7 @@ namespace DontStopTheTrain
                // _alarmSetWorldPosition.gameObject.SetActive(false);
                 return;
             }
+            eventData.TryToFocus();
 
             var viewer = _eventViewersManager.Items.FirstOrDefault(viewer => viewer.ActiveEvent == eventData);
             if (viewer != null)

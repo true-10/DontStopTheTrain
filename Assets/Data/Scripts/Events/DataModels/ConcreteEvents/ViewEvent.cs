@@ -6,6 +6,7 @@ namespace DontStopTheTrain.Events
 {
     public class ViewEvent : IEvent
     {
+        public Action<IEvent> OnFocus { get; set; }
         public Action<IEvent> OnComplete { get; set; }
 
         public int ActionPointPrice => 0;
@@ -28,6 +29,10 @@ namespace DontStopTheTrain.Events
         
         private TurnBasedController _turnBasedController;
 
+        public void TryToFocus()
+        {
+            OnFocus?.Invoke(this);
+        }
 
         public bool TryToComplete()
         {
