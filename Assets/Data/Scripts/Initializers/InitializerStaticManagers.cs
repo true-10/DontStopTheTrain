@@ -3,10 +3,11 @@ using UnityEngine;
 using DontStopTheTrain.Events;
 using True10.StaticData;
 using System.Linq;
+using True10.Interfaces;
 
 namespace DontStopTheTrain
 {
-    public class InitializerStaticManagers : MonoBehaviour
+    public class InitializerStaticManagers : MonoBehaviour, IGameLifeCycle
     {
      /*   [Inject]
         private ItemsStaticManager _itemsStaticManager;

@@ -75,7 +75,7 @@ namespace DontStopTheTrain.Gameplay
             cachedTransform.Rotate(Vector3.up * angle, Space.World);
         }
 
-        public void Init()
+        public void Initialize()
         {
             throw new NotImplementedException();
         }

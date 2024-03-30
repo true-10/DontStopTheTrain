@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using True10.Interfaces;
 using UniRx;
 using Zenject;
 
@@ -12,7 +13,7 @@ namespace DontStopTheTrain
      * 
      */
 
-    public class BuffsController
+    public class BuffsController: IGameLifeCycle
     {
         [Inject]
         private PlayerBuffsManager _buffsManager;

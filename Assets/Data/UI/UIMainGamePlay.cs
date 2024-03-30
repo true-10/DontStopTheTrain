@@ -42,7 +42,7 @@ namespace DontStopTheTrain
 
         private void CompleteTurn()
         {
-            _turnBasedController.StartTurn();
+           // _turnBasedController.StartTurn();
             _turnBasedController.CompleteTurn();
         }
 

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using True10.Interfaces;
 using UnityEngine;
 using Zenject;
 
@@ -10,7 +11,7 @@ namespace DontStopTheTrain
 {
 
     /// - выезжающий UIмессадж сбоку. клик по нему - фокус на событии
-    public class UIMessageSidePopupController : MonoBehaviour
+    public class UIMessageSidePopupController : MonoBehaviour, IGameLifeCycle
     {
         [Inject]
         private EventController _eventController;

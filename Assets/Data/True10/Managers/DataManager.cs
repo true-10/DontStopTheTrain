@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using True10.Interfaces;
 
 namespace True10.Managers
 {
-    public abstract class DataManager<T>
+    public abstract class DataManager<T> : IGameLifeCycle
     {
         public Action<T> OnItemAdded { get; set; }
         public Action<T> OnItemRemoved { get; set; }

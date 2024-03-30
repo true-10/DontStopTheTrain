@@ -1,9 +1,10 @@
 ﻿using System.Linq;
+using True10.Interfaces;
 using Zenject;
 
 namespace DontStopTheTrain.Events
 {
-    public class RewardController
+    public class RewardController : IGameLifeCycle
     {
         [Inject]
         private EventController _eventController;//убрать и добавть колбеков?

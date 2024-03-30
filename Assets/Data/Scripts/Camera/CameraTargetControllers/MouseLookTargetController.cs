@@ -24,7 +24,7 @@ namespace DontStopTheTrain.Gameplay
             throw new NotImplementedException();
         }
 
-        public void Init()
+        public void Initialize()
         {
             throw new NotImplementedException();
         }

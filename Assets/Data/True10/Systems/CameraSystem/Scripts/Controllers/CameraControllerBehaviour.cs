@@ -62,6 +62,21 @@ namespace True10.CameraSystem
             _cameraHashesList.Add(cameraHolder.HashCode);
         }
 
+        public void RemoveCamera(ICameraHolder cameraHolder)
+        {
+            if (_cameras == null)
+            {
+                return;
+            }
+
+            if (_cameras.ContainsKey(cameraHolder.HashCode))
+            {
+                return;
+            }
+
+            _cameras.Remove(cameraHolder.HashCode);
+        }
+
         public void SwitchToCamera(ICameraHolder cameraHolder)
         {
             SwitchToCamera(cameraHolder.HashCode);

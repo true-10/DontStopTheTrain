@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using True10.Extentions;
+using True10.Interfaces;
 using True10.UI;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +12,7 @@ using Zenject;
 namespace DontStopTheTrain
 {
 
-    public class UIAlarmController : MonoBehaviour
+    public class UIAlarmController : MonoBehaviour, IGameLifeCycle
     {
         [Inject]
         private EventController eventController;

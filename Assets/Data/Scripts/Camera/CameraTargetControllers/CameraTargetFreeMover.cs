@@ -99,7 +99,7 @@ namespace DontStopTheTrain.Gameplay
             cachedTransform.position = position;
         }
 
-        public void Init()
+        public void Initialize()
         {
 
         }

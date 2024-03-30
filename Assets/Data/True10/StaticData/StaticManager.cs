@@ -1,10 +1,11 @@
 ﻿using DontStopTheTrain;
 using System.Collections.Generic;
+using True10.Interfaces;
 using UnityEngine;
 
 namespace True10.StaticData
 {
-    public class StaticManager<T, Storage> 
+    public class StaticManager<T, Storage>
         where Storage : StaticStorage<T> 
         where T : Object
     {

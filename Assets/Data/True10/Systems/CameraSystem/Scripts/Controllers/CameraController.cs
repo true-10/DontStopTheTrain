@@ -1,19 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Zenject;
 
 namespace True10.CameraSystem
 {
+
     public class CameraController : ICameraController
     {
         public Action<ICameraCallback> OnCameraOn { get; set; }
         public Action<ICameraCallback> OnCameraOff { get; set; }
 
-        private Dictionary<int, ICameraHolder> _cameras;
+        [Inject]
+        private CamerasManager _camerasManager;
+
+        //private Dictionary<int, ICameraHolder> _cameras;
         private ICameraHolder _currentCamera;
         private ICameraHolder _defaultCamera;
         private ICameraHolder _previousCamera;
-        private List<int> _cameraHashesList;
+       // private List<int> _cameraHashesList;
         private int _currentCameraIndex = 0;
         private bool _isDisable = false;
 
@@ -31,7 +37,7 @@ namespace True10.CameraSystem
             _defaultCamera = cameraHolder;
         }
 
-        public void AddCamera(ICameraHolder cameraHolder)
+        /*public void AddCamera(ICameraHolder cameraHolder)
         {
             _cameras ??= new Dictionary<int, ICameraHolder>();
             _cameraHashesList ??= new List<int>();
@@ -52,6 +58,21 @@ namespace True10.CameraSystem
             _cameraHashesList.Add(cameraHolder.HashCode);
         }
 
+        public void RemoveCamera(ICameraHolder cameraHolder)
+        {
+            if (_cameras == null)
+            {
+                return;
+            }
+
+            if (_cameras.ContainsKey(cameraHolder.HashCode))
+            {
+                return;
+            }
+
+            _cameras.Remove(cameraHolder.HashCode);
+        }
+        */
         public ICameraHolder GetCurrentCamera()
         {
             return _currentCamera;
@@ -59,14 +80,14 @@ namespace True10.CameraSystem
 
         public void SetTargetToCamera(int hash, Transform follow, Transform lookAt)
         {
-            if (_cameras.ContainsKey(hash) == false)
+          /*  if (_cameras.ContainsKey(hash) == false)
             {
                 return;
             }
             var camera = _cameras[hash];
             
             camera.Follow = follow;
-            camera.LookAt = lookAt;
+            camera.LookAt = lookAt;*/
         }
 
         public void SwitchToCamera(int hash)
@@ -74,7 +95,7 @@ namespace True10.CameraSystem
             if (_isDisable) return;
             DisableAllCameras();
             _previousCamera = _currentCamera;
-            _currentCamera = _cameras[hash];
+            _currentCamera = _camerasManager.Items.FirstOrDefault(camHolder => camHolder.HashCode == hash);// _cameras[hash];
 
             CameraCallback cameraCalback = new CameraCallback(_currentCamera);
 
@@ -99,13 +120,13 @@ namespace True10.CameraSystem
         private void DisableAllCameras()
         {
             if (_isDisable) return;
-            foreach (var camera in _cameras)
+            foreach (var camera in _camerasManager.Items)
             {
-                if (camera.Value.Priority != 0)
+                if (camera.Priority != 0)
                 {
-                    CameraCallback cameraCalback = new CameraCallback(camera.Value);
+                    CameraCallback cameraCalback = new CameraCallback(camera);
 
-                    camera.Value.Priority = Constants.MIN_PRIORITY;
+                    camera.Priority = Constants.MIN_PRIORITY;
                     OnCameraOff?.Invoke(cameraCalback);
                 }
             }

@@ -12,6 +12,8 @@ namespace True10.CameraSystem
     {
         [Inject]
         private ICameraController _cameraController;
+        [Inject]
+        private CamerasManager _camerasManager;
 
         public string CameraName => gameObject.name;
         public int HashCode => gameObject.GetHashCode();//
@@ -44,7 +46,7 @@ namespace True10.CameraSystem
         {
             foreach (var controller in _cameraTargetControllers)
             {
-                controller.Init();
+                controller.Initialize();
             }
             SetFOV(_defaultFOV);
         }
@@ -80,12 +82,23 @@ namespace True10.CameraSystem
         private void Start()
         {
             _cinemachineVirtualCamera ??= GetComponent<CinemachineVirtualCamera>();
+          //  _cameraController.AddCamera(this);
         }
 
-        private void Awake()
+        private void OnEnable()
         {
-            _cameraController.AddCamera(this);
+            _camerasManager.TryToAdd(this);
         }
+
+        private void OnDisable()
+        {
+            _camerasManager.TryToRemove(this);
+
+        }
+        /* private void Awake()
+         {
+             _cameraController.AddCamera(this);
+         }*/
 
     }
 }

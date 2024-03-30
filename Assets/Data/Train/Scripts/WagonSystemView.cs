@@ -4,6 +4,7 @@ using DontStopTheTrain.UI;
 using System.Collections;
 using System.Collections.Generic;
 using True10;
+using True10.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -15,7 +16,7 @@ namespace DontStopTheTrain
         public abstract void Enter();
     }
 
-    public class WagonSystemView : MonoBehaviour// BasicView
+    public class WagonSystemView : MonoBehaviour, IGameLifeCycle// BasicView
     {
         public IEvent ActiveEvent { get; private set; }
         public IWagonSystem WagonSystem { get; private set; }

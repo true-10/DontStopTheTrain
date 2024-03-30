@@ -5,7 +5,7 @@ using DG.Tweening;
 
 namespace True10.LevelScrollSystem
 {
-    public class LevelScrollController : MonoBehaviour
+    public class LevelScrollController : MonoBehaviour//,IGameLifeCycle
     {
         [SerializeField] 
         private Vector3 _scrollDirection = default;//переделать в енум

@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d4c1f3240cd8fe4b9d2d99a71cd0a1d, type: 3}
   m_Name: EventsScriptableInstaller
   m_EditorClassIdentifier: 
+  _fireEventPrefab: {fileID: 137057358187991997, guid: f398afa1d66e5be4791e1e54aac538c3,
+    type: 3}
   _eventsStaticStorage: {fileID: 11400000, guid: b6bd97bf2cbd7ea4e8f0fe0991026ade,
     type: 2}

@@ -1,9 +1,13 @@
 using System;
 
-public interface IGameLifeCycle
+namespace True10.Interfaces
 {
-    Action OnInit { get; set;}
 
-    void Init();
-    void Dispose();
+    public interface IGameLifeCycle
+    {
+       // Action OnInit { get; set;}
+
+        void Initialize();
+        void Dispose();
+    }
 }

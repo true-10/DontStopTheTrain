@@ -4,12 +4,13 @@ using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using True10.Interfaces;
 using UnityEngine;
 using Zenject;
 
 namespace DontStopTheTrain
 {
-    public sealed class Inventory
+    public sealed class Inventory //: IGameLifeCycle
     {
         public Action<InventoryCallback> OnInventoryChanged { get; set; }
 

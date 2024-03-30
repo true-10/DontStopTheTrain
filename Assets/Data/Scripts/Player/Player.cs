@@ -2,6 +2,7 @@ using DontStopTheTrain.Events;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using True10.Interfaces;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -9,7 +10,7 @@ using Zenject;
 namespace DontStopTheTrain
 {
     [System.Serializable]
-    public sealed class Player: IInitializable, IDisposable
+    public sealed class Player: IGameLifeCycle
     {
         public IReadOnlyReactiveProperty<int> Days => _days;//дней в пути / кол-во ходов
         public IReadOnlyReactiveProperty<int> Expo => _expo;

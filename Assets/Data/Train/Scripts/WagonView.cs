@@ -7,13 +7,14 @@ using System.Collections.Generic;
 using System.Linq;
 using True10;
 using True10.CameraSystem;
+using True10.Interfaces;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Zenject;
 
 namespace DontStopTheTrain.Train
 {
-    public sealed class WagonView : MonoBehaviour// BasicView
+    public sealed class WagonView : MonoBehaviour, IGameLifeCycle// BasicView
     {
         public List<WagonEventViewer> EventViewers => _eventViewers;//надо ли?
         public IWagon WagonData => _wagonData;

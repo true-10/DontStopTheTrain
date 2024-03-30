@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using True10.Interfaces;
 using UnityEngine;
 using Zenject;
 
 namespace DontStopTheTrain.Events
 {
 
-    public class ViewEventController
+    public class ViewEventController: IGameLifeCycle
     {
         [Inject]
         private TurnBasedController _turnBasedController;

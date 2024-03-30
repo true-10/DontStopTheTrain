@@ -1,11 +1,12 @@
 ﻿using DontStopTheTrain.Events;
 using System.Collections.Generic;
 using System.Linq;
+using True10.Interfaces;
 using Zenject;
 
 namespace DontStopTheTrain
 {
-    public sealed class PerksController
+    public sealed class PerksController: IGameLifeCycle
     {
         [Inject]
         private PlayerPerksManager _perkManager;

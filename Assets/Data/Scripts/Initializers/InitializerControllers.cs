@@ -1,11 +1,12 @@
 ﻿using DontStopTheTrain.Events;
 using True10.CameraSystem;
+using True10.Interfaces;
 using UnityEngine;
 using Zenject;
 
 namespace DontStopTheTrain
 {
-    public class InitializerControllers : MonoBehaviour
+    public class InitializerControllers : MonoBehaviour, IGameLifeCycle
     {
         [Inject]
         private Inventory _inventory;
@@ -22,7 +23,11 @@ namespace DontStopTheTrain
         [Inject]
         private ICameraController _cameraController;
         [Inject]
+        private CameraSwitcher _cameraSwitcher;
+        [Inject]
         private BuffAndPerksService _buffAndPerksService;
+        [Inject]
+        private EventObjectsController _eventObjectsController;
 
         [SerializeField]
         private InventoryStarterPackStorage _inventoryStartItemsStorage;
@@ -39,6 +44,8 @@ namespace DontStopTheTrain
             _inventory.Initialize(_inventoryStartItemsStorage.GetStartItems());
 
             _eventStarter.Initialize();
+            _eventObjectsController.Initialize();
+            _cameraSwitcher.Initialize();
             _cameraController.SetDefaultCamera(_defaultCameraHolder);
         }
 
@@ -48,10 +55,12 @@ namespace DontStopTheTrain
             _rewardController.Dispose();
             //_inventory.Dispose();
 
+            _eventObjectsController.Dispose();
             _eventStarter.Dispose();
             _perkController.Dispose();
             _buffsController.Dispose();
             _buffAndPerksService.Dispose();
+            _cameraSwitcher.Dispose();
         }
     }
 }

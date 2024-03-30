@@ -1,8 +1,9 @@
+using True10.Interfaces;
 using UnityEngine;
 
 namespace DontStopTheTrain
 {
-    public class Initializer : MonoBehaviour
+    public class Initializer : MonoBehaviour, IGameLifeCycle
     {
         [SerializeField]
         private InitializerStaticManagers _staticManagersInitializer;
@@ -29,7 +30,7 @@ namespace DontStopTheTrain
             _staticManagersInitializer.Dispose();
         }
 
-        private void Initialize()
+        public void Initialize()
         {
             _staticManagersInitializer.Initialize();
             _managersInitializer.Initialize();
@@ -41,6 +42,11 @@ namespace DontStopTheTrain
             _staticManagersInitializer ??= GetComponent<InitializerStaticManagers>();
             _managersInitializer ??= GetComponent<InitializerManagers>();
             _initializerControllers ??= GetComponent<InitializerControllers>();
+        }
+
+        public void Dispose()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

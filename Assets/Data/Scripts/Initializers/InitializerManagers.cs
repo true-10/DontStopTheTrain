@@ -1,10 +1,11 @@
 using Zenject;
 using UnityEngine;
 using DontStopTheTrain.Events;
+using True10.Interfaces;
 
 namespace DontStopTheTrain
 {
-    public class InitializerManagers : MonoBehaviour
+    public class InitializerManagers : MonoBehaviour, IGameLifeCycle
     {
         [Inject]
         private EventsManager _eventsManager;

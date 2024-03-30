@@ -1,4 +1,5 @@
 ﻿using System;
+using True10.Interfaces;
 using UnityEngine;
 using Zenject;
 
@@ -12,7 +13,7 @@ namespace DontStopTheTrain.Events
         bool TryToSetEventData(IEvent eventData);
     }
 
-    public abstract class AbstractEventViewer : MonoBehaviour, IEventViewer
+    public abstract class AbstractEventViewer : MonoBehaviour, IEventViewer, IGameLifeCycle
     {
         public IEvent ActiveEvent => _eventData;
         public Action<IEvent> OnSetEvent { get; set; }
@@ -43,21 +44,31 @@ namespace DontStopTheTrain.Events
             OnSetEvent?.Invoke(null);
         }
 
-        protected abstract void OnStartEvent(IEvent eventData);
-        protected abstract void OnCompleteEvent(IEvent eventData);
-
-        private void Start()
+        public void Initialize()
         {
             _eventViewersManager.TryToAdd(this);
             _eventController.OnStart += OnStartEvent;
             _eventController.OnComplete += OnCompleteEvent;
         }
 
-        private void OnDestroy()
+        public void Dispose()
         {
             _eventViewersManager.TryToRemove(this);
             _eventController.OnStart -= OnStartEvent;
             _eventController.OnComplete -= OnCompleteEvent;
+        }
+
+        protected abstract void OnStartEvent(IEvent eventData);
+        protected abstract void OnCompleteEvent(IEvent eventData);
+
+        private void Start()
+        {
+            Initialize();
+        }
+
+        private void OnDestroy()
+        {
+            Dispose();
         }
     }
 }

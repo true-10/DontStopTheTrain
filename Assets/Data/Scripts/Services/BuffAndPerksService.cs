@@ -1,9 +1,10 @@
 using System;
+using True10.Interfaces;
 using Zenject;
 
 namespace DontStopTheTrain
 {
-    public sealed class BuffAndPerksService
+    public sealed class BuffAndPerksService: IGameLifeCycle
     {
         public Action OnChange { get; set; }
         [Inject]

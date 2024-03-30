@@ -1,4 +1,5 @@
 ﻿using DontStopTheTrain.Events;
+using True10.Interfaces;
 using UnityEngine;
 
 namespace DontStopTheTrain.Train
@@ -22,7 +23,7 @@ namespace DontStopTheTrain.Train
 
     }
 
-    public interface IWagonSystem : IHealthable
+    public interface IWagonSystem : IHealthable, IGameLifeCycle
     {
         IEvent ActiveEvent { get; }
         //IEventViewer EventViewer { get; }
@@ -31,9 +32,6 @@ namespace DontStopTheTrain.Train
         int EnergyConsumption { get; } //потребление энергии
         int DeteriorationSpeed { get; } //скорость износа
         int Weight { get; }//масса системы для расчетов скорости/расхода топлива/торможения?
-
-        void Initialize();
-        void Dispose();
     }
 
     public interface IEngineSystem : IWagonSystem

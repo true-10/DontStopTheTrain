@@ -45,7 +45,6 @@ public class DSTSceneInstaller : MonoInstaller
     private void InstallControllers()
     {
         Container.Bind<TurnBasedController>().FromInstance(_turnBasedController).AsSingle();    
-        Container.Bind<ICameraController>().To<CameraController>().AsSingle();
         Container.Bind<UIController>().FromInstance(_uiController).AsSingle();
         Container.Bind<QuestController>().AsSingle();    
     }

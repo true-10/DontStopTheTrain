@@ -1,10 +1,11 @@
 ﻿using System;
 using True10.CameraSystem;
+using True10.Interfaces;
 using UnityEngine;
 
 namespace True10
 {
-    public class ClickableView : MonoBehaviour
+    public class ClickableView : MonoBehaviour, IGameLifeCycle
     {
         public Action OnClick { get; set; }
        // public Action OnEnterView { get; set; }

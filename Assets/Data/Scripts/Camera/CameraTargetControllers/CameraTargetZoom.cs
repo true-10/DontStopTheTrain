@@ -78,7 +78,7 @@ namespace DontStopTheTrain.Gameplay
             target.localPosition = pos;
         }
 
-        public void Init()
+        public void Initialize()
         {
             throw new NotImplementedException();
         }

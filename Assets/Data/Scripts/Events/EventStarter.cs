@@ -3,12 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using True10.Extentions;
+using True10.Interfaces;
 using UnityEngine;
 using Zenject;
 
 namespace DontStopTheTrain.Events
 {
-    public sealed class EventStarter : IInitializable, IDisposable
+    public sealed class EventStarter : IGameLifeCycle
     {
         [Inject]
         private TurnBasedController _turnBasedController;

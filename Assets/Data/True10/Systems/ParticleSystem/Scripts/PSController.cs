@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using True10.Interfaces;
 using UnityEngine;
 
 namespace True10.ParticleSystemWrapper
@@ -43,7 +44,7 @@ namespace True10.ParticleSystemWrapper
         public Action OnEmit { get; set; }
         public Action OnInit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public void Init()
+        public void Initialize()
         {
             throw new NotImplementedException();
         }
