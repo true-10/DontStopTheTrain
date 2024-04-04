@@ -50,17 +50,17 @@ namespace True10.CameraSystem
             }
             SetFOV(_defaultFOV);
         }
-        public void TurnOn()
+        public void SwitchToThisCamera()
         {
             _cameraController.SwitchToCamera(this);
         }
 
-        public void TurnOff()
+        public void SwitchToDefaultCamera()
         {
             _cameraController.SwitchToDefaultCamera();
         }
 
-        public void TurnOnPrevious()
+        public void SwitchToPreviousCamera()
         {
             _cameraController.SwitchToPreviousCamera();
         }
@@ -91,6 +91,11 @@ namespace True10.CameraSystem
         }
 
         private void OnDisable()
+        {
+            _camerasManager.TryToRemove(this);
+
+        }
+        private void OnDestroy()
         {
             _camerasManager.TryToRemove(this);
 

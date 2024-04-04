@@ -10,6 +10,7 @@ namespace DontStopTheTrain.Events
         EventId Id { get; }
         EventType Type { get; }
         int Weight { get; }
+        int FastFixMinLevel { get; }//уровень игрока, после которого не надо играть мини игру
         int ActionPointPrice { get; }
         int Time { get; }//время длительности, после которого завершается. если 0, то без ограничений
         IReadOnlyList<RewardId> WinRewardIds { get; }

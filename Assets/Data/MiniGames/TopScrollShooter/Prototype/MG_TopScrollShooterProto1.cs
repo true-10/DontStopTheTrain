@@ -7,8 +7,6 @@ using Zenject;
 
 public class MG_TopScrollShooterProto1 : MonoMiniGame
 {
-    [Inject] private ICameraController cameraController;
-
     [SerializeField]
     private TSS_EnemySpawner enemySpawner;
     [SerializeField]
@@ -20,7 +18,7 @@ public class MG_TopScrollShooterProto1 : MonoMiniGame
     {
         enemySpawner.StartSpawn();
         defenseControls.SetActive(true);
-        cameraController.SwitchToCamera(turretCamera.HashCode);
+        turretCamera.SwitchToThisCamera();
     }
 
     public override void StopMiniGame()
@@ -28,7 +26,7 @@ public class MG_TopScrollShooterProto1 : MonoMiniGame
         enemySpawner.StopAndClear();
         defenseControls.Clear();
         defenseControls.SetActive(false);
-        cameraController.SwitchToDefaultCamera();
+        turretCamera.SwitchToDefaultCamera();
     }
 
 }

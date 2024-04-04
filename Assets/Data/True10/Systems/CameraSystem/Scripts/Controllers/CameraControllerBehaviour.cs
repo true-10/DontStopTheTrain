@@ -29,7 +29,7 @@ namespace True10.CameraSystem
             {
                 return;
             }
-            SwitchToCamera(_previousCamera.HashCode);
+            SwitchToCamera(_previousCamera);
         }
 
         public void SwitchToDefaultCamera()
@@ -38,7 +38,7 @@ namespace True10.CameraSystem
             {
                 return;
             }
-            SwitchToCamera(_defaultCamera.HashCode);
+            SwitchToCamera(_defaultCamera);
         }
 
         public void AddCamera(ICameraHolder cameraHolder)

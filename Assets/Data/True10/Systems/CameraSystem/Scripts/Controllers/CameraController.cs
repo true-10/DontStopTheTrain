@@ -29,7 +29,7 @@ namespace True10.CameraSystem
             {
                 return;
             }
-            SwitchToCamera(_previousCamera.HashCode);
+            SwitchToCamera(_previousCamera);
         }
 
         public void SetDefaultCamera(ICameraHolder cameraHolder)
@@ -95,6 +95,7 @@ namespace True10.CameraSystem
             if (_isDisable) return;
             DisableAllCameras();
             _previousCamera = _currentCamera;
+           // Debug.Log($"SwitchToCamera hash = {hash}");
             _currentCamera = _camerasManager.Items.FirstOrDefault(camHolder => camHolder.HashCode == hash);// _cameras[hash];
 
             CameraCallback cameraCalback = new CameraCallback(_currentCamera);
@@ -105,7 +106,18 @@ namespace True10.CameraSystem
 
         public void SwitchToCamera(ICameraHolder cameraHolder)
         {
-            SwitchToCamera(cameraHolder.HashCode);
+            //SwitchToCamera(cameraHolder.HashCode);
+
+            if (_isDisable) return;
+            DisableAllCameras();
+            _previousCamera = _currentCamera;
+           // Debug.Log($"SwitchToCamera hash = {cameraHolder}");
+            _currentCamera = _camerasManager.Items.FirstOrDefault(camHolder => camHolder == cameraHolder);// _cameras[hash];
+
+            CameraCallback cameraCalback = new CameraCallback(_currentCamera);
+
+            OnCameraOn?.Invoke(cameraCalback);
+            _currentCamera.Priority = Constants.MAX_PRIORITY;
         }
 
         public void SwitchToDefaultCamera()
@@ -114,7 +126,7 @@ namespace True10.CameraSystem
             {
                 return;
             }
-            SwitchToCamera(_defaultCamera.HashCode);
+            SwitchToCamera(_defaultCamera);
         }
 
         private void DisableAllCameras()

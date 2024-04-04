@@ -23,6 +23,8 @@ namespace DontStopTheTrain.Train
         private UIController _uiController;
         [Inject]
         private WagonsFabric _fabric;
+        [Inject]
+        private EventController _eventController;
 
         [SerializeField]
         private ClickableView _clickableView;
@@ -52,6 +54,7 @@ namespace DontStopTheTrain.Train
             _clickableView.OnMouseOverEnter += OnMouseOverEnterHandler;
             _clickableView.OnMouseOverExit += OnMouseOverExitHandler;
 
+            _eventController.OnFocus += OnEventFocus;
             _eventViewers.ForEach(viewer => viewer.OnSetEvent += OnSetEvent);
         }
 
@@ -64,6 +67,7 @@ namespace DontStopTheTrain.Train
             _clickableView.OnMouseOverEnter -= OnMouseOverEnterHandler;
             _clickableView.OnMouseOverExit -= OnMouseOverExitHandler;
 
+            _eventController.OnFocus -= OnEventFocus;
             _eventViewers.ForEach(viewer => viewer.OnSetEvent -= OnSetEvent);
         }
 
@@ -75,14 +79,22 @@ namespace DontStopTheTrain.Train
             _uiController.WagonInfoPopup.Hide();
             //_eventViewers.ForEach(viewer => viewer.IsClickable = true);
             _systemViewers.ForEach(viewer => viewer.IsClickable = true);
-            _cameraHolder?.TurnOn();
+            _cameraHolder?.SwitchToThisCamera();
+        }
+
+        private void OnEventFocus(IEvent eventData)
+        {
+            if (_eventViewers.Any(viewer => viewer.ActiveEvent == eventData))
+            {
+                OnClickViewHandler();
+            }
         }
 
         public void OnExitViewHandler()
         {
             _boxCollider.enabled = true;
             _uiController.MainGamePlay.Show();
-            _cameraHolder?.TurnOff();
+            _cameraHolder?.SwitchToDefaultCamera();
             //_eventViewers.ForEach(viewer => viewer.IsClickable = false);
             _systemViewers.ForEach(viewer => viewer.IsClickable = false);
         }

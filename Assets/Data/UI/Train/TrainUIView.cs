@@ -40,7 +40,7 @@ namespace DontStopTheTrain.UI
 
         private void OnLocoCamButtonClick()
         {
-            cameraController.SwitchToCamera(locoCameraHolder.HashCode);
+            cameraController.SwitchToCamera(locoCameraHolder);
         }
 
     }

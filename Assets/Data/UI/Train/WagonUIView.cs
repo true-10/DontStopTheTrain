@@ -43,7 +43,7 @@ namespace DontStopTheTrain.UI
             {
                 button.SwitchToCameraButton.onClick.AddListener( () =>
                 {
-                    cameraController.SwitchToCamera(button.CameraHolder.HashCode);
+                    cameraController.SwitchToCamera(button.CameraHolder);
                 });
             }
         }

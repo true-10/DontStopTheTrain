@@ -22,7 +22,7 @@ namespace DontStopTheTrain.Events
 
         public override void PlayStartAnimation()
         {
-            _cameraHolder?.TurnOn();
+            _cameraHolder?.SwitchToThisCamera();
             _startParticleSystem?.Play();
             _particleSystem?.Play();
             CompleteStartAnimationAfter(_animationTimeSeconds);

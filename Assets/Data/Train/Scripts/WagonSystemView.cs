@@ -37,8 +37,6 @@ namespace DontStopTheTrain
         private UIController _uiController;
         [Inject]
         private WagonSystemsFabric _fabric;
-        [Inject]
-        private EventController _eventController;
 
         [SerializeField]
         private ClickableView _clickableView;
@@ -65,7 +63,6 @@ namespace DontStopTheTrain
 
             _wagonEventViewer.OnSetEvent += OnSetEvent;
 
-            _eventController.OnFocus += OnEventFocus;
         }
 
         public void Dispose()
@@ -78,7 +75,6 @@ namespace DontStopTheTrain
             _clickableView.OnMouseOverExit -= OnMouseOverExitHandler;
 
             _wagonEventViewer.OnSetEvent -= OnSetEvent;
-            _eventController.OnFocus -= OnEventFocus;
         }
 
         private void OnSetEvent(IEvent eventData)
@@ -122,23 +118,12 @@ namespace DontStopTheTrain
             }
         }
 
-        private void OnEventFocus(IEvent eventData)
-        {
-            if (ActiveEvent == null)
-            {
-                return;
-            }
-            if (eventData == ActiveEvent)
-            {
-                _uiController.EventInfoPopup.AnchorIt();
-            }
-        }
-
         private void OnClickViewHandler()
         {
             if (ActiveEvent != null)
             {
-                ActiveEvent.TryToFocus();
+                //ActiveEvent.TryToFocus();
+                _uiController.EventInfoPopup.AnchorIt();
             }
             else
             {

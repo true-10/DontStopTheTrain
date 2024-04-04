@@ -18,9 +18,9 @@ namespace True10.CameraSystem
         /// start script for control camera (move target and aim around)
         /// </summary>
         void InitCustomCameraController();
-        void TurnOn();
-        void TurnOff(); 
-        void TurnOnPrevious();
+        void SwitchToThisCamera();
+        void SwitchToDefaultCamera(); 
+        void SwitchToPreviousCamera();
         void SetFOV(float fov);
     }
 }

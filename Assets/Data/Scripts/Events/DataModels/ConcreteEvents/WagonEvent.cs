@@ -43,7 +43,8 @@ namespace DontStopTheTrain.Events
         {
             Status = ProgressStatus.InProgress;
             timeToComplete = StaticData.Time;
-            _turnBasedController.OnTurnStart += OnTurnStart;
+           // _turnBasedController.OnTurnStart += OnTurnStart;
+            _turnBasedController.OnTurnEnd += OnTurnEnd;
         }
 
         public void Reset()
@@ -76,16 +77,23 @@ namespace DontStopTheTrain.Events
         {
             _eventsService.TryToRemoveRequredItems(this);
             Status = newStatus;
-            _turnBasedController.OnTurnStart -= OnTurnStart;
+           // _turnBasedController.OnTurnStart -= OnTurnStart;
+            _turnBasedController.OnTurnEnd -= OnTurnEnd;
             OnComplete?.Invoke(this);
         }
 
         private void Dispose()
         {
-            _turnBasedController.OnTurnStart -= OnTurnStart;
+           // _turnBasedController.OnTurnStart -= OnTurnStart;
+            _turnBasedController.OnTurnEnd -= OnTurnEnd;
         }
 
-        private void OnTurnStart(ITurnCallback callback)
+    /*    private void OnTurnEnd(ITurnCallback callback)
+        {
+            throw new NotImplementedException();
+        }*/
+
+        private void OnTurnEnd(ITurnCallback callback)
         {
             if (StaticData.Time > 0)
             {

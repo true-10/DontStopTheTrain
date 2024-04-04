@@ -12,6 +12,7 @@ namespace DontStopTheTrain.Events
         public virtual EventType Type => EventType.None;
         public int Weight => _weight;
         public int Time => _time;
+        public int FastFixMinLevel => _fastFixMinLevel;
         public IReadOnlyList<RewardId> WinRewardIds => _rewardIds.AsReadOnly();
         public IReadOnlyList<RewardId> FailRewardIds => _failRewardIds.AsReadOnly();
         public GameObject EventPrefab => _eventPrefab;
@@ -29,6 +30,8 @@ namespace DontStopTheTrain.Events
         private int _weight;
         [SerializeField, Min(1), Tooltip("Длительность события в ходах. 0 - без ограничений")]
         private int _time;
+        [SerializeField, Min(1), Tooltip("Уровень игрока, после которого не надо играть мини игру")]
+        private int _fastFixMinLevel;
         [SerializeField, Min(0)]
         private List<RewardId> _rewardIds;
         [SerializeField, Min(0)]

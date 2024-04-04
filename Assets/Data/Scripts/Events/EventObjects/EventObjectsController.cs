@@ -25,12 +25,14 @@ namespace DontStopTheTrain.Events
             {
                 _turnBasedController.StartTurn();
                 var cam = _cameraSwitcher.GetNextCamera();
-                cam.TurnOn();
+                cam.SwitchToThisCamera();
                 return;
             }
             var eventObject = eventsAnimtaions.GetRandomElement();
-            eventObject.PlayStartAnimation();
-            //по завершении повторить
+            if (eventObject != null)
+            {
+                eventObject.PlayStartAnimation();
+            }
         }
 
         public void Initialize()
@@ -54,12 +56,12 @@ namespace DontStopTheTrain.Events
 
         private void OnEventObjectRemoved(AbstractEventObject eventObject)
         {
-            eventObject.OnStartAnimationPlayed += OnStartAnimationPlayed;
+            eventObject.OnStartAnimationPlayed -= OnStartAnimationPlayed;
         }
 
         private void OnEventObjectAdded(AbstractEventObject eventObject)
         {
-            eventObject.OnStartAnimationPlayed -= OnStartAnimationPlayed;
+            eventObject.OnStartAnimationPlayed += OnStartAnimationPlayed;
         }
 
         private void OnStartAnimationPlayed(AbstractEventObject @object)

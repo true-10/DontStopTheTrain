@@ -26,7 +26,7 @@ namespace True10.TriggerSystem
             }
             if (cameraHolderOnEnter != null)
             {
-                cameraHolderOnEnter.TurnOn();
+                cameraHolderOnEnter.SwitchToThisCamera();
             }
         }
 
@@ -38,7 +38,7 @@ namespace True10.TriggerSystem
             }
             if (cameraHolderOnExit != null)
             {
-                cameraHolderOnExit.TurnOn();
+                cameraHolderOnExit.SwitchToThisCamera();
             }
         }
 

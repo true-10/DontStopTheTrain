@@ -574,7 +574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isLocal: 1
-  _xRotationSpeed: 1000
+  _xRotationSpeed: 2000
   _yRotationSpeed: 0
   _zRotationSpeed: 0
 --- !u!1 &7241244539898916183

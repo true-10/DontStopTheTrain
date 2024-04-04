@@ -1,11 +1,16 @@
+using DontStopTheTrain.Events;
 using System;
 using True10;
 using UnityEngine;
+using Zenject;
 
 namespace DontStopTheTrain.Train
 {
     public class InteriorShower : MonoBehaviour
     {
+        [Inject]
+        private EventController _eventController;
+
         [SerializeField]
         private ClickableView _clickableView;
         [SerializeField]
@@ -25,12 +30,20 @@ namespace DontStopTheTrain.Train
         {
             _clickableView.OnClick += OnEnterWagonView;
             _clickableView.OnExitView += OnExitWagonView;
+            _eventController.OnFocus += OnEventFocus;
         }
 
         private void OnDisable()
         {
             _clickableView.OnClick -= OnEnterWagonView;
             _clickableView.OnExitView -= OnExitWagonView;
+            _eventController.OnFocus -= OnEventFocus;
+        }
+
+        private void OnEventFocus(IEvent eventData)
+        {
+            OnEnterWagonView();
+
         }
     }
 }

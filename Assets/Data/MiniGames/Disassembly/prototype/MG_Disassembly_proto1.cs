@@ -7,18 +7,16 @@ using Zenject;
 
 public class MG_Disassembly_proto1 : MonoMiniGame
 {
-    [Inject] private ICameraController cameraController;
-
     [SerializeField]
-    private CameraHolder camera;
+    private CameraHolder cameraHolder;
 
     public override void StartMiniGame()
     {
-        cameraController.SwitchToCamera(camera.HashCode);
+        cameraHolder.SwitchToThisCamera();
     }
 
     public override void StopMiniGame()
     {
-        cameraController.SwitchToDefaultCamera();
+        cameraHolder.SwitchToDefaultCamera();
     }
 }

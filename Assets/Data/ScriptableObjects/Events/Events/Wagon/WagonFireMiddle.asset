@@ -22,7 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8df992a554c4e204c91727d4808b5a59, type: 2}
   _conditionsToStart:
   - {fileID: 11400000, guid: 81e454d723fa766428c86cd18e68f21c, type: 2}
-  _eventPrefab: {fileID: 137057358187991997, guid: 8f670b84b1829e24ab3e46ac643c7113,
+  _eventPrefab: {fileID: 137057358187991997, guid: f398afa1d66e5be4791e1e54aac538c3,
     type: 3}
   _info:
     _name: 'Fire! Fire! '

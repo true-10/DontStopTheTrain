@@ -16,36 +16,25 @@ namespace True10.CameraSystem
             Weighted = 2,
         }
 
-        // [Inject]
-        //private TurnBasedController _turnBasedController;
         [Inject]
         private CamerasManager _camerasManager;
-        //[SerializeField]
-        private SwitchMode _switchMode = SwitchMode.Weighted;
-        //[SerializeField]
-        private List<ICameraHolder> _cameras => _camerasManager.Items.Where(camHolder => camHolder.Group == 1).ToList();
 
+        private List<ICameraHolder> _cameras => _camerasManager.Items
+            .Where(camHolder => camHolder.Group == 1)
+            .ToList();
         private ICameraHolder _currentCamera;
 
         public void Initialize()
         {
             _currentCamera = GetNextCamera();
-            _currentCamera.TurnOn();
-            //  _turnBasedController.OnTurnStart += OnTurnStart;
+            _currentCamera.SwitchToThisCamera();
         }
 
         public void Dispose()
         {
-            //    _turnBasedController.OnTurnStart -= OnTurnStart;
+
         }
 
-        /*
-        private void OnTurnStart(ITurnCallback callback)
-        {
-           // _currentCamera = GetNextCamera();
-            //_currentCamera.TurnOn();
-        }
-        */
         private ICameraHolder GetRandomWeightedCamera()
         {
             var cameras = _cameras
@@ -69,9 +58,9 @@ namespace True10.CameraSystem
             return null;
         }
 
-        public ICameraHolder GetNextCamera()
+        public ICameraHolder GetNextCamera(SwitchMode switchMode = SwitchMode.Weighted)
         {
-            switch (_switchMode)
+            switch (switchMode)
             {
                 case SwitchMode.Random:
                     return _cameras.GetRandomElement();
