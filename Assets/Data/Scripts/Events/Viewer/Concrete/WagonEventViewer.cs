@@ -52,6 +52,10 @@ namespace DontStopTheTrain.Events
         {
             if (_eventPrefabGO != null)
             {
+                if (_eventPrefabGO.TryGetComponent<AbstractEventObject>(out var eventObject))
+                {
+                    eventObject.Dispose();
+                }
                 Destroy(_eventPrefabGO);
             }
             _eventData = null;

@@ -39,12 +39,12 @@ namespace DontStopTheTrain.Events
         }
 
        
-        private void OnEnable()// Start()
+        private void Start()
         {
             Initialize();
         }
 
-        private void OnDisable()// OnDestroy()
+        private void OnDestroy()
         {
             Dispose();
         }

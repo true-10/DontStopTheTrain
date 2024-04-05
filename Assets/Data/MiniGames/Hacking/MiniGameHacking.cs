@@ -62,7 +62,8 @@ namespace DontStopTheTrain.MiniGames
             {
                 var view = _elementViews[i];
                 var next = _elementViews[i + 1];
-
+                //here is a bug
+                //полв
                 result &= ConnectorService.IsConnected(view.Element, next.Element);
             }
 

@@ -60,12 +60,13 @@ namespace DontStopTheTrain
             _icon.sprite = eventData.StaticData.Info.Icon;
             _conditionText.text = ConditionToTextConverter.GetText(eventData.ÑompleteConditions, eventData.ActionPointPrice);
             _worldPostionSetter.SetPosition(lookAt);
+
             ShowButtons(IsAnchored);
             Show();
             _eventObject = _eventObjectsManager.Items
                 .Where(eventObject => eventObject.Event == eventData)
                 .FirstOrDefault();
-
+            Debug.Log($"Show() _eventObject = {_eventObject} _eventObjectsManager.Items.Count = {_eventObjectsManager.Items.Count}");
 
     }
 
@@ -86,6 +87,7 @@ namespace DontStopTheTrain
         {
             if (_eventObject == null)
             {
+                Debug.Log($"_eventObject is null");
                 return;
             }
             var miniGame = _eventObject.MiniGame;
