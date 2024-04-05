@@ -135,13 +135,13 @@ namespace DontStopTheTrain.Events
 
         private int GenerateChance(float threshold)
         {
-            var thresholdChance = Mathf.RoundToInt(threshold * 100f);
+            var thresholdChance = Mathf.RoundToInt((1 - threshold) * 100f);
             var randomChance = UnityEngine.Random.Range(-5, 15);
             var minValue = 1 + thresholdChance + randomChance;
             var maxValue = 101;
             minValue = Mathf.Clamp(minValue, 1, maxValue);
             var chance = UnityEngine.Random.Range(minValue, 101);
-           // chance = 100 - chance;
+            //chance = 100 - chance;
             //Debug.Log($"thresholdChance = {thresholdChance} randomChance = {randomChance}  minValue = {minValue} chance = {chance} ");
             return chance;
         }

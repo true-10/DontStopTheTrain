@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DontStopTheTrain.MiniGames;
+using System;
 using System.Collections.Generic;
 using True10.Enums;
 
@@ -9,6 +10,7 @@ namespace DontStopTheTrain.Events
         Action<IEvent> OnComplete { get; set; }
         Action<IEvent> OnFocus { get; set; }
         EventId Id => StaticData.Id;
+        //IMiniGame MiniGame { get; }
         int ActionPointPrice { get; }
         int Chance { get; }
         IEventStaticData StaticData { get; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DontStopTheTrain.MiniGames;
+using System;
 using System.Collections.Generic;
 using True10.Enums;
 
@@ -20,6 +21,8 @@ namespace DontStopTheTrain.Events
         public IReadOnlyCollection<ICondition> СompleteConditions => throw new NotImplementedException();
 
         public ProgressStatus Status { get; private set; }
+
+       // public IMiniGame MiniGame => throw new NotImplementedException();
 
         public ViewEvent(IEventStaticData staticData, TurnBasedController turnBasedController)
         {

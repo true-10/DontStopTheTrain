@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DontStopTheTrain.MiniGames;
+using System;
 using True10.CameraSystem;
 using UniRx;
 using UnityEngine;
@@ -7,6 +8,8 @@ namespace DontStopTheTrain.Events
 {
     public class FireEventObject : AbstractEventObject
     {
+        public override IMiniGame MiniGame => _miniGame;
+
         [SerializeField]
         private ParticleSystem _startParticleSystem;
         [SerializeField]
@@ -17,6 +20,8 @@ namespace DontStopTheTrain.Events
         private CameraHolder _cameraHolder;
         [SerializeField]
         private float _animationTimeSeconds = 1f;
+        [SerializeField]
+        private AbstractMiniGame _miniGame;
 
         private IDisposable _timer = null;
 

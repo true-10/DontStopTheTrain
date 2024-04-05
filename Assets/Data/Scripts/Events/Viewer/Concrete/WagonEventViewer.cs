@@ -41,6 +41,10 @@ namespace DontStopTheTrain.Events
             //DiContainer
             //_eventPrefabGO = _eventObjectsFactory.Create().gameObject;
             _eventPrefabGO = Instantiate(prefab, _eventPrefabRoot);
+            if (_eventPrefabGO.TryGetComponent<AbstractEventObject>(out var eventObject) )
+            {
+                eventObject.SetEvent(_eventData);
+            }
             //_eventPrefabGO.transform.localPosition = Vector3.zero;
         }
 

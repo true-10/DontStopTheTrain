@@ -1,17 +1,16 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using True10.Interfaces;
 using UnityEngine;
 
 namespace DontStopTheTrain.MiniGames
 {
-
-    public class MiniGameHacking : MonoBehaviour, IGameLifeCycle
+    public class MiniGameHacking : AbstractMiniGame
     {
         public Action<HackingElement> OnElementRotate { get; set; }
 
+        [SerializeField]
+        private GameObject _root;
         [SerializeField]
         private HackingElementView _startConnector;
         [SerializeField]
@@ -19,20 +18,39 @@ namespace DontStopTheTrain.MiniGames
         [SerializeField]
         private List<HackingElementView> _elementViews;
 
-        public void Initialize()
+        public override void StartMiniGame()
         {
+            _root.SetActive(true);
+            _cameraHolder.SwitchToThisCamera();
+        }
+
+        public override void StopMiniGame()
+        {
+            _root.SetActive(false);
+            _cameraHolder.SwitchToDefaultCamera();
+        }
+
+        public override void Initialize()
+        {
+            _root.SetActive(false);
+            _startConnector.Initialize();
+            _endConnector.Initialize();
             foreach (var view in _elementViews)
             {
+                view.Initialize();
                 view.Element.OnRotate += ElementRotation;
             }
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
             foreach (var view in _elementViews)
             {
                 view.Element.OnRotate -= ElementRotation;
+                view.Dispose();
             }
+            _startConnector.Dispose();
+            _endConnector.Dispose();
         }
 
         private void TryToComplete()
@@ -52,6 +70,12 @@ namespace DontStopTheTrain.MiniGames
             result &= ConnectorService.IsConnected(_endConnector.Element, lastElement.Element);
 
             Debug.Log($"Hacking result is {result}");
+            if (result == true)
+            {
+                //delay for animation ending
+                StopMiniGame();
+                OnComplete?.Invoke(this);
+            }
 
         }
 
@@ -59,16 +83,6 @@ namespace DontStopTheTrain.MiniGames
         {
             OnElementRotate?.Invoke(element);
             TryToComplete();
-        }
-
-        private void Start()
-        {
-            Initialize();
-        }
-
-        private void OnDestroy()
-        {
-            Dispose();
         }
     }
 

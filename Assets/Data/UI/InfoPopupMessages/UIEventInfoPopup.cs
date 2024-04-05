@@ -1,4 +1,6 @@
 using DontStopTheTrain.Events;
+using DontStopTheTrain.MiniGames;
+using System.Linq;
 using TMPro;
 using True10;
 using True10.UI;
@@ -12,6 +14,8 @@ namespace DontStopTheTrain
     {
         [Inject]
         private EventsService _eventsService;
+        [Inject]
+        private EventObjectsManager _eventObjectsManager;
 
         [SerializeField]
         private Image _icon;
@@ -23,10 +27,13 @@ namespace DontStopTheTrain
         private TextMeshProUGUI _conditionText;
 
         [SerializeField]
-        private Button _applyButton;
+        private Button _fastFixButton;
+        [SerializeField]
+        private Button _playGameButton;
 
         private IEvent _eventData;
         private ClickableView _clickableView;
+        private AbstractEventObject _eventObject;
 
         public override void AnchorIt()
         {
@@ -55,14 +62,19 @@ namespace DontStopTheTrain
             _worldPostionSetter.SetPosition(lookAt);
             ShowButtons(IsAnchored);
             Show();
-        }
+            _eventObject = _eventObjectsManager.Items
+                .Where(eventObject => eventObject.Event == eventData)
+                .FirstOrDefault();
+
+
+    }
 
         private void Start()
         {
             Hide();
         }
 
-        private void Applay()
+        private void FastFixHandler()
         {
             if (_eventData.TryToComplete())
             {
@@ -70,20 +82,44 @@ namespace DontStopTheTrain
             }
         }
 
+        private void PlayMiniGameHandler()
+        {
+            if (_eventObject == null)
+            {
+                return;
+            }
+            var miniGame = _eventObject.MiniGame;
+            if (miniGame == null)
+            {
+                Debug.Log($"Mini game is null");
+                return;
+            }
+            Hide();
+            miniGame.OnComplete += (mg) => { FastFixHandler(); };
+            miniGame.StartMiniGame();
+        }
+
         private void TryToActivateButton(IEvent eventData)
         {           
-            var isAcive = _eventsService.IsAllConditionsAreMet(eventData) && _eventsService.IsEnoughActionPoints(eventData);
-            _applyButton.gameObject.SetActive(isAcive);
+            var isFastFixAvailable = _eventsService.IsFastFixAvailable(eventData);
+            var isAllConditionsAreMet = _eventsService.IsAllConditionsAreMet(eventData);
+            var isEnoughActionPoints = _eventsService.IsEnoughActionPoints(eventData);
+            var isAcive = isEnoughActionPoints && isAllConditionsAreMet;
+
+            _fastFixButton.gameObject.SetActive(isAcive && isFastFixAvailable);
+            _playGameButton.gameObject.SetActive(isAcive);
         }
 
         public override void OnEnableHandler()
         {
-            _applyButton.onClick.AddListener(Applay);
+            _fastFixButton.onClick.AddListener(FastFixHandler);
+            _playGameButton.onClick.AddListener(PlayMiniGameHandler);
         }
 
         public override void OnDisableHandler()
         {
-            _applyButton.onClick.RemoveAllListeners();
+            _fastFixButton.onClick.RemoveAllListeners();
+            _playGameButton.onClick.RemoveAllListeners();
         }
     }
 

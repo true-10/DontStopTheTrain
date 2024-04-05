@@ -30,7 +30,9 @@ namespace DontStopTheTrain.Events
             var rewardIds = eventData.StaticData.WinRewardIds;
             if (eventData.Status == True10.Enums.ProgressStatus.Fail)
             {
-                rewardIds = eventData.StaticData.FailRewardIds;
+                UnityEngine.Debug.Log("Event failed"); ;
+
+                //rewardIds = eventData.StaticData.FailRewardIds;
             }
             foreach (var rewardId in rewardIds)
             {

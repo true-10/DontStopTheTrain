@@ -1,3 +1,4 @@
+using DontStopTheTrain.MiniGames;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,22 +11,22 @@ namespace DontStopTheTrain.Events
 {
     public abstract class AbstractEventObject : MonoBehaviour, IGameLifeCycle
     {
+        public IEvent Event { get; private set; }
+        public virtual IMiniGame MiniGame => null;
         public Action<AbstractEventObject> OnStartAnimationPlayed { get; set; }
         public bool IsStartAnimationCompleted { get; protected set; }
 
-/*        [Inject]
-        public void Construct(EventObjectsManager eventObjectsManager)
-        {
-            _eventObjectsManager = eventObjectsManager;
-        }
-*/
         [Inject]
         private EventObjectsManager _eventObjectsManager;
 
+
         public abstract void PlayStartAnimation();
-
         public abstract void PlayCompleteAnimation();
-
+        
+        public void SetEvent(IEvent eventData)
+        {
+            Event ??= eventData;
+        }
         public virtual void Initialize()
         {
             IsStartAnimationCompleted = false;

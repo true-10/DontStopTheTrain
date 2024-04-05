@@ -28,7 +28,9 @@ namespace DontStopTheTrain.MiniGames
         private Transform _connectorATransform;
         [SerializeField]
         private Transform _connectorBTransform;
-        [Header("Connector's visual")]
+        [Header("Other")]
+        [SerializeField]
+        private float _rotationDuration = 0.3f;
         [SerializeField]
         private ClickOnObject _clickOnObject;
 
@@ -59,7 +61,7 @@ namespace DontStopTheTrain.MiniGames
         {
             //поворачиваем на 90 градусов
             var eulers = _cachedTransform.eulerAngles + Vector3.up * 90f;
-            _cachedTransform.DORotate(eulers, 1f)
+            _cachedTransform.DORotate(eulers, _rotationDuration)
                 .OnComplete( () => { _isClickable = true; });
         }
 
@@ -75,24 +77,29 @@ namespace DontStopTheTrain.MiniGames
 
         private void SetupVisualsOnStart()
         {
-            _connectorATransform.position = GetPosition(_connectorAStartPosition);
-            _connectorBTransform.position = GetPosition(_connectorBStartPosition);
+            var transformA = GetTransform(_connectorAStartPosition);
+            _connectorATransform.position = transformA.position;
+            _connectorATransform.rotation = transformA.rotation;
+
+            var transformB = GetTransform(_connectorBStartPosition);
+            _connectorBTransform.position = transformB.position;
+            _connectorBTransform.rotation = transformB.rotation;
         }
 
-        private Vector3 GetPosition(ConnectorPosition connector)
+        private Transform GetTransform(ConnectorPosition connector)
         {
             switch (connector)
             {
                 case ConnectorPosition.Right:
-                    return _rightTransform.position;
+                    return _rightTransform;
                 case ConnectorPosition.Left:
-                    return _leftTransform.position;
+                    return _leftTransform;
                 case ConnectorPosition.Top:
-                    return _topTransform.position;
+                    return _topTransform;
                 case ConnectorPosition.Bottom:
-                    return _bottomTransform.position;
+                    return _bottomTransform;
             }
-            return Vector3.zero;
+            return null;
         }
 
         private void OnValidate()
@@ -105,7 +112,7 @@ namespace DontStopTheTrain.MiniGames
             _cachedTransform ??= GetComponent<Transform>();
         }
 
-        private void Start()
+      /*  private void Start()
         {
             Initialize();
         }
@@ -113,6 +120,6 @@ namespace DontStopTheTrain.MiniGames
         private void OnDestroy()
         {
             Dispose();
-        }
+        }*/
     }
 }

@@ -1,3 +1,4 @@
+using DontStopTheTrain.MiniGames;
 using System;
 using System.Collections.Generic;
 using True10.Enums;
@@ -21,6 +22,7 @@ namespace DontStopTheTrain.Events
         public IReadOnlyCollection<ICondition> ÑompleteConditions { get; private set; }
         public IEventStaticData StaticData { get; private set; }
         public ProgressStatus Status { get; private set; }
+        //public IMiniGame MiniGame => throw new NotImplementedException();
 
         public WagonEvent(IEventStaticData staticData, IReadOnlyCollection<ICondition> conditions, 
             EventsService eventsService, BuffAndPerksService buffAndPerksService, TurnBasedController turnBasedController)
@@ -37,6 +39,8 @@ namespace DontStopTheTrain.Events
         private TurnBasedController _turnBasedController;
 
         private int _actionPointPrice => StaticData.ActionPointPrice - _buffAndPerksService.GetValue(PerkType.ReducePriceActionPoint);
+
+
         private int timeToComplete = 0;
 
         public void Start()

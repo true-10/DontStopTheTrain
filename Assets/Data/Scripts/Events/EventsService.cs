@@ -19,6 +19,7 @@ namespace DontStopTheTrain.Events
 
         public bool IsAllConditionsAreMet(IEvent eventData) => eventData.СompleteConditions.All(condition => condition.IsMet());
 
+        public bool IsFastFixAvailable(IEvent eventData) => eventData.StaticData.FastFixMinLevel <= _player.Level.Value;
         public List<InventoryItem> GetResourceFromConditions(IEvent eventData)
         {
             List<InventoryItem> resourcesToRemove = new();

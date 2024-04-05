@@ -16,6 +16,7 @@ MonoBehaviour:
   _actionPointPrice: 2
   _weight: 20
   _time: 2
+  _fastFixMinLevel: 3
   _rewardIds: 0100000005000000
   _failRewardIds: 
   _conditionsToComplete:
