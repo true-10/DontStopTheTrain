@@ -12,9 +12,6 @@ namespace DontStopTheTrain.Events
         public override EventType Type => EventType.Wagon;
         public IReadOnlyCollection<WagonEventType> WagonEventTypes => _wagonEventTypes.AsReadOnly();
 
-        //[Inject]
-       // private AbstractEventObject.Factory _eventObjectsFactory;
-
         [SerializeField]
         private List<WagonEventType> _wagonEventTypes;
         [SerializeField]
@@ -23,10 +20,6 @@ namespace DontStopTheTrain.Events
         private GameObject _eventPrefabGO;
         private int _wagonNumber;
 
-     /*  public void SetWagonNumber(int wagonNumber)
-        {
-            _wagonNumber = wagonNumber;
-        }*/
         private void SpawnPrefab()
         {
             var prefab = _eventData.StaticData.EventPrefab;
@@ -37,15 +30,12 @@ namespace DontStopTheTrain.Events
                 return;
 
             }
-            //_eventPrefabGO = _eventObjectsSpawner.Spawn(prefab).gameObject;
-            //DiContainer
-            //_eventPrefabGO = _eventObjectsFactory.Create().gameObject;
+
             _eventPrefabGO = Instantiate(prefab, _eventPrefabRoot);
             if (_eventPrefabGO.TryGetComponent<AbstractEventObject>(out var eventObject) )
             {
                 eventObject.SetEvent(_eventData);
             }
-            //_eventPrefabGO.transform.localPosition = Vector3.zero;
         }
 
         private void ClearAll()

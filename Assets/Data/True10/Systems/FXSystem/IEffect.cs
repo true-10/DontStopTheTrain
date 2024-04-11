@@ -7,7 +7,8 @@ namespace True10.FXSystem
 
     public interface IEffect
     {
-
+        void Play();
+        void Stop();
     }
 
 }

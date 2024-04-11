@@ -31,7 +31,7 @@ namespace True10.Managers
 
         public virtual bool TryToRemove(T itemToRemove)
         {
-            if (_items.Contains(itemToRemove))
+            if (_items.Contains(itemToRemove) == false)
             {
                 return false;
             }

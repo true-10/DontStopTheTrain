@@ -24,8 +24,9 @@ namespace DontStopTheTrain.Events
             if (eventsAnimtaions.Count == 0)
             {
                 _turnBasedController.StartTurn();
-                var cam = _cameraSwitcher.GetNextCamera();
-                cam.SwitchToThisCamera();
+                _cameraSwitcher.SwitchToDefaultCamera();
+               // var cam = _cameraSwitcher.GetNextCamera();
+                //cam.SwitchToThisCamera();
                 return;
             }
             var eventObject = eventsAnimtaions.GetRandomElement();

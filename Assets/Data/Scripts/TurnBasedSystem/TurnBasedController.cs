@@ -53,7 +53,7 @@ namespace DontStopTheTrain
                 yield return new WaitUntil( () => _continueAfterStart);
                 while (_turnIsComleted == false)
                 {
-                    OnTurnTick?.Invoke(callback);
+                   // OnTurnTick?.Invoke(callback);
                     yield return null;
                 }
 
