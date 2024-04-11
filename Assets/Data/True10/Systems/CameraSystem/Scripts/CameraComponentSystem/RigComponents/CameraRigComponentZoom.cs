@@ -1,3 +1,4 @@
+using True10.Extentions;
 using UnityEngine;
 
 namespace True10.CameraSystem
@@ -14,10 +15,10 @@ namespace True10.CameraSystem
 
         public void ZoomTargetAlongZ(float value)
         {
-            var pos = target.localPosition;
-            pos.z += value * _zoomSpeed * Time.deltaTime;
-            pos.z = Mathf.Clamp(pos.z, minMax.x, minMax.y);
-            target.localPosition = pos;
+            var zValue = target.localPosition.z;
+            zValue += value * _zoomSpeed * Time.deltaTime;
+            zValue = Mathf.Clamp(zValue, minMax.x, minMax.y);
+            target.localPosition = target.localPosition.With(z: zValue) ;
         }
 
         public override void Init(ICameraHolder cameraHolder, ICameraInputReader cameraInputReader)

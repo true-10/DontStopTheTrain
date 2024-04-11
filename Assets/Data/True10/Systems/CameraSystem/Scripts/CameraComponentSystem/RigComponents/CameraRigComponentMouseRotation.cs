@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace True10.CameraSystem
 {
@@ -46,12 +45,7 @@ namespace True10.CameraSystem
             }
             Space rotationSpace = _isLocal ? Space.Self : Space.World;
             var xRotation = -_xRotationSpeed * _cameraInputReader.MouseDelta.y;
-            //xRotation = Mathf.Clamp(xRotation, _xRotationLimits.x, _xRotationLimits.y);
             var yRotation = _yRotationSpeed * _cameraInputReader.MouseDelta.x;
-           // yRotation = Mathf.Clamp(yRotation, _yRotationLimits.x, _yRotationLimits.y);
-
-            //Debug.Log($"xRotation = {xRotation} yRotation = {yRotation} cachedTransform.localEulerAngles = {cachedTransform.localEulerAngles} ");
-
             var eulers = new Vector3(xRotation, yRotation, 0f);
 
             cachedTransform.Rotate(Time.deltaTime * eulers, rotationSpace);

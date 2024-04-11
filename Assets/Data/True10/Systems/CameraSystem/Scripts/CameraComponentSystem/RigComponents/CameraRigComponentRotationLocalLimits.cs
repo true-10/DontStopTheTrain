@@ -38,68 +38,49 @@ namespace True10.CameraSystem
             var eulers = cachedTransform.localEulerAngles;
 
             eulers.x = LocalAngleClamp(eulers.x, _xRotationLimits.x, _xRotationLimits.y);
-           // eulers.y = LocalAngleClamp(eulers.y, _yRotationLimits.x, _yRotationLimits.y);
-            //eulers.z = LocalAngleClamp(eulers.z, _zRotationLimits.x, _zRotationLimits.y);
+            eulers.y = LocalAngleClamp(eulers.y, _yRotationLimits.x, _yRotationLimits.y);
+            eulers.z = LocalAngleClamp(eulers.z, _zRotationLimits.x, _zRotationLimits.y);
 
             cachedTransform.localRotation = Quaternion.Euler( eulers);
-            //cachedTransform.
-            /* Debug.Log($"eulers = {eulers} rotation = {cachedTransform.rotation}");
-             var lowerLimit = _xRotationLimits.x;
-             var upperLimit = _xRotationLimits.y;
-             var currentX = eulers.x;
-             if (lowerLimit < 0)
-             {
-                 lowerLimit = 360f + _xRotationLimits.x;
-             }
-             if (upperLimit < 0)
-             {
-                 upperLimit = 360f + _xRotationLimits.y;
-             }
-
-             if (currentX > upperLimit && currentX < lowerLimit)
-               {
-                   eulers.x = _xRotationLimits.x;
-               }
-             else
-             if (currentX < upperLimit && currentX > lowerLimit && currentX - lowerLimit)
-             {
-                 eulers.x = _xRotationLimits.y;
-             }
-
-             eulers.z = 0f;
-             cachedTransform.localEulerAngles = eulers;*/
         }
 
 
-        //local angles between 0 and 360
+        //local angles between 0 and 360, that means angle always greater than zero
         private float LocalAngleClamp(float angle, float min, float max)
         {
-            if (min > max)
+            if (min > max || max < 0)
             {
-                Debug.Log("LocalAngleClamp error: min value should be less than max");
+                Debug.Log("LocalAngleClamp error: min value should be less than max or max below zero");
                 return 0f;
             }
-            var offset = 0f;
-            if (min < 0f)
+            if (min < 0)
             {
-                offset = min;
+                if (angle > max && angle < (360 + min))
+                {
+                    var maxDifference = Mathf.Abs(angle - max);
+                    var minDifference = Mathf.Abs(angle - (360 + min));
+                    if (maxDifference > minDifference)
+                    {
+                        return min;
+                    }
+                    else
+                    {
+                        return max;
+                    }
+                }
             }
-            if (angle <= 0f)
-            {
-                ;
+            else
+            { 
+                if (angle < min)
+                {
+                    return min;
+                }
+                if (angle > max)
+                {
+                    return max;
+                }
             }
-            var returnAngle = angle - offset;
-            var offsetedMin = min - offset;
-            var offsetedMax = max - offset;
-            if (returnAngle < offsetedMin)
-            {
-                returnAngle = offsetedMin;
-            }
-            if (returnAngle > offsetedMax)
-            {
-                returnAngle = offsetedMax;
-            }
-            return returnAngle + offset;
+            return angle;
         }
     }
 }

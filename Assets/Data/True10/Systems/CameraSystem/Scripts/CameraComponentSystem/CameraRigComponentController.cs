@@ -15,7 +15,7 @@ namespace True10.CameraSystem
         [SerializeField] private List<AbstractCameraRigComponent> _components;
         [SerializeField] private CameraInputReader _inputReader;
 
-        private bool _isActive = false;
+        private bool _isActive = true;
 
         public void Initialize()
         {
@@ -37,6 +37,10 @@ namespace True10.CameraSystem
         {
             if (callback.CameraHolder.HashCode != _cameraHolder.HashCode)
             {
+                if (_isActive)
+                {
+                    _isActive = false;
+                }
                 return;
             }
             _isActive = true;
