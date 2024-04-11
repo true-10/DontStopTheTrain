@@ -15,4 +15,4 @@ MonoBehaviour:
   _name: Zoom
   _comment: 
   _zoomSpeed: 3
-  minMax: {x: -32, y: -10}
+  minMax: {x: -32, y: -3}

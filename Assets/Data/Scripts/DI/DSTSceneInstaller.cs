@@ -1,6 +1,5 @@
 using DontStopTheTrain;
 using DontStopTheTrain.Events;
-using DontStopTheTrain.Gameplay;
 using DontStopTheTrain.Train;
 using DontStopTheTrain.UI;
 using System;
@@ -11,8 +10,6 @@ public class DSTSceneInstaller : MonoInstaller
 { 
     [SerializeField] 
     private TurnBasedController _turnBasedController;
-    [SerializeField] 
-    private Train _train;
     [SerializeField] 
     private UIController _uiController;
     [SerializeField]
@@ -27,7 +24,6 @@ public class DSTSceneInstaller : MonoInstaller
         InstallControllers(); 
         InstallFabrics();
         InstallServices();
-        InstallTrain();
     }
 
     private void InstallStaticDataManagers()
@@ -59,10 +55,4 @@ public class DSTSceneInstaller : MonoInstaller
     {
         Container.Bind<BuffAndPerksService>().AsSingle();
     }
-
-    private void InstallTrain()
-    {
-        Container.Bind<Train>().FromInstance(_train).AsSingle();
-    }
-
 }

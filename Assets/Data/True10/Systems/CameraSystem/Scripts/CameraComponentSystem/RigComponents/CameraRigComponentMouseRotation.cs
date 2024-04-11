@@ -41,8 +41,13 @@ namespace True10.CameraSystem
         {
             if (_cameraInputReader.IsRMBPressed == false)
             {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.Confined;
                 return;
             }
+
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             Space rotationSpace = _isLocal ? Space.Self : Space.World;
             var xRotation = -_xRotationSpeed * _cameraInputReader.MouseDelta.y;
             var yRotation = _yRotationSpeed * _cameraInputReader.MouseDelta.x;

@@ -1,5 +1,4 @@
-﻿using DontStopTheTrain.Gameplay.CameraComponents;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace True10.CameraSystem
 {

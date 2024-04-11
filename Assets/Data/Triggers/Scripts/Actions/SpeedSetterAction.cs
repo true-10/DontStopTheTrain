@@ -20,11 +20,11 @@ namespace DontStopTheTrain.TriggerSystem
 
         public override void OnEnterAction(Collider collider)
         {
-            if (collider.TryGetComponent<EngineBehaviour>(out var engine))
+          /*  if (collider.TryGetComponent<EngineBehaviour>(out var engine))
             {
 
                 engine.SetCurrentPower(power);
-            }
+            }*/
         }
 
     }

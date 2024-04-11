@@ -6,7 +6,6 @@ using UnityEngine;
 using Zenject;
 using UniRx;
 using DG.Tweening;
-using DontStopTheTrain.Gameplay;
 
 namespace DontStopTheTrain.Events
 {
