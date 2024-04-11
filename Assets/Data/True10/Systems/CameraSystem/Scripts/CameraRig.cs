@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraRig : MonoBehaviour
+namespace True10.CameraSystem
 {
-    [SerializeField] private Transform root;
-    [SerializeField] private Transform follow;
-    [SerializeField] private Transform lookAt;
+    public class CameraRig : MonoBehaviour
+    {
+        public Transform Root => _root;
+        public Transform Follow => _follow;
+        public Transform LookAt => _lookAt;
 
-    public Transform Root => root;
-    public Transform Follow => follow;
-    public Transform LookAt => lookAt;
-
+        [SerializeField] private Transform _root;
+        [SerializeField] private Transform _follow;
+        [SerializeField] private Transform _lookAt;
+    }
 }

@@ -3,12 +3,12 @@
     public class CameraCallback : ICameraCallback
     {
         //camera's info
-        public string Name { get => camHolder.CameraName;}
-        public ICameraHolder camHolder { get; }
+        public string Name { get => CameraHolder.CameraName;}
+        public ICameraHolder CameraHolder { get; }
 
         public CameraCallback(ICameraHolder camHolder)
         {
-            this.camHolder = camHolder;
+            this.CameraHolder = camHolder;
         }
     }
 

@@ -10,15 +10,10 @@ namespace True10.CameraSystem
 
     public class CameraHolder : MonoBehaviour, ICameraHolder
     {
-        [Inject]
-        private ICameraController _cameraController;
-        [Inject]
-        private CamerasManager _camerasManager;
 
         public string CameraName => gameObject.name;
         public int HashCode => gameObject.GetHashCode();//
         public int Group => _group;//
-
         public int Priority { get => _cinemachineVirtualCamera.m_Priority; set => _cinemachineVirtualCamera.m_Priority = value; }
         public bool IsDisabled { get => _isDisabled; set => _isDisabled = value; }
         public Transform Follow { get => _cinemachineVirtualCamera.Follow; set => _cinemachineVirtualCamera.Follow = value; }
@@ -26,6 +21,10 @@ namespace True10.CameraSystem
         public CameraRig CameraRig { get => _cameraRig; set => _cameraRig = value; }
         public int Weight => _weight;
 
+        [Inject]
+        private ICameraController _cameraController;
+        [Inject]
+        private CamerasManager _camerasManager;
 
         [SerializeField]
         private CinemachineVirtualCamera _cinemachineVirtualCamera;
@@ -50,6 +49,7 @@ namespace True10.CameraSystem
             }
             SetFOV(_defaultFOV);
         }
+
         public void SwitchToThisCamera()
         {
             _cameraController.SwitchToCamera(this);
@@ -64,6 +64,7 @@ namespace True10.CameraSystem
         {
             _cameraController.SwitchToPreviousCamera();
         }
+
         public void ShakeControl()
         {
             //тут не место?
@@ -82,7 +83,6 @@ namespace True10.CameraSystem
         private void Start()
         {
             _cinemachineVirtualCamera ??= GetComponent<CinemachineVirtualCamera>();
-          //  _cameraController.AddCamera(this);
         }
 
         private void OnEnable()
@@ -93,17 +93,12 @@ namespace True10.CameraSystem
         private void OnDisable()
         {
             _camerasManager.TryToRemove(this);
-
         }
+
         private void OnDestroy()
         {
             _camerasManager.TryToRemove(this);
 
         }
-        /* private void Awake()
-         {
-             _cameraController.AddCamera(this);
-         }*/
-
     }
 }

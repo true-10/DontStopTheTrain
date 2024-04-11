@@ -21,7 +21,7 @@ namespace True10.CameraSystem
     public interface ICameraCallback
     {
         string Name { get; }
-        ICameraHolder camHolder { get;}
+        ICameraHolder CameraHolder { get;}
     }
 }
 

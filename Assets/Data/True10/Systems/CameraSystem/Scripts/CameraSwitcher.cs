@@ -7,27 +7,62 @@ using Zenject;
 
 namespace True10.CameraSystem
 {
+    public enum SwitchMode
+    {
+        Line = 0,
+        Random = 1,
+        Weighted = 2,
+    }
     public class CameraSwitcher : IGameLifeCycle
     {
-        public enum SwitchMode
-        {
-            Line = 0,
-            Random = 1,
-            Weighted = 2,
-        }
-
         [Inject]
         private CamerasManager _camerasManager;
+        [Inject]
+        private ICameraController _cameraController;
 
         private List<ICameraHolder> _cameras => _camerasManager.Items
             .Where(camHolder => camHolder.Group == 1)
             .ToList();
         private ICameraHolder _currentCamera;
 
+
+        public void SwitchToDefaultCamera()
+        {
+            _currentCamera = _cameraController.GetCurrentCamera();
+            _cameraController.SwitchToDefaultCamera();
+        }
+
+        public ICameraHolder GetNextCamera(SwitchMode switchMode = SwitchMode.Weighted)
+        {
+            switch (switchMode)
+            {
+                case SwitchMode.Random:
+                    return _cameras.GetRandomElement();
+                case SwitchMode.Weighted:
+                    return GetRandomWeightedCamera();
+                case SwitchMode.Line:
+                    {
+                        if (_currentCamera == null)
+                        {
+                            return _cameras.FirstOrDefault();
+                        }
+                        var index = _cameras.IndexOf(_currentCamera);
+                        index++;
+                        if (index > _cameras.Count - 1)
+                        {
+                            index = 0;
+                        }
+                        return _cameras[index];
+                    }
+            }
+            return GetRandomWeightedCamera();
+        }
+
         public void Initialize()
         {
-            _currentCamera = GetNextCamera();
-            _currentCamera.SwitchToThisCamera();
+            //_currentCamera = GetNextCamera();
+            //_currentCamera.SwitchToThisCamera();
+            SwitchToDefaultCamera();
         }
 
         public void Dispose()
@@ -57,41 +92,5 @@ namespace True10.CameraSystem
             }
             return null;
         }
-
-        public ICameraHolder GetNextCamera(SwitchMode switchMode = SwitchMode.Weighted)
-        {
-            switch (switchMode)
-            {
-                case SwitchMode.Random:
-                    return _cameras.GetRandomElement();
-                case SwitchMode.Weighted:
-                    return GetRandomWeightedCamera();
-                case SwitchMode.Line:
-                    {
-                        if (_currentCamera == null)
-                        {
-                            return _cameras.FirstOrDefault();
-                        }
-                        var index = _cameras.IndexOf(_currentCamera);
-                        index++;
-                        if (index > _cameras.Count - 1)
-                        {
-                            index = 0;
-                        }
-                        return _cameras[index];
-                    }
-            }
-            return GetRandomWeightedCamera();
-        }
-        /*
-        private void Start()
-        {
-            Initialize();
-        }
-
-        private void OnDestroy()
-        {
-            Dispose();
-        }*/
     }
 }
