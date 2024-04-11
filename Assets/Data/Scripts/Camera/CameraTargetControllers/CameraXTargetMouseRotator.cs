@@ -42,7 +42,7 @@ namespace DontStopTheTrain.Gameplay
 
         private void OnCameraOffHandler(ICameraCallback callback)
         {
-            var camHolder = callback.camHolder;
+            var camHolder = callback.CameraHolder;
             if (camHolder.HashCode == cameraHolder.HashCode)
             {
                 return;
