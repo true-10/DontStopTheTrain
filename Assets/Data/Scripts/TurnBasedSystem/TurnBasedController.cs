@@ -30,7 +30,7 @@ namespace DontStopTheTrain
 
         private IEnumerator TurnLoopCoroutine()
         {
-            CurrentTurn = 0;
+            CurrentTurn = 1;
 
 
             //некое событие
