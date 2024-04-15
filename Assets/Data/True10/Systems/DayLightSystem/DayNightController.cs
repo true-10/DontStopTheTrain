@@ -2,14 +2,16 @@
 using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.Rendering;
 using System;
+using DG.Tweening;
+using Zenject;
 
 namespace True10.DayLightSystem
 {
     [Serializable]
     public class DayNightSettings
     {
-        public Vector2 IntensitySkyMinMax = new Vector2(4, 15);
-        public Vector2 IntensitySunMinMax = new Vector2(9000, 85000);
+        public float SkyIntensity = 15f;
+        public float SunIntensity = 85000f;
     }
 
     public class DayNightController : MonoBehaviour
@@ -19,68 +21,74 @@ namespace True10.DayLightSystem
         [SerializeField]
         private Light _sun;
         [SerializeField]
-        private float _sunsetSpeed = 1f;
+        private float _transitionDuration = 2f;
 
-        private Vector2 _intensitySkyMinMax = new Vector2(4, 15);
-        private Vector2 _intensitySunMinMax = new Vector2(9000, 85000);
+        private DayNightSettings settingsTarget;
 
+        private Tween _skyTween;
+        private Tween _sunTween;
         private VolumeProfile _volumeProfile;
         private HDRISky _sky;
-        private float t = 2;
 
-        public void Initialize(DayNightSettings settings)
+        public void SetIntenisities(float sunIntensity, float skyIntensity)
+        {
+            Initialize();
+            if (_sky != null)
+            {
+                _sky.exposure.value = skyIntensity;
+            }
+            _sun.intensity = sunIntensity;
+        }
+
+        public void Initialize()
         {
             if (_sky == null)
             {
                 _volumeProfile = _volume.profile;
                 _volumeProfile.TryGet<HDRISky>(out _sky);
             }
+        }
+
+        public void Initialize(DayNightSettings settings)
+        {
+            Initialize();
             if (_sky != null)
             {
-                _sky.exposure.value = settings.IntensitySkyMinMax.y;
+                _sky.exposure.value = settings.SkyIntensity;
             }
-            _sun.intensity = settings.IntensitySunMinMax.y;
+            _sun.intensity = settings.SunIntensity;
         }
 
         public void StartTransition(DayNightSettings settings)
         {
-            t = 0;
-            _intensitySkyMinMax = settings.IntensitySkyMinMax;
-            _intensitySunMinMax = settings.IntensitySunMinMax;            
+            settingsTarget = settings;
+            DayNightSkyDayTransition();
+            DayNightSunDayTransition();
         }
 
-        private void DayNightSkyDayTransition(float t)
+        private void DayNightSkyDayTransition()
         {
-            float delta = _intensitySkyMinMax.y - _intensitySkyMinMax.x;
-            var newIntensity = _intensitySkyMinMax.x + t * delta;
-            _sky.exposure.value = newIntensity;
+            _skyTween?.Complete();
+            _skyTween =
+                DOTween.To(() => _sky.exposure.value, x => _sky.exposure.value = x, settingsTarget.SkyIntensity, _transitionDuration)
+                .SetEase(Ease.Linear);
         }
 
-        private void DayNightSunDayTransition(float t)
+        private void DayNightSunDayTransition()
         {
-            float delta = _intensitySunMinMax.y - _intensitySunMinMax.x;
-            var newIntensity = _intensitySunMinMax.x + t * delta;
-            _sun.intensity = newIntensity;
+            _sunTween?.Complete();
+            _sunTween =
+                DOTween.To(() => _sun.intensity, x => _sun.intensity = x, settingsTarget.SunIntensity, _transitionDuration)
+                .SetEase(Ease.Linear);
         }
 
         private void OnDestroy()
         {
             _sky = null;
-        }
-
-        private void Update()
-        {
-            if (_sky == null)
-            {
-                return;
-            }
-            if (t > 1)
-            {
-                return;
-            }
-            t += Time.deltaTime * _sunsetSpeed;
-            DayNightSkyDayTransition(t);
-            DayNightSunDayTransition(t);
+            _skyTween?.Complete();
+            _skyTween = null;
+            _sunTween?.Complete();
+            _sunTween = null;
         }
     }
 }

@@ -11,6 +11,8 @@ namespace True10.DayLightSystem
 
         [SerializeField]
         private DayNightController _dayNightController;
+       // [SerializeField]
+        //private List<DayNightSettings> _settings;
         [SerializeField]
         private DayNightSettings _morningSettings;
         [SerializeField]
@@ -31,9 +33,9 @@ namespace True10.DayLightSystem
 
         private void OnTurnEnd(ITurnCallback callback)
         {
-            
+            //переделать в список и подставлять как индекс
             var currentState = callback.Number % 4;
-            Debug.Log($"currentState = {currentState}");
+           
             switch (currentState) 
             {
                 case 0:
@@ -49,7 +51,7 @@ namespace True10.DayLightSystem
                     _currentSetting = _nightSettings;
                     break;
             }
-            //TODO: add sun rotation
+            //TODO: add sun rotation and color change
             _dayNightController.StartTransition(_currentSetting);
         }
 

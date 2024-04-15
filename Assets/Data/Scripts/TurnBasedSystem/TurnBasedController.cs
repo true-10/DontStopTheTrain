@@ -1,7 +1,5 @@
-using DontStopTheTrain.Events;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace DontStopTheTrain
@@ -23,17 +21,12 @@ namespace DontStopTheTrain
 
         void Start()
         {
-            InitCallbacks();
             _turnLoopCoroutine = StartCoroutine( TurnLoopCoroutine() );
         }
-
 
         private IEnumerator TurnLoopCoroutine()
         {
             CurrentTurn = 1;
-
-
-            //некое событие
 
             while (true)
             {
@@ -53,13 +46,10 @@ namespace DontStopTheTrain
                 yield return new WaitUntil( () => _continueAfterStart);
                 while (_turnIsComleted == false)
                 {
-                   // OnTurnTick?.Invoke(callback);
                     yield return null;
                 }
 
                 yield return null;
-
-                //если события не выполнены, то применяем штраф (дебафф?)
 
                 OnTurnEnd?.Invoke(callback);
 
@@ -70,12 +60,9 @@ namespace DontStopTheTrain
                 }*/
                 CurrentTurn++;
                 yield return null;
+               // GC.Collect();
+                yield return null;
             }
-        }
-
-        private void InitCallbacks()
-        {
-
         }
 
         private int GetTurnGroup(int index)
@@ -93,6 +80,7 @@ namespace DontStopTheTrain
         {
             _continueAfterStart = true;
         }
+
         public void NextTurn()
         {
             _startNextTurn = true;

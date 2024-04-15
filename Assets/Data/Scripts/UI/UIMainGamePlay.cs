@@ -1,10 +1,13 @@
 using DontStopTheTrain.Events;
 using DontStopTheTrain.UI;
+using System;
 using TMPro;
+using True10.DayTimeSystem;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DontStopTheTrain
 {
@@ -19,6 +22,8 @@ namespace DontStopTheTrain
         private UIController _uiController;
         [Inject]
         private EventController _eventController;
+        [Inject]
+        private DayTimeSystem _dayTimeSystem;
 
         [SerializeField]
         private Button _completeButton;
@@ -29,15 +34,22 @@ namespace DontStopTheTrain
 
         private void OnEnable()
         {
+            _dayTimeSystem.OnChange += OnTimeChange;
             _completeButton.onClick.AddListener(CompleteTurn);
-            _player.Days.Subscribe(x => UpdateTurnText(x)).AddTo(_disposables);
+           // _player.Days.Subscribe(x => UpdateTurnText(x)).AddTo(_disposables);
             UpdateTurnText(_player.Days.Value);
         }
 
         private void OnDisable()
         {
+            _dayTimeSystem.OnChange -= OnTimeChange;
             _completeButton.onClick.RemoveAllListeners();
             _disposables.Clear();
+        }
+
+        private void OnTimeChange(DateTime time)
+        {
+            _turnNumberText.text = $"Day: {time.Day} Time: {time.Hour}:{time.Minute}"; 
         }
 
         private void CompleteTurn()

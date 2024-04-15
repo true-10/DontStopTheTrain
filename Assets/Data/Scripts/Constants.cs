@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace DontStopTheTrain
 {
     /// <summary>
@@ -9,9 +5,10 @@ namespace DontStopTheTrain
     /// - вагоны
     /// - станцию
     /// - магазин покупок/ремонта
+    /// - влияние систем
+    /// - программирование пути
     /// </summary>
     
-
     public static class Constants
     {
         public static class StaticDataPaths

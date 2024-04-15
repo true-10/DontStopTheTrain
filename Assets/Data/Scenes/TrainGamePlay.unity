@@ -2682,6 +2682,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4603049b01626454fbff104cb315866b, type: 2}
   - {fileID: 11400000, guid: b8f5c92826f515844856602ff5670c0e, type: 2}
   - {fileID: 11400000, guid: e902c5835dfae60408373c65a3e5b63f, type: 2}
+  - {fileID: 11400000, guid: f02c2ab4bdf3c7a459c8ac7b452b9ba4, type: 2}
   _monoInstallers:
   - {fileID: 1380103099}
   _installerPrefabs: []
@@ -6156,7 +6157,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530220296}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1116023, y: -0.042099707, z: 0.004732263, w: 0.9928495}
+  m_LocalRotation: {x: 0.1116023, y: -0.042099703, z: 0.0047322623, w: 0.9928495}
   m_LocalPosition: {x: 30.3, y: 54.6, z: -202.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7255,7 +7256,7 @@ PrefabInstance:
     - target: {fileID: 3637129605962828416, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11025101
+      value: 0.11025103
       objectReference: {fileID: 0}
     - target: {fileID: 3637129605962828416, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}
@@ -7265,7 +7266,7 @@ PrefabInstance:
     - target: {fileID: 3637129605962828416, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0903842
+      value: 0.090384215
       objectReference: {fileID: 0}
     - target: {fileID: 3757506175288925390, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}
@@ -7325,12 +7326,12 @@ PrefabInstance:
     - target: {fileID: 3769748894934294231, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.081136614
+      value: 0.08113661
       objectReference: {fileID: 0}
     - target: {fileID: 3769748894934294231, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.65507567
+      value: -0.6550756
       objectReference: {fileID: 0}
     - target: {fileID: 3769748894934294231, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}
@@ -7826,12 +7827,12 @@ GameObject:
   - component: {fileID: 659009766}
   - component: {fileID: 659009765}
   m_Layer: 5
-  m_Name: TurnText (TMP)
+  m_Name: DayTime (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &659009764
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10714,6 +10715,134 @@ MonoBehaviour:
   _canvasGroup: {fileID: 997326129}
   _fadeDurationSeconds: 1
   _showUpParticles: {fileID: 0}
+--- !u!1 &1002554671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1002554672}
+  - component: {fileID: 1002554673}
+  - component: {fileID: 1002554675}
+  - component: {fileID: 1002554674}
+  m_Layer: 0
+  m_Name: DayTimeController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1002554672
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002554671}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1783168687}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1002554673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002554671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a08b46be33c54ba47a04f5af7b66e699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dayDurationInSeconds: 60
+  _nightToDayDurationInSeconds: 2
+  _dayNightController: {fileID: 1002554675}
+  _daySettings:
+    SkyIntensity: 16
+    SunIntensity: 85000
+  _nightSettings:
+    SkyIntensity: 8
+    SunIntensity: 9000
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.0023562675
+      inSlope: 4.6559863
+      outSlope: 4.6559863
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.05
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 0.010281737
+      outSlope: 0.010281737
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.9166666
+    - serializedVersion: 3
+      time: 1
+      value: 0.0023498535
+      inSlope: -5.361295
+      outSlope: -5.361295
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.041666627
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1002554674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002554671}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a898e6dc87c07f64bb9aa8e8d9d61923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dayNightController: {fileID: 1002554675}
+  _morningSettings:
+    SkyIntensity: 14
+    SunIntensity: 30000
+  _daySettings:
+    SkyIntensity: 16
+    SunIntensity: 85000
+  _eveningSettings:
+    SkyIntensity: 12
+    SunIntensity: 20000
+  _nightSettings:
+    SkyIntensity: 8
+    SunIntensity: 9000
+--- !u!114 &1002554675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002554671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df299e76f9f4d0469dc0a1216ea88fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _volume: {fileID: 432432460}
+  _sun: {fileID: 157207113}
+  _transitionDuration: 2
 --- !u!1 &1008749291
 GameObject:
   m_ObjectHideFlags: 3
@@ -13188,7 +13317,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1295337943}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.20287664, y: -0.39698648, z: 0.09043858, w: 0.89054126}
+  m_LocalRotation: {x: 0.20287664, y: -0.39698642, z: 0.090438545, w: 0.8905413}
   m_LocalPosition: {x: 63.3, y: 50, z: -84.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14286,8 +14415,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1416175204}
   - component: {fileID: 1416175205}
-  - component: {fileID: 1416175206}
-  - component: {fileID: 1416175207}
   m_Layer: 0
   m_Name: SkyRotator
   m_TagString: Untagged
@@ -14324,46 +14451,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _volume: {fileID: 432432460}
   _speed: 1
---- !u!114 &1416175206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1416175203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6df299e76f9f4d0469dc0a1216ea88fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _volume: {fileID: 432432460}
-  _sun: {fileID: 157207113}
-  _sunsetSpeed: 1
---- !u!114 &1416175207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1416175203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a898e6dc87c07f64bb9aa8e8d9d61923, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dayNightController: {fileID: 1416175206}
-  _morningSettings:
-    IntensitySkyMinMax: {x: 8, y: 14}
-    IntensitySunMinMax: {x: 9000, y: 30000}
-  _daySettings:
-    IntensitySkyMinMax: {x: 14, y: 16}
-    IntensitySunMinMax: {x: 30000, y: 85000}
-  _eveningSettings:
-    IntensitySkyMinMax: {x: 16, y: 12}
-    IntensitySunMinMax: {x: 85000, y: 20000}
-  _nightSettings:
-    IntensitySkyMinMax: {x: 12, y: 8}
-    IntensitySunMinMax: {x: 20000, y: 9000}
 --- !u!1 &1421422383
 GameObject:
   m_ObjectHideFlags: 0
@@ -16894,7 +16981,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678563818}
   serializedVersion: 2
-  m_LocalRotation: {x: 1e-45, y: -0.7071069, z: 1e-45, w: 0.70710677}
+  m_LocalRotation: {x: 1e-45, y: -0.7071068, z: 1e-45, w: 0.7071068}
   m_LocalPosition: {x: 38.100002, y: 7, z: 0.0000038146973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18036,6 +18123,7 @@ Transform:
   - {fileID: 432432461}
   - {fileID: 1650212113}
   - {fileID: 1416175204}
+  - {fileID: 1002554672}
   m_Father: {fileID: 122531124}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1793144008
@@ -22605,7 +22693,7 @@ PrefabInstance:
     - target: {fileID: 3637129605962828416, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11025101
+      value: 0.11025103
       objectReference: {fileID: 0}
     - target: {fileID: 3637129605962828416, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}
@@ -22615,7 +22703,7 @@ PrefabInstance:
     - target: {fileID: 3637129605962828416, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0903842
+      value: 0.090384215
       objectReference: {fileID: 0}
     - target: {fileID: 3757506175288925390, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}
@@ -22675,7 +22763,7 @@ PrefabInstance:
     - target: {fileID: 3769748894934294231, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.07107366
+      value: 0.07107365
       objectReference: {fileID: 0}
     - target: {fileID: 5639547171272983985, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}
