@@ -60,7 +60,11 @@ public class DayTimeController : MonoBehaviour, IGameLifeCycle
     {
         SetLight(_dayTimeSystem.ProgressOfTheDay);
 
-        _turnBasedController.CompleteTurn();
+        if (time.Hour == 0 && time.Minute == 0)
+        {
+
+            _turnBasedController.CompleteTurn();
+        }
     }
 
     private void OnDayStart(ITurnCallback callback)

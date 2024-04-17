@@ -54,8 +54,7 @@ namespace DontStopTheTrain
 
         private void CompleteTurn()
         {
-           // _turnBasedController.StartTurn();
-            _turnBasedController.CompleteTurn();
+            _dayTimeSystem.RewindToNextDay();
         }
 
         private void UpdateTurnText(int turn)
