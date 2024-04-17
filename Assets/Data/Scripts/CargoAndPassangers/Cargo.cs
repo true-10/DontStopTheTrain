@@ -14,6 +14,11 @@ namespace DontStopTheTrain
         Food,
         Comfort
     }
+    public enum CargoType
+    {
+        Passengers,
+
+    }
 
     public interface ICargoRequirements
     {
@@ -21,8 +26,9 @@ namespace DontStopTheTrain
         float Value { get; }
     }
 
-    public interface ICargoStaticData
+    public interface ICargoStaticData    
     {
+        CargoType Type { get; }
         Information Info { get; }
     }
 
@@ -33,18 +39,16 @@ namespace DontStopTheTrain
         IReadOnlyCollection<ICargoRequirements> Requirements { get; }
     }
 
-    public class Cargo
+    public class Cargo //: ICargo
     {
 
-        //requirenments
-        [SerializeField] private float _volume;//объем груза
-        [SerializeField] private float _weight;//вес груза
+       // [SerializeField] private float _volume;//объем груза
+        //[SerializeField] private float _weight;//вес груза
         public float State { get; private set; }//0 - все плохо, 1 - все хорошо
     }
 
-    public class Passenger//== cargo
+    public class Passenger//: ICargo
     {
-        //requirenments
         public float State { get; private set; }//0 - все плохо, 1 - все хорошо
     }
 }
