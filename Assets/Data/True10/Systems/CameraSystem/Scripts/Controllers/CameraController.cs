@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Zenject;
 
 namespace True10.CameraSystem
 {
-
     public class CameraController : ICameraController
     {
         public Action<ICameraCallback> OnCameraOn { get; set; }
@@ -15,11 +13,10 @@ namespace True10.CameraSystem
         [Inject]
         private CamerasManager _camerasManager;
 
-        //private Dictionary<int, ICameraHolder> _cameras;
         private ICameraHolder _currentCamera;
         private ICameraHolder _defaultCamera;
         private ICameraHolder _previousCamera;
-       // private List<int> _cameraHashesList;
+
         private int _currentCameraIndex = 0;
         private bool _isDisable = false;
 
@@ -37,42 +34,6 @@ namespace True10.CameraSystem
             _defaultCamera = cameraHolder;
         }
 
-        /*public void AddCamera(ICameraHolder cameraHolder)
-        {
-            _cameras ??= new Dictionary<int, ICameraHolder>();
-            _cameraHashesList ??= new List<int>();
-
-            if (_cameras.ContainsKey(cameraHolder.HashCode)) 
-            {
-                return;
-            }
-
-            _cameras.Add(cameraHolder.HashCode, cameraHolder);
-
-
-            if (_cameraHashesList.Contains(cameraHolder.HashCode))
-            {
-                return;
-            }
-
-            _cameraHashesList.Add(cameraHolder.HashCode);
-        }
-
-        public void RemoveCamera(ICameraHolder cameraHolder)
-        {
-            if (_cameras == null)
-            {
-                return;
-            }
-
-            if (_cameras.ContainsKey(cameraHolder.HashCode))
-            {
-                return;
-            }
-
-            _cameras.Remove(cameraHolder.HashCode);
-        }
-        */
         public ICameraHolder GetCurrentCamera()
         {
             return _currentCamera;
@@ -95,8 +56,7 @@ namespace True10.CameraSystem
             if (_isDisable) return;
             DisableAllCameras();
             _previousCamera = _currentCamera;
-           // Debug.Log($"SwitchToCamera hash = {hash}");
-            _currentCamera = _camerasManager.Items.FirstOrDefault(camHolder => camHolder.HashCode == hash);// _cameras[hash];
+            _currentCamera = _camerasManager.Items.FirstOrDefault(camHolder => camHolder.HashCode == hash);
 
             CameraCallback cameraCalback = new CameraCallback(_currentCamera);
 
@@ -106,13 +66,10 @@ namespace True10.CameraSystem
 
         public void SwitchToCamera(ICameraHolder cameraHolder)
         {
-            //SwitchToCamera(cameraHolder.HashCode);
-
             if (_isDisable) return;
             DisableAllCameras();
             _previousCamera = _currentCamera;
-           // Debug.Log($"SwitchToCamera hash = {cameraHolder}");
-            _currentCamera = _camerasManager.Items.FirstOrDefault(camHolder => camHolder == cameraHolder);// _cameras[hash];
+            _currentCamera = _camerasManager.Items.FirstOrDefault(camHolder => camHolder == cameraHolder);
 
             CameraCallback cameraCalback = new CameraCallback(_currentCamera);
 
