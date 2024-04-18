@@ -16,7 +16,6 @@ namespace DontStopTheTrain.Train
             {
                 var newModifier = GameObject.Instantiate(modifier);
                 _modifiers.Add(newModifier);
-              //  _modifiers.Add(modifier);
             }
         }
 
@@ -35,7 +34,6 @@ namespace DontStopTheTrain.Train
                 modifier.Dispose();
             }
         }
-
     }
 }
 

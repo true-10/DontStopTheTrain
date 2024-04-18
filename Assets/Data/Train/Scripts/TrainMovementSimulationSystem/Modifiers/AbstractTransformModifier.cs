@@ -20,8 +20,11 @@ namespace DontStopTheTrain.Train
 
         public void Dispose()
         {
-            _tween?.Complete();
-            OnTweenComplete();
+            if (_tween != null)
+            {
+                _tween?.Complete();
+                OnTweenComplete();
+            }
         }
 
         public void Do(Transform target, float multiplayer)
