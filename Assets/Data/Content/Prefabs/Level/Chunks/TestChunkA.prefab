@@ -2400,7 +2400,22 @@ PrefabInstance:
       objectReference: {fileID: 2861094925997845972}
     - target: {fileID: 946111455285982208, guid: be7bd9501eddb1b4582fb63fb1e612d1,
         type: 3}
+      propertyPath: _endPoint
+      value: 
+      objectReference: {fileID: 2861094925997845972}
+    - target: {fileID: 946111455285982208, guid: be7bd9501eddb1b4582fb63fb1e612d1,
+        type: 3}
+      propertyPath: StartPoint
+      value: 
+      objectReference: {fileID: 3023890624133735123}
+    - target: {fileID: 946111455285982208, guid: be7bd9501eddb1b4582fb63fb1e612d1,
+        type: 3}
       propertyPath: startPoint
+      value: 
+      objectReference: {fileID: 3023890624133735123}
+    - target: {fileID: 946111455285982208, guid: be7bd9501eddb1b4582fb63fb1e612d1,
+        type: 3}
+      propertyPath: _startPoint
       value: 
       objectReference: {fileID: 3023890624133735123}
     - target: {fileID: 1591322095953757778, guid: be7bd9501eddb1b4582fb63fb1e612d1,

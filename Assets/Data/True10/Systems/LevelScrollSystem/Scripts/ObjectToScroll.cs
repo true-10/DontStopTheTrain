@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace True10.LevelScrollSystem
 {
@@ -21,60 +22,26 @@ namespace True10.LevelScrollSystem
     {
         public Action<OnSnapCallback> OnSnap { get; set; }
 
-        public Transform startPoint;
-        public Transform endPoint;
-        public ObjectToScroll SnapTargetObject;
+        public Transform StartPoint => _startPoint;
+        public Transform EndPoint => _endPoint;
+        public ObjectToScroll SnapTargetObject { get; private set; }
 
+        [Inject]
+        private ChunkManager _chunkManager;
 
-        void AlignmentWithEndPoint(Transform pointToAlign)
-        {
-            if (pointToAlign == null)
-            {
-                Debug.Log(name + " Alignment error: pointToAlign == null");
-                return;
-            }
-            transform.rotation = pointToAlign.rotation;
-            transform.position = pointToAlign.position;
-
-            //transform.position += Quaternion.AngleAxis(pointToAlign.rotation.eulerAngles.y, Vector3.up) * -startPoint.localPosition;
-            transform.position += Quaternion.AngleAxis(pointToAlign.rotation.eulerAngles.y, Vector3.up) * -endPoint.localPosition;
-            
-            var callback = new OnSnapCallback()
-            {
-                Host = this,
-                SnapTargetObject = SnapTargetObject
-            };
-            OnSnap?.Invoke(callback);
-        }
-
-        void AlignmentWithStartPoint(Transform pointToAlign)
-        {
-            if (pointToAlign == null)
-            {
-                Debug.Log(name + " Alignment error: pointToAlign == null");
-                return;
-            }
-            transform.rotation = pointToAlign.rotation;
-            transform.position = pointToAlign.position;
-
-            transform.position += Quaternion.AngleAxis(pointToAlign.rotation.eulerAngles.y, Vector3.up) * -startPoint.localPosition;
-            
-            var callback = new OnSnapCallback()
-            {
-                Host = this,
-                SnapTargetObject = SnapTargetObject
-            };
-            OnSnap?.Invoke(callback);
-        }
+        [SerializeField]
+        private Transform _startPoint;
+        [SerializeField]
+        private Transform _endPoint;
 
         public void AlignToNext()
         {
-            AlignmentWithEndPoint(SnapTargetObject.startPoint);
+            AlignmentWithEndPoint(SnapTargetObject.StartPoint);
         }
 
         public void AlignToPrev()
         {
-            AlignmentWithStartPoint(SnapTargetObject.endPoint);
+            AlignmentWithStartPoint(SnapTargetObject.EndPoint);
         }
 
         public void IncreaseY()
@@ -92,5 +59,56 @@ namespace True10.LevelScrollSystem
            //Debug.Log($"{name}: SetPreviousObject ( {objectToScroll.name} )");
         }
 
+        private void AlignmentWithEndPoint(Transform pointToAlign)
+        {
+            if (pointToAlign == null)
+            {
+                Debug.Log(name + " Alignment error: pointToAlign == null");
+                return;
+            }
+            transform.rotation = pointToAlign.rotation;
+            transform.position = pointToAlign.position;
+
+            //transform.position += Quaternion.AngleAxis(pointToAlign.rotation.eulerAngles.y, Vector3.up) * -startPoint.localPosition;
+            transform.position += Quaternion.AngleAxis(pointToAlign.rotation.eulerAngles.y, Vector3.up) * -EndPoint.localPosition;
+
+            var callback = new OnSnapCallback()
+            {
+                Host = this,
+                SnapTargetObject = SnapTargetObject
+            };
+            OnSnap?.Invoke(callback);
+        }
+
+        private void AlignmentWithStartPoint(Transform pointToAlign)
+        {
+            if (pointToAlign == null)
+            {
+                Debug.Log(name + " Alignment error: pointToAlign == null");
+                return;
+            }
+            transform.rotation = pointToAlign.rotation;
+            transform.position = pointToAlign.position;
+
+            transform.position += Quaternion.AngleAxis(pointToAlign.rotation.eulerAngles.y, Vector3.up) * -StartPoint.localPosition;
+
+            var callback = new OnSnapCallback()
+            {
+                Host = this,
+                SnapTargetObject = SnapTargetObject
+            };
+            OnSnap?.Invoke(callback);
+        }
+
+
+        private void OnEnable()
+        {
+            _chunkManager.TryToAdd(this);
+        }
+
+        private void OnDisable()
+        {
+            _chunkManager.TryToRemove(this);
+        }
     }
 }

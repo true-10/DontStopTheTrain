@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Zenject;
+using System.Linq;
 
 namespace True10.LevelScrollSystem
 {
     public class LevelScrollController : MonoBehaviour//,IGameLifeCycle
     {
+        [Inject]
+        private ChunkManager _chunkManager;
+
         [SerializeField] 
         private Vector3 _scrollDirection = default;//переделать в енум
         [SerializeField] 
@@ -14,11 +19,18 @@ namespace True10.LevelScrollSystem
         [SerializeField] 
         private float _scrollSpeed = 200f;//
         [SerializeField]
-        private List<ObjectToScroll> _objectsToScroll;
+        private Transform _startPoint;
+        [SerializeField]
+        private Transform _endPoint;
         //[SerializeField]
         private Vector3 _startPosition = Vector3.zero;
         //[SerializeField]
         private Vector3 _endPosition = Vector3.zero;
+
+        public void SetSpeed(float speed)
+        {
+            _scrollSpeed = -speed;
+        }
 
         private void Start()
         {
@@ -29,24 +41,26 @@ namespace True10.LevelScrollSystem
         {
             ObjectToScroll obj = null;
             ObjectToScroll prevObj = null;
+
+            List<ObjectToScroll> _objectsToScroll = _chunkManager.Items.ToList();
             for (int i = 1; i < _objectsToScroll.Count; i++)
             {
                 obj = _objectsToScroll[i];
                 prevObj = _objectsToScroll[i - 1];
-                obj.SnapTargetObject = prevObj;
+                obj.SetPreviousObject(prevObj);
                 obj.AlignToNext();
             }
 
             obj = _objectsToScroll[0];
             prevObj = _objectsToScroll[_objectsToScroll.Count - 1];
-            obj.SnapTargetObject = prevObj;
+            obj.SetPreviousObject(prevObj);
             obj.AlignToNext();
 
             var chunkNumb = _objectsToScroll.Count;
             var length = chunkNumb * _chunkSize;
 
-            _startPosition.z = -Mathf.Sign(_scrollSpeed) * length / 2f;
-            _endPosition.z = Mathf.Sign(_scrollSpeed) * length / 2f;
+            _startPosition.z = _startPoint.position.z;// -Mathf.Sign(_scrollSpeed) * length / 2f;
+            _endPosition.z = _endPoint.position.z; //Mathf.Sign(_scrollSpeed) * length / 2f;
         }
 
         private void LateUpdate()
@@ -56,6 +70,7 @@ namespace True10.LevelScrollSystem
 
         private void ScrollAnimation()
         {
+            List<ObjectToScroll> _objectsToScroll = _chunkManager.Items.ToList();
             for (int i = 0; i < _objectsToScroll.Count; i++)
             {
                 ObjectToScroll obj = _objectsToScroll[i];

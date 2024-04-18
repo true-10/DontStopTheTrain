@@ -46,7 +46,7 @@ namespace True10.LevelScrollSystem.ESC
             {
                 ref var scrollable = ref snapPool.Get(i);
                 //ref var layerComponent = ref snapFilter.Get3(i);
-                ref var objectToScroll = ref scrollable.ObjectToScroll;
+               /* ref var objectToScroll = ref scrollable.ObjectToScroll;
                 ref var nextToScroll = ref objectToScroll.SnapTargetObject;
                 switch(scrollDirection)
                 {
@@ -59,7 +59,7 @@ namespace True10.LevelScrollSystem.ESC
                     default:
                         objectToScroll.AlignToNext();
                         break;
-                };
+                };*/
                 // ref var entity = ref world.GetE GetEntity(i);
               //  snapPool.Get(i).Del<SnapChunkEvent>();
             }
