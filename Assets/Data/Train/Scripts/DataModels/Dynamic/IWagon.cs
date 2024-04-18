@@ -11,11 +11,11 @@ namespace DontStopTheTrain.Train
 
     public interface IWagon : IWagonSystem
     {
-        int Number { get; } //номер вагона
+       // int Number { get; } //номер вагона
         IReadOnlyCollection<IWagonSystem> Systems { get; }
 
-        int Next { get; set; } //номер следующего
-        int Prev { get; set; } //номер пред
+       // int Next { get; set; } //номер следующего
+        //int Prev { get; set; } //номер пред
 
 
     }

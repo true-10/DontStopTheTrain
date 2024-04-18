@@ -19,6 +19,8 @@ public class TrainScriptableInstaller : ScriptableObjectInstaller<TrainScriptabl
 
         Container.Bind<WagonsFabric>().AsSingle();
         Container.Bind<WagonSystemsFabric>().AsSingle();
+        Container.Bind<WagonSystemsManager>().AsSingle();
+        Container.Bind<WagonsManager>().AsSingle();
 
     }
 }

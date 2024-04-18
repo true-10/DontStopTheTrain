@@ -42,13 +42,6 @@ namespace True10.Managers
 
         public void Clear()
         {
-            foreach (var item in _items)
-            {   
-                if (item != null)
-                {
-                    TryToRemove(item);
-                }
-            }
             _items.Clear();
             _items = null;
         }

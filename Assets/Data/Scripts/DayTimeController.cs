@@ -1,18 +1,13 @@
 using DontStopTheTrain;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using True10.DayLightSystem;
 using True10.DayTimeSystem;
 using True10.Interfaces;
 using UnityEngine;
 using Zenject;
 
-
-
 public class DayTimeController : MonoBehaviour, IGameLifeCycle
 {
-    public Action<int> OnHour { get; set; }
     [Inject]
     private TurnBasedController _turnBasedController;
     [Inject]
@@ -39,7 +34,6 @@ public class DayTimeController : MonoBehaviour, IGameLifeCycle
         _dayTimeSystem.OnChange += OnTimeChange;
         _dayTimeSystem.Initialize(_dayDurationInSeconds);
         SetLight(0.3f);
-        _turnBasedController.OnTurnStart += OnDayStart;
     }
 
     private void SetLight(float progress01)
@@ -53,7 +47,6 @@ public class DayTimeController : MonoBehaviour, IGameLifeCycle
     public void Dispose()
     {
         _dayTimeSystem.OnChange -= OnTimeChange;
-        _turnBasedController.OnTurnStart -= OnDayStart;
     }
 
     private void OnTimeChange(DateTime time)
@@ -62,14 +55,8 @@ public class DayTimeController : MonoBehaviour, IGameLifeCycle
 
         if (time.Hour == 0 && time.Minute == 0)
         {
-
             _turnBasedController.CompleteTurn();
         }
-    }
-
-    private void OnDayStart(ITurnCallback callback)
-    {
-
     }
 
     private void Start()

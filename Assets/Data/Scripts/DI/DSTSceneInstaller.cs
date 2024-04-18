@@ -4,6 +4,7 @@ using DontStopTheTrain.Train;
 using DontStopTheTrain.UI;
 using System;
 using True10.CameraSystem;
+using True10.LevelScrollSystem;
 using UnityEngine;
 using Zenject;
 public class DSTSceneInstaller : MonoInstaller
@@ -16,6 +17,8 @@ public class DSTSceneInstaller : MonoInstaller
     private ConditionsStaticStorage _conditionsStaticStorage;
     [SerializeField]
     private QuestsStaticStorage _questsStaticStorage;
+    [SerializeField]
+    private LevelScrollController _levelScrollController;
 
     public override void InstallBindings()
     {
@@ -41,6 +44,7 @@ public class DSTSceneInstaller : MonoInstaller
     private void InstallControllers()
     {
         Container.Bind<TurnBasedController>().FromInstance(_turnBasedController).AsSingle();    
+        Container.Bind<LevelScrollController>().FromInstance(_levelScrollController).AsSingle();    
         Container.Bind<UIController>().FromInstance(_uiController).AsSingle();
         Container.Bind<QuestController>().AsSingle();    
     }

@@ -11,10 +11,14 @@ namespace DontStopTheTrain.Train
         private BuffAndPerksService _buffAndPerksService;
         [Inject]
         private EventStarter _eventStarter;
+        [Inject]
+        private WagonSystemsManager _wagonSystemsManager;
 
         public IWagonSystem Create(IWagonSystemStaticData staticData)
         {
-            return new BaseWagonSystem(staticData, _turnBasedController, _buffAndPerksService, _eventStarter);
+            IWagonSystem newSystem =  new BaseWagonSystem(staticData, _turnBasedController, _buffAndPerksService, _eventStarter);
+            _wagonSystemsManager.TryToAdd(newSystem);
+            return newSystem;
         /*   switch (staticData.Type)
             {
                // case WagonSystemType.Сhassis:
