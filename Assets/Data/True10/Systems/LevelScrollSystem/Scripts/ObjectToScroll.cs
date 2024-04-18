@@ -21,10 +21,9 @@ namespace True10.LevelScrollSystem
     public class ObjectToScroll : MonoBehaviour
     {
         public Action<OnSnapCallback> OnSnap { get; set; }
-
+        public ObjectToScroll SnapTargetObject { get; private set; }
         public Transform StartPoint => _startPoint;
         public Transform EndPoint => _endPoint;
-        public ObjectToScroll SnapTargetObject { get; private set; }
 
         [Inject]
         private ChunkManager _chunkManager;
@@ -56,7 +55,6 @@ namespace True10.LevelScrollSystem
         public void SetPreviousObject(ObjectToScroll objectToScroll)
         {
             SnapTargetObject = objectToScroll;
-           //Debug.Log($"{name}: SetPreviousObject ( {objectToScroll.name} )");
         }
 
         private void AlignmentWithEndPoint(Transform pointToAlign)
@@ -99,7 +97,6 @@ namespace True10.LevelScrollSystem
             };
             OnSnap?.Invoke(callback);
         }
-
 
         private void OnEnable()
         {

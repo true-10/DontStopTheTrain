@@ -13,7 +13,6 @@ namespace True10.Managers
 
         protected List<T> _items = new();
 
-
         public abstract void Initialize();
         public abstract void Dispose();
 

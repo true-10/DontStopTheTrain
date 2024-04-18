@@ -1,7 +1,7 @@
 using DG.Tweening;
 using DontStopTheTrain.Events;
 using DontStopTheTrain.Train;
-using System.Collections;
+using ModestTree;
 using System.Collections.Generic;
 using True10.AnimationSystem;
 using True10.LevelScrollSystem;
@@ -13,6 +13,10 @@ namespace DontStopTheTrain
 {
     public class Locomotive : MonoBehaviour, IWagon
     {
+        [SerializeField]
+        private float mult = 1f;
+
+        public float SpeedMultiplayer => mult;
 
         public IReadOnlyCollection<IWagonSystem> Systems => throw new System.NotImplementedException();
 
@@ -38,13 +42,11 @@ namespace DontStopTheTrain
         private WagonsManager _wagonsManager;
 
         private float _currentSpeed;
-
-        Tween speedTween = null;
+        private Tween speedTween = null;
 
         public void SetSpeed(float speed)
         {
             speedTween?.Complete();
-
             speedTween = DOTween.To(() => _currentSpeed, x => _currentSpeed = x, speed, 1f)
                 .OnUpdate( () => _levelScrollController.SetSpeed(_currentSpeed))
                 .OnComplete(() => _levelScrollController.SetSpeed(_currentSpeed));

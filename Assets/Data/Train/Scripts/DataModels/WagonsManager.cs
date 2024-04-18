@@ -1,6 +1,7 @@
 using DontStopTheTrain.Train;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using True10.Managers;
 using UnityEngine;
 
@@ -18,6 +19,10 @@ namespace DontStopTheTrain
             Clear();
         }
 
+        public Locomotive GetLocomotive()
+        {
+            return Items.Where(wagon => wagon is Locomotive).FirstOrDefault() as Locomotive;
+        }
     }
 
     public class WagonSystemsManager : DataManager<IWagonSystem>
