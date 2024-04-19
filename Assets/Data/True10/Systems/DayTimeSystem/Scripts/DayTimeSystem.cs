@@ -13,6 +13,7 @@ namespace True10.DayTimeSystem
         public float ProgressOfTheDay => (float)(_dateTime.Hour * 60f + _dateTime.Minute) / (24f * 60f);
 
         private float _dayDurationInSeconds = 300f;
+        private int _dayStartsAtHour = 7;
         private DateTime _dateTime = new();
         private IDisposable _interval = null;
 
@@ -20,6 +21,10 @@ namespace True10.DayTimeSystem
         private bool _isPaused = false;
         private float _readDayDurationInSeconds => 24f * 3600f;
 
+        public void SetStartedHour(int hour)
+        {
+            _dayStartsAtHour = hour;
+        }
         public void Pause()
         {
             _isPaused = true;
@@ -38,11 +43,13 @@ namespace True10.DayTimeSystem
             }
             _isOnRewind = true;
             OnStartRewind?.Invoke();
-            Initialize(UpdateRewind);
+            double intervalInMilliSeconds = 1;
+            Initialize(intervalInMilliSeconds, UpdateRewind);
         }
 
-        public void Initialize(float dayDurationInSeconds) 
+        public void Initialize(float dayDurationInSeconds)
         {
+            _dateTime = _dateTime.AddHours(_dayStartsAtHour);
             _dayDurationInSeconds = dayDurationInSeconds;
             Initialize();
         }
@@ -50,7 +57,8 @@ namespace True10.DayTimeSystem
         public void Initialize()
         {
             _isOnRewind = false;
-            Initialize(Update);
+            double intervalInMilliSeconds = (_dayDurationInSeconds / _readDayDurationInSeconds) * 1000f * 60f;
+            Initialize(intervalInMilliSeconds, Update);
         }
 
         public void Dispose()
@@ -59,13 +67,11 @@ namespace True10.DayTimeSystem
             _interval = null;
         }
 
-
-        private void Initialize(Action actionForInteval)
+        private void Initialize(double intervalInMilliSeconds, Action actionForInteval)
         {
             _interval?.Dispose();
             _interval = null;
-            var intervalInSeconds = _dayDurationInSeconds / _readDayDurationInSeconds;
-            _interval = Observable.Interval(TimeSpan.FromSeconds(intervalInSeconds))
+            _interval = Observable.Interval(TimeSpan.FromMilliseconds(intervalInMilliSeconds))
                 .Subscribe(_ => actionForInteval?.Invoke());
         }
 
@@ -85,7 +91,7 @@ namespace True10.DayTimeSystem
             {
                 return;
             }
-            if (_dateTime.Hour == 23)
+            if (_dateTime.Hour == _dayStartsAtHour - 1)
             {
                 if (_dateTime.Minute == 59)
                 {
@@ -100,6 +106,10 @@ namespace True10.DayTimeSystem
             else
             {
                 _dateTime = _dateTime.AddHours(1);
+                if (_dateTime.Minute < 59)
+                {
+                    _dateTime = _dateTime.AddMinutes(1);
+                }
             }
             OnChange?.Invoke(_dateTime);
         }

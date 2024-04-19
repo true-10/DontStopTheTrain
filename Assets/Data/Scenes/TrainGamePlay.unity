@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1683.5876, g: 2591.7134, b: 4653.512, a: 1}
+  m_IndirectSpecularColor: {r: 17456.92, g: 13681.084, b: 12689.018, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10829,7 +10829,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2037615792}
   m_Father: {fileID: 1783168687}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1002554673
@@ -10844,14 +10845,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a08b46be33c54ba47a04f5af7b66e699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dayDurationInSeconds: 60
-  _nightToDayDurationInSeconds: 2
+  _dayStartsAtHour: 7
+  _dayDurationInSeconds: 300
   _dayNightController: {fileID: 1002554675}
   _daySettings:
-    SkyIntensity: 16
+    SkyIntensity: 2
     SunIntensity: 85000
   _nightSettings:
-    SkyIntensity: 8
+    SkyIntensity: -4
     SunIntensity: 9000
   _curve:
     serializedVersion: 2
@@ -10886,6 +10887,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _cloudLayerController: {fileID: 2037615793}
+  _speed: 1
+  _rewindSpeed: 100
 --- !u!114 &1002554674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10923,8 +10927,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df299e76f9f4d0469dc0a1216ea88fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _volume: {fileID: 432432460}
   _sun: {fileID: 157207113}
+  _sky: {fileID: 2037615794}
   _transitionDuration: 2
 --- !u!1 &1008749291
 GameObject:
@@ -14511,7 +14515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1416175204
 Transform:
   m_ObjectHideFlags: 0
@@ -21446,6 +21450,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2036789745}
   m_CullTransparentMesh: 1
+--- !u!1 &2037615791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2037615792}
+  - component: {fileID: 2037615794}
+  - component: {fileID: 2037615793}
+  m_Layer: 0
+  m_Name: Sky
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2037615792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037615791}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1002554672}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2037615793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037615791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee592d39504b65a40a6f8dbea02263a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _volume: {fileID: 432432460}
+--- !u!114 &2037615794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037615791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d8b4d90e6d822c4ea573c54d70b869e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _volume: {fileID: 432432460}
 --- !u!1 &2060998428
 GameObject:
   m_ObjectHideFlags: 0
@@ -23014,7 +23077,7 @@ PrefabInstance:
     - target: {fileID: 3769748894934294231, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.07107365
+      value: 0.07107366
       objectReference: {fileID: 0}
     - target: {fileID: 5639547171272983985, guid: a484e2b2e3a44bc4da9f722720f533d1,
         type: 3}

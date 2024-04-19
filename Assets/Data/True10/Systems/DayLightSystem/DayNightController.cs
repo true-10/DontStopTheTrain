@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
-using UnityEngine.Rendering.HighDefinition;
-using UnityEngine.Rendering;
 using System;
 using DG.Tweening;
 using Zenject;
+using True10.GridSystem;
 
 namespace True10.DayLightSystem
 {
+
     [Serializable]
     public class DayNightSettings
     {
@@ -17,9 +17,9 @@ namespace True10.DayLightSystem
     public class DayNightController : MonoBehaviour
     {
         [SerializeField]
-        private Volume _volume;
-        [SerializeField]
         private Light _sun;
+        [SerializeField]
+        private AbstractIntensitable _sky;
         [SerializeField]
         private float _transitionDuration = 2f;
 
@@ -27,35 +27,16 @@ namespace True10.DayLightSystem
 
         private Tween _skyTween;
         private Tween _sunTween;
-        private VolumeProfile _volumeProfile;
-        private HDRISky _sky;
 
         public void SetIntenisities(float sunIntensity, float skyIntensity)
         {
-            Initialize();
-            if (_sky != null)
-            {
-                _sky.exposure.value = skyIntensity;
-            }
             _sun.intensity = sunIntensity;
-        }
-
-        public void Initialize()
-        {
-            if (_sky == null)
-            {
-                _volumeProfile = _volume.profile;
-                _volumeProfile.TryGet<HDRISky>(out _sky);
-            }
+            _sky.SetIntensity(skyIntensity);
         }
 
         public void Initialize(DayNightSettings settings)
         {
-            Initialize();
-            if (_sky != null)
-            {
-                _sky.exposure.value = settings.SkyIntensity;
-            }
+            _sky.SetIntensity(settings.SkyIntensity);
             _sun.intensity = settings.SunIntensity;
         }
 
@@ -70,7 +51,7 @@ namespace True10.DayLightSystem
         {
             _skyTween?.Complete();
             _skyTween =
-                DOTween.To(() => _sky.exposure.value, x => _sky.exposure.value = x, settingsTarget.SkyIntensity, _transitionDuration)
+                DOTween.To(() => _sky.Intensity, x => _sky.SetIntensity(x), settingsTarget.SkyIntensity, _transitionDuration)
                 .SetEase(Ease.Linear);
         }
 

@@ -4,13 +4,14 @@ using UnityEngine.Rendering;
 
 namespace True10.DayLightSystem
 {
-    public class SkyRotator : MonoBehaviour
+
+    public class HDRISkyRotator : MonoBehaviour
     {
         [SerializeField]
         private Volume _volume;
         [SerializeField]
         private float _speed = 1f;
-
+        
         private VolumeProfile _volumeProfile;
         private HDRISky _sky;
 
