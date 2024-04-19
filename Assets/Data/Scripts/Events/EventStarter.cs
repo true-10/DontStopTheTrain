@@ -112,15 +112,8 @@ namespace DontStopTheTrain.Events
             overallWeight += noEventChance;
             if (overallWeight >= randomPoint)
             {
-              /*  _overallWeight -= noEventChance;
-                if (_overallWeight < 0)
-                {
-                    _overallWeight = 0;
-                }*/
                 return null;
             }
-            // randomPoint = 99
-            // 80 50 40 30 20 10
             for (int i = 0; i < events.Count; i++)
             {
                 var chance = events[i].Chance;
@@ -140,9 +133,7 @@ namespace DontStopTheTrain.Events
             var minValue = 1 + thresholdChance + randomChance;
             var maxValue = 101;
             minValue = Mathf.Clamp(minValue, 1, maxValue);
-            var chance = UnityEngine.Random.Range(minValue, 101);
-            //chance = 100 - chance;
-            //Debug.Log($"thresholdChance = {thresholdChance} randomChance = {randomChance}  minValue = {minValue} chance = {chance} ");
+            var chance = UnityEngine.Random.Range(minValue, 101);            
             return chance;
         }
 

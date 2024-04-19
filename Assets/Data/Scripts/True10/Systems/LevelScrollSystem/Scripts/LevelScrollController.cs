@@ -10,7 +10,7 @@ namespace True10.LevelScrollSystem
     public class LevelScroller : MonoBehaviour//,IGameLifeCycle
     {
         [Inject]
-        private ChunkManager _chunkManager;
+        private LevelChunksManager _chunkManager;
         [SerializeField]
         private float _scrollSpeed = 200f;//
 
@@ -19,7 +19,7 @@ namespace True10.LevelScrollSystem
     public class LevelScrollController : MonoBehaviour//,IGameLifeCycle
     {
         [Inject]
-        private ChunkManager _chunkManager;
+        private LevelChunksManager _chunkManager;
 
         [SerializeField] 
         private Vector3 _scrollDirection = default;//переделать в енум

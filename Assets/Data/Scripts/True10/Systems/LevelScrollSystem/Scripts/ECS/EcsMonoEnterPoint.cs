@@ -16,7 +16,7 @@ namespace True10.LevelScrollSystem.ESC
         #endregion
 
         [SerializeField] 
-        private ChunkSpawner spawner;
+        private LevelChunkSpawner spawner;
         [Inject] 
         private ILevelScrollSpeedController levelScrollSpeedController;
 

@@ -13,7 +13,7 @@ namespace True10.LevelScrollSystem
         public int Count;
     }
 
-    public class ChunkSpawner : MonoBehaviour
+    public class LevelChunkSpawner : MonoBehaviour
     {
         [SerializeField] private List<SpawnChunksData> _spawnData;
 

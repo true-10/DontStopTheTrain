@@ -19,7 +19,7 @@ namespace True10.LevelScrollSystem
         public ChunkStaticData StaticData => _staticData;
 
         [Inject]
-        private ChunkManager _chunkManager;
+        private LevelChunksManager _chunkManager;
 
         [SerializeField]
         private ObjectToScroll _objectToScroll;

@@ -46,18 +46,6 @@ namespace DontStopTheTrain.Events
                 .FirstOrDefault(m => m.StaticData.Id == id);
         }
 
-        /* public IEvent GetEventByHashCode(int hashCode)
-         {
-             return Items
-                 .FirstOrDefault(m => m.StaticData.HashCode == hashCode);
-         }
-
-         public IEvent GetFreeEventByHashCode(int hashCode)
-         {
-             return GetAllFreeEvents()
-                 .FirstOrDefault(m => m.StaticData.HashCode == hashCode);
-         }
-        */
         public List<IEvent> GetAllFreeEvents()
         {
             return Items

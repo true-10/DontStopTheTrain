@@ -7,6 +7,6 @@ public class LevelScrollSystemInstaller : ScriptableObjectInstaller<LevelScrollS
 {
     public override void InstallBindings()
     {
-        Container.Bind<ChunkManager>().AsSingle();
+        Container.Bind<LevelChunksManager>().AsSingle();
     }
 }
