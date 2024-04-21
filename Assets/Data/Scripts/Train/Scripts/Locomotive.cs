@@ -37,7 +37,7 @@ namespace DontStopTheTrain
         public IReadOnlyReactiveProperty<int> Health => throw new System.NotImplementedException();
 
         [Inject]
-        private LevelScrollController _levelScrollController;
+        private LevelScroller _levelScroller;
         [Inject]
         private WagonsManager _wagonsManager;
 
@@ -48,8 +48,8 @@ namespace DontStopTheTrain
         {
             speedTween?.Complete();
             speedTween = DOTween.To(() => _currentSpeed, x => _currentSpeed = x, speed, 1f)
-                .OnUpdate( () => _levelScrollController.SetSpeed(_currentSpeed))
-                .OnComplete(() => _levelScrollController.SetSpeed(_currentSpeed));
+                .OnUpdate( () => _levelScroller.SetSpeed(_currentSpeed))
+                .OnComplete(() => _levelScroller.SetSpeed(_currentSpeed));
                 //.SetEase(mult.Ease);
         }
 
@@ -60,7 +60,7 @@ namespace DontStopTheTrain
 
         public void Initialize()
         {
-            _levelScrollController.SetSpeed(0f);
+            _levelScroller.SetSpeed(0f);
             _wagonsManager.TryToAdd(this);
             SetSpeed(100f);
         }

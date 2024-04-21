@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using True10.LevelScrollSystem;
 using UnityEngine;
 
@@ -15,22 +13,10 @@ namespace True10.LevelScrollSystem
 }
 
     [CreateAssetMenu(fileName = "SetOfChunks", menuName = "True10/LevelScrollSystem/SetOfChunks")]
-    public class SetOfChunks : ScriptableObject
+    public sealed class SetOfChunks : SetOfObjects<LevelChunk>
     {
-        [SerializeField] private List<ObjectToScroll> chunkList;
+        public BiomType BiomType => _biomType;
 
-        public ObjectToScroll GetRandomChunk()
-        {
-            var randomIndex = Random.Range(0, chunkList.Count);
-            var randomChunk = chunkList[randomIndex];
-            return randomChunk;
-        }
-
-        public void CreateRandomChunk(Transform root)
-        {
-            var chunkPrefab = GetRandomChunk();
-            Instantiate(chunkPrefab, root);
-        }
-
+        [SerializeField]
+        private BiomType _biomType;
     }
-

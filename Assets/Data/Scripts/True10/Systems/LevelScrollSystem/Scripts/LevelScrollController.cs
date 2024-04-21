@@ -1,97 +1,139 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 using Zenject;
 using System.Linq;
+using System;
+using True10.Interfaces;
+using True10.DayTimeSystem;
 
 namespace True10.LevelScrollSystem
 {
-    public class LevelScroller : MonoBehaviour//,IGameLifeCycle
+    public class LevelScrollController : MonoBehaviour, IGameLifeCycle
     {
         [Inject]
         private LevelChunksManager _chunkManager;
+        [Inject]
+        private LevelScroller _levelScroller;
+        [Inject]
+        private DayTimeSystem.DayTimeSystem _dayTimeSystem;
+
         [SerializeField]
-        private float _scrollSpeed = 200f;//
-
-    }
-
-    public class LevelScrollController : MonoBehaviour//,IGameLifeCycle
-    {
-        [Inject]
-        private LevelChunksManager _chunkManager;
-
-        [SerializeField] 
-        private Vector3 _scrollDirection = default;//переделать в енум
-        [SerializeField] 
-        private float _chunkSize = 500f;//
-        [SerializeField] 
-        private float _scrollSpeed = 200f;//
+        private LevelChunkSpawner _spawner;
         [SerializeField]
         private Transform _startPoint;
         [SerializeField]
         private Transform _endPoint;
+        [SerializeField]
+        private BiomType _currentBiomType = BiomType.City;
 
-
-        private Vector3 _startPosition = Vector3.zero;        
-        private Vector3 _endPosition = Vector3.zero;
-
-        public void SetSpeed(float speed)
-        {
-            _scrollSpeed = -speed;
-        }
+        private float normalSpeed;
 
         private void Start()
         {
             Initialize();
         }
         
-        private void Initialize()
+        public void Initialize()
         {
-            ObjectToScroll obj = null;
-            ObjectToScroll prevObj = null;
+            _spawner.SpawnChunks(BiomType.City, onSpawn: OnSpawn, OnComplete: OnCityChunkSpawned);
+            _spawner.SpawnChunks(BiomType.Desert);
 
-            List<LevelChunk> _objectsToScroll = _chunkManager.Items.ToList();
-            for (int i = 1; i < _objectsToScroll.Count; i++)
+            _levelScroller.OnEndReached += OnChunkEndReached;
+            _dayTimeSystem.OnStartRewind += OnStartRewind;
+            _dayTimeSystem.OnEndRewind += OnEndRewind;
+        }
+
+        private LevelChunk prevChunk;
+        private void OnSpawn(LevelChunk chunk)
+        {
+            chunk.gameObject.SetActive(true);
+            if (prevChunk != null)
             {
-                obj = _objectsToScroll[i].ObjectToScroll;
-                prevObj = _objectsToScroll[i - 1].ObjectToScroll;
-                obj.SetPreviousObject(prevObj);
-                obj.AlignToNext();
+                chunk.ObjectToScroll.SetPreviousObject(prevChunk.ObjectToScroll);
+                chunk.ObjectToScroll.AlignToNext();
+            }
+            else
+            {
+                //chunk.transform.position = _startPoint.position;
+                chunk.transform.position = _endPoint.position;
             }
 
-            obj = _objectsToScroll[0].ObjectToScroll;
-            prevObj = _objectsToScroll[_objectsToScroll.Count - 1].ObjectToScroll;
-            obj.SetPreviousObject(prevObj);
+            prevChunk = chunk;
+        }
+
+        private void OnCityChunkSpawned()
+        {
+
+        }
+
+        public void Dispose()
+        {
+            _levelScroller.OnEndReached -= OnChunkEndReached;
+            _dayTimeSystem.OnStartRewind -= OnStartRewind;
+            _dayTimeSystem.OnEndRewind -= OnEndRewind;
+        }
+
+        private void OnStartRewind()
+        {
+            normalSpeed = _levelScroller.ScrollSpeed;
+            _levelScroller.SetSpeed(normalSpeed * 50f);
+        }
+
+        private void OnEndRewind()
+        {
+            _levelScroller.SetSpeed(normalSpeed);
+        }
+
+        int index = 0;
+        private void OnChunkEndReached(ObjectToScroll objectToScroll)
+        {
+            index++;
+            var remainder = index % 5;// 10;
+            if (remainder == 0)
+            {
+                remainder = UnityEngine.Random.Range(0, 3);
+                switch (remainder) 
+                {
+                    case 0:
+                    default:
+                        _currentBiomType = BiomType.City;
+                        break;
+                    case 1:
+                        _currentBiomType = BiomType.Desert;
+                        break;
+                    case 2:
+                        _currentBiomType = BiomType.Forest;
+                        break;
+                }
+              //  _currentBiomType = (remainder == 1) ? BiomType.Desert : BiomType.City;
+                Debug.Log($"_currentBiomType = {_currentBiomType} index = {index}");
+            }
+            objectToScroll.gameObject.SetActive(false);
+            var orderedChunkbyZPos = _chunkManager.GetActiveChunks().OrderBy(chunk => chunk.transform.position.z);
+            var lastChunk = orderedChunkbyZPos.LastOrDefault();
+            var newChunk = _chunkManager.GetRandomWeightedChunk(_currentBiomType);
+            if (newChunk == null)
+            {
+                Debug.Log($"newChunk == null");
+                return;
+            }
+            var obj = newChunk.ObjectToScroll;
+            newChunk.gameObject.SetActive(true);
+            if (lastChunk == null)
+            {
+                Debug.Log($"lastChunk == null");
+                return;
+            }
+            obj.SetPreviousObject(lastChunk.ObjectToScroll);
             obj.AlignToNext();
 
-            var chunkNumb = _objectsToScroll.Count;
-            var length = chunkNumb * _chunkSize;
-
-            _startPosition.z = _startPoint.position.z;
-            _endPosition.z = _endPoint.position.z; 
         }
 
         private void LateUpdate()
         {
-            ScrollAnimation();
+            //_levelScroller.ScrollAnimation2(_endPoint.position.z);
+            _levelScroller.ScrollAnimation(_endPoint.position.z);
         }
 
-        private void ScrollAnimation()
-        {
-            List<LevelChunk> _objectsToScroll = _chunkManager.Items.ToList();
-            for (int i = 0; i < _objectsToScroll.Count; i++)
-            {
-                ObjectToScroll obj = _objectsToScroll[i].ObjectToScroll;
-                Vector3 pos = obj.transform.localPosition;
-                pos.z += _scrollSpeed * Time.deltaTime;
-                if (pos.z < _endPosition.z)
-                {
-                    obj.AlignToNext();
-                    return;
-                }
-                obj.transform.localPosition = pos;
-            }
-        }
     }
 }

@@ -1,12 +1,8 @@
-using DontStopTheTrain;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using True10.Interfaces;
-using True10.LevelScrollSystem;
 using True10.TriggerSystem;
 using UnityEngine;
-using Zenject;
+//using Zenject;
 
 namespace True10.LevelScrollSystem
 {
@@ -18,8 +14,8 @@ namespace True10.LevelScrollSystem
         public ObjectToScroll ObjectToScroll => _objectToScroll;
         public ChunkStaticData StaticData => _staticData;
 
-        [Inject]
-        private LevelChunksManager _chunkManager;
+       // [Inject]
+        //private LevelChunksManager _chunkManager;
 
         [SerializeField]
         private ObjectToScroll _objectToScroll;
@@ -32,7 +28,7 @@ namespace True10.LevelScrollSystem
         
         public void Initialize()
         {
-            _chunkManager.TryToAdd(this);
+        //    _chunkManager.TryToAdd(this);
 
             _enterTrigger.OnEnter += OnChunkEnterHandler;
             _exitTrigger.OnEnter += OnChunkExitHandler;
@@ -40,29 +36,30 @@ namespace True10.LevelScrollSystem
 
         public void Dispose()
         {
-            _chunkManager.TryToRemove(this);
+         //   _chunkManager.TryToRemove(this);
             _enterTrigger.OnEnter -= OnChunkEnterHandler;
             _exitTrigger.OnEnter -= OnChunkExitHandler;
         }
 
         private void OnChunkEnterHandler(Collider collider)
         {
-            Debug.Log($"OnChunkEnterHandler {this}");
+          //  Debug.Log($"OnChunkEnterHandler {this}");
             OnChunkEnter?.Invoke(this);
         }  
 
         private void OnChunkExitHandler(Collider collider)
         {
-            Debug.Log($"OnChunkExitHandler {this}");
+            //Debug.Log($"OnChunkExitHandler {this}");
             OnChunkExit?.Invoke(this);
         }
 
-        private void OnEnable()
+        private void Start()
         {
             Initialize();
         }
 
-        private void OnDisable()
+
+        private void OnDestroy()
         {
             Dispose();
         }

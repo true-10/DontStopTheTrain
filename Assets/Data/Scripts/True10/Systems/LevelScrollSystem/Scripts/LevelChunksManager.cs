@@ -15,9 +15,9 @@ namespace True10.LevelScrollSystem
         public Action<LevelChunk> OnChunkEnter { get; set; }
         public Action<LevelChunk> OnChunkExit { get; set; }
 
-        public LevelChunk GetRandomWeightedChunk()
+        public LevelChunk GetRandomWeightedChunk(BiomType biomType)
         {
-            var orderedChunks = GetFreeChunks()
+            var orderedChunks = GetFreeChunks(biomType)
                 .OrderByDescending(chunk => chunk.StaticData.Weight)
                 .ToList();
 
@@ -36,17 +36,27 @@ namespace True10.LevelScrollSystem
                     return chunk;
                 }
             }
-            return GetRandomChunk();
+            return GetRandomChunk(biomType);
         }
 
-        public LevelChunk GetRandomChunk()
+        public LevelChunk GetRandomChunk(BiomType biomType)
         {
-            return GetFreeChunks().GetRandomElement();
+            return GetFreeChunks(biomType).GetRandomElement();
         }
 
-        public List<LevelChunk> GetFreeChunks()
+        public List<LevelChunk> GetFreeChunks(BiomType biomType)
         {
-            return Items.Where(chunk => chunk.isActiveAndEnabled).ToList();
+            return Items
+                .Where(chunk => chunk.StaticData.BiomType == biomType)
+                .Where(chunk => chunk.gameObject.activeInHierarchy == false)
+                .ToList();
+        }
+
+        public List<LevelChunk> GetActiveChunks()
+        {
+            return Items
+                .Where(chunk => chunk.gameObject.activeInHierarchy)
+                .ToList();
         }
 
         public override void Dispose()

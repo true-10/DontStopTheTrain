@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cafbd005e60e6a0489885e125edf5ff4, type: 3}
+  m_Name: Experience 15% Perk
+  m_EditorClassIdentifier: 
+  _value: 15
+  _perkType: 2
+  _info:
+    _name: "+15% \u043E\u043F\u044B\u0442\u0430 "
+    _description: "\u041F\u043E\u043B\u0443\u0447\u0430\u0435\u043C \u0431\u043E\u043B\u044C\u0448\u0435
+      \u043E\u043F\u044B\u0442\u0430"
+    _icon: {fileID: 21300000, guid: 49dfd63372895f5439b30a606d687462, type: 3}
+  _conditions: []

@@ -7,17 +7,29 @@ namespace True10.LevelScrollSystem
     {
         public int Weight => _weight;
         public ChunkType Type => _type;
+        public BiomType BiomType => _biomType;
 
         [SerializeField]
         private int _weight;
         [SerializeField]
         private ChunkType _type;
+        [SerializeField]
+        private BiomType _biomType;
     }
 
     public enum ChunkType
     {
         Simple,
         Station
+
+    }
+
+    public enum BiomType
+    {
+        City,
+        Desert,
+        Forest,
+
 
     }
 }

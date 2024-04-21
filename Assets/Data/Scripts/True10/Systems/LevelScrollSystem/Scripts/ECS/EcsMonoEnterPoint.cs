@@ -32,7 +32,7 @@ namespace True10.LevelScrollSystem.ESC
             initSystems
                 .Add(new SpawnChunksSystem())
                 .Init();*/
-            spawner.SpawnChunks(InitSystems);
+          //  spawner.SpawnChunks(InitSystems);
             //InitSystems();
         }
 
