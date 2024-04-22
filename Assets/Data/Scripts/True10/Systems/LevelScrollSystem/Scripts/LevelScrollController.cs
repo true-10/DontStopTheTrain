@@ -28,11 +28,6 @@ namespace True10.LevelScrollSystem
 
         private float normalSpeed;
 
-        private void Start()
-        {
-            Initialize();
-        }
-        
         public void Initialize()
         {
             _spawner.SpawnChunks(BiomType.City, onSpawn: OnSpawn, OnComplete: OnCityChunkSpawned);
@@ -48,28 +43,6 @@ namespace True10.LevelScrollSystem
 
         }
 
-        private LevelChunk prevChunk;
-        private void OnSpawn(LevelChunk chunk)
-        {
-            chunk.gameObject.SetActive(true);
-            if (prevChunk != null)
-            {
-                chunk.ObjectToScroll.SetPreviousObject(prevChunk.ObjectToScroll);
-                chunk.ObjectToScroll.AlignToNext();
-            }
-            else
-            {
-                //chunk.transform.position = _startPoint.position;
-                chunk.transform.position = _endPoint.position;
-            }
-
-            prevChunk = chunk;
-        }
-
-        private void OnCityChunkSpawned()
-        {
-
-        }
 
         public void Dispose()
         {
@@ -87,6 +60,11 @@ namespace True10.LevelScrollSystem
         private void OnEndRewind()
         {
             _levelScroller.SetSpeed(normalSpeed);
+        }
+
+        private void OnCityChunkSpawned()
+        {
+
         }
 
         int index = 0;
@@ -133,6 +111,29 @@ namespace True10.LevelScrollSystem
             obj.AlignToNext();
 
         }
+
+        private LevelChunk prevChunk;
+        private void OnSpawn(LevelChunk chunk)
+        {
+            chunk.gameObject.SetActive(true);
+            if (prevChunk != null)
+            {
+                chunk.ObjectToScroll.SetPreviousObject(prevChunk.ObjectToScroll);
+                chunk.ObjectToScroll.AlignToNext();
+            }
+            else
+            {
+                chunk.transform.position = _endPoint.position;
+            }
+
+            prevChunk = chunk;
+        }
+
+        private void Start()
+        {
+            Initialize();
+        }
+
 
         private void Update()
         {

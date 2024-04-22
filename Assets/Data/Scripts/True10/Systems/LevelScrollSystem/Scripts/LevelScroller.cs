@@ -3,7 +3,6 @@ using UnityEngine;
 using Zenject;
 using System;
 using System.Linq;
-using System.Collections;
 
 namespace True10.LevelScrollSystem
 {
@@ -59,31 +58,5 @@ namespace True10.LevelScrollSystem
                 obj.AlignToNext();
             }
         }
-
-        public void ScrollAnimation2()
-        {
-            List<LevelChunk> _objectsToScroll = _chunkManager.GetActiveChunks().OrderBy(chunk => chunk.transform.position.z).ToList();
-
-            if (_objectsToScroll.Count == 0)
-            {
-                return;
-            }
-            ObjectToScroll obj = _objectsToScroll[0].ObjectToScroll;
-            Vector3 pos = obj.transform.localPosition;
-            pos.z += _scrollSpeed * Time.deltaTime;
-            obj.transform.localPosition = pos;
-
-            for (int i = 1; i < _objectsToScroll.Count; i++)
-            {
-                obj = _objectsToScroll[i].ObjectToScroll;
-                obj.AlignToNext();
-            }
-            if (pos.z < _endZ)
-            {
-                OnEndReached?.Invoke(obj);
-                return;
-            }
-        }
-
     }
 }
