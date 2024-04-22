@@ -3,6 +3,7 @@ using UnityEngine;
 using Zenject;
 using System;
 using System.Linq;
+using System.Collections;
 
 namespace True10.LevelScrollSystem
 {
@@ -15,13 +16,19 @@ namespace True10.LevelScrollSystem
         private LevelChunksManager _chunkManager;
 
         private float _scrollSpeed = 200f;
+        private float _endZ;
 
         public void SetSpeed(float speed)
         {
             _scrollSpeed = -speed;
         }
 
-        public void ScrollAnimation(float endZ)
+        public void SetEnd(float endZ)
+        {
+            _endZ = endZ;
+        }
+
+        public void ScrollAnimation()
         {
             List<LevelChunk> _objectsToScroll = _chunkManager.GetActiveChunks();
             for (int i = 0; i < _objectsToScroll.Count; i++)
@@ -29,17 +36,31 @@ namespace True10.LevelScrollSystem
                 ObjectToScroll obj = _objectsToScroll[i].ObjectToScroll;
                 Vector3 pos = obj.transform.localPosition;
                 pos.z += _scrollSpeed * Time.deltaTime;
-                if (pos.z < endZ)
+                obj.transform.localPosition = pos;
+                if (pos.z < _endZ)
                 {
                     OnEndReached?.Invoke(obj);
-                    return;
                 }
-                obj.transform.localPosition = pos;
             }
         }
 
+        public void AlignAll()
+        {
+            List<LevelChunk> _objectsToScroll = _chunkManager.GetActiveChunks().OrderBy(chunk => chunk.transform.position.z).ToList();
 
-        public void ScrollAnimation2(float endZ)
+            if (_objectsToScroll.Count < 2)
+            {
+                return;
+            }
+
+            for (int i = 1; i < _objectsToScroll.Count; i++)
+            {
+                var obj = _objectsToScroll[i].ObjectToScroll;
+                obj.AlignToNext();
+            }
+        }
+
+        public void ScrollAnimation2()
         {
             List<LevelChunk> _objectsToScroll = _chunkManager.GetActiveChunks().OrderBy(chunk => chunk.transform.position.z).ToList();
 
@@ -50,11 +71,6 @@ namespace True10.LevelScrollSystem
             ObjectToScroll obj = _objectsToScroll[0].ObjectToScroll;
             Vector3 pos = obj.transform.localPosition;
             pos.z += _scrollSpeed * Time.deltaTime;
-            if (pos.z < endZ)
-            {
-                OnEndReached?.Invoke(obj);
-                return;
-            }
             obj.transform.localPosition = pos;
 
             for (int i = 1; i < _objectsToScroll.Count; i++)
@@ -62,6 +78,12 @@ namespace True10.LevelScrollSystem
                 obj = _objectsToScroll[i].ObjectToScroll;
                 obj.AlignToNext();
             }
+            if (pos.z < _endZ)
+            {
+                OnEndReached?.Invoke(obj);
+                return;
+            }
         }
+
     }
 }

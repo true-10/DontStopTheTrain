@@ -37,10 +37,15 @@ namespace True10.LevelScrollSystem
         {
             _spawner.SpawnChunks(BiomType.City, onSpawn: OnSpawn, OnComplete: OnCityChunkSpawned);
             _spawner.SpawnChunks(BiomType.Desert);
+            _spawner.SpawnChunks(BiomType.Forest);
+
+            _levelScroller.SetEnd(_endPoint.position.z);
 
             _levelScroller.OnEndReached += OnChunkEndReached;
             _dayTimeSystem.OnStartRewind += OnStartRewind;
             _dayTimeSystem.OnEndRewind += OnEndRewind;
+
+
         }
 
         private LevelChunk prevChunk;
@@ -111,6 +116,11 @@ namespace True10.LevelScrollSystem
             objectToScroll.gameObject.SetActive(false);
             var orderedChunkbyZPos = _chunkManager.GetActiveChunks().OrderBy(chunk => chunk.transform.position.z);
             var lastChunk = orderedChunkbyZPos.LastOrDefault();
+            if (lastChunk == null)
+            {
+                Debug.Log($"lastChunk == null");
+                return;
+            }
             var newChunk = _chunkManager.GetRandomWeightedChunk(_currentBiomType);
             if (newChunk == null)
             {
@@ -119,20 +129,19 @@ namespace True10.LevelScrollSystem
             }
             var obj = newChunk.ObjectToScroll;
             newChunk.gameObject.SetActive(true);
-            if (lastChunk == null)
-            {
-                Debug.Log($"lastChunk == null");
-                return;
-            }
             obj.SetPreviousObject(lastChunk.ObjectToScroll);
             obj.AlignToNext();
 
         }
 
+        private void Update()
+        {
+            _levelScroller.ScrollAnimation();
+        }
+
         private void LateUpdate()
         {
-            //_levelScroller.ScrollAnimation2(_endPoint.position.z);
-            _levelScroller.ScrollAnimation(_endPoint.position.z);
+            _levelScroller.AlignAll();
         }
 
     }
