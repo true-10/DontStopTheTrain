@@ -48,8 +48,17 @@ namespace DontStopTheTrain
             }
             _dayTimeSystem.OnStartRewind += OnStartRewind;
             _dayTimeSystem.OnEndRewind += OnEndRewind;
+            _dayTimeSystem.OnNewDay += OnNewDayStarted;
 
         }
+        public void Dispose()
+        {
+            _dayTimeSystem.OnChange -= OnTimeChange;
+            _dayTimeSystem.OnStartRewind -= OnStartRewind;
+            _dayTimeSystem.OnEndRewind -= OnEndRewind;
+            _dayTimeSystem.OnNewDay -= OnNewDayStarted;
+        }
+
         private void OnStartRewind()
         {
             if (_cloudLayerController != null)
@@ -74,22 +83,15 @@ namespace DontStopTheTrain
             _dayNightController.SetIntenisities(sunIntensity, skyIntensity);
         }
 
-        public void Dispose()
+        private void OnNewDayStarted()
         {
-            _dayTimeSystem.OnChange -= OnTimeChange;
-            _dayTimeSystem.OnStartRewind -= OnStartRewind;
-            _dayTimeSystem.OnEndRewind -= OnEndRewind;
+            _turnBasedController.CompleteTurn();
         }
 
         private void OnTimeChange(DateTime time)
         {
             var progress = _dayTimeSystem.ProgressOfTheDay;
             SetLight(progress);
-
-            if (time.Hour == 0 && time.Minute == 0)
-            {
-                _turnBasedController.CompleteTurn();
-            }
         }
 
         private void Start()

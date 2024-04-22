@@ -42,7 +42,6 @@ namespace DontStopTheTrain.Events
             _eventsToReset.Clear();
         }
 
-
         public bool TryToStartViewEvents()
         {
             var view = _eventViewersManager
@@ -63,6 +62,7 @@ namespace DontStopTheTrain.Events
 
             return true;
         }
+
         public bool TryToStartRandomWagonEvent(float threshold, 
             IReadOnlyCollection<WagonEventType> wagonEventTypes, 
             Action<IEvent> onGetEvent)

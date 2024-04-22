@@ -2,6 +2,7 @@ using DontStopTheTrain.Events;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using True10.DayTimeSystem;
 using True10.Interfaces;
 using UniRx;
 using UnityEngine;
@@ -24,6 +25,8 @@ namespace DontStopTheTrain
         private Inventory _inventory;
         [Inject]
         private TurnBasedController _turnBasedController;
+        [Inject]
+        private DayTimeSystem _dayTimeSystem;
         [Inject]
         private LevelsStaticStorage _levelsStaticManager;
         [Inject]

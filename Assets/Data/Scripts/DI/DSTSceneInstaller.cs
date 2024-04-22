@@ -27,6 +27,14 @@ public class DSTSceneInstaller : MonoInstaller
         InstallControllers(); 
         InstallFabrics();
         InstallServices();
+        InstallPointOfInterestGenerator();
+    }
+
+    private void InstallPointOfInterestGenerator()
+    {
+        Container.Bind<PointOfInterestsManager>().AsSingle();
+        Container.Bind<PointOfInterestsGenerator>().AsSingle();
+        Container.Bind<PointOfInterestController>().AsSingle();
     }
 
     private void InstallStaticDataManagers()

@@ -15,9 +15,9 @@ namespace True10.LevelScrollSystem
         public Action<LevelChunk> OnChunkEnter { get; set; }
         public Action<LevelChunk> OnChunkExit { get; set; }
 
-        public LevelChunk GetRandomWeightedChunk(BiomType biomType)
+        public LevelChunk GetRandomWeightedChunk(BiomType biomType, ChunkType chunkType = ChunkType.Simple)
         {
-            var orderedChunks = GetFreeChunks(biomType)
+            var orderedChunks = GetFreeChunks(biomType, chunkType)
                 .OrderByDescending(chunk => chunk.StaticData.Weight)
                 .ToList();
 
@@ -36,18 +36,19 @@ namespace True10.LevelScrollSystem
                     return chunk;
                 }
             }
-            return GetRandomChunk(biomType);
+            return GetRandomChunk(biomType, chunkType);
         }
 
-        public LevelChunk GetRandomChunk(BiomType biomType)
+        public LevelChunk GetRandomChunk(BiomType biomType, ChunkType chunkType = ChunkType.Simple)
         {
-            return GetFreeChunks(biomType).GetRandomElement();
+            return GetFreeChunks(biomType, chunkType).GetRandomElement();
         }
 
-        public List<LevelChunk> GetFreeChunks(BiomType biomType)
+        public List<LevelChunk> GetFreeChunks(BiomType biomType, ChunkType chunkType = ChunkType.Simple)
         {
             return Items
                 .Where(chunk => chunk.StaticData.BiomType == biomType)
+                .Where(chunk => chunk.StaticData.Type == chunkType)
                 .Where(chunk => chunk.gameObject.activeInHierarchy == false)
                 .ToList();
         }

@@ -8,6 +8,7 @@ namespace True10.DayTimeSystem
     {
         public Action OnStartRewind { get; set; }
         public Action OnEndRewind { get; set; }
+        public Action OnNewDay { get; set; }
         public Action<DateTime> OnChange { get; set; }
         public DateTime DateTime { get => _dateTime; }
         public float ProgressOfTheDay => (float)(_dateTime.Hour * 60f + _dateTime.Minute) / (24f * 60f);
@@ -83,6 +84,12 @@ namespace True10.DayTimeSystem
             }
             _dateTime = _dateTime.AddMinutes(1);
             OnChange?.Invoke(_dateTime);
+
+            if (_dateTime.Hour == _dayStartsAtHour && _dateTime.Minute == 0)
+            {   
+                OnNewDay?.Invoke();
+                Initialize();                
+            }
         }
 
         private void UpdateRewind()

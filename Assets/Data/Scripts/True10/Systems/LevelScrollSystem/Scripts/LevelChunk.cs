@@ -41,13 +41,13 @@ namespace True10.LevelScrollSystem
             _exitTrigger.OnEnter -= OnChunkExitHandler;
         }
 
-        private void OnChunkEnterHandler(Collider collider)
+        protected virtual void OnChunkEnterHandler(Collider collider)
         {
           //  Debug.Log($"OnChunkEnterHandler {this}");
             OnChunkEnter?.Invoke(this);
-        }  
+        }
 
-        private void OnChunkExitHandler(Collider collider)
+        protected virtual void OnChunkExitHandler(Collider collider)
         {
             //Debug.Log($"OnChunkExitHandler {this}");
             OnChunkExit?.Invoke(this);
@@ -62,6 +62,20 @@ namespace True10.LevelScrollSystem
         private void OnDestroy()
         {
             Dispose();
+        }
+    }
+
+    public class LevelChunkStation : LevelChunk
+    {
+
+        protected override void OnChunkEnterHandler(Collider collider)
+        {
+            OnChunkEnter?.Invoke(this);
+        }
+
+        protected override void OnChunkExitHandler(Collider collider)
+        {
+            OnChunkExit?.Invoke(this);
         }
     }
 }

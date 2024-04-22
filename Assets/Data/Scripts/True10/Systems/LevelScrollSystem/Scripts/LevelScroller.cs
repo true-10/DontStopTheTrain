@@ -29,17 +29,18 @@ namespace True10.LevelScrollSystem
 
         public void ScrollAnimation()
         {
-            List<LevelChunk> _objectsToScroll = _chunkManager.GetActiveChunks();
-            for (int i = 0; i < _objectsToScroll.Count; i++)
+            List<LevelChunk> levelChunks = _chunkManager.GetActiveChunks().OrderBy(chunk => chunk.transform.position.z).ToList();
+            if (levelChunks.Count == 0)
             {
-                ObjectToScroll obj = _objectsToScroll[i].ObjectToScroll;
-                Vector3 pos = obj.transform.localPosition;
-                pos.z += _scrollSpeed * Time.deltaTime;
-                obj.transform.localPosition = pos;
-                if (pos.z < _endZ)
-                {
-                    OnEndReached?.Invoke(obj);
-                }
+                return;
+            }
+            ObjectToScroll obj = levelChunks[0].ObjectToScroll;
+            Vector3 pos = obj.transform.localPosition;
+            pos.z += _scrollSpeed * Time.deltaTime;
+            obj.transform.localPosition = pos;
+            if (pos.z < _endZ)
+            {
+                OnEndReached?.Invoke(obj);
             }
         }
 

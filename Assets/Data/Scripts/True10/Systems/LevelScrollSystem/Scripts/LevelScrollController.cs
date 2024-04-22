@@ -110,6 +110,7 @@ namespace True10.LevelScrollSystem
             obj.SetPreviousObject(lastChunk.ObjectToScroll);
             obj.AlignToNext();
 
+            objectToScroll.transform.position = _startPoint.position;
         }
 
         private LevelChunk prevChunk;

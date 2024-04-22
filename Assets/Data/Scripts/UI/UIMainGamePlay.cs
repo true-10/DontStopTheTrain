@@ -49,7 +49,7 @@ namespace DontStopTheTrain
 
         private void OnTimeChange(DateTime time)
         {
-            _turnNumberText.text = $"Day: {time.Day} Time: {time.Hour}:{time.Minute}"; 
+            _turnNumberText.text = $"Day: {_player.Days} Time: {time.ToShortTimeString()}";
         }
 
         private void CompleteTurn()
