@@ -15,7 +15,7 @@ namespace DontStopTheTrain
         [Inject]
         private EventsService _eventsService;
         [Inject]
-        private UIController _uiController;
+        private UIContainer _UIContainer;
 
         [SerializeField]
         private Button _completeEventButton;
@@ -48,7 +48,7 @@ namespace DontStopTheTrain
 
         private void OnCloseEventUI()
         {
-            _uiController.Wagon.Show();
+            _UIContainer.Wagon.Show();
             Hide();
         }
 

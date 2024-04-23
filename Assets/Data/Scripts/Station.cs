@@ -1,5 +1,7 @@
+using DontStopTheTrain.UI;
 using System.Collections;
 using System.Collections.Generic;
+using True10.CameraSystem;
 using UnityEngine;
 using Zenject;
 
@@ -15,6 +17,11 @@ namespace DontStopTheTrain
     {
         [Inject]
         private WagonsManager _wagonsManager;
+        [Inject]
+        private UIContainer _UIContainer;
+
+        [SerializeField]
+        private CameraHolder _cameraHolder;
 
         public void Depart()
         {

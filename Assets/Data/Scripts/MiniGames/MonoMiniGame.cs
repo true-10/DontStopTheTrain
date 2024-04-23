@@ -12,27 +12,14 @@ namespace DontStopTheTrain.MiniGames
         public virtual void StopMiniGame() { }
     }
 
-    public abstract class AbstractMiniGame : MonoBehaviour, IMiniGame, IGameLifeCycle
+    public abstract class AbstractMiniGame : AbstractGameLifeCycleBehaviour, IMiniGame
     {
         public Action<IMiniGame> OnComplete { get; set; }
 
         [SerializeField]
         protected CameraHolder _cameraHolder;
 
-        public abstract void Initialize();
-        public abstract void Dispose();
-
         public abstract void StartMiniGame();
         public abstract void StopMiniGame();
-
-        private void Start()
-        {
-            Initialize();
-        }
-
-        private void OnDestroy()
-        {
-            Dispose();
-        }
     }
 }

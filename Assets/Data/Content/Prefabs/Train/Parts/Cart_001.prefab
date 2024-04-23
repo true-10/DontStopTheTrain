@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3524230374516483663}
   - component: {fileID: 3344928941662334049}
+  - component: {fileID: 4645605203392294965}
   m_Layer: 0
   m_Name: Cart_001
   m_TagString: Untagged
@@ -51,6 +52,18 @@ MonoBehaviour:
   objectsRotation:
   - {fileID: 2443592957436660860}
   - {fileID: 2685090434191000794}
+--- !u!114 &4645605203392294965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4297353746813435125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34af61139065b804a91fee74bb1565a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4553039155165460103
 PrefabInstance:
   m_ObjectHideFlags: 0

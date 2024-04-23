@@ -7,7 +7,6 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace DontStopTheTrain
 {
@@ -19,7 +18,7 @@ namespace DontStopTheTrain
         [Inject]
         private TurnBasedController _turnBasedController;
         [Inject]
-        private UIController _uiController;
+        private UIContainer _UIContainer;
         [Inject]
         private EventController _eventController;
         [Inject]

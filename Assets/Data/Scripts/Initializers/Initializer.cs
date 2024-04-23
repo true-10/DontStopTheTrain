@@ -25,9 +25,7 @@ namespace DontStopTheTrain
 
         private void OnDestroy()
         {
-            _initializerControllers.Dispose();
-            _managersInitializer.Dispose();
-            _staticManagersInitializer.Dispose();
+            Dispose();
         }
 
         public void Initialize()
@@ -46,7 +44,9 @@ namespace DontStopTheTrain
 
         public void Dispose()
         {
-            throw new System.NotImplementedException();
+            _initializerControllers.Dispose();
+            _managersInitializer.Dispose();
+            _staticManagersInitializer.Dispose();
         }
     }
 }

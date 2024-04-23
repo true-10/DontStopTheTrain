@@ -9,7 +9,7 @@ using Zenject;
 
 namespace DontStopTheTrain.Events
 {
-    public abstract class AbstractEventObject : MonoBehaviour, IGameLifeCycle
+    public abstract class AbstractEventObject : AbstractGameLifeCycleBehaviour
     {
         public IEvent Event { get; private set; }
         public virtual IMiniGame MiniGame => null;
@@ -27,26 +27,15 @@ namespace DontStopTheTrain.Events
         {
             Event ??= eventData;
         }
-        public virtual void Initialize()
+        public override void Initialize()
         {
             IsStartAnimationCompleted = false;
             _eventObjectsManager.TryToAdd(this);
         }
 
-        public virtual void Dispose()
+        public override void Dispose()
         {
             _eventObjectsManager.TryToRemove(this);
-        }
-
-       
-        private void Start()
-        {
-            Initialize();
-        }
-
-        private void OnDestroy()
-        {
-            Dispose();
         }
 
 

@@ -7,7 +7,7 @@ using Zenject;
 
 namespace DontStopTheTrain
 {
-    public class DayTimeController : MonoBehaviour, IGameLifeCycle
+    public class DayTimeController : AbstractGameLifeCycleBehaviour
     {
         [Inject]
         private TurnBasedController _turnBasedController;
@@ -36,7 +36,7 @@ namespace DontStopTheTrain
         private float _intervalPerSettings;
         private int currentSettingIndex = 0;
 
-        public void Initialize()
+        public override void Initialize()
         {
             _dayTimeSystem.OnChange += OnTimeChange;
             _dayTimeSystem.Initialize(_dayDurationInSeconds);
@@ -51,7 +51,7 @@ namespace DontStopTheTrain
             _dayTimeSystem.OnNewDay += OnNewDayStarted;
 
         }
-        public void Dispose()
+        public override void Dispose()
         {
             _dayTimeSystem.OnChange -= OnTimeChange;
             _dayTimeSystem.OnStartRewind -= OnStartRewind;
@@ -92,16 +92,6 @@ namespace DontStopTheTrain
         {
             var progress = _dayTimeSystem.ProgressOfTheDay;
             SetLight(progress);
-        }
-
-        private void Start()
-        {
-            Initialize();
-        }
-
-        private void OnDestroy()
-        {
-            Dispose();
         }
     }
 }

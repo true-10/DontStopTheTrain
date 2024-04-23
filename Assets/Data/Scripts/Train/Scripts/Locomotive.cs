@@ -2,6 +2,7 @@ using DG.Tweening;
 using DontStopTheTrain.Events;
 using DontStopTheTrain.Train;
 using ModestTree;
+using System;
 using System.Collections.Generic;
 using True10.AnimationSystem;
 using True10.LevelScrollSystem;
@@ -14,9 +15,8 @@ namespace DontStopTheTrain
     public class Locomotive : MonoBehaviour, IWagon
     {
         [SerializeField]
-        private float mult = 1f;
-
-        public float SpeedMultiplayer => mult;
+        private float _defaultSpeed = 100f;
+        public float SpeedMultiplayer => _currentSpeed / 100f;
 
         public IReadOnlyCollection<IWagonSystem> Systems => throw new System.NotImplementedException();
 
@@ -42,17 +42,36 @@ namespace DontStopTheTrain
         private WagonsManager _wagonsManager;
 
         private float _currentSpeed;
-        private Tween speedTween = null;
+        //private Tween _speedTween = null;
+        private Sequence _speedSequence = null;
 
         public void SetSpeed(float speed)
         {
-            speedTween?.Complete();
-            speedTween = DOTween.To(() => _currentSpeed, x => _currentSpeed = x, speed, 1f)
-                .OnUpdate( () => _levelScroller.SetSpeed(_currentSpeed))
-                .OnComplete(() => _levelScroller.SetSpeed(_currentSpeed));
+            _speedSequence?.Complete();
+            _speedSequence = DOTween.Sequence();
+            _speedSequence.Append(DOSpeed(speed, 1f))
+                .OnUpdate( OnSpeedUpdate)
+                .OnComplete(OnSpeedUpdate);
                 //.SetEase(mult.Ease);
         }
 
+        public void StartMotion()
+        {
+            _speedSequence?.Complete();
+            _speedSequence = DOTween.Sequence();
+            _speedSequence.Append(DOSpeed(2f, 3f))
+                .Append(DOSpeed(10f, 5f))
+                .Append(DOSpeed(40f, 5f))
+                .Append(DOSpeed(_defaultSpeed, 8f))
+                .OnUpdate(OnSpeedUpdate)
+                .OnComplete(OnSpeedUpdate);
+
+        }
+
+        private Tween DOSpeed(float endValue, float duration)
+        {
+            return DOTween.To(() => _currentSpeed, x => _currentSpeed = x, endValue, duration);
+        }
         public void Dispose()
         {
             _wagonsManager.TryToRemove(this);
@@ -60,16 +79,26 @@ namespace DontStopTheTrain
 
         public void Initialize()
         {
-            _levelScroller.SetSpeed(0f);
+             _speedSequence = DOTween.Sequence();
             _wagonsManager.TryToAdd(this);
+            _levelScroller.SetSpeed(0f);
             SetSpeed(100f);
         }
 
 
-        void Start()
+        private void OnSpeedUpdate()
+        {
+            _levelScroller.SetSpeed(_currentSpeed);
+        }
+
+        private void Start()
         {
             Initialize();
         }
 
+        private void OnDestroy()
+        {
+            Dispose();
+        }
     }
 }

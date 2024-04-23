@@ -1,12 +1,10 @@
 using DontStopTheTrain.Events;
 using DontStopTheTrain.Train;
 using DontStopTheTrain.UI;
-using System.Collections;
 using System.Collections.Generic;
 using True10;
 using True10.Interfaces;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 namespace DontStopTheTrain
@@ -16,7 +14,7 @@ namespace DontStopTheTrain
         public abstract void Enter();
     }
 
-    public class WagonSystemView : MonoBehaviour, IGameLifeCycle// BasicView
+    public class WagonSystemView : AbstractGameLifeCycleBehaviour
     {
         public IEvent ActiveEvent { get; private set; }
         public IWagonSystem WagonSystem { get; private set; }
@@ -34,7 +32,7 @@ namespace DontStopTheTrain
 }
 
         [Inject]
-        private UIController _uiController;
+        private UIContainer _UIContainer;
         [Inject]
         private WagonSystemsFabric _fabric;
 
@@ -49,7 +47,7 @@ namespace DontStopTheTrain
         [SerializeField]
         private WagonSystemStaticDataBase _wagonSystemStaticDataBase;
 
-        public void Initialize()
+        public override void Initialize()
         {
             WagonSystem = _fabric.Create(_wagonSystemStaticDataBase);
             WagonSystem.Initialize();
@@ -65,7 +63,7 @@ namespace DontStopTheTrain
 
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
             WagonSystem.Dispose();
 
@@ -86,16 +84,16 @@ namespace DontStopTheTrain
         {
             if (ActiveEvent != null)
             {
-                if (_uiController.EventInfoPopup.IsAnchored == false)
+                if (_UIContainer.EventInfoPopup.IsAnchored == false)
                 {
-                    _uiController.EventInfoPopup.Show(ActiveEvent, _lookAtTransform, _clickableView);
+                    _UIContainer.EventInfoPopup.Show(ActiveEvent, _lookAtTransform, _clickableView);
                 }
             }
             else 
             {
-                if (_uiController.SystemInfoPopup.IsAnchored == false)
+                if (_UIContainer.SystemInfoPopup.IsAnchored == false)
                 {
-                    _uiController.SystemInfoPopup.Show(WagonSystem, _lookAtTransform, _clickableView);
+                    _UIContainer.SystemInfoPopup.Show(WagonSystem, _lookAtTransform, _clickableView);
                 }
             }
         }
@@ -104,16 +102,16 @@ namespace DontStopTheTrain
         {
             if (ActiveEvent != null)
             {
-                if (_uiController.EventInfoPopup.IsAnchored == false)
+                if (_UIContainer.EventInfoPopup.IsAnchored == false)
                 {
-                    _uiController.EventInfoPopup.CloseView();
+                    _UIContainer.EventInfoPopup.CloseView();
                 }
             }
             else
             {
-                if (_uiController.SystemInfoPopup.IsAnchored == false)
+                if (_UIContainer.SystemInfoPopup.IsAnchored == false)
                 {
-                    _uiController.SystemInfoPopup.CloseView();
+                    _UIContainer.SystemInfoPopup.CloseView();
                 }
             }
         }
@@ -123,27 +121,17 @@ namespace DontStopTheTrain
             if (ActiveEvent != null)
             {
                 //ActiveEvent.TryToFocus();
-                _uiController.EventInfoPopup.AnchorIt();
+                _UIContainer.EventInfoPopup.AnchorIt();
             }
             else
             {
-                _uiController.SystemInfoPopup.AnchorIt();
+                _UIContainer.SystemInfoPopup.AnchorIt();
             }
         }
 
         private void OnExitViewHandler()
         {
             //_cameraHolder.TurnOnPrevious();
-        }
-
-        private void Start()
-        {
-            Initialize();
-        }
-
-        private void OnDestroy()
-        {
-            Dispose();
         }
     }
 }

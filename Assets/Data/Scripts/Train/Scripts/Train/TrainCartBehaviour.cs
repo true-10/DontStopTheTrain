@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using True10.AnimationSystem;
+using True10.Interfaces;
+using True10.LevelScrollSystem;
 using UnityEngine;
+using Zenject;
 
 namespace DontStopTheTrain.Train
 {
-    public class TrainCartBehaviour : MonoBehaviour
+    public class TrainCartBehaviour : AbstractControllerBySpeed
     {
         [SerializeField]
         private float _rotationSpeed = 1000f;
@@ -15,13 +18,14 @@ namespace DontStopTheTrain.Train
         {
             foreach (var item in objectsRotation)
             {
-                item.SetSpeedRotation(x: speed);
+                item.SetSpeedRotation(x: -speed);
             }
         }
 
-        private void Start()
+        public override void OnSpeedChange(float speed)
         {
-            SetSpeedRotation(_rotationSpeed);
+            _locomotive ??= _wagonsManager.GetLocomotive();
+            SetSpeedRotation(_rotationSpeed * _locomotive.SpeedMultiplayer);
         }
     }
 }

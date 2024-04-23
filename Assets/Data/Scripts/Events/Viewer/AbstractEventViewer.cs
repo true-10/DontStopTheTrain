@@ -13,7 +13,7 @@ namespace DontStopTheTrain.Events
         bool TryToSetEventData(IEvent eventData);
     }
 
-    public abstract class AbstractEventViewer : MonoBehaviour, IEventViewer, IGameLifeCycle
+    public abstract class AbstractEventViewer : AbstractGameLifeCycleBehaviour, IEventViewer
     {
         public IEvent ActiveEvent => _eventData;
         public Action<IEvent> OnSetEvent { get; set; }
@@ -44,14 +44,14 @@ namespace DontStopTheTrain.Events
             OnSetEvent?.Invoke(null);
         }
 
-        public void Initialize()
+        public override void Initialize()
         {
             _eventViewersManager.TryToAdd(this);
             _eventController.OnStart += OnStartEvent;
             _eventController.OnComplete += OnCompleteEvent;
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
             _eventViewersManager.TryToRemove(this);
             _eventController.OnStart -= OnStartEvent;
@@ -60,15 +60,5 @@ namespace DontStopTheTrain.Events
 
         protected abstract void OnStartEvent(IEvent eventData);
         protected abstract void OnCompleteEvent(IEvent eventData);
-
-        private void Start()
-        {
-            Initialize();
-        }
-
-        private void OnDestroy()
-        {
-            Dispose();
-        }
     }
 }

@@ -8,7 +8,7 @@ using True10.DayTimeSystem;
 
 namespace True10.LevelScrollSystem
 {
-    public class LevelScrollController : MonoBehaviour, IGameLifeCycle
+    public class LevelScrollController : AbstractGameLifeCycleBehaviour
     {
         [Inject]
         private LevelChunksManager _chunkManager;
@@ -28,7 +28,7 @@ namespace True10.LevelScrollSystem
 
         private float normalSpeed;
 
-        public void Initialize()
+        public override void Initialize()
         {
             _spawner.SpawnChunks(BiomType.City, onSpawn: OnSpawn, OnComplete: OnCityChunkSpawned);
             _spawner.SpawnChunks(BiomType.Desert);
@@ -44,7 +44,7 @@ namespace True10.LevelScrollSystem
         }
 
 
-        public void Dispose()
+        public override void Dispose()
         {
             _levelScroller.OnEndReached -= OnChunkEndReached;
             _dayTimeSystem.OnStartRewind -= OnStartRewind;
@@ -129,12 +129,6 @@ namespace True10.LevelScrollSystem
 
             prevChunk = chunk;
         }
-
-        private void Start()
-        {
-            Initialize();
-        }
-
 
         private void Update()
         {

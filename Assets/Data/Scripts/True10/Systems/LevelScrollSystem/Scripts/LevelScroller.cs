@@ -9,6 +9,7 @@ namespace True10.LevelScrollSystem
     public class LevelScroller
     {
         public Action<ObjectToScroll> OnEndReached { get; set; }
+        public Action<float> OnSpeedChanged { get; set; }
         public float ScrollSpeed => Mathf.Abs(_scrollSpeed);
 
         [Inject]
@@ -20,6 +21,7 @@ namespace True10.LevelScrollSystem
         public void SetSpeed(float speed)
         {
             _scrollSpeed = -speed;
+            OnSpeedChanged?.Invoke(ScrollSpeed);
         }
 
         public void SetEnd(float endZ)

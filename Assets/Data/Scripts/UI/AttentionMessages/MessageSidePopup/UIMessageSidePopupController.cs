@@ -11,7 +11,7 @@ namespace DontStopTheTrain
 {
 
     /// - выезжающий UIмессадж сбоку. клик по нему - фокус на событии
-    public class UIMessageSidePopupController : MonoBehaviour, IGameLifeCycle
+    public class UIMessageSidePopupController : AbstractGameLifeCycleBehaviour
     {
         [Inject]
         private EventController _eventController;
@@ -25,7 +25,7 @@ namespace DontStopTheTrain
         [SerializeField]
         private float _timeToHide = 5f;
 
-        public void Initialize()
+        public override void Initialize()
         {
             foreach (var message in _messages)
             {
@@ -38,7 +38,7 @@ namespace DontStopTheTrain
         }
 
 
-        public void Dispose()
+        public override void Dispose()
         {
             _eventController.OnStart -= OnStartEvent;
             _eventController.OnComplete -= OnCompleteEvent;
@@ -90,16 +90,6 @@ namespace DontStopTheTrain
             var text = eventData.StaticData.Info.Name;
             TryToShowMessage(text);
 
-        }
-
-        private void Start()
-        {
-            Initialize();
-        }
-
-        private void OnDestroy()
-        {
-            Dispose();
         }
     }
 

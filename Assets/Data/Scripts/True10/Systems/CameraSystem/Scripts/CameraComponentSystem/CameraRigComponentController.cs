@@ -6,7 +6,7 @@ using Zenject;
 
 namespace True10.CameraSystem
 {
-    public class CameraRigComponentController : MonoBehaviour, IGameLifeCycle
+    public class CameraRigComponentController : AbstractGameLifeCycleBehaviour
     {
         [Inject]
         private ICameraController _cameraController;
@@ -17,7 +17,7 @@ namespace True10.CameraSystem
 
         private bool _isActive = true;
 
-        public void Initialize()
+        public override void Initialize()
         {
             foreach (AbstractCameraRigComponent component in _components)
             {
@@ -27,7 +27,7 @@ namespace True10.CameraSystem
             _cameraController.OnCameraOff += OnCameraOff;
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
             _cameraController.OnCameraOn -= OnCameraOn;
             _cameraController.OnCameraOff -= OnCameraOff;
@@ -53,11 +53,6 @@ namespace True10.CameraSystem
                 return;
             }
             _isActive = false;
-        }
-
-        private void Start()
-        {
-            Initialize();
         }
 
         private void Update()

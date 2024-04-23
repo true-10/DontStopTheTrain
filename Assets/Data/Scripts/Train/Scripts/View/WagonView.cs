@@ -1,30 +1,30 @@
 using DontStopTheTrain.Events;
-using DontStopTheTrain.MiniGames;
 using DontStopTheTrain.UI;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using True10;
 using True10.CameraSystem;
 using True10.Interfaces;
+using True10.LevelScrollSystem;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Zenject;
 
 namespace DontStopTheTrain.Train
 {
-    public sealed class WagonView : MonoBehaviour, IGameLifeCycle// BasicView
+    public sealed class WagonView : AbstractGameLifeCycleBehaviour
     {
         public List<WagonEventViewer> EventViewers => _eventViewers;//надо ли?
         public IWagon WagonData => _wagonData;
 
         [Inject]
-        private UIController _uiController;
+        private UIContainer _UIContainer;
         [Inject]
         private WagonsFabric _fabric;
         [Inject]
         private EventController _eventController;
+        [Inject]
+        private LevelScroller _levelScroller;
 
         [SerializeField]
         private ClickableView _clickableView;
@@ -43,7 +43,7 @@ namespace DontStopTheTrain.Train
 
         private IWagon _wagonData;
 
-        public void Initialize()
+        public override void Initialize()
         {
             _boxCollider ??= GetComponent<BoxCollider>();
             _wagonData = _fabric.Create(_wagonStaticData);
@@ -58,7 +58,7 @@ namespace DontStopTheTrain.Train
             _eventViewers.ForEach(viewer => viewer.OnSetEvent += OnSetEvent);
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
             _wagonData.Dispose();
 
@@ -74,9 +74,9 @@ namespace DontStopTheTrain.Train
         public void OnClickViewHandler()
         {
             _boxCollider.enabled = false;
-            _uiController.Wagon.Show(_clickableView);
-            _uiController.MainGamePlay.Hide();
-            _uiController.WagonInfoPopup.Hide();
+            _UIContainer.Wagon.Show(_clickableView);
+            _UIContainer.MainGamePlay.Hide();
+            _UIContainer.WagonInfoPopup.Hide();
             //_eventViewers.ForEach(viewer => viewer.IsClickable = true);
             _systemViewers.ForEach(viewer => viewer.IsClickable = true);
             _cameraHolder?.SwitchToThisCamera();
@@ -93,7 +93,7 @@ namespace DontStopTheTrain.Train
         public void OnExitViewHandler()
         {
             _boxCollider.enabled = true;
-            _uiController.MainGamePlay.Show();
+            _UIContainer.MainGamePlay.Show();
             _cameraHolder?.SwitchToDefaultCamera();
             //_eventViewers.ForEach(viewer => viewer.IsClickable = false);
             _systemViewers.ForEach(viewer => viewer.IsClickable = false);
@@ -101,12 +101,12 @@ namespace DontStopTheTrain.Train
 
         public void OnMouseOverEnterHandler()
         {
-            _uiController.WagonInfoPopup.Show(_wagonData, transform);
+            _UIContainer.WagonInfoPopup.Show(_wagonData, transform);
         }
 
         public void OnMouseOverExitHandler()
         {
-            _uiController.WagonInfoPopup.Hide();
+            _UIContainer.WagonInfoPopup.Hide();
         }
 
         private void OnSetEvent(IEvent eventData)
@@ -126,18 +126,6 @@ namespace DontStopTheTrain.Train
         {
             _boxCollider ??= GetComponent<BoxCollider>();
         }
-
-        private void Start()
-        {
-            Initialize();
-            //добавить вагон в менеджер
-        }
-
-        private void OnDestroy()
-        {
-            Dispose();
-        }
-
     }
    
 }
