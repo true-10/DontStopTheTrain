@@ -28,6 +28,8 @@ namespace DontStopTheTrain
         private BuffAndPerksService _buffAndPerksService;
         [Inject]
         private EventObjectsController _eventObjectsController;
+        [Inject]
+        private PointOfInterestController _poiController;
 
         [SerializeField]
         private InventoryStarterPackStorage _inventoryStartItemsStorage;
@@ -47,6 +49,8 @@ namespace DontStopTheTrain
             _eventObjectsController.Initialize();
             _cameraSwitcher.Initialize();
             _cameraController.SetDefaultCamera(_defaultCameraHolder);
+
+            _poiController.Initialize();
         }
 
         public void Dispose()
@@ -61,6 +65,8 @@ namespace DontStopTheTrain
             _buffsController.Dispose();
             _buffAndPerksService.Dispose();
             _cameraSwitcher.Dispose();
+
+            _poiController.Dispose();
         }
     }
 }

@@ -1,20 +1,23 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SetOfObjects<T> : ScriptableObject where T : Object
 {
-    [SerializeField] private List<T> chunkList;
+    public IReadOnlyCollection<T> Items => _items.ToList();
 
-    public T GetRandomChunk()
+    [SerializeField] private List<T> _items;
+
+    public T GetRandomItem()
     {
-        var randomIndex = Random.Range(0, chunkList.Count);
-        var randomChunk = chunkList[randomIndex];
+        var randomIndex = Random.Range(0, _items.Count);
+        var randomChunk = _items[randomIndex];
         return randomChunk;
     }
 
-    public T CreateRandomChunk(Transform root)
+    public T CreateRandomObject(Transform root)
     {
-        var chunkPrefab = GetRandomChunk();
+        var chunkPrefab = GetRandomItem();
         var newObject =  Instantiate(chunkPrefab, root);
         return newObject;
     }

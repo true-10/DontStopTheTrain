@@ -25,8 +25,15 @@ namespace True10.LevelScrollSystem
         private Transform _endPoint;
         [SerializeField]
         private BiomType _currentBiomType = BiomType.City;
+        [SerializeField]
+        private ChunkType _currentChunkType = ChunkType.Simple;
 
         private float normalSpeed;
+
+        public void RequestForChunk(ChunkType chunkType)
+        {
+            _currentChunkType = chunkType;
+        }
 
         public override void Initialize()
         {
@@ -99,7 +106,7 @@ namespace True10.LevelScrollSystem
                 Debug.Log($"lastChunk == null");
                 return;
             }
-            var newChunk = _chunkManager.GetRandomWeightedChunk(_currentBiomType);
+            var newChunk = _chunkManager.GetRandomWeightedChunk(_currentBiomType, _currentChunkType);
             if (newChunk == null)
             {
                 Debug.Log($"newChunk == null");
@@ -111,6 +118,11 @@ namespace True10.LevelScrollSystem
             obj.AlignToNext();
 
             objectToScroll.transform.position = _startPoint.position;
+
+            if (_currentChunkType != ChunkType.Simple)
+            {
+                _currentChunkType = ChunkType.Simple;
+            }
         }
 
         private LevelChunk prevChunk;

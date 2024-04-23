@@ -16,7 +16,10 @@ namespace True10.LevelScrollSystem
     public sealed class SetOfChunks : SetOfObjects<LevelChunk>
     {
         public BiomType BiomType => _biomType;
+        public LevelChunk StationChunk => _station;
 
         [SerializeField]
         private BiomType _biomType;
+        [SerializeField]
+        private LevelChunk _station;
     }

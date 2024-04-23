@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9acbdc8d8e19d1d4cb64300b7c75879b, type: 3}
   m_Name: SetOfChunks_L0 Forest
   m_EditorClassIdentifier: 
-  chunkList:
+  _items:
   - {fileID: 7328723965453698995, guid: 6b0d6eed5c223354fba0ec850ec5abbd, type: 3}
   - {fileID: 1031798176226360883, guid: d50296a13600bba448af6e8370158369, type: 3}
   _biomType: 2
+  _station: {fileID: 6641025884389847141, guid: 0439f43e9602c924d84c421d36c17b6c,
+    type: 3}

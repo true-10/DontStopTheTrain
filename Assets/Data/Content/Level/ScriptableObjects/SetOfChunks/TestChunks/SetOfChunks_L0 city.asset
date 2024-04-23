@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9acbdc8d8e19d1d4cb64300b7c75879b, type: 3}
   m_Name: SetOfChunks_L0 city
   m_EditorClassIdentifier: 
-  chunkList:
+  _items:
   - {fileID: 9197431378270043373, guid: 9c48fa77cafa74142a2e78813e3dff39, type: 3}
   - {fileID: 9087173925276105076, guid: 573313fbf604d584cb1ef8e90aefb475, type: 3}
   - {fileID: 4140087334563805485, guid: a112109b3b22acd4bbf6a38a1e303a29, type: 3}
   - {fileID: 3059489711973878037, guid: 4c40758fedab851428dd28f359799a45, type: 3}
   - {fileID: 5927473649209107138, guid: 23ce650ed111e2842abf7110e9a100eb, type: 3}
   - {fileID: 4798431446823086724, guid: f52ae54370da4c349a0cc2ae4d9be72a, type: 3}
-  - {fileID: 6641025884389847141, guid: 23ba406cb895ca044b4d3f1b9dbfc45e, type: 3}
   _biomType: 0
+  _station: {fileID: 6641025884389847141, guid: 23ba406cb895ca044b4d3f1b9dbfc45e,
+    type: 3}

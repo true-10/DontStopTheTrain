@@ -5,6 +5,7 @@ using ModestTree;
 using System;
 using System.Collections.Generic;
 using True10.AnimationSystem;
+using True10.Interfaces;
 using True10.LevelScrollSystem;
 using UniRx;
 using UnityEngine;
@@ -12,7 +13,7 @@ using Zenject;
 
 namespace DontStopTheTrain
 {
-    public class Locomotive : MonoBehaviour, IWagon
+    public class Locomotive : AbstractGameLifeCycleBehaviour, IWagon
     {
         [SerializeField]
         private float _defaultSpeed = 100f;
@@ -42,17 +43,15 @@ namespace DontStopTheTrain
         private WagonsManager _wagonsManager;
 
         private float _currentSpeed;
-        //private Tween _speedTween = null;
         private Sequence _speedSequence = null;
 
-        public void SetSpeed(float speed)
+        public void SetSpeed(float speed, float duration = 1f)
         {
             _speedSequence?.Complete();
             _speedSequence = DOTween.Sequence();
-            _speedSequence.Append(DOSpeed(speed, 1f))
+            _speedSequence.Append(DOSpeed(speed, duration))
                 .OnUpdate( OnSpeedUpdate)
                 .OnComplete(OnSpeedUpdate);
-                //.SetEase(mult.Ease);
         }
 
         public void StartMotion()
@@ -72,33 +71,22 @@ namespace DontStopTheTrain
         {
             return DOTween.To(() => _currentSpeed, x => _currentSpeed = x, endValue, duration);
         }
-        public void Dispose()
+
+        public override void Dispose()
         {
             _wagonsManager.TryToRemove(this);
         }
 
-        public void Initialize()
+        public override void Initialize()
         {
-             _speedSequence = DOTween.Sequence();
             _wagonsManager.TryToAdd(this);
             _levelScroller.SetSpeed(0f);
-            SetSpeed(100f);
+            StartMotion();
         }
-
 
         private void OnSpeedUpdate()
         {
             _levelScroller.SetSpeed(_currentSpeed);
-        }
-
-        private void Start()
-        {
-            Initialize();
-        }
-
-        private void OnDestroy()
-        {
-            Dispose();
         }
     }
 }

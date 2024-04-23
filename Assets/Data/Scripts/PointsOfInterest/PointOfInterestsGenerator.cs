@@ -7,10 +7,12 @@
 
         public PointOfInterest GeneratePoint(int currentDay)
         {
-            var travelDays = UnityEngine.Random.Range(minDays, maxDays);
+            var travelDays = UnityEngine.Random.Range(currentDay + minDays, currentDay + maxDays);
             return new PointOfInterest()
             {
-                TravelDays = travelDays
+                TravelDays = travelDays,
+                ChunkType = True10.LevelScrollSystem.ChunkType.Station
+
             };
 
         }

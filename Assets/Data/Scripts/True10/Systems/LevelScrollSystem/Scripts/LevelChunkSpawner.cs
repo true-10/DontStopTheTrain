@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.Rendering;
 using UnityEngine;
 using Zenject;
 
@@ -27,9 +28,11 @@ namespace True10.LevelScrollSystem
             StartCoroutine(SpawnChunksCoroutine(biomType, onSpawn, OnComplete));
         }
 
-        IEnumerator SpawnChunksCoroutine(BiomType biomType,Action<LevelChunk> onSpawn, Action OnComplete)
+        private IEnumerator SpawnChunksCoroutine(BiomType biomType, Action<LevelChunk> onSpawn, Action OnComplete)
         {
-            var spawnData = _spawnData.Where(sd => sd.Chunks.BiomType == biomType).ToList() ;
+            var spawnData = _spawnData
+                .Where(sd => sd.Chunks.BiomType == biomType)
+                .ToList() ;
             foreach (SpawnChunksData chunk in spawnData)
             {
                 var setOfChunk = chunk.Chunks;
@@ -38,13 +41,18 @@ namespace True10.LevelScrollSystem
                 var root = chunk.Root;
                 for (int i = 0; i < count; i++)
                 {
-                    var levelChunk = chunk.Chunks.CreateRandomChunk(root);
+                    var levelChunk = chunk.Chunks.CreateRandomObject(root);
                     levelChunk.gameObject.SetActive(false);
                     _chunkManager.TryToAdd(levelChunk);
                     onSpawn?.Invoke(levelChunk);
                     yield return null;
                 }
                 yield return null;
+                
+                var stationChunk = Instantiate(chunk.Chunks.StationChunk, root);
+                stationChunk.gameObject.SetActive(false);
+                _chunkManager.TryToAdd(stationChunk);
+                onSpawn?.Invoke(stationChunk);
 
             }
             yield return null;
