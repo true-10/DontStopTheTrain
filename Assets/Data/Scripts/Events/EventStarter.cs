@@ -21,6 +21,10 @@ namespace DontStopTheTrain.Events
         private EventViewersManager _eventViewersManager;
         [Inject]
         private EventsManager _eventManager;
+        [Inject]
+        private PointOfInterestController _poiController;
+        [Inject]
+        private Player _player;
 
         private Queue<IEvent> _eventsToReset = new();
 
@@ -42,8 +46,17 @@ namespace DontStopTheTrain.Events
             _eventsToReset.Clear();
         }
 
+        private bool CanStartEvent()
+        {
+            return _poiController.IsArrivalDay == false;
+        }
+
         public bool TryToStartViewEvents()
         {
+            if (CanStartEvent() == false)
+            {
+                return false;
+            }
             var view = _eventViewersManager
                 .Items
                 .Where(viewer => viewer.Type == EventType.View)
@@ -67,6 +80,10 @@ namespace DontStopTheTrain.Events
             IReadOnlyCollection<WagonEventType> wagonEventTypes, 
             Action<IEvent> onGetEvent)
         {
+            if (CanStartEvent() == false)
+            {
+                return false;
+            }
             int chance = GenerateChance(threshold);
             if (chance < noEventChance)
             {

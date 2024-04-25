@@ -2,12 +2,12 @@
 {
     public class PointOfInterestsGenerator
     {
-        private int minDays = 5;
-        private int maxDays = 20;
+        private int minDays = 3;
+        private int maxDays = 10;
 
         public PointOfInterest GeneratePoint(int currentDay)
         {
-            var travelDays = UnityEngine.Random.Range(currentDay + minDays, currentDay + maxDays);
+            var travelDays = currentDay + UnityEngine.Random.Range(minDays, maxDays);
             return new PointOfInterest()
             {
                 TravelDays = travelDays,

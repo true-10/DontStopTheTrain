@@ -22,7 +22,7 @@ namespace DontStopTheTrain.Train
         {
             if (_tween != null)
             {
-                _tween?.Complete();
+                //_tween?.Complete();
                 OnTweenComplete();
             }
         }

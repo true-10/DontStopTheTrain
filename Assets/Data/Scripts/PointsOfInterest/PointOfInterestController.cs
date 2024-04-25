@@ -43,7 +43,7 @@ namespace DontStopTheTrain
         public void Initialize()
         {
             _player.Days
-                .Subscribe(x => TryToGetChunk(x))
+                .Subscribe(x => UpdatePointsOfInterest(x))
                 .AddTo(_disposables);
 
             var lastDay = 1;
@@ -52,6 +52,19 @@ namespace DontStopTheTrain
                 var poi = _generator.GeneratePoint(lastDay);
                 _manager.TryToAdd(poi);
                 lastDay = poi.TravelDays;
+            }
+        }
+
+
+        private void UpdatePointsOfInterest(int currentDay)
+        {
+            TryToGetChunk(currentDay);
+            TryToRemoveObsoletePoints(currentDay);
+            GenerateNewPoints(currentDay);
+
+            foreach (var item in _manager.Items)
+            {
+                Debug.Log($"arrival day: {item.TravelDays}");
             }
         }
 
@@ -65,9 +78,23 @@ namespace DontStopTheTrain
             }
             _levelScrollController.RequestForChunk(pointOfInterest.ChunkType);
             IsArrivalDay = true;
-            _UIContainer.MainGamePlay.Hide();
+            _UIContainer.Message.ShowMessage("Arrival Day");
+           // _UIContainer.Message.ShowMessage("Arrival Day", onHide: () => _UIContainer.MainGamePlay.Show());
         }
 
-        //currentPath
+        private void TryToRemoveObsoletePoints(int currentDay)
+        {
+            var pointsOfInterest = _manager.Items.Where(x => x.TravelDays < currentDay).ToList();
+            pointsOfInterest.ForEach(x => _manager.TryToRemove(x));
+        }
+
+        private void GenerateNewPoints(int currentDay)
+        {
+            if (_manager.Items.Count <= 1)
+            {
+                var poi = _generator.GeneratePoint(currentDay);
+                _manager.TryToAdd(poi);
+            }
+        }
     }
 }

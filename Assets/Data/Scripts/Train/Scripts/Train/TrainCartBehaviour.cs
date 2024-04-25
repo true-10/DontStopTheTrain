@@ -18,7 +18,7 @@ namespace DontStopTheTrain.Train
         {
             foreach (var item in objectsRotation)
             {
-                item.SetSpeedRotation(x: -speed);
+                item.SetSpeedRotation(x: speed);
             }
         }
 

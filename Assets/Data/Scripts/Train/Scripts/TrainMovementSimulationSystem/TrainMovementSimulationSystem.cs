@@ -22,6 +22,7 @@ namespace DontStopTheTrain.Train
 
         private void Update()
         {
+            _locomotive ??= _wagonsManager.GetLocomotive();
             _transformSimulationSystem.Simulation(_multiplayer);
         }
 

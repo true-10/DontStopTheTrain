@@ -19,9 +19,9 @@ namespace DontStopTheTrain
         private bool _startNextTurn = false;
 
 
-        void Start()
+        public void StartLoop()
         {
-            _turnLoopCoroutine = StartCoroutine( TurnLoopCoroutine() );
+            _turnLoopCoroutine = StartCoroutine(TurnLoopCoroutine());
         }
 
         private IEnumerator TurnLoopCoroutine()

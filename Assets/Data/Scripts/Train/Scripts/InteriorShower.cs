@@ -18,12 +18,18 @@ namespace DontStopTheTrain.Train
 
         private void OnExitWagonView()
         {
-            _frontWall.SetActive(true);
+            if (_frontWall != null)
+            {
+                _frontWall.SetActive(true);
+            }
         }
 
         private void OnEnterWagonView()
         {
-            _frontWall.SetActive(false);
+            if (_frontWall != null)
+            {
+                _frontWall.SetActive(false);
+            }
         }
 
         private void OnEnable()
@@ -43,7 +49,6 @@ namespace DontStopTheTrain.Train
         private void OnEventFocus(IEvent eventData)
         {
             OnEnterWagonView();
-
         }
     }
 }

@@ -9,21 +9,21 @@ namespace True10.DebugUtils
     public class UIFPSCounter : MonoBehaviour
     {
         [SerializeField]
-        private TextMeshProUGUI fpsText;
+        private TextMeshProUGUI _fpsText;
 
-        private int fpsCount = 0;
-        private float timer = 0f;
+        private int _fpsCount = 0;
+        private float _timer = 0f;
 
-        void Update()
+        private void Update()
         {
-            fpsCount++;
-            timer += Time.deltaTime;
+            _fpsCount++;
+            _timer += Time.deltaTime;
 
-            if (timer > 1f)
+            if (_timer > 1f)
             {
-                fpsText.text = $"fps: {fpsCount}";
-                fpsCount = 0;
-                timer = 0f;
+                _fpsText.text = $"fps: {_fpsCount}";
+                _fpsCount = 0;
+                _timer = 0f;
             }
         }
     }

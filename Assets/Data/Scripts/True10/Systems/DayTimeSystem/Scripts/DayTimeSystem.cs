@@ -6,8 +6,7 @@ namespace True10.DayTimeSystem
 {
     public class DayTimeSystem : IGameLifeCycle
     {
-        public Action OnStartRewind { get; set; }
-        public Action OnEndRewind { get; set; }
+        public Action<bool> OnRewind { get; set; }
         public Action OnNewDay { get; set; }
         public Action<DateTime> OnChange { get; set; }
         public DateTime DateTime { get => _dateTime; }
@@ -36,6 +35,17 @@ namespace True10.DayTimeSystem
             _isPaused = false;
         }
 
+        public void StopRewind()
+        {
+            if (_isOnRewind == false)
+            {
+                return;
+            }
+            _isOnRewind = false;
+            OnRewind?.Invoke(_isOnRewind);
+            Initialize();
+        }
+
         public void RewindToNextDay()
         {
             if (_isOnRewind)
@@ -43,7 +53,7 @@ namespace True10.DayTimeSystem
                 return;
             }
             _isOnRewind = true;
-            OnStartRewind?.Invoke();
+            OnRewind?.Invoke(_isOnRewind);
             double intervalInMilliSeconds = 1;
             Initialize(intervalInMilliSeconds, UpdateRewind);
         }
@@ -102,8 +112,7 @@ namespace True10.DayTimeSystem
             {
                 if (_dateTime.Minute == 59)
                 {
-                    OnEndRewind?.Invoke();
-                    Initialize();
+                    StopRewind();
                 }
                 else
                 {

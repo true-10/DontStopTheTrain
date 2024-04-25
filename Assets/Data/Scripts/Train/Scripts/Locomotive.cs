@@ -80,8 +80,9 @@ namespace DontStopTheTrain
         public override void Initialize()
         {
             _wagonsManager.TryToAdd(this);
-            _levelScroller.SetSpeed(0f);
-            StartMotion();
+            SetSpeed(0f, 0f);
+            OnSpeedUpdate();
+            //StartMotion();
         }
 
         private void OnSpeedUpdate()

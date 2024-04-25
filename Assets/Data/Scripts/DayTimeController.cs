@@ -46,32 +46,23 @@ namespace DontStopTheTrain
             {
                 _cloudLayerController.SetSpeed(_speed);
             }
-            _dayTimeSystem.OnStartRewind += OnStartRewind;
-            _dayTimeSystem.OnEndRewind += OnEndRewind;
+            _dayTimeSystem.OnRewind += OnRewind;
             _dayTimeSystem.OnNewDay += OnNewDayStarted;
 
         }
         public override void Dispose()
         {
             _dayTimeSystem.OnChange -= OnTimeChange;
-            _dayTimeSystem.OnStartRewind -= OnStartRewind;
-            _dayTimeSystem.OnEndRewind -= OnEndRewind;
+            _dayTimeSystem.OnRewind -= OnRewind;
             _dayTimeSystem.OnNewDay -= OnNewDayStarted;
         }
 
-        private void OnStartRewind()
+        private void OnRewind(bool isOnRewind)
         {
+            var speed = isOnRewind ? _rewindSpeed : _speed;
             if (_cloudLayerController != null)
             {
-                _cloudLayerController.SetSpeed(_rewindSpeed);
-            }
-        }
-
-        private void OnEndRewind()
-        {
-            if (_cloudLayerController != null)
-            {
-                _cloudLayerController.SetSpeed(_speed);
+                _cloudLayerController.SetSpeed(speed);
             }
         }
 
