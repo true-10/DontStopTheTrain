@@ -666,11 +666,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bedf04c6154c4764b8fe216905299875, type: 2}
+      objectReference: {fileID: 2100000, guid: 53123e451460649499edb50c171a4496, type: 2}
     - target: {fileID: 919132149155446097, guid: 227a53a608b765c4294e49e6992221b2,
         type: 3}
       propertyPath: m_Name
       value: Road Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 227a53a608b765c4294e49e6992221b2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -682,6 +687,80 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 227a53a608b765c4294e49e6992221b2,
     type: 3}
   m_PrefabInstance: {fileID: 399709701157970898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2214736776379860193
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2586046832158041421}
+    m_Modifications:
+    - target: {fileID: 1623392122011882467, guid: c70cc05e97af078439e9b96745396c58,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623392122011882467, guid: c70cc05e97af078439e9b96745396c58,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623392122011882467, guid: c70cc05e97af078439e9b96745396c58,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -250
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623392122011882467, guid: c70cc05e97af078439e9b96745396c58,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623392122011882467, guid: c70cc05e97af078439e9b96745396c58,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623392122011882467, guid: c70cc05e97af078439e9b96745396c58,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623392122011882467, guid: c70cc05e97af078439e9b96745396c58,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623392122011882467, guid: c70cc05e97af078439e9b96745396c58,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623392122011882467, guid: c70cc05e97af078439e9b96745396c58,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623392122011882467, guid: c70cc05e97af078439e9b96745396c58,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8006920800019227413, guid: c70cc05e97af078439e9b96745396c58,
+        type: 3}
+      propertyPath: m_Name
+      value: TerrainForest
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c70cc05e97af078439e9b96745396c58, type: 3}
+--- !u!4 &593104976800257794 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1623392122011882467, guid: c70cc05e97af078439e9b96745396c58,
+    type: 3}
+  m_PrefabInstance: {fileID: 2214736776379860193}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2663385787601509426
 PrefabInstance:
@@ -908,6 +987,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 146002669443548217}
+    - targetCorrespondingSourceObject: {fileID: 510389618076694911, guid: 9c48fa77cafa74142a2e78813e3dff39,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 593104976800257794}
     - targetCorrespondingSourceObject: {fileID: 4928888223344466487, guid: 9c48fa77cafa74142a2e78813e3dff39,
         type: 3}
       insertIndex: -1
@@ -993,6 +1076,7 @@ MonoBehaviour:
   _exitTrigger: {fileID: 5674923181281448670}
   _staticData: {fileID: 11400000, guid: d64c7c189dd10904eb4297dbc7aeca14, type: 2}
   _stoppageTrigger: {fileID: 2074503213430425416}
+  _cameraHolder: {fileID: 0}
 --- !u!114 &5674923181281448670 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7653691454839508716, guid: 9c48fa77cafa74142a2e78813e3dff39,

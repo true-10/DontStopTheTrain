@@ -1,4 +1,5 @@
 ﻿using DontStopTheTrain.UI;
+using True10.CameraSystem;
 using True10.TriggerSystem;
 using UnityEngine;
 using Zenject;
@@ -10,9 +11,14 @@ namespace True10.LevelScrollSystem
     {
         [Inject]
         private UIContainer _UIContainer;
+        [Inject]
+        private DayTimeSystem.DayTimeSystem _dayTimeSystem;
 
         [SerializeField]
         protected SimpleTrigger _stoppageTrigger;
+        
+        [SerializeField]
+        protected CameraHolder _cameraHolder;
 
         public override void Initialize()
         {
@@ -30,6 +36,9 @@ namespace True10.LevelScrollSystem
         {
             _UIContainer.MainGamePlay.Hide();
             _UIContainer.Station.Show();
+            _dayTimeSystem.Pause();
+            
+            _cameraHolder?.SwitchToThisCamera();
         }
 
     }

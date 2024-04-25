@@ -29,10 +29,13 @@ namespace True10.LevelScrollSystem
         private ChunkType _currentChunkType = ChunkType.Simple;
 
         private float normalSpeed;
+        private LevelChunk _currentChunk;
+        private bool _tryToStopRewind = false;
 
         public void RequestForChunk(ChunkType chunkType)
         {
             _currentChunkType = chunkType;
+            _tryToStopRewind = true;
         }
 
         public override void Initialize()
@@ -44,9 +47,8 @@ namespace True10.LevelScrollSystem
             _levelScroller.SetEnd(_endPoint.position.z);
 
             _levelScroller.OnEndReached += OnChunkEndReached;
-            _dayTimeSystem.OnStartRewind += OnStartRewind;
-            _dayTimeSystem.OnEndRewind += OnEndRewind;
-
+            _dayTimeSystem.OnRewind += OnRewind;
+            _chunkManager.OnChunkEnter += OnChunkEnter;
 
         }
 
@@ -54,19 +56,31 @@ namespace True10.LevelScrollSystem
         public override void Dispose()
         {
             _levelScroller.OnEndReached -= OnChunkEndReached;
-            _dayTimeSystem.OnStartRewind -= OnStartRewind;
-            _dayTimeSystem.OnEndRewind -= OnEndRewind;
+            _dayTimeSystem.OnRewind -= OnRewind;
+            _chunkManager.OnChunkEnter -= OnChunkEnter;
         }
 
-        private void OnStartRewind()
+        private void OnChunkEnter(LevelChunk chunk)
         {
-            normalSpeed = _levelScroller.ScrollSpeed;
-            _levelScroller.SetSpeed(normalSpeed * 50f);
+            _currentChunk = chunk;
+            if (_currentChunk.StaticData.Type != ChunkType.Simple && _tryToStopRewind == true)
+            {
+                _tryToStopRewind = false;
+                _dayTimeSystem.StopRewind();
+            }
         }
 
-        private void OnEndRewind()
+        private void OnRewind(bool isOnRewind)
         {
-            _levelScroller.SetSpeed(normalSpeed);
+            if (isOnRewind)
+            {
+                normalSpeed = _levelScroller.ScrollSpeed;
+                _levelScroller.SetSpeed(normalSpeed * 50f);
+            }
+            else
+            {
+                _levelScroller.SetSpeed(normalSpeed);
+            }
         }
 
         private void OnCityChunkSpawned()
@@ -96,7 +110,7 @@ namespace True10.LevelScrollSystem
                         break;
                 }
               //  _currentBiomType = (remainder == 1) ? BiomType.Desert : BiomType.City;
-                Debug.Log($"_currentBiomType = {_currentBiomType} index = {index}");
+              //  Debug.Log($"_currentBiomType = {_currentBiomType} index = {index}");
             }
             objectToScroll.gameObject.SetActive(false);
             var orderedChunkbyZPos = _chunkManager.GetActiveChunks().OrderBy(chunk => chunk.transform.position.z);
@@ -128,6 +142,10 @@ namespace True10.LevelScrollSystem
         private LevelChunk prevChunk;
         private void OnSpawn(LevelChunk chunk)
         {
+            if (chunk.StaticData.Type != ChunkType.Simple)
+            {
+                return;
+            }
             chunk.gameObject.SetActive(true);
             if (prevChunk != null)
             {
