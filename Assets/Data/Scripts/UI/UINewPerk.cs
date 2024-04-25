@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace DontStopTheTrain
+namespace DontStopTheTrain.UI
 {
     public partial class UINewPerk : UIScreen
     {

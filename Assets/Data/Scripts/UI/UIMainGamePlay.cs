@@ -1,5 +1,4 @@
 using DontStopTheTrain.Events;
-using DontStopTheTrain.UI;
 using System;
 using TMPro;
 using True10.DayTimeSystem;
@@ -8,9 +7,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace DontStopTheTrain
+namespace DontStopTheTrain.UI
 {
-
     public class UIMainGamePlay : UIScreen
     {
         [Inject]
@@ -27,6 +25,8 @@ namespace DontStopTheTrain
         [SerializeField]
         private Button _completeButton;
         [SerializeField]
+        private Button _gameMenuButton;
+        [SerializeField]
         private TextMeshProUGUI _turnNumberText;
 
         private CompositeDisposable _disposables = new CompositeDisposable();
@@ -35,15 +35,31 @@ namespace DontStopTheTrain
         {
             _dayTimeSystem.OnChange += OnTimeChange;
             _completeButton.onClick.AddListener(CompleteTurn);
+            _gameMenuButton.onClick.AddListener(ShowGameMenu);
            // _player.Days.Subscribe(x => UpdateTurnText(x)).AddTo(_disposables);
             UpdateTurnText(_player.Days.Value);
+            _dayTimeSystem.OnRewind += OnRewind;
         }
+
 
         private void OnDisable()
         {
             _dayTimeSystem.OnChange -= OnTimeChange;
             _completeButton.onClick.RemoveAllListeners();
+            _gameMenuButton.onClick.RemoveAllListeners();
             _disposables.Clear();
+            _dayTimeSystem.OnRewind -= OnRewind;
+        }
+
+        private void ShowGameMenu()
+        {
+            Hide();
+            _UIContainer.GameMenu.Show();
+        }
+
+        private void OnRewind(bool isOnRewind)
+        {
+            _completeButton.gameObject.SetActive(isOnRewind == false);
         }
 
         private void OnTimeChange(DateTime time)

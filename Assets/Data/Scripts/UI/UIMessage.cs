@@ -3,7 +3,8 @@ using UnityEngine;
 using DG.Tweening;
 using UniRx;
 using System;
-namespace DontStopTheTrain
+
+namespace DontStopTheTrain.UI
 {
 
     public sealed class UIMessage : MonoBehaviour
@@ -18,17 +19,18 @@ namespace DontStopTheTrain
         private ParticleSystem _showUpParticles;
 
         private IDisposable fadeOutInterval;
-
+        private Action _onHideMessageCallback = null;
         private void Start()
         {
             _canvasGroup.gameObject.SetActive(false);
         }
 
-        public void ShowMessage(string message, float hideAfterSeconds = 3f)
+        public void ShowMessage(string message, float hideAfterSeconds = 3f, Action onHide = null)
         {
             _messageText.text = message;
             _canvasGroup.gameObject.SetActive(true);
             _canvasGroup.alpha = 1f;
+            _onHideMessageCallback = onHide;
             FadeOutAfter(hideAfterSeconds);
         }
 
@@ -48,6 +50,7 @@ namespace DontStopTheTrain
         private void OnMessageComplete()
         {
             _canvasGroup.gameObject.SetActive(false);
+            _onHideMessageCallback?.Invoke();
         }
     }
 

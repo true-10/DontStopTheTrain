@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DontStopTheTrain
+namespace DontStopTheTrain.UI
 {
     public abstract class UIBasePopup : UIScreen
     {

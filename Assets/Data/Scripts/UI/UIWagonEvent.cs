@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace DontStopTheTrain
+namespace DontStopTheTrain.UI
 {
     [Obsolete]
     public class UIWagonEvent : UIScreen

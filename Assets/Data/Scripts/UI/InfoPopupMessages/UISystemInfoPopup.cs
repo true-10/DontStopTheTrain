@@ -6,7 +6,7 @@ using True10.BattleSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DontStopTheTrain
+namespace DontStopTheTrain.UI
 {
     public class UISystemInfoPopup : UIBasePopup
     {

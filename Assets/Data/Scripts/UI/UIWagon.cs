@@ -4,7 +4,7 @@ using True10;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DontStopTheTrain
+namespace DontStopTheTrain.UI
 { 
     public class UIWagon : UIScreen
     {

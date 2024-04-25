@@ -6,11 +6,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace DontStopTheTrain
+namespace DontStopTheTrain.UI
 {
 
     public class UIStation : UIScreen
     {
+        [Inject]
+        private DayTimeSystem _dayTimeSystem;
         [Inject]
         private WagonsManager _wagonsManager;
         [Inject]
@@ -29,6 +31,7 @@ namespace DontStopTheTrain
             _UIContainer.Station.Hide();
             var locomotive = _wagonsManager.GetLocomotive();
 
+            _dayTimeSystem.UnPause();
             locomotive.StartMotion();
         }
 

@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace DontStopTheTrain
+namespace DontStopTheTrain.UI
 {
     public class UIEventInfoPopup : UIBasePopup
     {

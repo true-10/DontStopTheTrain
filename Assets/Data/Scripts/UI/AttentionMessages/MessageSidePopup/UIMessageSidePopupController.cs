@@ -1,13 +1,12 @@
 using DontStopTheTrain.Events;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using True10.Interfaces;
 using UnityEngine;
 using Zenject;
 
-namespace DontStopTheTrain
+namespace DontStopTheTrain.UI
 {
 
     /// - выезжающий UIмессадж сбоку. клик по нему - фокус на событии

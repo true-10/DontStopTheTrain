@@ -20,6 +20,9 @@ namespace DontStopTheTrain.UI
         public UISystemInfoPopup SystemInfoPopup => _systemInfoPopup;
         public UINewPerk NewPerk => _newPerk;
         public UIStation Station => _station;
+        public UIStartMenu StartMenu => _startMenu;
+        public UIGameMenu GameMenu => _gameMenu;
+        public UIFader Fader => _fader;
 
         [SerializeField] 
         private UIMessage _message;
@@ -37,6 +40,12 @@ namespace DontStopTheTrain.UI
         private UIStation _station;
         [SerializeField] 
         private UIWagonInfoPopup _wagonInfoPopup;
+        [SerializeField] 
+        private UIStartMenu _startMenu;
+        [SerializeField] 
+        private UIGameMenu _gameMenu;
+        [SerializeField] 
+        private UIFader _fader;
              
         public void DisableUI()
         {
