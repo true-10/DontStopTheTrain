@@ -18,6 +18,11 @@ namespace True10
 
         private Transform _cachedTransform;
 
+        public void SetCenterTransform(Transform centerTransform)
+        {
+            _centerTransform = centerTransform;
+        }
+
         public void SetExtents(float? x = null, float? y = null, float? z = null)
         {
             if (x != null)
