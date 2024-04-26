@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc89ebd006cca364e80746db1c069a3f, type: 3}
+  m_Name: CameraRigComponentRotationLocalLimitsTrain
+  m_EditorClassIdentifier: 
+  _name: train limits for mouse rotation
+  _comment: 
+  _rotationTarget: 1
+  _isLocal: 1
+  _xRotationLimits: {x: -10, y: 30}
+  _yRotationLimits: {x: -80, y: 80}
+  _zRotationLimits: {x: 0, y: 0}

@@ -12,7 +12,7 @@ namespace True10.CameraSystem
         protected ICameraHolder _cameraHolder;
         protected ICameraInputReader _cameraInputReader;
 
-        public virtual void Init(ICameraHolder cameraHolder, ICameraInputReader cameraInputReader)
+        public virtual void Initialize(ICameraHolder cameraHolder, ICameraInputReader cameraInputReader)
         {
             _cameraHolder = cameraHolder;
             _cameraInputReader = cameraInputReader;

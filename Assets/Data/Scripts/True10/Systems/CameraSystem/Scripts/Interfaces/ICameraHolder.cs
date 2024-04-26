@@ -11,16 +11,15 @@ namespace True10.CameraSystem
         bool IsDisabled { get; set; }
         Transform Follow { get; set; }
         Transform LookAt { get; set; }
+        Transform CameraRigStartPosiition { get; }
         CameraRig CameraRig { get;}
         int Weight { get;}
 
-        /// <summary>
-        /// start script for control camera (move target and aim around)
-        /// </summary>
-        void InitCustomCameraController();
         void SwitchToThisCamera();
         void SwitchToDefaultCamera(); 
         void SwitchToPreviousCamera();
         void SetFOV(float fov);
+
+        void SetRig(CameraRig rig);
     }
 }

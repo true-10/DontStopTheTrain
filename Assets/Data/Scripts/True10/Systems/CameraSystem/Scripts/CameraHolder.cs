@@ -8,18 +8,25 @@ using Zenject;
 namespace True10.CameraSystem
 {
 
+    public enum CameraGroup
+    {
+        None = 0,
+        Train = 1,
+        Wagon = 2,
+    }
     public class CameraHolder : MonoBehaviour, ICameraHolder
     {
 
         public string CameraName => gameObject.name;
         public int HashCode => gameObject.GetHashCode();//
-        public int Group => _group;//
+        public int Group => (int)_cameraGroup;//
         public int Priority { get => _cinemachineVirtualCamera.m_Priority; set => _cinemachineVirtualCamera.m_Priority = value; }
         public bool IsDisabled { get => _isDisabled; set => _isDisabled = value; }
         public Transform Follow { get => _cinemachineVirtualCamera.Follow; set => _cinemachineVirtualCamera.Follow = value; }
         public Transform LookAt { get => _cinemachineVirtualCamera.LookAt; set => _cinemachineVirtualCamera.LookAt = value; }
-        public CameraRig CameraRig { get => _cameraRig; set => _cameraRig = value; }
+        public CameraRig CameraRig => _cameraRig;
         public int Weight => _weight;
+        public Transform CameraRigStartPosiition => _cameraRigStartPosiition;
 
         [Inject]
         private ICameraController _cameraController;
@@ -31,23 +38,19 @@ namespace True10.CameraSystem
         [SerializeField]
         private bool _isDisabled = false;
         [SerializeField]
-        private int _group = 0;
+        private CameraGroup _cameraGroup = 0;
         [SerializeField]
         private CameraRig _cameraRig;
-        [SerializeField]
-        private List<ICameraTargetController> _cameraTargetControllers;
         [SerializeField]
         private float _defaultFOV = 60;
         [SerializeField]
         private int _weight = 60;
+        [SerializeField]
+        private Transform _cameraRigStartPosiition;
 
-        public void InitCustomCameraController()
+        public void SetRig(CameraRig rig)
         {
-            foreach (var controller in _cameraTargetControllers)
-            {
-                controller.Initialize();
-            }
-            SetFOV(_defaultFOV);
+            _cameraRig = rig;
         }
 
         public void SwitchToThisCamera()

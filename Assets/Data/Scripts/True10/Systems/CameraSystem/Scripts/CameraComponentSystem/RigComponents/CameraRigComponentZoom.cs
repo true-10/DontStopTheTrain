@@ -21,9 +21,9 @@ namespace True10.CameraSystem
             target.localPosition = target.localPosition.With(z: zValue) ;
         }
 
-        public override void Init(ICameraHolder cameraHolder, ICameraInputReader cameraInputReader)
+        public override void Initialize(ICameraHolder cameraHolder, ICameraInputReader cameraInputReader)
         {
-            base.Init(cameraHolder, cameraInputReader);
+            base.Initialize(cameraHolder, cameraInputReader);
             target = _cameraHolder.Follow;
             ZoomTargetAlongZ(0f);
         }

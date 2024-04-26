@@ -8,11 +8,11 @@ namespace True10.CameraSystem
     {
         [SerializeField] private List<AbstractCameraRigComponent> _components;
 
-        public override void Init(ICameraHolder cameraHolder, ICameraInputReader cameraInputReader)
+        public override void Initialize(ICameraHolder cameraHolder, ICameraInputReader cameraInputReader)
         {
             foreach (AbstractCameraRigComponent component in _components)
             {
-                component.Init(cameraHolder, cameraInputReader);
+                component.Initialize(cameraHolder, cameraInputReader);
             }
 
         }

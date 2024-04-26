@@ -22,9 +22,9 @@ namespace True10.CameraSystem
       
         private Transform cachedTransform;
 
-        public override void Init(ICameraHolder cameraHolder, ICameraInputReader cameraInputReader)
+        public override void Initialize(ICameraHolder cameraHolder, ICameraInputReader cameraInputReader)
         {
-            base.Init(cameraHolder, cameraInputReader);
+            base.Initialize(cameraHolder, cameraInputReader);
             cachedTransform = cameraHolder.CameraRig.LookAt;
             if (_rotationTarget == RotationRigTarget.Root)
             {

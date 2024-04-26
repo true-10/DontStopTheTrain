@@ -11,5 +11,15 @@ namespace True10.CameraSystem
         [SerializeField] private Transform _root;
         [SerializeField] private Transform _follow;
         [SerializeField] private Transform _lookAt;
+
+        public void SetPosition(Vector3 position)
+        {
+            _root.position = position;
+        }
+
+        private void OnValidate()
+        {
+            _root ??= GetComponent<Transform>();
+        }
     }
 }

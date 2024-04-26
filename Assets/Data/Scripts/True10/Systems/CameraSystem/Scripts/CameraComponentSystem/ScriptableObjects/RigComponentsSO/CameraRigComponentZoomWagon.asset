@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ac40e5f8702da24cbba2cdad9fe3647, type: 3}
-  m_Name: CameraRigComponentZoom
+  m_Name: CameraRigComponentZoomWagon
   m_EditorClassIdentifier: 
-  _name: Zoom
+  _name: Wagon Zoom
   _comment: 
   _zoomSpeed: 3
-  minMax: {x: -32, y: -3}
+  minMax: {x: -12, y: -1}

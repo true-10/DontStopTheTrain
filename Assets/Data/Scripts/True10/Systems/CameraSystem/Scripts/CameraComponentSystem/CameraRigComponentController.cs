@@ -11,20 +11,47 @@ namespace True10.CameraSystem
         [Inject]
         private ICameraController _cameraController;
 
-        [SerializeField] private CameraHolder _cameraHolder;
-        [SerializeField] private List<AbstractCameraRigComponent> _components;
-        [SerializeField] private CameraInputReader _inputReader;
+        [SerializeField] 
+        private CameraGroup _cameraGroup;        
+        [SerializeField] 
+        private List<AbstractCameraRigComponent> _components;
+        [SerializeField] 
+        private CameraInputReader _inputReader;
+        [SerializeField] 
+        private CameraRig _cameraRig;        
+        [SerializeField] 
+        private TransformPositionLimiter _transformPositionLimiter;
 
-        private bool _isActive = true;
+        // [SerializeField] 
+        //private ICameraHolder _cameraHolder;
+        private bool _isActive = false;
 
         public override void Initialize()
         {
-            foreach (AbstractCameraRigComponent component in _components)
+            /*foreach (AbstractCameraRigComponent component in _components)
             {
-                component.Init(_cameraHolder, _inputReader);
-            }
+                component.Initialize(_cameraHolder, _inputReader);
+            }*/
             _cameraController.OnCameraOn += OnCameraOn;
             _cameraController.OnCameraOff += OnCameraOff;
+        }
+
+        private void InitializeComponents(ICameraHolder cameraHolder)
+        {
+            cameraHolder.SetRig(_cameraRig);
+            cameraHolder.Follow = _cameraRig.Follow;
+            cameraHolder.LookAt = _cameraRig.LookAt;
+
+            if (cameraHolder.CameraRigStartPosiition != null)
+            {
+                _cameraRig.SetPosition(cameraHolder.CameraRigStartPosiition.position);
+                _transformPositionLimiter?.SetCenterTransform(cameraHolder.CameraRigStartPosiition);
+            }
+            foreach (AbstractCameraRigComponent component in _components)
+            {
+                component.Initialize(cameraHolder, _inputReader);
+            }
+            _isActive = true;
         }
 
         public override void Dispose()
@@ -33,9 +60,14 @@ namespace True10.CameraSystem
             _cameraController.OnCameraOff -= OnCameraOff;
         }
 
+        private bool IsItCorrectGroup(int group)
+        {
+            return group == (int)_cameraGroup;
+        }
+
         private void OnCameraOn(ICameraCallback callback)
         {
-            if (callback.CameraHolder.HashCode != _cameraHolder.HashCode)
+            if (IsItCorrectGroup(callback.CameraHolder.Group)== false) 
             {
                 if (_isActive)
                 {
@@ -43,12 +75,12 @@ namespace True10.CameraSystem
                 }
                 return;
             }
-            _isActive = true;
+            InitializeComponents(callback.CameraHolder);
         }
 
         private void OnCameraOff(ICameraCallback callback)
         {
-            if (callback.CameraHolder.HashCode != _cameraHolder.HashCode)
+            if (IsItCorrectGroup(callback.CameraHolder.Group) == false)
             {
                 return;
             }
@@ -61,11 +93,15 @@ namespace True10.CameraSystem
             {
                 return;
             }
-
             foreach (AbstractCameraRigComponent component in _components)
             {
                 component.UpdateRig();
             }
+        }
+
+        private void OnValidate()
+        {
+            _cameraRig ??= GetComponent<CameraRig>();
         }
     }
 
