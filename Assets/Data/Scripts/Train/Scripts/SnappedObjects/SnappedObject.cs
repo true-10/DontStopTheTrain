@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace True10
 {
-    public class ChainedObject : MonoBehaviour
+    public class SnappedObject : MonoBehaviour
     {
         public Transform StartPoint => _startPoint;
         public Transform EndPoint => _endPoint;

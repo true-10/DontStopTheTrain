@@ -15,7 +15,7 @@ namespace True10.LevelScrollSystem
         public Vector2 size;
     }
 
-    public class ObjectToScroll : ChainedObject
+    public class ObjectToScroll : SnappedObject
     {
         public Action<OnSnapCallback> OnSnap { get; set; }
         public ObjectToScroll SnapTargetObject { get; private set; }
