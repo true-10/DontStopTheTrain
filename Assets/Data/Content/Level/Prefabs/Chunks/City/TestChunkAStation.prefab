@@ -793,10 +793,11 @@ PrefabInstance:
     - {fileID: 8070063556081985587, guid: 9c48fa77cafa74142a2e78813e3dff39, type: 3}
     - {fileID: 632493590527887458, guid: 9c48fa77cafa74142a2e78813e3dff39, type: 3}
     - {fileID: 4688921458662136959, guid: 9c48fa77cafa74142a2e78813e3dff39, type: 3}
+    - {fileID: 4216464945799501917, guid: 9c48fa77cafa74142a2e78813e3dff39, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4928888223344466487, guid: 9c48fa77cafa74142a2e78813e3dff39,
         type: 3}
-      insertIndex: 5
+      insertIndex: 4
       addedObject: {fileID: 3439195644102999065}
     - targetCorrespondingSourceObject: {fileID: 4928888223344466487, guid: 9c48fa77cafa74142a2e78813e3dff39,
         type: 3}
@@ -877,6 +878,7 @@ MonoBehaviour:
   _exitTrigger: {fileID: 5674923181281448670}
   _staticData: {fileID: 11400000, guid: 8c4c24331e928e147a9a59a496513c35, type: 2}
   _stoppageTrigger: {fileID: 2074503213430425416}
+  _cameraHolder: {fileID: 0}
 --- !u!114 &5674923181281448670 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7653691454839508716, guid: 9c48fa77cafa74142a2e78813e3dff39,
