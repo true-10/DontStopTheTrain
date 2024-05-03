@@ -13,6 +13,8 @@ namespace DontStopTheTrain.Train
         int Weight { get; }
         int MaxHealth { get; }
         IReadOnlyCollection<WagonEventType> WagonEventTypes { get; }//допустимые события у это системы
+        //GameObject SystemPrefab { get; }
+        //GameObject BrokenSystemPrefab { get; }
     }
 
     public enum WagonSystemType

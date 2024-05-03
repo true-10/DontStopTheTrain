@@ -6,9 +6,9 @@
         {
             //тут есть баг
             if (elementA.ConnectorA == GetOpposite(elementB.ConnectorA) ||
-                 elementA.ConnectorA == GetOpposite(elementB.ConnectorB) ) //|| 
-                 //elementA.ConnectorB == GetOpposite(elementB.ConnectorA))// ||
-                 //elementA.ConnectorB == GetOpposite(elementB.ConnectorB))
+                 elementA.ConnectorA == GetOpposite(elementB.ConnectorB) || 
+                 elementA.ConnectorB == GetOpposite(elementB.ConnectorA) ||
+                 elementA.ConnectorB == GetOpposite(elementB.ConnectorB))
             {
                 return true;
             }

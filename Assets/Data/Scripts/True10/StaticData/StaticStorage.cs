@@ -1,25 +1,43 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 namespace True10.StaticData
 {
-    public class StaticStorage<T>  : ScriptableObject// where T:Object
+    public class StaticStorage<T>  : ScriptableObject where T:Object
     {
         public IReadOnlyCollection<T> Datas => _datas.AsReadOnly();
 
         [SerializeField]
         protected List<T> _datas;
 
-      /*  private void OnValidate()
+        public T GetRandomItem()
         {
-            FindAllDatas();
+            var randomIndex = Random.Range(0, _datas.Count);
+            var randomChunk = _datas[randomIndex];
+            return randomChunk;
         }
 
-        [ContextMenu("Find All")]
-        public void FindAllDatas()
+        public T GetFirst()
         {
-            _datas = Resources.FindObjectsOfTypeAll<T>().ToList();
-        }*/
+            return _datas.FirstOrDefault();
+        }
+
+        public T GetLast()
+        {
+            return _datas.LastOrDefault();
+        }
+
+        /*  private void OnValidate()
+          {
+              FindAllDatas();
+          }
+
+          [ContextMenu("Find All")]
+          public void FindAllDatas()
+          {
+              _datas = Resources.FindObjectsOfTypeAll<T>().ToList();
+          }*/
     }
 }

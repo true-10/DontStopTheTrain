@@ -1,3 +1,4 @@
+using DontStopTheTrain.Train;
 using System.Collections;
 using System.Collections.Generic;
 using True10.StaticData;
@@ -11,12 +12,14 @@ namespace DontStopTheTrain
         Temperature,
         Humidity, //влажность
         Water,
-        Food,
-        Comfort
+        Comfort,
+        Boring
     }
     public enum CargoType
     {
         Passengers,
+        Food,
+        Materials
 
     }
 
@@ -41,7 +44,7 @@ namespace DontStopTheTrain
 
     public class Cargo //: ICargo
     {
-
+        private List<IWagon> _wagonSystems;//системы вагона в котором лежит груз
        // [SerializeField] private float _volume;//объем груза
         //[SerializeField] private float _weight;//вес груза
         public float State { get; private set; }//0 - все плохо, 1 - все хорошо
