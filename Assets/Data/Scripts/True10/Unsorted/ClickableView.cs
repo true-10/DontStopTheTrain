@@ -12,23 +12,16 @@ namespace True10
         public Action OnExitView { get; set; }
         public Action OnMouseOverEnter { get; set; }
         public Action OnMouseOverExit { get; set; }
-       // public Action OnInitialize { get; set; }
-        //public Action OnDispose { get; set; }
         public bool IsClickable { get; set; } = true;
-
-       // public ICameraHolder CameraHolder => _cameraHolder;
 
         [SerializeField]
         private ClickOnObject _clicker;
         [SerializeField]
         private MouseOverObject _mouseOver;
-       // [SerializeField]
-        //private CameraHolder _cameraHolder;
 
         public void ExitView()
         {
             IsClickable = true;
-          //  _cameraHolder.TurnOnPrevious(); 
             OnExitView?.Invoke();
         }
 
@@ -39,7 +32,6 @@ namespace True10
                 return;
             }
             IsClickable = false;
-          //  _cameraHolder.TurnOn();
             OnClick?.Invoke();
         }
 
@@ -67,7 +59,6 @@ namespace True10
             _mouseOver.OnEnter += MouseOverEnter;
             _mouseOver.OnExit += MouseOverExit;
             IsClickable = true;
-        //    OnInitialize?.Invoke();
         }
 
         public void Dispose()
@@ -76,7 +67,6 @@ namespace True10
             _mouseOver.OnEnter -= OnMouseOverEnter;
             _mouseOver.OnExit -= OnMouseOverExit;
             IsClickable = true;
-         //   OnDispose?.Invoke();
         }
 
         private void OnEnable()
