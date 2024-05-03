@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9acbdc8d8e19d1d4cb64300b7c75879b, type: 3}
   m_Name: SetOfChunks_L0 Desert
   m_EditorClassIdentifier: 
-  _items:
+  _datas:
   - {fileID: 2153029771183998721, guid: 5ecc372865236c64aa05ef423d7c2d14, type: 3}
   - {fileID: 6027618266418359223, guid: f308b0d8dc0066947abe15e62e889055, type: 3}
   _biomType: 1

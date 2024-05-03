@@ -8,6 +8,7 @@ namespace True10.LevelScrollSystem
         public int Weight => _weight;
         public ChunkType Type => _type;
         public BiomType BiomType => _biomType;
+        public ChunkOrder ChunkOrder => _chunkOrder;
 
         [SerializeField]
         private int _weight;
@@ -15,6 +16,8 @@ namespace True10.LevelScrollSystem
         private ChunkType _type;
         [SerializeField]
         private BiomType _biomType;
+        [SerializeField]
+        private ChunkOrder _chunkOrder = ChunkOrder.Middle;
     }
 
     public enum ChunkType
@@ -22,6 +25,13 @@ namespace True10.LevelScrollSystem
         Simple,
         Station
 
+    }
+
+    public enum ChunkOrder
+    {
+        First,
+        Middle,
+        Last
     }
 
     public enum BiomType
