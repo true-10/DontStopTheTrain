@@ -28,16 +28,5 @@ namespace True10.StaticData
         {
             return _datas.LastOrDefault();
         }
-
-        /*  private void OnValidate()
-          {
-              FindAllDatas();
-          }
-
-          [ContextMenu("Find All")]
-          public void FindAllDatas()
-          {
-              _datas = Resources.FindObjectsOfTypeAll<T>().ToList();
-          }*/
     }
 }

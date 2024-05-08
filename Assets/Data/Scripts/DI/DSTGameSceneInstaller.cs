@@ -1,13 +1,11 @@
 using DontStopTheTrain;
-using DontStopTheTrain.Events;
-using DontStopTheTrain.Train;
 using DontStopTheTrain.UI;
 using System;
-using True10.CameraSystem;
 using True10.LevelScrollSystem;
 using UnityEngine;
 using Zenject;
-public class DSTSceneInstaller : MonoInstaller
+
+public class DSTGameSceneInstaller : MonoInstaller
 { 
     [SerializeField] 
     private TurnBasedController _turnBasedController;
