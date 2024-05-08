@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace DontStopTheTrain.Train
 {
-    [CreateAssetMenu(fileName = "WagonStaticDataBase", menuName = "DST/Train/Wagon/WagonStaticDataBase")]
+    [CreateAssetMenu(fileName = "WagonStaticDataBase", menuName = Constants.ContextMenuPaths.WAGON + "WagonStaticDataBase")]
     public class WagonStaticDataBase : ScriptableObject, IWagonStaticData
     {
         public int Id => _id;

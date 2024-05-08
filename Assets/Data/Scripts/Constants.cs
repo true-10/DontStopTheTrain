@@ -24,7 +24,11 @@ namespace DontStopTheTrain
         }
 
 
-        public static class Inventory
+        public static class ContextMenuPaths
+        {
+            public const string WAGON = "DST/Train/Wagon/";
+        }
+            public static class Inventory
         {
            /* public static class Items
             {

@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 
-namespace DontStopTheTrain.Train
+namespace DontStopTheTrain.Train.Constructor
 {
+    /// <summary>
+    /// need to separate inGame parts and contruction parts
+    /// </summary>
     public class WagonConstructor : MonoBehaviour
     {
         [SerializeField]
@@ -29,11 +32,5 @@ namespace DontStopTheTrain.Train
         {
 
         }
-    }
-
-    public class WagonSkeleton : MonoBehaviour
-    {
-        [SerializeField]
-        private Transform _rampHolder;
     }
 }

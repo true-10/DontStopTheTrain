@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DontStopTheTrain.Train
+namespace DontStopTheTrain.Train.Constructor
 {
     public class WagonCreator : MonoBehaviour
     {
