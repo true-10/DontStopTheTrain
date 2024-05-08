@@ -50,7 +50,7 @@ namespace True10.LevelScrollSystem
     {
         public float Weight;//чем больше вес, тем чаще выпадать может
         public int ChunkType;
-        public ObjectToScroll prefab;
+        public ScrolledObject prefab;
     }
 
     public interface ILevelFactory

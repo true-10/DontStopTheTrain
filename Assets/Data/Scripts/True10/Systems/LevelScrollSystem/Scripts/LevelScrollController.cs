@@ -78,7 +78,7 @@ namespace True10.LevelScrollSystem
             }
         }
 
-        private void OnChunkEndReached(ObjectToScroll objectToScroll)
+        private void OnChunkEndReached(ScrolledObject objectToScroll)
         {
             _chunkGiver.OnChunkEndReached(objectToScroll, 
                 _currentChunkType, 

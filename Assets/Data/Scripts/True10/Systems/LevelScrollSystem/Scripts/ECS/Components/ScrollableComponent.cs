@@ -8,7 +8,7 @@ namespace True10.LevelScrollSystem.ESC
     [Serializable]
     public struct ScrollableComponent
     {
-        public ObjectToScroll ObjectToScroll;
+        public ScrolledObject ObjectToScroll;
         public Transform TransformToScroll;
 
     }
@@ -22,7 +22,7 @@ namespace True10.LevelScrollSystem.ESC
     [Serializable]
     public struct ObjectToScrollComponent
     {
-        public ObjectToScroll ObjectToScroll;
+        public ScrolledObject ObjectToScroll;
     }
 
     [Serializable]

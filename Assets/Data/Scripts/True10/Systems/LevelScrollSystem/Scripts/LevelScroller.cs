@@ -8,7 +8,7 @@ namespace True10.LevelScrollSystem
 {
     public class LevelScroller
     {
-        public Action<ObjectToScroll> OnEndReached { get; set; }
+        public Action<ScrolledObject> OnEndReached { get; set; }
         public Action<float> OnSpeedChanged { get; set; }
         public float ScrollSpeed => Mathf.Abs(_scrollSpeed);
 
@@ -36,7 +36,7 @@ namespace True10.LevelScrollSystem
             {
                 return;
             }
-            ObjectToScroll obj = levelChunks[0].ObjectToScroll;
+            ScrolledObject obj = levelChunks[0].ObjectToScroll;
             Vector3 pos = obj.transform.localPosition;
             pos.z += _scrollSpeed * Time.deltaTime;
             obj.transform.localPosition = pos;

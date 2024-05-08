@@ -15,7 +15,7 @@ namespace True10.LevelScrollSystem
 
         int index = 0;
 
-        public void OnChunkEndReached(ObjectToScroll objectToScroll, ChunkType currentChunkType, Vector3 startPosition, Action onComlete = null)
+        public void OnChunkEndReached(ScrolledObject objectToScroll, ChunkType currentChunkType, Vector3 startPosition, Action onComlete = null)
         {
             index++;
             var remainder = index % 5;// 10;

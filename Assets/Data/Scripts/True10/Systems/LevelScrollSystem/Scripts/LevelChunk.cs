@@ -10,11 +10,11 @@ namespace True10.LevelScrollSystem
     {
         public Action<LevelChunk> OnChunkEnter { get; set; } 
         public Action<LevelChunk> OnChunkExit { get; set; } 
-        public ObjectToScroll ObjectToScroll => _objectToScroll;
+        public ScrolledObject ObjectToScroll => _objectToScroll;
         public ChunkStaticData StaticData => _staticData;
 
         [SerializeField]
-        private ObjectToScroll _objectToScroll;
+        private ScrolledObject _objectToScroll;
         [SerializeField]
         protected SimpleTrigger _enterTrigger;
         [SerializeField]
