@@ -5,12 +5,16 @@ namespace True10
 
     public class SnapPoint : MonoBehaviour
     {
+
         public enum SnapType
         {
             Level,
             Wagon,
-            WagonCart,
+            WagonCart_2x,
+            WagonCart_3x,
         }
+
+        public SnapType Type => _snapType;
 
         [SerializeField]
         private SnapType _snapType = SnapType.Wagon;
@@ -30,8 +34,10 @@ namespace True10
             {
                 case SnapType.Level:
                     return Color.black;
-                case SnapType.WagonCart:
+                case SnapType.WagonCart_2x:
                     return Color.blue;
+                case SnapType.WagonCart_3x:
+                    return Color.cyan;
                 case SnapType.Wagon:
                 default:
                     return Color.green;

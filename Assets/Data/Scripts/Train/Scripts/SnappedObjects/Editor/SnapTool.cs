@@ -1,21 +1,27 @@
+﻿using ModestTree;
+using System.Linq;
+using True10.LevelScrollSystem;
 using UnityEditor;
 using UnityEditor.EditorTools;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-namespace True10
+namespace True10.Tools
 {
-
     [EditorTool("Snap", typeof(SnappedObject))]
     public class SnapTool : EditorTool
     {
         public Texture2D ToolIcon;
 
         private const float CHECK_DISTANCE = 1.5f;
-        private SnappedObject[] _allSnappedObjects;
-        private SnappedObject _oldTarget;
+        private SnapPoint[] _allSnapPoints;
+        private SnapPoint[] _targetSnapPoints;
+        private Transform _oldTarget;
+       
         private void OnEnable()
         {
+
         }
 
         public override GUIContent toolbarIcon
@@ -36,6 +42,8 @@ namespace True10
             base.OnToolGUI(window);
             Transform targetTransform = ((SnappedObject)target).transform;
 
+            TryToGetAllSnapPoints(targetTransform);
+
             EditorGUI.BeginChangeCheck();
             var newPos = Handles.PositionHandle(targetTransform.position, Quaternion.identity);
 
@@ -43,68 +51,63 @@ namespace True10
             {
                 Undo.RecordObject(targetTransform, "Move with snap");
                 targetTransform.position = newPos;
-                MoveWithSnap(targetTransform, newPos);
+                TryToSnap(targetTransform, newPos);
             }
         }
 
-        private void MoveWithSnap(Transform targetTransform, Vector3 position)
+        private bool TryToSnap(Transform targetTransform, Vector3 newPosition)
         {
-            var targetSnappedObject = (SnappedObject)target;
-            TryToGetAllSnappedObjects(targetSnappedObject);
-            foreach (var snappedObject in _allSnappedObjects)
-            {
-                if (snappedObject == targetSnappedObject)
-                {
-                    continue;
-                }
-                if (TryToSnap(targetSnappedObject, snappedObject))
-                {
-                    return;
-                }
-            }
-        }
+            Vector3 bestPosition = newPosition;
+            float closestDistance = float.PositiveInfinity;
 
-        private bool TryToSnap(SnappedObject object1, SnappedObject object2)
-        {
-            if(IsCloseDistance(object1.StartPoint.position, object2.EndPoint.position))
+            foreach (var point in _allSnapPoints)
             {
-                object1.AlignmentWithStartPoint(object2.EndPoint);
+                foreach (var ownPoint in _targetSnapPoints)
+                {
+                    if (ownPoint.Type != point.Type)
+                    {
+                        continue;
+                    }
+                    var targetPos = point.transform.position - (ownPoint.transform.position - targetTransform.position);
+                    float disctance = Vector3.Distance(targetPos, newPosition);
+                    if(disctance < closestDistance)
+                    {
+                        bestPosition = targetPos;
+                        closestDistance = disctance;
+                    }
+                }
+            }
+
+            if (closestDistance < CHECK_DISTANCE)
+            {
+                targetTransform.position = bestPosition;
                 return true;
             }
-            else
-            if (IsCloseDistance(object1.EndPoint.position, object2.StartPoint.position))
-            {
-                object1.AlignmentWithEndPoint(object2.StartPoint);
-                return true;
-            }
+            targetTransform.position = newPosition;
             return false;
         }
 
-        private bool IsCloseDistance(Vector3 point1, Vector3 point2)
+        private bool TryToGetAllSnapPoints(Transform targetTransform)
         {
-            float disctance = Vector3.Distance(point1, point2);
-            if (disctance < CHECK_DISTANCE)
-            {
-                return true;
-            }
-            return false;
-        }      
-
-        private bool TryToGetAllSnappedObjects(SnappedObject targetSnappedObject)
-        {
-            if (targetSnappedObject == _oldTarget)
+            if (targetTransform == _oldTarget)
             {
                 return false;
             }
-            _oldTarget = targetSnappedObject;
+            _oldTarget = targetTransform;
+            _targetSnapPoints = ((SnappedObject)target).Points.ToArray();
+
             PrefabStage prefabStage = PrefabStageUtility.GetPrefabStage(_oldTarget.gameObject);
             if (prefabStage != null)
             {
-                _allSnappedObjects = prefabStage.prefabContentsRoot.GetComponentsInChildren<SnappedObject>();
+                _allSnapPoints = prefabStage.prefabContentsRoot.GetComponentsInChildren<SnapPoint>()
+                    .Except(_targetSnapPoints)
+                    .ToArray();
             }
             else
             {
-                _allSnappedObjects = FindObjectsOfType<SnappedObject>();
+                _allSnapPoints = FindObjectsOfType<SnapPoint>()
+                    .Except(_targetSnapPoints)
+                    .ToArray();
             }
             return true;
         }
