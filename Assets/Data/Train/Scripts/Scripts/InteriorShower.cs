@@ -12,7 +12,7 @@ namespace DontStopTheTrain.Train
         private EventController _eventController;
 
         [SerializeField]
-        private ClickableView _clickableView;
+        private ClickAndMouseOverView _clickableView;
         [SerializeField]
         private GameObject _frontWall;
 

@@ -15,9 +15,9 @@ namespace DontStopTheTrain.UI
         [SerializeField]
         private TextMeshProUGUI _wagonInfo;
 
-        private ClickableView _clickableView;
+        private ClickAndMouseOverView _clickableView;
 
-        public void Show(ClickableView view)
+        public void Show(ClickAndMouseOverView view)
         {
             _clickableView = view;
             Show();

@@ -14,7 +14,7 @@ namespace DontStopTheTrain
         public Action OnTryToUpgrade { get; set; }
 
         [SerializeField]
-        private ClickableView _clickableView;
+        private ClickAndMouseOverView _clickableView;
 
 
         public override void Initialize()

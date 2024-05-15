@@ -32,7 +32,7 @@ namespace DontStopTheTrain.UI
         private Button _playGameButton;
 
         private IEvent _eventData;
-        private ClickableView _clickableView;
+        private ClickAndMouseOverView _clickableView;
         private AbstractEventObject _eventObject;
 
         public override void AnchorIt()
@@ -51,7 +51,7 @@ namespace DontStopTheTrain.UI
             Hide();
         }
 
-        public void Show(IEvent eventData, Transform lookAt, ClickableView clickableView)
+        public void Show(IEvent eventData, Transform lookAt, ClickAndMouseOverView clickableView)
         {
             _eventData = eventData;
             _clickableView = clickableView;

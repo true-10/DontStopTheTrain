@@ -22,7 +22,7 @@ namespace DontStopTheTrain.UI
         private Slider _healthSlider;
 
         private IWagonSystem _wagonSystem;
-        private ClickableView _clickableView;
+        private ClickAndMouseOverView _clickableView;
 
         public override void AnchorIt()
         {
@@ -40,7 +40,7 @@ namespace DontStopTheTrain.UI
             Hide();
         }
 
-        public void Show(IWagonSystem wagonSystem, Transform lookAt, ClickableView clickableView)
+        public void Show(IWagonSystem wagonSystem, Transform lookAt, ClickAndMouseOverView clickableView)
         {
             _wagonSystem = wagonSystem;
             _clickableView = clickableView;

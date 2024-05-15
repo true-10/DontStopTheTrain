@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace True10
 {
-    public class ClickableView : MonoBehaviour, IGameLifeCycle
+    public class ClickAndMouseOverView : MonoBehaviour, IGameLifeCycle
     {
         public Action OnClick { get; set; }
        // public Action OnEnterView { get; set; }

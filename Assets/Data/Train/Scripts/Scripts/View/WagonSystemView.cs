@@ -37,7 +37,7 @@ namespace DontStopTheTrain
         private WagonSystemsFabric _fabric;
 
         [SerializeField]
-        private ClickableView _clickableView;
+        private ClickAndMouseOverView _clickableView;
         [SerializeField]
         private List<WagonEventType> _wagonEventTypes;
         [SerializeField]
