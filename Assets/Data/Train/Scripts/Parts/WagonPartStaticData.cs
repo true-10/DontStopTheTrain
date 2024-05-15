@@ -6,6 +6,10 @@ namespace DontStopTheTrain.Train
     [CreateAssetMenu(fileName = "WagonPartStaticData", menuName = Constants.ContextMenuPaths.WAGON + "WagonPartStaticData")]
     public class WagonPartStaticData : ScriptableObject
     {
+        public Information Information => _information;
+        public WagonPartType Type => _type;
+        public GameObject GamePrefab => _gamePrefab;
+        public WagonPartStaticData NextLevelStaticData => _nextLevelStaticData;
 
         [SerializeField]
         private Information _information;
@@ -17,6 +21,8 @@ namespace DontStopTheTrain.Train
         private GameObject _constructorPrefab;
         [SerializeField]
         private WagonSystemStaticDataBase _systemStaticData;
+        [SerializeField]
+        private WagonPartStaticData _nextLevelStaticData;
        // private List<WagonSystemStaticDataBase> _systemStaticDatas;
 
     }

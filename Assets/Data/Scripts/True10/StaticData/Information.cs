@@ -13,7 +13,7 @@ namespace True10.StaticData
 
         [SerializeField]
         private string _name;
-        [SerializeField]
+        [SerializeField, Multiline]
         private string _description;
         [SerializeField]
         private string _hint;

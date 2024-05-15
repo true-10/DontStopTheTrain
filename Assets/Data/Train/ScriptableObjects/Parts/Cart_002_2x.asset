@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1292386542289054cbd8cbcd9381c77d, type: 3}
-  m_Name: Cart_001_3x_02
+  m_Name: Cart_002_2x
   m_EditorClassIdentifier: 
   _information:
-    _name: Cart_001_3x_02
-    _description: "3\u0445 \u043E\u0441\u043D\u0430\u044F \u0432\u0430\u0433\u043E\u043D\u043D\u0430\u044F
+    _name: Cart_002_2x
+    _description: "2\u0445 \u043E\u0441\u043D\u0430\u044F \u0432\u0430\u0433\u043E\u043D\u043D\u0430\u044F
       \u0442\u0435\u043B\u0435\u0436\u043A\u0430"
     _hint: 
     _icon: {fileID: 0}
-  _type: 2
-  _gamePrefab: {fileID: 2419843068652121829, guid: 990018ac74e3d4e42a95a30cb04772e7,
+  _type: 1
+  _gamePrefab: {fileID: 5324381996711078273, guid: 106a297f93e6f3a40bcfc614852c97b9,
     type: 3}
-  _constructorPrefab: {fileID: 1496978179134033300, guid: 284f3793b3a2d7743aaaf0f9669f311e,
+  _constructorPrefab: {fileID: 233023481704806512, guid: a28dd51c03e9ada49931ca3cede6d863,
     type: 3}
   _systemStaticData: {fileID: 0}
   _nextLevelStaticData: {fileID: 0}

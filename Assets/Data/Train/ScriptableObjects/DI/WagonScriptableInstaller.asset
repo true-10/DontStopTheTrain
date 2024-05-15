@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0437b0dd8f8843341ade5390c9653b55, type: 3}
-  m_Name: TrainScriptableInstaller
+  m_Name: WagonScriptableInstaller
   m_EditorClassIdentifier: 
+  _wagonPartsStaticStorage: {fileID: 11400000, guid: 3fe078fa01ed04849a7da6cf71ebce97,
+    type: 2}
   _wagonsStaticStorage: {fileID: 11400000, guid: beda394dab53e814baeac585cafbb813,
     type: 2}
   _wagonSystemsStaticStorage: {fileID: 11400000, guid: f1abdc71af4157445a7a1af9d898b97a,

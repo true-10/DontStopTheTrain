@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca44558c1c97a44a83ffab06193537d, type: 3}
+  m_Name: WagonPartsStorage
+  m_EditorClassIdentifier: 
+  _datas:
+  - {fileID: 11400000, guid: f40ef262a11a397429ef1230960ba68b, type: 2}
+  - {fileID: 11400000, guid: 5df90d59c9e084242a86f159d051caab, type: 2}
+  - {fileID: 11400000, guid: c8c5235bf53921f42a1e517a23743644, type: 2}

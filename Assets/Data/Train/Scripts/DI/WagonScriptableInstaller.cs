@@ -4,9 +4,11 @@ using DontStopTheTrain.Train;
 using UnityEngine;
 using Zenject;
 
-[CreateAssetMenu(fileName = "TrainScriptableInstaller", menuName = "DST/DI/Installers/TrainScriptableInstaller")]
-public class TrainScriptableInstaller : ScriptableObjectInstaller<TrainScriptableInstaller>
+[CreateAssetMenu(fileName = "WagonScriptableInstaller", menuName = "DST/DI/Installers/WagonScriptableInstaller")]
+public class WagonScriptableInstaller : ScriptableObjectInstaller<WagonScriptableInstaller>
 {
+    [SerializeField]
+    private WagonPartsStaticStorage _wagonPartsStaticStorage;
     [SerializeField]
     private WagonsStaticStorage _wagonsStaticStorage;
     [SerializeField]
@@ -14,6 +16,7 @@ public class TrainScriptableInstaller : ScriptableObjectInstaller<TrainScriptabl
 
     public override void InstallBindings()
     {
+        Container.Bind<WagonPartsStaticStorage>().FromScriptableObject(_wagonPartsStaticStorage).AsSingle();
         Container.Bind<WagonsStaticStorage>().FromScriptableObject(_wagonSystemsStaticStorage).AsSingle();
         Container.Bind<WagonSystemsStaticStorage>().FromScriptableObject(_wagonsStaticStorage).AsSingle();
 
