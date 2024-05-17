@@ -1,20 +1,16 @@
 using DontStopTheTrain.Events;
 using DontStopTheTrain.Train;
-using DontStopTheTrain.UI;
+using System;
 using System.Collections.Generic;
 using True10;
 using True10.Interfaces;
 using UnityEngine;
 using Zenject;
+using static UnityEngine.InputSystem.PlayerInput;
 
 namespace DontStopTheTrain
 {
-    public abstract class BasicView : MonoBehaviour
-    {
-        public abstract void Enter();
-    }
-
-    public class WagonSystemView : AbstractGameLifeCycleBehaviour
+    public sealed class WagonSystemView : BaseClickableView
     {
         public IEvent ActiveEvent { get; private set; }
         public IWagonSystem WagonSystem { get; private set; }
@@ -32,12 +28,8 @@ namespace DontStopTheTrain
 }
 
         [Inject]
-        private UIContainer _UIContainer;
-        [Inject]
         private WagonSystemsFabric _fabric;
 
-        [SerializeField]
-        private ClickAndMouseOverView _clickableView;
         [SerializeField]
         private List<WagonEventType> _wagonEventTypes;
         [SerializeField]
@@ -45,19 +37,18 @@ namespace DontStopTheTrain
         [SerializeField]
         private Transform _lookAtTransform;
         [SerializeField]
+        private WagonSystemUIOnClick _wagonSystemUIOnClick;
+        [SerializeField]
         private WagonSystemStaticDataBase _wagonSystemStaticDataBase;
 
         public override void Initialize()
         {
+            base.Initialize();
             WagonSystem = _fabric.Create(_wagonSystemStaticDataBase);
             WagonSystem.Initialize();
             (WagonSystem as BaseWagonSystem).SetViewer(_wagonEventViewer);
-            //добавить систему в менеджер
-
-            _clickableView.OnClick += OnClickViewHandler;
-            _clickableView.OnExitView += OnExitViewHandler;
-            _clickableView.OnMouseOverEnter += OnMouseOverEnterHandler;
-            _clickableView.OnMouseOverExit += OnMouseOverExitHandler;
+            //добавить систему в менеджер?
+            _wagonSystemUIOnClick.SetSystem(WagonSystem);
 
             _wagonEventViewer.OnSetEvent += OnSetEvent;
 
@@ -65,12 +56,9 @@ namespace DontStopTheTrain
 
         public override void Dispose()
         {
+            base.Dispose();
             WagonSystem.Dispose();
 
-            _clickableView.OnClick -= OnClickViewHandler;
-            _clickableView.OnExitView -= OnExitViewHandler;
-            _clickableView.OnMouseOverEnter -= OnMouseOverEnterHandler;
-            _clickableView.OnMouseOverExit -= OnMouseOverExitHandler;
 
             _wagonEventViewer.OnSetEvent -= OnSetEvent;
         }
@@ -78,60 +66,9 @@ namespace DontStopTheTrain
         private void OnSetEvent(IEvent eventData)
         {
             ActiveEvent = eventData;
+            _wagonSystemUIOnClick.SetEvent(eventData);
+
         }
 
-        private void OnMouseOverEnterHandler()
-        {
-            if (ActiveEvent != null)
-            {
-                if (_UIContainer.EventInfoPopup.IsAnchored == false)
-                {
-                    _UIContainer.EventInfoPopup.Show(ActiveEvent, _lookAtTransform, _clickableView);
-                }
-            }
-            else 
-            {
-                if (_UIContainer.SystemInfoPopup.IsAnchored == false)
-                {
-                    _UIContainer.SystemInfoPopup.Show(WagonSystem, _lookAtTransform, _clickableView);
-                }
-            }
-        }
-
-        private void OnMouseOverExitHandler()
-        {
-            if (ActiveEvent != null)
-            {
-                if (_UIContainer.EventInfoPopup.IsAnchored == false)
-                {
-                    _UIContainer.EventInfoPopup.CloseView();
-                }
-            }
-            else
-            {
-                if (_UIContainer.SystemInfoPopup.IsAnchored == false)
-                {
-                    _UIContainer.SystemInfoPopup.CloseView();
-                }
-            }
-        }
-
-        private void OnClickViewHandler()
-        {
-            if (ActiveEvent != null)
-            {
-                //ActiveEvent.TryToFocus();
-                _UIContainer.EventInfoPopup.AnchorIt();
-            }
-            else
-            {
-                _UIContainer.SystemInfoPopup.AnchorIt();
-            }
-        }
-
-        private void OnExitViewHandler()
-        {
-            //_cameraHolder.TurnOnPrevious();
-        }
     }
 }
