@@ -7,7 +7,6 @@ using Zenject;
 
 namespace DontStopTheTrain.Train.Constructor
 {
-
     public class WagonPartView : BaseClickableView
     {
         public WagonPartStaticData StaticData => _staticData;

@@ -4304,6 +4304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8409899977972878295}
   - component: {fileID: 8899843695003102741}
+  - component: {fileID: 8129938185979999091}
   - component: {fileID: 4861190339404954865}
   m_Layer: 7
   m_Name: WagonTest
@@ -4359,6 +4360,20 @@ MonoBehaviour:
   _boxCollider: {fileID: 333989961370017236}
   _alarm: {fileID: 4569491646652785580}
   _cameraHolder: {fileID: 7644704522891876618}
+--- !u!114 &8129938185979999091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5776011347189050655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7554914dc6250488f26ad4edcf8e71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clickableView: {fileID: 7468984184237865958}
+  _camera: {fileID: 7644704522891876618}
 --- !u!114 &4861190339404954865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5263,7 +5278,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7030467062253239905}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11673295, y: -0.67439884, z: 0.10920988, w: 0.7208557}
+  m_LocalRotation: {x: 0.11673296, y: -0.67439866, z: 0.10920985, w: 0.7208558}
   m_LocalPosition: {x: 3.781, y: 1.915, z: 1.3769999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6527,8 +6542,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8786921354796661818}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11673295, y: -0.67439866, z: 0.10920985, w: 0.72085583}
-  m_LocalPosition: {x: 3, y: 2.0499997, z: -2.4869988}
+  m_LocalRotation: {x: 0.116732955, y: -0.67439884, z: 0.10920988, w: 0.7208557}
+  m_LocalPosition: {x: 3, y: 2.0499997, z: -2.4869998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

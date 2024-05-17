@@ -11,6 +11,8 @@ namespace DontStopTheTrain.Train
         public GameObject GamePrefab => _gamePrefab;
         public GameObject ConstructorPrefab => _constructorPrefab;
         public WagonPartStaticData NextLevelStaticData => _nextLevelStaticData;
+        public int Price => _price;
+        public int UpgradePrice => _upgradePrice;
 
         [SerializeField]
         private Information _information;
@@ -24,6 +26,10 @@ namespace DontStopTheTrain.Train
         private WagonSystemStaticDataBase _systemStaticData;
         [SerializeField]
         private WagonPartStaticData _nextLevelStaticData;
+        [SerializeField]
+        private int _price;
+        [SerializeField]
+        private int _upgradePrice;
        // private List<WagonSystemStaticDataBase> _systemStaticDatas;
 
     }

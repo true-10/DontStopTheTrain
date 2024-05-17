@@ -34,8 +34,6 @@ namespace DontStopTheTrain.Train
         private BoxCollider _boxCollider;
         [SerializeField] 
         private WagonAlarm _alarm;
-        [SerializeField]
-        private CameraHolder _cameraHolder;
 
         private IWagon _wagonData;
 
@@ -73,7 +71,6 @@ namespace DontStopTheTrain.Train
             _UIContainer.WagonInfoPopup.Hide();
             //_eventViewers.ForEach(viewer => viewer.IsClickable = true);
             _systemViewers.ForEach(viewer => viewer.IsClickable = true);
-            _cameraHolder?.SwitchToThisCamera();
         }
 
         private void OnEventFocus(IEvent eventData)
@@ -89,7 +86,6 @@ namespace DontStopTheTrain.Train
             _boxCollider.enabled = true;
             var gameplayUI = _UIContainer.GetUIScreen(UIScreenID.Gameplay);
             gameplayUI?.Show();
-            _cameraHolder?.SwitchToDefaultCamera();
             //_eventViewers.ForEach(viewer => viewer.IsClickable = false);
             _systemViewers.ForEach(viewer => viewer.IsClickable = false);
         }
