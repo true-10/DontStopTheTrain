@@ -9,6 +9,7 @@ namespace DontStopTheTrain.Train
         public Information Information => _information;
         public WagonPartType Type => _type;
         public GameObject GamePrefab => _gamePrefab;
+        public GameObject ConstructorPrefab => _constructorPrefab;
         public WagonPartStaticData NextLevelStaticData => _nextLevelStaticData;
 
         [SerializeField]

@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4662448918758170713}
   - component: {fileID: 4140193044104533943}
   - component: {fileID: 3311911703073539370}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: C_BasePart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,8 +64,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 7347513367734093051}
   - {fileID: 7679373383484904947}
+  - {fileID: 7347513367734093051}
   - {fileID: 175671266063672082}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -82,6 +82,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clickableView: {fileID: 7072299543188687405}
+  _staticData: {fileID: 0}
+  _selectionObject: {fileID: 6373053395660622889}
 --- !u!114 &4662448918758170713
 MonoBehaviour:
   m_ObjectHideFlags: 0
