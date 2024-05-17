@@ -59,7 +59,7 @@ Material:
     - _AlphaSrcBlend: 1
     - _BlendMode: 0
     - _BlueMaskPower: 0.01
-    - _ColorOffset: 0.387
+    - _ColorOffset: 0
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 2
     - _CullModeForward: 2
@@ -79,7 +79,7 @@ Material:
     - _RayTracing: 0
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
-    - _RedMaskPower: 0.17
+    - _RedMaskPower: 1
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
@@ -105,6 +105,7 @@ Material:
     - _TransparentZWrite: 0
     - _UseShadowThreshold: 0
     - _VertexColorMaskPower: 1
+    - _WaterColorOpacity: 0.606
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4
