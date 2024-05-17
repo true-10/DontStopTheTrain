@@ -1,10 +1,13 @@
 using DontStopTheTrain;
 using True10.CameraSystem;
 using True10.DayTimeSystem;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace DontStopTheTrain.UI
 {
@@ -36,13 +39,16 @@ namespace DontStopTheTrain.UI
             _dayTimeSystem.UnPause();
             locomotive.StartMotion();
             Hide();
-            _UIContainer.MainGamePlay.Show();
+            var gamePlayUI = _UIContainer.GetUIScreen(UIScreenID.Gameplay);
+            gamePlayUI?.Show();
+            //_UIContainer.MainGamePlay.Show();
             _cameraHolder.SwitchToDefaultCamera();
         }
 
         private void QuitGame()
         {
-            _UIContainer.Fader.FadeIn(0f, () =>
+            var fader = _UIContainer.GetUIScreen(UIScreenID.Fader) as UIFader;
+            fader?.FadeIn(0f, () =>
             {
 #if UNITY_EDITOR
                 EditorApplication.ExitPlaymode();
@@ -52,11 +58,11 @@ namespace DontStopTheTrain.UI
             });
         }
 
-        private void Start()
+      /*  private void Start()
         {
             Show();
         }
-
+      */
         public override void Show()
         {
             base.Show();

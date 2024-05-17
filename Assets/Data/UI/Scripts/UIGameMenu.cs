@@ -1,13 +1,15 @@
 using True10.DayTimeSystem;
 using True10.LevelScrollSystem;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace DontStopTheTrain.UI
 {
-
     public class UIGameMenu : UIScreen
     {
         [Inject]
@@ -42,12 +44,14 @@ namespace DontStopTheTrain.UI
                 locomotive.SetSpeed(_speed, 0f);
             }
             Hide();
-            _UIContainer.MainGamePlay.Show();
+            var gameplayUI = _UIContainer.GetUIScreen(UIScreenID.Gameplay);
+            gameplayUI?.Show();
         }
 
         private void QuitGame()
         {
-            _UIContainer.Fader.FadeIn(0f, () =>
+            var fader = _UIContainer.GetUIScreen(UIScreenID.Fader) as UIFader;
+            fader?.FadeIn(0f, () =>
             {
 #if UNITY_EDITOR
                 EditorApplication.ExitPlaymode();
@@ -59,6 +63,7 @@ namespace DontStopTheTrain.UI
 
         private void Start()
         {
+            Hide();
         }
 
         private void OnEnable()

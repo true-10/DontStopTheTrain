@@ -9,8 +9,6 @@ public class DSTGameSceneInstaller : MonoInstaller
 { 
     [SerializeField] 
     private TurnBasedController _turnBasedController;
-    [SerializeField] 
-    private UIContainer _UIContainer;
     [SerializeField]
     private ConditionsStaticStorage _conditionsStaticStorage;
     [SerializeField]
@@ -51,7 +49,6 @@ public class DSTGameSceneInstaller : MonoInstaller
     {
         Container.Bind<TurnBasedController>().FromInstance(_turnBasedController).AsSingle();    
         Container.Bind<LevelScrollController>().FromInstance(_levelScrollController).AsSingle();    
-        Container.Bind<UIContainer>().FromInstance(_UIContainer).AsSingle();
         Container.Bind<QuestController>().AsSingle();    
     }
 

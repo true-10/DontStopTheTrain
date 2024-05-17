@@ -27,8 +27,10 @@ namespace DontStopTheTrain.UI
 
         public void Depart()
         {
-            _UIContainer.MainGamePlay.Show();
-            _UIContainer.Station.Hide();
+            var gamePlayUI = _UIContainer.GetUIScreen(UIScreenID.Gameplay);
+            gamePlayUI?.Show();
+            var stationUI = _UIContainer.GetUIScreen(UIScreenID.Station);
+            stationUI?.Hide();
             var locomotive = _wagonsManager.GetLocomotive();
 
             _dayTimeSystem.UnPause();
@@ -57,6 +59,11 @@ namespace DontStopTheTrain.UI
             _departButton.onClick.RemoveAllListeners();
             _shopButton.onClick.RemoveAllListeners();
             _questsButton.onClick.RemoveAllListeners();
+        }
+
+        private void Start()
+        {
+            Hide();
         }
     }
 }

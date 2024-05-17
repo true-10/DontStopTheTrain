@@ -1,5 +1,4 @@
 using DontStopTheTrain.Events;
-using DontStopTheTrain.UI;
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -48,7 +47,8 @@ namespace DontStopTheTrain.UI
 
         private void OnCloseEventUI()
         {
-            _UIContainer.Wagon.Show();
+            var wagonUI = _UIContainer.GetUIScreen(UIScreenID.Wagon);
+            wagonUI?.Show();
             Hide();
         }
 

@@ -3,9 +3,7 @@ using DontStopTheTrain.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using True10;
 using True10.CameraSystem;
-using True10.Interfaces;
 using True10.LevelScrollSystem;
 using UnityEngine;
 using Zenject;
@@ -66,8 +64,12 @@ namespace DontStopTheTrain.Train
         protected override void OnClickViewHandler()
         {
             _boxCollider.enabled = false;
-            _UIContainer.Wagon.Show(_clickableView);
-            _UIContainer.MainGamePlay.Hide();
+
+            var wagonUI = _UIContainer.GetUIScreen(UIScreenID.Wagon) as UIWagon;
+            wagonUI?.Show(_clickableView);
+
+            var gameplayUI = _UIContainer.GetUIScreen(UIScreenID.Gameplay);
+            gameplayUI?.Hide();
             _UIContainer.WagonInfoPopup.Hide();
             //_eventViewers.ForEach(viewer => viewer.IsClickable = true);
             _systemViewers.ForEach(viewer => viewer.IsClickable = true);
@@ -85,7 +87,8 @@ namespace DontStopTheTrain.Train
         protected override void OnExitViewHandler()
         {
             _boxCollider.enabled = true;
-            _UIContainer.MainGamePlay.Show();
+            var gameplayUI = _UIContainer.GetUIScreen(UIScreenID.Gameplay);
+            gameplayUI?.Show();
             _cameraHolder?.SwitchToDefaultCamera();
             //_eventViewers.ForEach(viewer => viewer.IsClickable = false);
             _systemViewers.ForEach(viewer => viewer.IsClickable = false);
@@ -114,8 +117,9 @@ namespace DontStopTheTrain.Train
             _alarm.AlarmOn();
         }
 
-        private void OnValidate()
+        protected override void OnValidate()
         {
+            base.OnValidate();
             _boxCollider ??= GetComponent<BoxCollider>();
         }
     }

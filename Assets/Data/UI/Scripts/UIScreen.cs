@@ -5,18 +5,24 @@ namespace DontStopTheTrain.UI
 {
     public class UIScreen : MonoBehaviour
     {
+        public Action<bool> OnShow { get; set; }
+        public UIScreenID ScreenID => _screenId;
+
         [SerializeField]
         protected GameObject _root;
+        [SerializeField]
+        protected UIScreenID _screenId;
 
         public virtual void Show()
         {
             _root.SetActive(true);
+            OnShow?.Invoke(true);
         }
 
-        public void Hide(Action onHide = null)
+        public void Hide()
         {
-            onHide?.Invoke();
             _root.SetActive(false);
+            OnShow?.Invoke(false);
         }
     }
 }

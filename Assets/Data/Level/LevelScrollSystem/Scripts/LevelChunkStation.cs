@@ -3,7 +3,6 @@ using True10.CameraSystem;
 using True10.TriggerSystem;
 using UnityEngine;
 using Zenject;
-//using Zenject;
 
 namespace True10.LevelScrollSystem
 {
@@ -34,12 +33,13 @@ namespace True10.LevelScrollSystem
 
         protected void OnStoppageTriggerEnterHandler(Collider collider)
         {
-            _UIContainer.MainGamePlay.Hide();
-            _UIContainer.Station.Show();
+            var gameplayUI = _UIContainer.GetUIScreen(UIScreenID.Gameplay);
+            gameplayUI?.Hide();
+            var stationUI = _UIContainer.GetUIScreen(UIScreenID.Station);
+            stationUI?.Show();
             _dayTimeSystem.Pause();
             
             _cameraHolder?.SwitchToThisCamera();
         }
-
     }
 }

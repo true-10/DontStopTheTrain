@@ -54,7 +54,8 @@ namespace DontStopTheTrain.UI
         private void ShowGameMenu()
         {
             Hide();
-            _UIContainer.GameMenu.Show();
+            var gameMenuUI = _UIContainer.GetUIScreen(UIScreenID.GameMenu);
+            gameMenuUI?.Show();
         }
 
         private void OnRewind(bool isOnRewind)
@@ -77,6 +78,11 @@ namespace DontStopTheTrain.UI
             var text = $"Day: {turn}";
             _turnNumberText.text = text;
             //_uiController.Message.ShowMessage(text, 1f);
+        }
+
+        private void Start()
+        {
+            Hide();
         }
     }
 
