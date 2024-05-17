@@ -1,5 +1,4 @@
 using DontStopTheTrain.Events;
-using DontStopTheTrain.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,19 +9,16 @@ using Zenject;
 
 namespace DontStopTheTrain.Train
 {
+
     public sealed class WagonView : BaseClickableView
     {
-        public List<WagonEventViewer> EventViewers => _eventViewers;//надо ли?
+      //  public List<WagonEventViewer> EventViewers => _eventViewers;//надо ли?
         public IWagon WagonData => _wagonData;
 
-        [Inject]
-        private UIContainer _UIContainer;
         [Inject]
         private WagonsFabric _fabric;
         [Inject]
         private EventController _eventController;
-        [Inject]
-        private LevelScroller _levelScroller;
 
         [SerializeField]
         private List<WagonEventViewer> _eventViewers;
@@ -34,6 +30,8 @@ namespace DontStopTheTrain.Train
         private BoxCollider _boxCollider;
         [SerializeField] 
         private WagonAlarm _alarm;
+        [SerializeField] 
+        private WagonUIOnClick _wagonUIOnClick;
 
         private IWagon _wagonData;
 
@@ -43,7 +41,7 @@ namespace DontStopTheTrain.Train
             _boxCollider ??= GetComponent<BoxCollider>();
             _wagonData = _fabric.Create(_wagonStaticData);
             _wagonData.Initialize();
-
+            _wagonUIOnClick.SetWagonData(_wagonData);
 
             _eventController.OnFocus += OnEventFocus;
             _eventViewers.ForEach(viewer => viewer.OnSetEvent += OnSetEvent);
@@ -54,7 +52,6 @@ namespace DontStopTheTrain.Train
             base.Dispose();
             _wagonData.Dispose();
 
-
             _eventController.OnFocus -= OnEventFocus;
             _eventViewers.ForEach(viewer => viewer.OnSetEvent -= OnSetEvent);
         }
@@ -62,14 +59,6 @@ namespace DontStopTheTrain.Train
         protected override void OnClickViewHandler()
         {
             _boxCollider.enabled = false;
-
-            var wagonUI = _UIContainer.GetUIScreen(UIScreenID.Wagon) as UIWagon;
-            wagonUI?.Show(_clickableView);
-
-            var gameplayUI = _UIContainer.GetUIScreen(UIScreenID.Gameplay);
-            gameplayUI?.Hide();
-            _UIContainer.WagonInfoPopup.Hide();
-            //_eventViewers.ForEach(viewer => viewer.IsClickable = true);
             _systemViewers.ForEach(viewer => viewer.IsClickable = true);
         }
 
@@ -84,21 +73,9 @@ namespace DontStopTheTrain.Train
         protected override void OnExitViewHandler()
         {
             _boxCollider.enabled = true;
-            var gameplayUI = _UIContainer.GetUIScreen(UIScreenID.Gameplay);
-            gameplayUI?.Show();
-            //_eventViewers.ForEach(viewer => viewer.IsClickable = false);
             _systemViewers.ForEach(viewer => viewer.IsClickable = false);
         }
 
-        protected override void OnMouseOverEnterHandler()
-        {
-            _UIContainer.WagonInfoPopup.Show(_wagonData, transform);
-        }
-
-        protected override void OnMouseOverExitHandler()
-        {
-            _UIContainer.WagonInfoPopup.Hide();
-        }
 
         private void OnSetEvent(IEvent eventData)
         {
@@ -117,6 +94,7 @@ namespace DontStopTheTrain.Train
         {
             base.OnValidate();
             _boxCollider ??= GetComponent<BoxCollider>();
+            _wagonUIOnClick ??= GetComponent<WagonUIOnClick>();
         }
     }
    
