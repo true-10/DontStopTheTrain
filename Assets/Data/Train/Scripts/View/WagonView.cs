@@ -1,15 +1,11 @@
 using DontStopTheTrain.Events;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using True10.CameraSystem;
-using True10.LevelScrollSystem;
 using UnityEngine;
 using Zenject;
 
 namespace DontStopTheTrain.Train
 {
-
     public sealed class WagonView : BaseClickableView
     {
       //  public List<WagonEventViewer> EventViewers => _eventViewers;//надо ли?

@@ -11,6 +11,7 @@ namespace DontStopTheTrain.Train
 
     public interface IWagon : IWagonSystem
     {
+        //Action<IEvent, IWagonSystem> OnEventStarted { get; set; }
        // int Number { get; } //номер вагона
         IReadOnlyCollection<IWagonSystem> Systems { get; }
 
