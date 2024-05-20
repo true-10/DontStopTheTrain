@@ -11,6 +11,8 @@ namespace DontStopTheTrain.UI
 {
     public class UIMainGamePlay : UIScreen
     {
+        public override UIScreenID ScreenID => UIScreenID.Gameplay;
+
         [Inject]
         private Player _player;
         [Inject]

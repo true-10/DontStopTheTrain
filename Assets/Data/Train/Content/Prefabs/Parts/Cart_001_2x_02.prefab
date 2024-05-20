@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1629619636259455736}
   - component: {fileID: 8001519276289895914}
   - component: {fileID: 4067342494050162515}
+  - component: {fileID: 1857403405328671949}
   m_Layer: 0
   m_Name: Cart_001_2x_02
   m_TagString: Untagged
@@ -67,7 +68,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34af61139065b804a91fee74bb1565a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isDisabled: 0
 --- !u!114 &1629619636259455736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,16 +111,28 @@ LODGroup:
   - screenRelativeHeight: 0.102337286
     fadeTransitionWidth: 0
     renderers:
-    - renderer: {fileID: 705693441348242758}
+    - renderer: {fileID: 0}
   - screenRelativeHeight: 0.053657737
     fadeTransitionWidth: 0
     renderers:
-    - renderer: {fileID: 705693441348242758}
+    - renderer: {fileID: 0}
   - screenRelativeHeight: 0.013975486
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 0}
   m_Enabled: 1
+--- !u!114 &1857403405328671949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998238217593237870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90d430cfc2ed25844994730aac6a9e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &906418991999752819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -280,12 +292,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c51c2d9db31282345b8905bde294f10d, type: 3}
---- !u!23 &705693441348242758 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: c51c2d9db31282345b8905bde294f10d,
-    type: 3}
-  m_PrefabInstance: {fileID: 2164742492929397186}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1837482591712540201 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c51c2d9db31282345b8905bde294f10d,

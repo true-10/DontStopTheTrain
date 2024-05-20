@@ -14,6 +14,8 @@ namespace DontStopTheTrain.UI
 
     public class UIStartMenu : UIScreen
     {
+        public override UIScreenID ScreenID => UIScreenID.StartMenu;
+
         [Inject]
         private DayTimeSystem _dayTimeSystem;
         [Inject]

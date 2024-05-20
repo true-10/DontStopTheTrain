@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 7400194530411087416}
   - component: {fileID: 4223771431929861325}
   - component: {fileID: 3161733834240775623}
+  - component: {fileID: 6277945366403227554}
   m_Layer: 14
   m_Name: SystemView
   m_TagString: Untagged
@@ -113,13 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1850e8716e8e63d4aa2cdafeaac59542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clickableView: {fileID: 8193510093697571967}
-  _wagonEventTypes: 
   _wagonEventViewer: {fileID: 3161733834240775623}
-  _lookAtTransform: {fileID: 7938855115673587676}
   _wagonSystemUIOnClick: {fileID: 4223771431929861325}
-  _wagonSystemStaticDataBase: {fileID: 11400000, guid: 286888bb721099d40a538fded8f2204c,
-    type: 2}
 --- !u!114 &4223771431929861325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +144,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wagonEventTypes: 02000000
   _eventPrefabRoot: {fileID: 1982668989558555053}
+--- !u!114 &6277945366403227554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6377193115041086902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90d430cfc2ed25844994730aac6a9e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wagonSystemStaticDataBase: {fileID: 11400000, guid: 286888bb721099d40a538fded8f2204c,
+    type: 2}
 --- !u!1 &6985736700260713198
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +297,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8024691415290248316}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11673295, y: -0.67439884, z: 0.10920988, w: 0.7208557}
+  m_LocalRotation: {x: 0.11673296, y: -0.67439866, z: 0.10920985, w: 0.7208558}
   m_LocalPosition: {x: 3.781, y: 1.915, z: 1.3769999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

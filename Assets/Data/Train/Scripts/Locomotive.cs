@@ -23,7 +23,7 @@ namespace DontStopTheTrain
 
         public IEvent ActiveEvent => throw new System.NotImplementedException();
 
-        public IWagonSystemStaticData StaticData => throw new System.NotImplementedException();
+        public IWagonStaticData StaticData => throw new System.NotImplementedException();
 
         public int Price => throw new System.NotImplementedException();
 

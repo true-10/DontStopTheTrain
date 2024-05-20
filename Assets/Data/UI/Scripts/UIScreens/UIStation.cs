@@ -11,6 +11,8 @@ namespace DontStopTheTrain.UI
 
     public class UIStation : UIScreen
     {
+        public override UIScreenID ScreenID => UIScreenID.Station;
+
         [Inject]
         private DayTimeSystem _dayTimeSystem;
         [Inject]

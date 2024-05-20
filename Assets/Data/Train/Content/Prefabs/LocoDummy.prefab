@@ -3160,8 +3160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee10c22b9fbcb44ab9f06460a2a67bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _snapPointsType: 1
   _points:
-  - {fileID: 1921456594707334303}
   - {fileID: 827346331418272556}
   - {fileID: 2191187862505940298}
 --- !u!1 &5915595014438719348
@@ -5090,6 +5090,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9006483805239018186}
     m_Modifications:
+    - target: {fileID: 109573405154302429, guid: dd2ff63269fd61f4a948d49916fe1b19,
+        type: 3}
+      propertyPath: _wagonSystemStaticDataBase
+      value: 
+      objectReference: {fileID: 11400000, guid: 286888bb721099d40a538fded8f2204c,
+        type: 2}
     - target: {fileID: 3524230374516483663, guid: dd2ff63269fd61f4a948d49916fe1b19,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5151,18 +5157,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd2ff63269fd61f4a948d49916fe1b19, type: 3}
---- !u!114 &1921456594707334303 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7761825247905792954, guid: dd2ff63269fd61f4a948d49916fe1b19,
-    type: 3}
-  m_PrefabInstance: {fileID: 8150926433259718437}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2220a0110c76bc048a9bdf123b2d2705, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &4752842135894221162 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3524230374516483663, guid: dd2ff63269fd61f4a948d49916fe1b19,

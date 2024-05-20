@@ -54,7 +54,8 @@ namespace DontStopTheTrain.UI
         Fader,
         Gameplay,
         GameMenu,
-        StartMenu
+        StartMenu,
+        PlayerMenu
 
     }
 }

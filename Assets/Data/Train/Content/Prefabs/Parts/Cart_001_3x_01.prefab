@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2663337250631738484}
   - component: {fileID: 8940218778803151707}
   - component: {fileID: 7551597729227512822}
+  - component: {fileID: -375913745921935524}
   m_Layer: 0
   m_Name: Cart_001_3x_01
   m_TagString: Untagged
@@ -68,7 +69,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34af61139065b804a91fee74bb1565a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isDisabled: 0
 --- !u!114 &8940218778803151707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,6 +95,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _snapType: 2
   _gizmoSize: 0.5
+--- !u!114 &-375913745921935524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3208785752429828880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90d430cfc2ed25844994730aac6a9e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2572992535502640905
 PrefabInstance:
   m_ObjectHideFlags: 0

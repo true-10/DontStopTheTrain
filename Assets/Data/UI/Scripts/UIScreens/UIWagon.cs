@@ -7,6 +7,8 @@ namespace DontStopTheTrain.UI
 { 
     public class UIWagon : UIScreen
     {
+        public override UIScreenID ScreenID => UIScreenID.Wagon;
+
         [SerializeField]
         private Button _closeButton;
         [SerializeField]

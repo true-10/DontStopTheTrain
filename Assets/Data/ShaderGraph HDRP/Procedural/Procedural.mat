@@ -59,7 +59,7 @@ Material:
     - _AlphaSrcBlend: 1
     - _BlendMode: 0
     - _BlueMaskPower: 0.01
-    - _ColorOffset: 0
+    - _ColorOffset: 0.184
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 2
     - _CullModeForward: 2
@@ -105,7 +105,7 @@ Material:
     - _TransparentZWrite: 0
     - _UseShadowThreshold: 0
     - _VertexColorMaskPower: 1
-    - _WaterColorOpacity: 0.606
+    - _WaterColorOpacity: 1
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4

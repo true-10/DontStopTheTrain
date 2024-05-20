@@ -18,7 +18,7 @@ public class WagonScriptableInstaller : ScriptableObjectInstaller<WagonScriptabl
     public override void InstallBindings()
     {
         Container.Bind<WagonPartsStaticStorage>().FromScriptableObject(_wagonPartsStaticStorage).AsSingle();
-        Container.Bind<PartUpgrader>().AsSingle();
+        Container.Bind<SystemUpgrader>().AsSingle();
 
         Container.Bind<WagonsStaticStorage>().FromScriptableObject(_wagonSystemsStaticStorage).AsSingle();
         Container.Bind<WagonSystemsStaticStorage>().FromScriptableObject(_wagonsStaticStorage).AsSingle();

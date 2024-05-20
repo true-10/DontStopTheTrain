@@ -7,6 +7,8 @@ namespace DontStopTheTrain.UI
 {
     public class UIFader : UIScreen
     {
+        public override UIScreenID ScreenID => UIScreenID.Fader;
+
         [SerializeField]
         private CanvasGroup _canvasGroup;
         [SerializeField]

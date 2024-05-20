@@ -10,12 +10,12 @@ using static UnityEngine.InputSystem.PlayerInput;
 
 namespace DontStopTheTrain
 {
-    public sealed class WagonSystemView : BaseClickableView
+    public sealed class WagonEventController : AbstractGameLifeCycleBehaviour
     {
         public IEvent ActiveEvent { get; private set; }
-        public IWagonSystem WagonSystem { get; private set; }
+       // public IWagonSystem WagonSystem { get; private set; }
 
-        public bool IsClickable
+       /* public bool IsClickable
         { 
             get
             {
@@ -25,30 +25,29 @@ namespace DontStopTheTrain
             {
                 _clickableView.IsClickable = value;
             }
-}
+}*/
 
-        [Inject]
-        private WagonSystemsFabric _fabric;
+     //   [Inject]
+      //  private WagonSystemsFabric _fabric;
 
-        [SerializeField]
-        private List<WagonEventType> _wagonEventTypes;
+        //[SerializeField]
+        //private List<WagonEventType> _wagonEventTypes;
         [SerializeField]
         private WagonEventViewer _wagonEventViewer;
-        [SerializeField]
-        private Transform _lookAtTransform;
+      
         [SerializeField]
         private WagonSystemUIOnClick _wagonSystemUIOnClick;
-        [SerializeField]
-        private WagonSystemStaticDataBase _wagonSystemStaticDataBase;
+       // [SerializeField]
+       // private WagonSystemStaticDataBase _wagonSystemStaticDataBase;
 
         public override void Initialize()
         {
-            base.Initialize();
-            WagonSystem = _fabric.Create(_wagonSystemStaticDataBase);
-            WagonSystem.Initialize();
-            (WagonSystem as BaseWagonSystem).SetViewer(_wagonEventViewer);
+          //  base.Initialize();
+          //  WagonSystem = _fabric.Create(_wagonSystemStaticDataBase);
+           // WagonSystem.Initialize();
+            //(WagonSystem as BaseWagonSystem).SetViewer(_wagonEventViewer);
             //добавить систему в менеджер?
-            _wagonSystemUIOnClick.SetSystem(WagonSystem);
+         //   _wagonSystemUIOnClick.SetSystem(WagonSystem);
 
             _wagonEventViewer.OnSetEvent += OnSetEvent;
 
@@ -56,8 +55,8 @@ namespace DontStopTheTrain
 
         public override void Dispose()
         {
-            base.Dispose();
-            WagonSystem.Dispose();
+            //base.Dispose();
+            //WagonSystem.Dispose();
 
 
             _wagonEventViewer.OnSetEvent -= OnSetEvent;

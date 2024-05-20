@@ -6,12 +6,12 @@ namespace DontStopTheTrain.UI
     public class UIScreen : MonoBehaviour
     {
         public Action<bool> OnShow { get; set; }
-        public UIScreenID ScreenID => _screenId;
+        public virtual UIScreenID ScreenID => UIScreenID.None;// _screenId;
 
         [SerializeField]
         protected GameObject _root;
-        [SerializeField]
-        protected UIScreenID _screenId;
+        //[SerializeField]
+        //protected UIScreenID _screenId;
 
         public virtual void Show()
         {

@@ -19,7 +19,7 @@ namespace DontStopTheTrain.Train
         [SerializeField]
         private List<WagonEventViewer> _eventViewers;
         [SerializeField]
-        private List<WagonSystemView> _systemViewers;
+        private List<WagonEventController> _systemViewers;
         [SerializeField] 
         private WagonStaticDataBase _wagonStaticData;
         [SerializeField] 
@@ -55,7 +55,7 @@ namespace DontStopTheTrain.Train
         protected override void OnClickViewHandler()
         {
             _boxCollider.enabled = false;
-            _systemViewers.ForEach(viewer => viewer.IsClickable = true);
+          //  _systemViewers.ForEach(viewer => viewer.IsClickable = true);
         }
 
         private void OnEventFocus(IEvent eventData)
@@ -69,7 +69,7 @@ namespace DontStopTheTrain.Train
         protected override void OnExitViewHandler()
         {
             _boxCollider.enabled = true;
-            _systemViewers.ForEach(viewer => viewer.IsClickable = false);
+          //  _systemViewers.ForEach(viewer => viewer.IsClickable = false);
         }
 
 

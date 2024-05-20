@@ -4,14 +4,14 @@ using UnityEngine;
 
 namespace DontStopTheTrain.Train
 {
-    public class PartUpgrader
+    public class SystemUpgrader //SystemUpgrader
     {
 
         public WagonPartStaticData CurrentPartStatic => _currentStatic;
 
         private GameObject _target;
         private WagonPartStaticData _currentStatic;
-        public void SetCurrentPartStatic(WagonPartStaticData wagonPartStaticData)
+        public void SetCurrentSystemStatic(WagonPartStaticData wagonPartStaticData)
         {
             _currentStatic = wagonPartStaticData;
         }
@@ -26,16 +26,16 @@ namespace DontStopTheTrain.Train
             TryToReplace(_currentStatic);
         }
 
-        public bool TryToUpgraged(WagonPartStaticData wagonPartStaticData)
+        public bool TryToUpgraged(WagonPartStaticData wagonSystemStaticData)
         {
-            var prefab = wagonPartStaticData.NextLevelStaticData.ConstructorPrefab;
+            var prefab = wagonSystemStaticData.NextLevelStaticData.ConstructorPrefab;
             GameObjectReplacer.Replace(_target, prefab, (go) => { });
             return false;
         }
 
-        public void TryToReplace(WagonPartStaticData wagonPartStaticData)//, Action<GameObject> onComlete = null)
+        public void TryToReplace(WagonPartStaticData wagonSystemStaticData)//, Action<GameObject> onComlete = null)
         {
-            var prefab = wagonPartStaticData.ConstructorPrefab;
+            var prefab = wagonSystemStaticData.ConstructorPrefab;
             GameObjectReplacer.Replace(_target, prefab, OnReplacemenComplete);
         }
 

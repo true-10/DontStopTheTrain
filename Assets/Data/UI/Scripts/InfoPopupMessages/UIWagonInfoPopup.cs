@@ -8,6 +8,7 @@ namespace DontStopTheTrain.UI
 {
     public class UIWagonInfoPopup : UIScreen
     {
+        public override UIScreenID ScreenID => UIScreenID.None;
         [SerializeField]
         private Image _icon;
         [SerializeField]
@@ -18,8 +19,8 @@ namespace DontStopTheTrain.UI
       //  private TextMeshProUGUI _conditionText;
         [SerializeField]
         private SetWorldPosition _worldPostionSetter;
-        [SerializeField]
-        private Slider _healthSlider;
+      // [SerializeField]
+       // private Slider _healthSlider;
 
         public void AnchorIt()
         {
@@ -31,7 +32,7 @@ namespace DontStopTheTrain.UI
             _nameText.text = wagonData.StaticData.Info.Name;
             _descriptionText.text = wagonData.StaticData.Info.Description;
             _icon.sprite = wagonData.StaticData.Info.Icon;
-            _healthSlider.value = (float)wagonData.Health.Value / wagonData.MaxHealth.Value;
+           // _healthSlider.value = (float)wagonData.Health.Value / wagonData.MaxHealth.Value;
 
         //_conditionText.text = ConditionToTextConverter.GetText(wagonData.СompleteConditions, wagonData.ActionPointPrice);
             _worldPostionSetter.SetPosition(lookAt);

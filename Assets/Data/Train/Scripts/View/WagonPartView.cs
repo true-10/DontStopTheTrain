@@ -12,7 +12,7 @@ namespace DontStopTheTrain.Train.Constructor
         public WagonPartStaticData StaticData => _staticData;
 
         [Inject]
-        private PartUpgrader _partUpgrader;
+        private SystemUpgrader _partUpgrader;
         [Inject]
         private UIContainer _UIContainer;
 
@@ -34,7 +34,7 @@ namespace DontStopTheTrain.Train.Constructor
         protected override void OnClickViewHandler()
         {
             _partUpgrader.SetCurrentTarget(gameObject);
-            _partUpgrader.SetCurrentPartStatic(_staticData);
+            _partUpgrader.SetCurrentSystemStatic(_staticData);
             _selectionObject?.SetActive(false);
             _UIContainer.GetUIScreen(UIScreenID.PartUpgrader)?.Show();
         }
@@ -43,7 +43,7 @@ namespace DontStopTheTrain.Train.Constructor
         {
             _selectionObject?.SetActive(false);
             _partUpgrader.SetCurrentTarget(null);
-            _partUpgrader.SetCurrentPartStatic(null);
+            _partUpgrader.SetCurrentSystemStatic(null);
         }
 
         protected override void OnMouseOverEnterHandler()

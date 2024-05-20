@@ -10,6 +10,8 @@ namespace DontStopTheTrain.UI
 {
     public partial class UINewPerk : UIScreen
     {
+        public override UIScreenID ScreenID => UIScreenID.NewPerk;
+
         [Inject]
         private Player _player;
         [Inject]

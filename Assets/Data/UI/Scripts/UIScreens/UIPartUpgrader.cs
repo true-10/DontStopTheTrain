@@ -10,10 +10,13 @@ using Zenject;
 
 namespace DontStopTheTrain.UI
 {
+    //UISystemUpgrader
     public class UIPartUpgrader : UIScreen, IGameLifeCycle
     {
+        public override UIScreenID ScreenID => UIScreenID.PartUpgrader;
+
         [Inject]
-        private PartUpgrader _partUpgrader;
+        private SystemUpgrader _partUpgrader;
         [Inject]
         private WagonPartsStaticStorage _wagonPartsStaticStorage;
 
@@ -115,14 +118,14 @@ namespace DontStopTheTrain.UI
         {
             //TODO: сохраняем изменения
 
-            _partUpgrader.SetCurrentPartStatic(null);
+            _partUpgrader.SetCurrentSystemStatic(null);
             Hide();
         }
 
         private void CancelHandler()
         {
             _partUpgrader.Undo();
-            _partUpgrader.SetCurrentPartStatic(null);
+            _partUpgrader.SetCurrentSystemStatic(null);
             Hide();
         }
 

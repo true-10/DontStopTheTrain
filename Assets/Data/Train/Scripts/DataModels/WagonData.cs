@@ -12,7 +12,7 @@ namespace DontStopTheTrain.Train
     {
         //здесь мы отслеживаем состояние вагона
         public int Number => 1;
-        public IWagonSystemStaticData StaticData => _staticData;// { get; private set; }
+        public IWagonStaticData StaticData => _staticData;
         public IReadOnlyCollection<IWagonSystem> Systems { get; private set; }
         public int Price => 500;
         public int EnergyConsumption => StaticData.BaseEnergyConsumption + Systems.Sum(sys => sys.EnergyConsumption);

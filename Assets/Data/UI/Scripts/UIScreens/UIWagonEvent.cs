@@ -11,6 +11,8 @@ namespace DontStopTheTrain.UI
     [Obsolete]
     public class UIWagonEvent : UIScreen
     {
+        public override UIScreenID ScreenID => UIScreenID.None;
+
         [Inject]
         private EventsService _eventsService;
         [Inject]

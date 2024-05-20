@@ -3721,6 +3721,7 @@ GameObject:
   - component: {fileID: 8129938185979999091}
   - component: {fileID: 4800632103767146152}
   - component: {fileID: 4861190339404954865}
+  - component: {fileID: 3450918234425262477}
   m_Layer: 7
   m_Name: WagonTest
   m_TagString: Untagged
@@ -3835,6 +3836,20 @@ MonoBehaviour:
   _points:
   - {fileID: 1906200741907808283}
   - {fileID: 119397015121261165}
+--- !u!114 &3450918234425262477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5776011347189050655}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90d430cfc2ed25844994730aac6a9e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wagonSystemStaticDataBase: {fileID: 11400000, guid: 286888bb721099d40a538fded8f2204c,
+    type: 2}
 --- !u!1 &5857693350616630688
 GameObject:
   m_ObjectHideFlags: 0
@@ -6674,8 +6689,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4244929815701790419, guid: ac846dd7cd13c4046bfa23d7c6661e10,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7208558
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244929815701790419, guid: ac846dd7cd13c4046bfa23d7c6661e10,
+        type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11673295
+      value: 0.11673296
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244929815701790419, guid: ac846dd7cd13c4046bfa23d7c6661e10,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.67439866
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244929815701790419, guid: ac846dd7cd13c4046bfa23d7c6661e10,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.10920985
       objectReference: {fileID: 0}
     - target: {fileID: 6377193115041086902, guid: ac846dd7cd13c4046bfa23d7c6661e10,
         type: 3}
@@ -6935,8 +6965,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4244929815701790419, guid: ac846dd7cd13c4046bfa23d7c6661e10,
         type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.9149997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244929815701790419, guid: ac846dd7cd13c4046bfa23d7c6661e10,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.3770008
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244929815701790419, guid: ac846dd7cd13c4046bfa23d7c6661e10,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.72085536
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244929815701790419, guid: ac846dd7cd13c4046bfa23d7c6661e10,
+        type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11673295
+      value: 0.116732895
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244929815701790419, guid: ac846dd7cd13c4046bfa23d7c6661e10,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.67439914
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244929815701790419, guid: ac846dd7cd13c4046bfa23d7c6661e10,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.109209925
       objectReference: {fileID: 0}
     - target: {fileID: 6377193115041086902, guid: ac846dd7cd13c4046bfa23d7c6661e10,
         type: 3}
@@ -6986,6 +7041,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8225478462349188403}
     m_Modifications:
+    - target: {fileID: 109573405154302429, guid: dd2ff63269fd61f4a948d49916fe1b19,
+        type: 3}
+      propertyPath: _wagonSystemStaticDataBase
+      value: 
+      objectReference: {fileID: 11400000, guid: 286888bb721099d40a538fded8f2204c,
+        type: 2}
     - target: {fileID: 3524230374516483663, guid: dd2ff63269fd61f4a948d49916fe1b19,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7736,6 +7797,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8225478462349188403}
     m_Modifications:
+    - target: {fileID: 109573405154302429, guid: dd2ff63269fd61f4a948d49916fe1b19,
+        type: 3}
+      propertyPath: _wagonSystemStaticDataBase
+      value: 
+      objectReference: {fileID: 11400000, guid: 286888bb721099d40a538fded8f2204c,
+        type: 2}
     - target: {fileID: 3524230374516483663, guid: dd2ff63269fd61f4a948d49916fe1b19,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8402,6 +8469,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8225478462349188403}
     m_Modifications:
+    - target: {fileID: -8216344238374310934, guid: 106a297f93e6f3a40bcfc614852c97b9,
+        type: 3}
+      propertyPath: _wagonSystemStaticDataBase
+      value: 
+      objectReference: {fileID: 11400000, guid: 286888bb721099d40a538fded8f2204c,
+        type: 2}
     - target: {fileID: 4805289794311729979, guid: 106a297f93e6f3a40bcfc614852c97b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11971,6 +12044,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 33c531fdf8bbbb146bf8b0f936d4f557,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6fe6a1fc848ea994a94771cc93a1aae5, type: 2}
     - target: {fileID: 919132149155446097, guid: 33c531fdf8bbbb146bf8b0f936d4f557,
         type: 3}
       propertyPath: m_Name
@@ -12796,6 +12874,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 80852add0d71127418578655f65ddf81,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6fe6a1fc848ea994a94771cc93a1aae5, type: 2}
     - target: {fileID: 919132149155446097, guid: 80852add0d71127418578655f65ddf81,
         type: 3}
       propertyPath: m_Name
@@ -14161,17 +14244,27 @@ PrefabInstance:
     - target: {fileID: 4244929815701790419, guid: ac846dd7cd13c4046bfa23d7c6661e10,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.3770001
+      value: 1.3770019
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244929815701790419, guid: ac846dd7cd13c4046bfa23d7c6661e10,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.72085536
       objectReference: {fileID: 0}
     - target: {fileID: 4244929815701790419, guid: ac846dd7cd13c4046bfa23d7c6661e10,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.116732955
+      value: 0.116732895
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244929815701790419, guid: ac846dd7cd13c4046bfa23d7c6661e10,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6743992
       objectReference: {fileID: 0}
     - target: {fileID: 4244929815701790419, guid: ac846dd7cd13c4046bfa23d7c6661e10,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.109209865
+      value: 0.10920993
       objectReference: {fileID: 0}
     - target: {fileID: 6377193115041086902, guid: ac846dd7cd13c4046bfa23d7c6661e10,
         type: 3}
@@ -14295,6 +14388,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8225478462349188403}
     m_Modifications:
+    - target: {fileID: -8216344238374310934, guid: 106a297f93e6f3a40bcfc614852c97b9,
+        type: 3}
+      propertyPath: _wagonSystemStaticDataBase
+      value: 
+      objectReference: {fileID: 11400000, guid: 286888bb721099d40a538fded8f2204c,
+        type: 2}
     - target: {fileID: 4805289794311729979, guid: 106a297f93e6f3a40bcfc614852c97b9,
         type: 3}
       propertyPath: m_LocalPosition.x

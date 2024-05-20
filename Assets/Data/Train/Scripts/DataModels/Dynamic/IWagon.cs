@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using True10.Interfaces;
 using UniRx;
 
 namespace DontStopTheTrain.Train
@@ -9,10 +10,11 @@ namespace DontStopTheTrain.Train
         IReadOnlyReactiveProperty<int> Health { get; }
     }
 
-    public interface IWagon : IWagonSystem
+    public interface IWagon: IGameLifeCycle //: IWagonSystem
     {
         //Action<IEvent, IWagonSystem> OnEventStarted { get; set; }
-       // int Number { get; } //номер вагона
+        IWagonStaticData StaticData { get; }
+        // int Number { get; } //номер вагона
         IReadOnlyCollection<IWagonSystem> Systems { get; }
 
        // int Next { get; set; } //номер следующего
