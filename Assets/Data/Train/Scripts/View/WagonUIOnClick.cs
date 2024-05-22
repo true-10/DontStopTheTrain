@@ -1,4 +1,6 @@
 ﻿using DontStopTheTrain.UI;
+using True10;
+using UnityEngine;
 using Zenject;
 
 namespace DontStopTheTrain.Train
@@ -8,7 +10,21 @@ namespace DontStopTheTrain.Train
         [Inject]
         private UIContainer _UIContainer;
 
+        [SerializeField]
+        private WagonObject _wagonObject;
+
         private IWagon _wagonData;
+
+        public override void Initialize()
+        {
+            base.Initialize();
+            _wagonData ??= _wagonObject.WagonData;
+        }
+
+       /* public void SetWagonData(IWagon wagonData)
+        {
+            _wagonData ??= wagonData;
+        }*/
 
         protected override void OnClickViewHandler()
         {
@@ -36,10 +52,6 @@ namespace DontStopTheTrain.Train
             _UIContainer.WagonInfoPopup.Hide();
         }
 
-        public void SetWagonData(IWagon wagonData)
-        {
-            _wagonData ??= wagonData;
-        }
     }
    
 }

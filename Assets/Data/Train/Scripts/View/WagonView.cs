@@ -9,10 +9,7 @@ namespace DontStopTheTrain.Train
     public sealed class WagonView : BaseClickableView
     {
       //  public List<WagonEventViewer> EventViewers => _eventViewers;//надо ли?
-        public IWagon WagonData => _wagonData;
 
-        [Inject]
-        private WagonsFabric _fabric;
         [Inject]
         private EventController _eventController;
 
@@ -21,23 +18,17 @@ namespace DontStopTheTrain.Train
         [SerializeField]
         private List<WagonEventController> _systemViewers;
         [SerializeField] 
-        private WagonStaticDataBase _wagonStaticData;
-        [SerializeField] 
         private BoxCollider _boxCollider;
         [SerializeField] 
         private WagonAlarm _alarm;
-        [SerializeField] 
-        private WagonUIOnClick _wagonUIOnClick;
-
-        private IWagon _wagonData;
+       // [SerializeField] 
+        //private WagonUIOnClick _wagonUIOnClick;
 
         public override void Initialize()
         {
             base.Initialize();
             _boxCollider ??= GetComponent<BoxCollider>();
-            _wagonData = _fabric.Create(_wagonStaticData);
-            _wagonData.Initialize();
-            _wagonUIOnClick.SetWagonData(_wagonData);
+           // _wagonUIOnClick.SetWagonData(_wagonData);
 
             _eventController.OnFocus += OnEventFocus;
             _eventViewers.ForEach(viewer => viewer.OnSetEvent += OnSetEvent);
@@ -46,7 +37,6 @@ namespace DontStopTheTrain.Train
         public override void Dispose()
         {
             base.Dispose();
-            _wagonData.Dispose();
 
             _eventController.OnFocus -= OnEventFocus;
             _eventViewers.ForEach(viewer => viewer.OnSetEvent -= OnSetEvent);
@@ -90,7 +80,7 @@ namespace DontStopTheTrain.Train
         {
             base.OnValidate();
             _boxCollider ??= GetComponent<BoxCollider>();
-            _wagonUIOnClick ??= GetComponent<WagonUIOnClick>();
+            //_wagonUIOnClick ??= GetComponent<WagonUIOnClick>();
         }
     }
    

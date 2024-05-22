@@ -35,7 +35,7 @@ namespace DontStopTheTrain.Train
 
         public override void Dispose()
         {
-            WagonSystem.Dispose();
+            WagonSystem?.Dispose();
 
 
            // _wagonEventViewer.OnSetEvent -= OnSetEvent;

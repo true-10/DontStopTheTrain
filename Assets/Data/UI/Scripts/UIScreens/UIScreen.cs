@@ -19,7 +19,7 @@ namespace DontStopTheTrain.UI
             OnShow?.Invoke(true);
         }
 
-        public void Hide()
+        public virtual void Hide()
         {
             _root.SetActive(false);
             OnShow?.Invoke(false);

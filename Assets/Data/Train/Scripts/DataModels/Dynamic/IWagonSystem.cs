@@ -1,4 +1,5 @@
 ﻿using DontStopTheTrain.Events;
+using System;
 using True10.Interfaces;
 using UnityEngine;
 
@@ -25,6 +26,8 @@ namespace DontStopTheTrain.Train
 
     public interface IWagonSystem : IHealthable, IGameLifeCycle
     {
+        Action<IEvent, IWagonSystem> OnEventStarted { get; set; }
+       // Action<SystemChangedCallback> OnSystemChanged { get; set; }
         IEvent ActiveEvent { get; }
         //IEventViewer EventViewer { get; }
         IWagonSystemStaticData StaticData { get; }
@@ -32,6 +35,22 @@ namespace DontStopTheTrain.Train
         int EnergyConsumption { get; } //потребление энергии
         int DeteriorationSpeed { get; } //скорость износа
         int Weight { get; }//масса системы для расчетов скорости/расхода топлива/торможения?
+    }
+
+    public class SystemChangedCallback
+    {
+        public IWagonSystem System;
+        public SystemCallbackStatus Status;
+
+    }
+
+    public enum SystemCallbackStatus
+    {
+        None,
+        Upgrade,
+        Added,
+        Removed,
+        Broken
     }
 
     public interface IEngineSystem : IWagonSystem

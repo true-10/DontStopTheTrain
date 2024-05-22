@@ -1,10 +1,12 @@
 ﻿using DontStopTheTrain.Events;
+using System;
 using UniRx;
 
 namespace DontStopTheTrain.Train
 {
     public class BaseWagonSystem : IWagonSystem
     {
+        public Action<IEvent, IWagonSystem> OnEventStarted { get; set; }
         public IEvent ActiveEvent { get; private set; }
         public IWagonSystemStaticData StaticData => _staticData;
         public int Price { get; private set; }
@@ -47,7 +49,10 @@ namespace DontStopTheTrain.Train
 
         public void Dispose()
         {
-            _turnBasedController.OnTurnEnd -= OnTurnEnd;
+            if (_turnBasedController != null)
+            {
+                _turnBasedController.OnTurnEnd -= OnTurnEnd;
+            }
             _health.Dispose();
             _maxHealth.Dispose();
         }
@@ -73,7 +78,10 @@ namespace DontStopTheTrain.Train
                     eventData =>
                     {
                         ActiveEvent = eventData;
-                        _viewer.TryToSetEventData(ActiveEvent);
+                        if (_viewer.TryToSetEventData(ActiveEvent))
+                        {
+                            OnEventStarted?.Invoke(ActiveEvent, this);
+                        }
                     });
             }
 

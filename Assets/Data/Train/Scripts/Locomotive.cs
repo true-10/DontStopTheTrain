@@ -9,17 +9,21 @@ using True10.Interfaces;
 using True10.LevelScrollSystem;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Rendering.VirtualTexturing;
 using Zenject;
 
 namespace DontStopTheTrain
 {
     public class Locomotive : AbstractGameLifeCycleBehaviour, IWagon
     {
+        public Action<SystemChangedCallback> OnSystemChanged { get; set; }
+        public Action<IEvent, IWagonSystem> OnEventStarted { get; set; }
+
         [SerializeField]
         private float _defaultSpeed = 100f;
         public float SpeedMultiplayer => _currentSpeed / 100f;
 
-        public IReadOnlyCollection<IWagonSystem> Systems => throw new System.NotImplementedException();
+        public IReadOnlyCollection<IWagonSystem> Systems => _systems;
 
         public IEvent ActiveEvent => throw new System.NotImplementedException();
 
@@ -45,6 +49,21 @@ namespace DontStopTheTrain
         private float _currentSpeed;
         private Sequence _speedSequence = null;
 
+        public List<IWagonSystem> _systems { get; private set; }
+
+        public void AddSystem(IWagonSystem newSystem)
+        {
+            _systems.Add(newSystem);
+        }
+
+        public void RemoveSystem(IWagonSystem newSystem)
+        {
+            if (_systems.Contains(newSystem) == false)
+            {
+                return;
+            }
+            _systems.Remove(newSystem);
+        }
         public void SetSpeed(float speed, float duration = 1f)
         {
             _speedSequence?.Complete();

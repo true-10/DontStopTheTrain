@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using True10.StaticData;
 using UnityEngine;
 
 namespace DontStopTheTrain.Train
@@ -9,11 +10,11 @@ namespace DontStopTheTrain.Train
     //хранят роботов ремонтников/инструменты
 
 
-    public interface IWagonStaticData : IWagonSystemStaticData
+    public interface IWagonStaticData// : IWagonSystemStaticData
     {
         int Id { get; }
         WagonType WagonType { get; }
-       // Information Info { get; }
+        Information Info { get; }
         IReadOnlyCollection<IWagonSystemStaticData> Systems { get; }
     }
 
