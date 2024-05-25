@@ -1,0 +1,34 @@
+{
+    "name": "GameInput",
+    "maps": [
+        {
+            "name": "GameInput",
+            "id": "4305bd7e-4f5d-458d-a925-754445f812c6",
+            "actions": [
+                {
+                    "name": "PlayerScreen",
+                    "type": "Button",
+                    "id": "f021b75d-a990-45fb-8b45-ee85e96192b4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ff926453-83a4-4c65-a357-41042fef5705",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlayerScreen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
