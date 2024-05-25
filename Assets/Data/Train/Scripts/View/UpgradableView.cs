@@ -9,6 +9,7 @@ namespace DontStopTheTrain
     /// upgradablePart - в режиме магазина можно наводить мышкой и смотреть как проапгрейдить (или на что поменять)
     /// </summary>
 
+    //[Obsolete]
     public class UpgradableView : AbstractGameLifeCycleBehaviour
     {
         public Action OnTryToUpgrade { get; set; }

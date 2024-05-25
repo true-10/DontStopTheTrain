@@ -3,14 +3,29 @@ using UnityEngine;
 
 namespace DontStopTheTrain.Train
 {
+    public interface IWagonPartStaticData
+    {
+        public Information Information { get; }
+        public WagonPartType Type { get; }
+        public GameObject GamePrefab { get; }
+        public GameObject BrokenGamePrefab { get; }
+        public GameObject ConstructorPrefab { get; }
+        public IWagonPartStaticData NextLevelStaticData { get; }
+
+        //список мини игры?
+        public int Price { get; }
+        public int UpgradePrice { get; }
+    }
+
     [CreateAssetMenu(fileName = "WagonPartStaticData", menuName = Constants.ContextMenuPaths.WAGON + "WagonPartStaticData")]
-    public class WagonPartStaticData : ScriptableObject
+    public class WagonPartStaticData : ScriptableObject, IWagonPartStaticData
     {
         public Information Information => _information;
         public WagonPartType Type => _type;
         public GameObject GamePrefab => _gamePrefab;
+        public GameObject BrokenGamePrefab => _gamePrefab;
         public GameObject ConstructorPrefab => _constructorPrefab;
-        public WagonPartStaticData NextLevelStaticData => _nextLevelStaticData;
+        public IWagonPartStaticData NextLevelStaticData => _nextLevelStaticData;
         public int Price => _price;
         public int UpgradePrice => _upgradePrice;
 
@@ -20,6 +35,8 @@ namespace DontStopTheTrain.Train
         private WagonPartType _type;
         [SerializeField]
         private GameObject _gamePrefab;
+        [SerializeField]
+        private GameObject _brokenGamePrefab;
         [SerializeField]
         private GameObject _constructorPrefab;
         [SerializeField]

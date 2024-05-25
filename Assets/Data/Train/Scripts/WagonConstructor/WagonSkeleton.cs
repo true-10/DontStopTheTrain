@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace DontStopTheTrain.Train.Constructor
 {
+    [Obsolete]
     public class WagonSkeleton : MonoBehaviour
     {
         [SerializeField]

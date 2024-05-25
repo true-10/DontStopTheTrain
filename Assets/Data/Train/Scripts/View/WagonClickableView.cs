@@ -6,10 +6,8 @@ using Zenject;
 
 namespace DontStopTheTrain.Train
 {
-    public sealed class WagonView : BaseClickableView
+    public sealed class WagonClickableView : BaseClickableView
     {
-      //  public List<WagonEventViewer> EventViewers => _eventViewers;//надо ли?
-
         [Inject]
         private EventController _eventController;
 
@@ -21,14 +19,11 @@ namespace DontStopTheTrain.Train
         private BoxCollider _boxCollider;
         [SerializeField] 
         private WagonAlarm _alarm;
-       // [SerializeField] 
-        //private WagonUIOnClick _wagonUIOnClick;
 
         public override void Initialize()
         {
             base.Initialize();
             _boxCollider ??= GetComponent<BoxCollider>();
-           // _wagonUIOnClick.SetWagonData(_wagonData);
 
             _eventController.OnFocus += OnEventFocus;
             _eventViewers.ForEach(viewer => viewer.OnSetEvent += OnSetEvent);

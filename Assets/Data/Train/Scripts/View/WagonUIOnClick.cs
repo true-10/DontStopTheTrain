@@ -13,19 +13,6 @@ namespace DontStopTheTrain.Train
         [SerializeField]
         private WagonObject _wagonObject;
 
-        private IWagon _wagonData;
-
-        public override void Initialize()
-        {
-            base.Initialize();
-            _wagonData ??= _wagonObject.WagonData;
-        }
-
-       /* public void SetWagonData(IWagon wagonData)
-        {
-            _wagonData ??= wagonData;
-        }*/
-
         protected override void OnClickViewHandler()
         {
             var wagonUI = _UIContainer.GetUIScreen(UIScreenID.Wagon) as UIWagon;
@@ -44,7 +31,7 @@ namespace DontStopTheTrain.Train
 
         protected override void OnMouseOverEnterHandler()
         {
-            _UIContainer.WagonInfoPopup.Show(_wagonData, transform);
+            _UIContainer.WagonInfoPopup.Show(_wagonObject.WagonData, transform);
         }
 
         protected override void OnMouseOverExitHandler()

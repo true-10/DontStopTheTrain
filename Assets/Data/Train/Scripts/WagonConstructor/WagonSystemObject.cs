@@ -6,17 +6,13 @@ using Zenject;
 
 namespace DontStopTheTrain.Train
 {
-    public enum ViewMode
-    {
-        Game = 0,
-        Editor = 1
-    }
 
 
 
     public class WagonSystemObject : AbstractGameLifeCycleBehaviour
     {
         public IWagonSystem WagonSystem { get; private set; }
+        public IWagonSystemStaticData StaticData => WagonSystem.StaticData;
 
 
         [Inject]
@@ -24,6 +20,13 @@ namespace DontStopTheTrain.Train
 
         [SerializeField]
         private WagonSystemStaticDataBase _wagonSystemStaticDataBase;
+        [SerializeField]
+        private GameObject _visualGameObject;
+
+        public void SetVisualActive(bool isActive)
+        {
+            _visualGameObject.SetActive(isActive);
+        }
 
         public override void Initialize()
         {

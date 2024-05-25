@@ -9,6 +9,8 @@ namespace DontStopTheTrain.Train.Constructor
 {
     public class WagonPartView : BaseClickableView
     {
+
+        //[Obsolete] //перенос  в вагон систем вью? или переименовать в WagonParUpgradetView или как то так
         public WagonPartStaticData StaticData => _staticData;
 
         [Inject]

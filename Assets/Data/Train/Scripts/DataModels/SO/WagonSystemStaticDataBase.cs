@@ -16,6 +16,8 @@ namespace DontStopTheTrain.Train
         public int MaxHealth => _maxHealth;
         public IReadOnlyCollection<WagonEventType> WagonEventTypes => _wagonEventTypes;
 
+        public IWagonPartStaticData WagonPartStaticData => _wagonPartStaticData;
+
         [SerializeField]
         private WagonSystemType _type = WagonSystemType.None;
         [SerializeField]
@@ -30,6 +32,8 @@ namespace DontStopTheTrain.Train
         private int _maxHealth = 1000;
         [SerializeField]
         private List<WagonEventType> _wagonEventTypes;
+        [SerializeField]
+        private WagonPartStaticData _wagonPartStaticData;
     }
 }
 

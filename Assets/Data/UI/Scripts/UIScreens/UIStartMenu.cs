@@ -30,7 +30,7 @@ namespace DontStopTheTrain.UI
         [SerializeField]
         private Button _quitGameButton;
         [SerializeField]
-        private CameraHolder _cameraHolder;
+        private CameraHolder _cameraHolder;//вынести
 
 
         private void StartGame()
@@ -43,7 +43,6 @@ namespace DontStopTheTrain.UI
             Hide();
             var gamePlayUI = _UIContainer.GetUIScreen(UIScreenID.Gameplay);
             gamePlayUI?.Show();
-            //_UIContainer.MainGamePlay.Show();
             _cameraHolder.SwitchToDefaultCamera();
         }
 
@@ -60,34 +59,28 @@ namespace DontStopTheTrain.UI
             });
         }
 
-      /*  private void Start()
+        private void Start()
         {
-            Show();
+            Show();//вынести
         }
-      */
+ 
         public override void Show()
         {
             base.Show();
             _dayTimeSystem.Pause();
-            _cameraHolder.SwitchToThisCamera();
+            _cameraHolder.SwitchToThisCamera();//вынести
         }
+
         private void OnEnable()
         {
-           // _dayTimeSystem.OnChange += OnTimeChange;
             _startGameButton.onClick.AddListener(StartGame);
             _quitGameButton.onClick.AddListener(QuitGame);
-
-            
-           // _dayTimeSystem.OnRewind += OnRewind;
         }
 
         private void OnDisable()
         {
-            //_dayTimeSystem.OnChange -= OnTimeChange;
             _startGameButton.onClick.RemoveAllListeners();
             _quitGameButton.onClick.RemoveAllListeners();
-            //_disposables.Clear();
-            //_dayTimeSystem.OnRewind -= OnRewind;
         }
     }
 }

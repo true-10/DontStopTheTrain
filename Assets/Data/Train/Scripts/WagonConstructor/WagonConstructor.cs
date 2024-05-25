@@ -1,10 +1,13 @@
-﻿    using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace DontStopTheTrain.Train.Constructor
 {
     /// <summary>
     /// need to separate inGame parts and contruction parts
     /// </summary>
+    /// 
+    //[Obsolete]
     public class WagonConstructor : MonoBehaviour
     {
         [SerializeField]
