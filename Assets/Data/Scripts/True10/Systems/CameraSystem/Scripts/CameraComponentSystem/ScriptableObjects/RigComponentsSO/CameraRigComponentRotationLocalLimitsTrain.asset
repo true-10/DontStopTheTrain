@@ -16,6 +16,6 @@ MonoBehaviour:
   _comment: 
   _rotationTarget: 1
   _isLocal: 1
-  _xRotationLimits: {x: -10, y: 30}
+  _xRotationLimits: {x: -10, y: 75}
   _yRotationLimits: {x: -80, y: 80}
   _zRotationLimits: {x: 0, y: 0}
