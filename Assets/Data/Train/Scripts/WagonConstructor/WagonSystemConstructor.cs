@@ -4,9 +4,9 @@ namespace DontStopTheTrain.Train.Constructor
 {
     public class WagonSystemConstructor : MonoBehaviour
     {
-        public WagonPartStaticData StaticData => _staticData;
+        public WagonSystemVisualData StaticData => _staticData;
 
         [SerializeField]
-        private WagonPartStaticData _staticData;
+        private WagonSystemVisualData _staticData;
     }
 }

@@ -27,7 +27,8 @@ namespace DontStopTheTrain.Train
     public interface IWagonSystem : IHealthable, IGameLifeCycle
     {
         Action<IEvent, IWagonSystem> OnEventStarted { get; set; }
-       // Action<SystemChangedCallback> OnSystemChanged { get; set; }
+        // Action<SystemChangedCallback> OnSystemChanged { get; set; }
+        Action<IWagonSystem> OnFocus { get; set; }
         IEvent ActiveEvent { get; }
         //IEventViewer EventViewer { get; }
         IWagonSystemStaticData StaticData { get; }
@@ -35,6 +36,9 @@ namespace DontStopTheTrain.Train
         int EnergyConsumption { get; } //потребление энергии
         int DeteriorationSpeed { get; } //скорость износа
         int Weight { get; }//масса системы для расчетов скорости/расхода топлива/торможения?
+
+
+        void TryToFocus();
     }
 
     public class SystemChangedCallback
@@ -48,9 +52,8 @@ namespace DontStopTheTrain.Train
     {
         None,
         Upgrade,
-        Added,
-        Removed,
-        Broken
+        Broken,
+        Replace//?
     }
 
     public interface IEngineSystem : IWagonSystem

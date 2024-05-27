@@ -14,8 +14,12 @@ namespace DontStopTheTrain.Train
         int MaxHealth { get; }
         IReadOnlyCollection<WagonEventType> WagonEventTypes { get; }//допустимые события у это системы
 
-        IWagonPartStaticData WagonPartStaticData { get; }
-        //GameObject SystemPrefab { get; }
+        IWagonSystemVisualData WagonPartStaticData { get; }
+        public IWagonSystemStaticData NextLevelStaticData { get; }
+        public int Price { get; }
+        public int UpgradePrice { get; }
+
+        //список доступных мини игр?
     }
 
     public enum WagonSystemType
@@ -26,5 +30,8 @@ namespace DontStopTheTrain.Train
         Generator,//Fabric?? вырабатывающие что то..  электрогенератор, кухня, мастерская
         Storage, //баки с топливом, холодильники, кузов
 
+        //Hull,
+        //Cart,
+        //Engine
     }
 }

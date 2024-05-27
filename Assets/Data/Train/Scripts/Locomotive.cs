@@ -19,6 +19,8 @@ namespace DontStopTheTrain
         public Action<SystemChangedCallback> OnSystemChanged { get; set; }
         public Action<IEvent, IWagonSystem> OnEventStarted { get; set; }
 
+        public Action<IWagon> OnFocus { get; set; }
+
         [SerializeField]
         private float _defaultSpeed = 100f;
         public float SpeedMultiplayer => _currentSpeed / 100f;
@@ -86,10 +88,6 @@ namespace DontStopTheTrain
 
         }
 
-        private Tween DOSpeed(float endValue, float duration)
-        {
-            return DOTween.To(() => _currentSpeed, x => _currentSpeed = x, endValue, duration);
-        }
 
         public override void Dispose()
         {
@@ -107,6 +105,16 @@ namespace DontStopTheTrain
         private void OnSpeedUpdate()
         {
             _levelScroller.SetSpeed(_currentSpeed);
+        }
+
+        private Tween DOSpeed(float endValue, float duration)
+        {
+            return DOTween.To(() => _currentSpeed, x => _currentSpeed = x, endValue, duration);
+        }
+
+        public void TryToFocus()
+        {
+            OnFocus?.Invoke(this);
         }
     }
 }

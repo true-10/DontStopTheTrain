@@ -16,6 +16,8 @@ namespace DontStopTheTrain.Train
     {
         Action<IEvent, IWagonSystem> OnEventStarted { get; set; }
         Action<SystemChangedCallback> OnSystemChanged { get; set; }
+        //Action<IWagonSystem> OnSystemFocus { get; set; }
+        Action<IWagon> OnFocus { get; set; }
         IWagonStaticData StaticData { get; }
         // int Number { get; } //номер вагона
         IReadOnlyCollection<IWagonSystem> Systems { get; }
@@ -23,8 +25,12 @@ namespace DontStopTheTrain.Train
         // int Next { get; set; } //номер следующего
         //int Prev { get; set; } //номер пред
 
+        void TryToFocus();
+
         void AddSystem(IWagonSystem mewSystem);
         void RemoveSystem(IWagonSystem mewSystem);
+
+        
 
 
     }

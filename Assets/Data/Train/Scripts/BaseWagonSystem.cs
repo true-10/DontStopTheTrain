@@ -7,6 +7,8 @@ namespace DontStopTheTrain.Train
     public class BaseWagonSystem : IWagonSystem
     {
         public Action<IEvent, IWagonSystem> OnEventStarted { get; set; }
+
+        public Action<IWagonSystem> OnFocus { get; set; }
         public IEvent ActiveEvent { get; private set; }
         public IWagonSystemStaticData StaticData => _staticData;
         public int Price { get; private set; }
@@ -34,6 +36,11 @@ namespace DontStopTheTrain.Train
         private IWagonSystemStaticData _staticData;
 
         private ReactiveProperty<int> _health;
+
+        public void TryToFocus()
+        {
+            OnFocus?.Invoke(this);
+        }
 
         public void SetViewer(IEventViewer viewer)
         {

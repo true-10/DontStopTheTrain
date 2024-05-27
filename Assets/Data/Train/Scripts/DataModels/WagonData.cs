@@ -14,6 +14,7 @@ namespace DontStopTheTrain.Train
     {
         public Action<IEvent, IWagonSystem> OnEventStarted { get; set; }
         public Action<SystemChangedCallback> OnSystemChanged { get; set; }
+        public Action<IWagon> OnFocus { get; set; }
         //здесь мы отслеживаем состояние вагона
         // public int Number => 1;
         public IWagonStaticData StaticData => _staticData;
@@ -44,6 +45,11 @@ namespace DontStopTheTrain.Train
         //private ReactiveProperty<int> _health;
         //private ReactiveProperty<int> _maxHealth;
         public List<IWagonSystem> _systems { get; private set; } = new();
+
+        public void TryToFocus()
+        {
+            OnFocus?.Invoke(this);
+        }
 
         public void Initialize()
         {

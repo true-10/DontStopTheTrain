@@ -34,7 +34,7 @@ namespace DontStopTheTrain.UI
         private Image _iconImage;
 
         private int _currentIndex = 0;
-        private List<WagonPartStaticData> _parts;
+        private List<WagonSystemVisualData> _parts;
 
 
         public void Initialize()

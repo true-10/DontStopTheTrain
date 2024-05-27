@@ -10,7 +10,11 @@ namespace DontStopTheTrain.Train
     {
         [Inject]
         private EventController _eventController;
+        [Inject]
+        private WagonObjectsManager _wagonObjectsManager;
 
+        [SerializeField]
+        private WagonObject _wagonObject;
         [SerializeField]
         private List<WagonEventViewer> _eventViewers;
         [SerializeField]
@@ -40,6 +44,8 @@ namespace DontStopTheTrain.Train
         protected override void OnClickViewHandler()
         {
             _boxCollider.enabled = false;
+            _wagonObjectsManager.SetSelectedWagon(_wagonObject);
+            _wagonObject.WagonData.TryToFocus();
           //  _systemViewers.ForEach(viewer => viewer.IsClickable = true);
         }
 
@@ -54,7 +60,8 @@ namespace DontStopTheTrain.Train
         protected override void OnExitViewHandler()
         {
             _boxCollider.enabled = true;
-          //  _systemViewers.ForEach(viewer => viewer.IsClickable = false);
+            _wagonObjectsManager.SetSelectedWagon(null);
+            //  _systemViewers.ForEach(viewer => viewer.IsClickable = false);
         }
 
 

@@ -27,6 +27,8 @@ public class WagonScriptableInstaller : ScriptableObjectInstaller<WagonScriptabl
         Container.Bind<WagonSystemsFabric>().AsSingle();
         Container.Bind<WagonSystemsManager>().AsSingle();
         Container.Bind<WagonsManager>().AsSingle();
+        Container.Bind<WagonObjectsManager>().AsSingle();
+        Container.Bind<WagonSystemObjectsManager>().AsSingle();
 
 
     }

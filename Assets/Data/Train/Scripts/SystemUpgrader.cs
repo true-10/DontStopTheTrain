@@ -7,11 +7,11 @@ namespace DontStopTheTrain.Train
     public class SystemUpgrader //SystemUpgrader
     {
 
-        public WagonPartStaticData CurrentPartStatic => _currentStatic;
+        public WagonSystemVisualData CurrentPartStatic => _currentStatic;
 
         private GameObject _target;
-        private WagonPartStaticData _currentStatic;
-        public void SetCurrentSystemStatic(WagonPartStaticData wagonPartStaticData)
+        private WagonSystemVisualData _currentStatic;
+        public void SetCurrentSystemStatic(WagonSystemVisualData wagonPartStaticData)
         {
             _currentStatic = wagonPartStaticData;
         }
@@ -26,14 +26,14 @@ namespace DontStopTheTrain.Train
             TryToReplace(_currentStatic);
         }
 
-        public bool TryToUpgraged(WagonPartStaticData wagonSystemStaticData)
+        public bool TryToUpgraged(WagonSystemVisualData wagonSystemStaticData)
         {
-            var prefab = wagonSystemStaticData.NextLevelStaticData.ConstructorPrefab;
-            GameObjectReplacer.Replace(_target, prefab, (go) => { });
+           // var prefab = wagonSystemStaticData.NextLevelStaticData.ConstructorPrefab;
+            //GameObjectReplacer.Replace(_target, prefab, (go) => { });
             return false;
         }
 
-        public void TryToReplace(WagonPartStaticData wagonSystemStaticData)//, Action<GameObject> onComlete = null)
+        public void TryToReplace(WagonSystemVisualData wagonSystemStaticData)//, Action<GameObject> onComlete = null)
         {
             var prefab = wagonSystemStaticData.ConstructorPrefab;
             GameObjectReplacer.Replace(_target, prefab, OnReplacemenComplete);

@@ -17,6 +17,8 @@ namespace DontStopTheTrain.Train
 
         [Inject]
         private WagonSystemsFabric _fabric;
+        [Inject]
+        private WagonSystemObjectsManager _wagonSystemObjectsManager;
 
         [SerializeField]
         private WagonSystemStaticDataBase _wagonSystemStaticDataBase;
@@ -32,6 +34,7 @@ namespace DontStopTheTrain.Train
         {
             WagonSystem = _fabric.Create(_wagonSystemStaticDataBase);
             WagonSystem.Initialize();
+            _wagonSystemObjectsManager.TryToAdd(this);
             //(WagonSystem as BaseWagonSystem).SetViewer(_wagonEventViewer);
 
         }
@@ -39,9 +42,10 @@ namespace DontStopTheTrain.Train
         public override void Dispose()
         {
             WagonSystem?.Dispose();
+            _wagonSystemObjectsManager.TryToRemove(this);
 
 
-           // _wagonEventViewer.OnSetEvent -= OnSetEvent;
+            // _wagonEventViewer.OnSetEvent -= OnSetEvent;
         }
 
     }

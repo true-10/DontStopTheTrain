@@ -7,11 +7,11 @@ using Zenject;
 
 namespace DontStopTheTrain.Train.Constructor
 {
+    //[Obsolete] //перенос  в вагон систем вью? или переименовать в WagonParUpgradetView или как то так
     public class WagonPartView : BaseClickableView
     {
 
-        //[Obsolete] //перенос  в вагон систем вью? или переименовать в WagonParUpgradetView или как то так
-        public WagonPartStaticData StaticData => _staticData;
+        public WagonSystemVisualData StaticData => _staticData;
 
         [Inject]
         private SystemUpgrader _partUpgrader;
@@ -19,7 +19,7 @@ namespace DontStopTheTrain.Train.Constructor
         private UIContainer _UIContainer;
 
         [SerializeField]
-        private WagonPartStaticData _staticData;
+        private WagonSystemVisualData _staticData;
         [SerializeField]
         private GameObject _selectionObject;
 

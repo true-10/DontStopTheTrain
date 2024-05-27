@@ -4,7 +4,7 @@ using UnityEngine;
 namespace DontStopTheTrain.Train
 {
     [CreateAssetMenu(fileName = "WagonPartsStorage", menuName = "DST/Train/WagonPartsStorage", order = 0)]
-    public class WagonPartsStaticStorage : StaticStorage<WagonPartStaticData>
+    public class WagonPartsStaticStorage : StaticStorage<WagonSystemVisualData>
     {
     }
 }

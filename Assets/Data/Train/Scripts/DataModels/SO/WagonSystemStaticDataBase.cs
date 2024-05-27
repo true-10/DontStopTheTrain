@@ -16,7 +16,11 @@ namespace DontStopTheTrain.Train
         public int MaxHealth => _maxHealth;
         public IReadOnlyCollection<WagonEventType> WagonEventTypes => _wagonEventTypes;
 
-        public IWagonPartStaticData WagonPartStaticData => _wagonPartStaticData;
+        public IWagonSystemVisualData WagonPartStaticData => _wagonPartStaticData;
+
+        public IWagonSystemStaticData NextLevelStaticData => _nextLevelStaticData;
+        public int Price => _price;
+        public int UpgradePrice => _upgradePrice;
 
         [SerializeField]
         private WagonSystemType _type = WagonSystemType.None;
@@ -33,7 +37,13 @@ namespace DontStopTheTrain.Train
         [SerializeField]
         private List<WagonEventType> _wagonEventTypes;
         [SerializeField]
-        private WagonPartStaticData _wagonPartStaticData;
+        private WagonSystemVisualData _wagonPartStaticData;
+        [SerializeField]
+        private WagonSystemStaticDataBase _nextLevelStaticData;
+        [SerializeField]
+        private int _price;
+        [SerializeField]
+        private int _upgradePrice;
     }
 }
 
