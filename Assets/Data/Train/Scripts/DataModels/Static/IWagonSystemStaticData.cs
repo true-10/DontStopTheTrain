@@ -14,7 +14,7 @@ namespace DontStopTheTrain.Train
         int MaxHealth { get; }
         IReadOnlyCollection<WagonEventType> WagonEventTypes { get; }//допустимые события у это системы
 
-        IWagonSystemVisualData WagonPartStaticData { get; }
+        IWagonSystemVisualData VisualData { get; }
         public IWagonSystemStaticData NextLevelStaticData { get; }
         public int Price { get; }
         public int UpgradePrice { get; }

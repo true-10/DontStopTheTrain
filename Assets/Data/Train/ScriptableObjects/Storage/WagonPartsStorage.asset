@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: WagonPartsStorage
   m_EditorClassIdentifier: 
   _datas:
-  - {fileID: 11400000, guid: f40ef262a11a397429ef1230960ba68b, type: 2}
-  - {fileID: 11400000, guid: 5df90d59c9e084242a86f159d051caab, type: 2}
-  - {fileID: 11400000, guid: c8c5235bf53921f42a1e517a23743644, type: 2}
+  - {fileID: 11400000, guid: 33abbe9172b50d34db1ad9a44e47cee5, type: 2}
+  - {fileID: 11400000, guid: 228db06dfcef74e449c410ec037af480, type: 2}
+  - {fileID: 11400000, guid: d7670bd612440cd428722d28bd28cd2f, type: 2}

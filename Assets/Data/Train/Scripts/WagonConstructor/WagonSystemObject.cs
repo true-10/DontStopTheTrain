@@ -6,14 +6,12 @@ using Zenject;
 
 namespace DontStopTheTrain.Train
 {
-
-
-
     public class WagonSystemObject : AbstractGameLifeCycleBehaviour
     {
         public IWagonSystem WagonSystem { get; private set; }
         public IWagonSystemStaticData StaticData => WagonSystem.StaticData;
 
+        public GameObject VisualGameObject => _visualGameObject;
 
         [Inject]
         private WagonSystemsFabric _fabric;
@@ -25,11 +23,14 @@ namespace DontStopTheTrain.Train
         [SerializeField]
         private GameObject _visualGameObject;
 
-        public void SetVisualActive(bool isActive)
+        /*  public void SetVisualActive(bool isActive)
+          {
+              _visualGameObject.SetActive(isActive);
+          }*/
+        public void SetNewVisualObject(GameObject newVisual)
         {
-            _visualGameObject.SetActive(isActive);
+            _visualGameObject = newVisual;
         }
-
         public override void Initialize()
         {
             WagonSystem = _fabric.Create(_wagonSystemStaticDataBase);

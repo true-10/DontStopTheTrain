@@ -2,7 +2,6 @@ using DontStopTheTrain;
 using True10.CameraSystem;
 using True10.Interfaces;
 using UnityEngine;
-using static True10.CameraSwitcherOnClick;
 
 namespace True10
 {

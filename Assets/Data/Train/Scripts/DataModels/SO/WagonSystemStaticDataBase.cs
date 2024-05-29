@@ -16,7 +16,7 @@ namespace DontStopTheTrain.Train
         public int MaxHealth => _maxHealth;
         public IReadOnlyCollection<WagonEventType> WagonEventTypes => _wagonEventTypes;
 
-        public IWagonSystemVisualData WagonPartStaticData => _wagonPartStaticData;
+        public IWagonSystemVisualData VisualData => _wagonPartStaticData;
 
         public IWagonSystemStaticData NextLevelStaticData => _nextLevelStaticData;
         public int Price => _price;

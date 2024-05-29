@@ -7,9 +7,9 @@ namespace DontStopTheTrain.Train
     {
         public Information Information { get; }
         public WagonPartType Type { get; }
-        public GameObject GamePrefab { get; }
-        public GameObject BrokenGamePrefab { get; }
-        public GameObject ConstructorPrefab { get; }
+        public GameObject Prefab { get; }
+        public GameObject BrokenPrefab { get; }
+       // public GameObject ConstructorPrefab { get; }
 
     }
 
@@ -18,20 +18,20 @@ namespace DontStopTheTrain.Train
     {
         public Information Information => _information;
         public WagonPartType Type => _type;
-        public GameObject GamePrefab => _gamePrefab;
-        public GameObject BrokenGamePrefab => _gamePrefab;
-        public GameObject ConstructorPrefab => _constructorPrefab;
+        public GameObject Prefab => _prefab;
+        public GameObject BrokenPrefab => _prefab;
+      //  public GameObject ConstructorPrefab => _constructorPrefab;
 
         [SerializeField]
         private Information _information;
         [SerializeField]
         private WagonPartType _type;
         [SerializeField]
-        private GameObject _gamePrefab;
+        private GameObject _prefab;
         [SerializeField]
-        private GameObject _brokenGamePrefab;
-        [SerializeField]
-        private GameObject _constructorPrefab;
+        private GameObject _brokenPrefab;
+    //    [SerializeField]
+      //  private GameObject _constructorPrefab;
        // private List<WagonSystemStaticDataBase> _systemStaticDatas;
 
     }
@@ -42,7 +42,8 @@ namespace DontStopTheTrain.Train
         Cart_2x,
         Cart_3x,
         LocoWheel,
-        Engine
+        Engine,
+        Hull
     }
 
 }

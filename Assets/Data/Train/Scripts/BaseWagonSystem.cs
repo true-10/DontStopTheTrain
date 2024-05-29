@@ -6,6 +6,7 @@ namespace DontStopTheTrain.Train
 {
     public class BaseWagonSystem : IWagonSystem
     {
+        public Action<IWagonSystem> OnInit { get; set; }
         public Action<IEvent, IWagonSystem> OnEventStarted { get; set; }
 
         public Action<IWagonSystem> OnFocus { get; set; }
@@ -52,6 +53,7 @@ namespace DontStopTheTrain.Train
             _health = new(StaticData.MaxHealth);
             _maxHealth = new(StaticData.MaxHealth);
             _turnBasedController.OnTurnEnd += OnTurnEnd;
+            OnInit?.Invoke(this);
         }
 
         public void Dispose()
@@ -60,8 +62,8 @@ namespace DontStopTheTrain.Train
             {
                 _turnBasedController.OnTurnEnd -= OnTurnEnd;
             }
-            _health.Dispose();
-            _maxHealth.Dispose();
+            _health?.Dispose();
+            _maxHealth?.Dispose();
         }
 
         private void OnTurnEnd(ITurnCallback callback)

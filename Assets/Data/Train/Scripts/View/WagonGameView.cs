@@ -6,7 +6,7 @@ using Zenject;
 
 namespace DontStopTheTrain.Train
 {
-    public sealed class WagonClickableView : BaseClickableView
+    public sealed class WagonGameView : BaseClickableView
     {
         [Inject]
         private EventController _eventController;

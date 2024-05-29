@@ -26,6 +26,7 @@ namespace DontStopTheTrain.Train
 
     public interface IWagonSystem : IHealthable, IGameLifeCycle
     {
+        Action<IWagonSystem> OnInit { get; set; }
         Action<IEvent, IWagonSystem> OnEventStarted { get; set; }
         // Action<SystemChangedCallback> OnSystemChanged { get; set; }
         Action<IWagonSystem> OnFocus { get; set; }

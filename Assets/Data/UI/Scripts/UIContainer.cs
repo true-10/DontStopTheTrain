@@ -47,7 +47,7 @@ namespace DontStopTheTrain.UI
     public enum UIScreenID
     {
         None = 0,
-        PartUpgrader,
+        SystemUpgrader,
         NewPerk,
         Wagon,
         Station,

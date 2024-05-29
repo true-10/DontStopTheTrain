@@ -26,6 +26,8 @@ namespace DontStopTheTrain.UI
         private Button _shopButton;
         [SerializeField]
         private Button _questsButton;
+        [SerializeField]
+        private Button _upgradesButton;
 
         public void Depart()
         {
@@ -49,11 +51,18 @@ namespace DontStopTheTrain.UI
             //список грузов для следующей станции. если условия погрузки выполняются, то можно взять. (если есть место, например)
         }
 
+        public void OpenUpgradeScreen()
+        {
+            var upgradeScreen = _UIContainer.GetUIScreen(UIScreenID.SystemUpgrader);
+            upgradeScreen?.Show();
+        }
+
         private void OnEnable()
         {
             _departButton.onClick.AddListener(Depart);
             _shopButton.onClick.AddListener(OpenShop);
             _questsButton.onClick.AddListener(OpenQuestList);
+            _upgradesButton.onClick.AddListener(OpenUpgradeScreen);
         }
 
         private void OnDisable()
@@ -61,6 +70,7 @@ namespace DontStopTheTrain.UI
             _departButton.onClick.RemoveAllListeners();
             _shopButton.onClick.RemoveAllListeners();
             _questsButton.onClick.RemoveAllListeners();
+            _upgradesButton.onClick.RemoveAllListeners();
         }
 
         private void Start()

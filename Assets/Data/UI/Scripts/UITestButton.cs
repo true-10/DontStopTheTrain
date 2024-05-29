@@ -1,5 +1,5 @@
-﻿using TMPro;
-using True10.Extentions;
+﻿using DontStopTheTrain.Train;
+using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -8,21 +8,36 @@ namespace DontStopTheTrain
     public class UITestButton : MonoBehaviour
     {
         [Inject]
-        private BuffsManager _buffsManager;
-        [Inject]
-        private TurnBasedController _turnBasedController;
+        private WagonObjectsManager _wagonObjectsManager;
+
 
         [SerializeField]
         private TextMeshProUGUI _buttonText;
+        [SerializeField]
+        private SystemVisualUpdater _systemVisualUpdater;
+        [SerializeField]
+        private SystemViewModeSwitcher _systemVisualObject;
+
         private void Start()
         {
-            _buttonText.text = "ДИЗМОРАЛЬ";
+            _buttonText.text = "Апгрейд";
+            _systemVisualUpdater.Initialize();
         }
 
         public void TestAction()
         {
-            var randomBuff = _buffsManager.Items.GetRandomElement();
-            _buffsManager.Activate(randomBuff);
+            //_systemVisualUpdater.NextVisualModel();
+            _systemVisualObject.SwitchToConstructorMode();
+            return;
+            var wagonObject = _wagonObjectsManager.SelectedWagonObject;
+            if (wagonObject == null)
+            {
+                return;
+            }
+            if (wagonObject.TryGetComponent<WagonViewModeSwitcher>(out var switcher))
+            {
+                switcher.SwitchSystemsToConstructorMode();
+            }
 
         }
     }

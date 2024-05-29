@@ -1,25 +1,20 @@
 using DontStopTheTrain.UI;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
 namespace DontStopTheTrain.Train.Constructor
 {
-    //[Obsolete] //перенос  в вагон систем вью? или переименовать в WagonParUpgradetView или как то так
-    public class WagonPartView : BaseClickableView
+    public class SystemUpgradeView : BaseClickableView
     {
+       // public IWagonSystemVisualData StaticData => _systemObject.WagonSystem.StaticData.VisualData;
 
-        public WagonSystemVisualData StaticData => _staticData;
-
-        [Inject]
-        private SystemUpgrader _partUpgrader;
         [Inject]
         private UIContainer _UIContainer;
 
+        //[SerializeField]
+        //private WagonSystemObject _systemObject;
         [SerializeField]
-        private WagonSystemVisualData _staticData;
+        private SystemVisualUpdater _systemVisualUpdater;
         [SerializeField]
         private GameObject _selectionObject;
 
@@ -35,17 +30,15 @@ namespace DontStopTheTrain.Train.Constructor
 
         protected override void OnClickViewHandler()
         {
-            _partUpgrader.SetCurrentTarget(gameObject);
-            _partUpgrader.SetCurrentSystemStatic(_staticData);
             _selectionObject?.SetActive(false);
-            _UIContainer.GetUIScreen(UIScreenID.PartUpgrader)?.Show();
+            var updateScreen = _UIContainer.GetUIScreen(UIScreenID.SystemUpgrader) as UISystemUpgrader;
+            updateScreen.SetVisualUpdater(_systemVisualUpdater);
+            updateScreen?.Show();
         }
 
         protected override void OnExitViewHandler()
         {
             _selectionObject?.SetActive(false);
-            _partUpgrader.SetCurrentTarget(null);
-            _partUpgrader.SetCurrentSystemStatic(null);
         }
 
         protected override void OnMouseOverEnterHandler()
