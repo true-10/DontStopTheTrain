@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - asteroid
-  - ship
-  - Ground
+  - Rails
+  - TurnoutRails
   layers:
   - Default
   - TransparentFX
@@ -14,16 +13,16 @@ TagManager:
   - 
   - Water
   - UI
-  - Train
-  - Wagons
-  - CameraObstacles
-  - Ground
-  - Enemy
-  - Bolid
-  - Player
-  - PlayerIgnore
-  - Events
-  - OnlyShadows
+  - 
+  - 
+  - RailGuide
+  - TrainWheels
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
