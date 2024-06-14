@@ -2,7 +2,7 @@
   "dependencies": {
     "com.leopotam.ecslite": "https://github.com/Leopotam/ecslite.git",
     "com.unity.2d.sprite": "1.0.0",
-    "com.unity.addressables": "1.21.20",
+    "com.unity.addressables": "1.21.21",
     "com.unity.ai.navigation": "1.1.5",
     "com.unity.cinemachine": "2.9.7",
     "com.unity.collab-proxy": "2.3.1",
@@ -13,7 +13,7 @@
     "com.unity.render-pipelines.high-definition-config": "14.0.10",
     "com.unity.splines": "2.5.2",
     "com.unity.test-framework": "1.1.33",
-    "com.unity.textmeshpro": "3.0.8",
+    "com.unity.textmeshpro": "3.0.9",
     "com.unity.timeline": "1.7.6",
     "com.unity.ugui": "1.0.0",
     "com.unity.modules.ai": "1.0.0",
