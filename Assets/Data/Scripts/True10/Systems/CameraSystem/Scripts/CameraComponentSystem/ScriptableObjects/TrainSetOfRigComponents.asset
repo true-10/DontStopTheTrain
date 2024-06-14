@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: train rig
   _comment: 
   _components:
-  - {fileID: 11400000, guid: 964ea5f815c01a24eab622792056b04e, type: 2}
+  - {fileID: 11400000, guid: 5cbcc7dae8924dd4a8034cebbe240826, type: 2}
   - {fileID: 11400000, guid: b5d898d2bddd46441ad911e1f1dd26c8, type: 2}
   - {fileID: 11400000, guid: f4e2cd42a42cfc0448b205aad62b1110, type: 2}
   - {fileID: 11400000, guid: 8a09a8d3064ce494ebe8292fc425f84d, type: 2}

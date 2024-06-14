@@ -22,8 +22,6 @@ namespace True10.CameraSystem
         [SerializeField] 
         private TransformPositionLimiter _transformPositionLimiter;
 
-        // [SerializeField] 
-        //private ICameraHolder _cameraHolder;
         private bool _isActive = false;
 
         public override void Initialize()
@@ -87,7 +85,19 @@ namespace True10.CameraSystem
             _isActive = false;
         }
 
-        private void Update()
+     /*   private void Update()
+        {
+            if (_isActive == false)
+            {
+                return;
+            }
+            foreach (AbstractCameraRigComponent component in _components)
+            {
+                component.UpdateInput();
+            }
+        }*/
+
+        private void LateUpdate()
         {
             if (_isActive == false)
             {
