@@ -18,7 +18,7 @@ namespace DontStopTheTrain.Train
         [SerializeField]
         private List<WagonEventViewer> _eventViewers;
         [SerializeField]
-        private List<WagonEventController> _systemViewers;
+        private List<WagonEventController> _eventControllers;
         [SerializeField] 
         private BoxCollider _boxCollider;
         [SerializeField] 
@@ -83,6 +83,11 @@ namespace DontStopTheTrain.Train
             base.OnValidate();
             _boxCollider ??= GetComponent<BoxCollider>();
             //_wagonUIOnClick ??= GetComponent<WagonUIOnClick>();
+            if (_wagonObject != null)
+            {
+                _eventViewers = _wagonObject.GetComponentsInChildren<WagonEventViewer>().ToList();
+                _eventControllers = _wagonObject.GetComponentsInChildren<WagonEventController>().ToList();
+            }
         }
     }
    

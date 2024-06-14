@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using True10.AnimationSystem;
 using True10.Interfaces;
 using True10.LevelScrollSystem;
@@ -12,11 +13,19 @@ namespace DontStopTheTrain.Train
         [SerializeField]
         private float _rotationSpeed = 1000f;
         [SerializeField]
-        private List<ObjectRotation> objectsRotation;
+        private GameObject _objectsRotationRoot;
+        //[SerializeField]
+        private List<ObjectRotation> _objectsRotation;
 
+
+        public override void Initialize()
+        {
+            base.Initialize();
+            _objectsRotation = _objectsRotationRoot?.GetComponentsInChildren<ObjectRotation>().ToList();
+        }
         public void SetSpeedRotation(float speed)
         {
-            foreach (var item in objectsRotation)
+            foreach (var item in _objectsRotation)
             {
                 item.SetSpeedRotation(x: speed);
             }

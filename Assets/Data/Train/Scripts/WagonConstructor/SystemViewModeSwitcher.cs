@@ -9,6 +9,11 @@ namespace DontStopTheTrain.Train
         [SerializeField]
         private GameObject _constructorViewObject;
 
+        private void Start()
+        {
+            SwitchToGameMode();
+        }
+
         public void SwitchToConstructorMode()
         {
             _gameViewObject.SetActive(false);

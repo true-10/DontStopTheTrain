@@ -26,11 +26,13 @@ namespace DontStopTheTrain.Train
         {
             _container ??= GetComponent<WagonSystemsContainer>();
         }
+
         private void Start()
         {
             SwitchWagonToGameMode();
             SwitchSystemsToGameMode();
         }
+
         public void SwitchWagonToConstructorMode()
         {
             _gameViewObject.SetActive(false);

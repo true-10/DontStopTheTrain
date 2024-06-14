@@ -1,4 +1,5 @@
 using DontStopTheTrain.Events;
+using System;
 using True10.Interfaces;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -8,6 +9,7 @@ namespace DontStopTheTrain.Train
 {
     public class WagonSystemObject : AbstractGameLifeCycleBehaviour
     {
+        public Action OnSystemInit { get; set; }
         public IWagonSystem WagonSystem { get; private set; }
         public IWagonSystemStaticData StaticData => WagonSystem.StaticData;
 
@@ -35,6 +37,7 @@ namespace DontStopTheTrain.Train
         {
             WagonSystem = _fabric.Create(_wagonSystemStaticDataBase);
             WagonSystem.Initialize();
+            OnSystemInit?.Invoke();
             _wagonSystemObjectsManager.TryToAdd(this);
             //(WagonSystem as BaseWagonSystem).SetViewer(_wagonEventViewer);
 

@@ -13,8 +13,13 @@ namespace DontStopTheTrain
 
         [SerializeField]
         private Transform _lookAtTransform;
+        [SerializeField]
+        private WagonSystemObject _wagonSystemObject;
+        [SerializeField]
+        private WagonEventViewer _eventViewer;
 
-        private IWagonSystem _wagonSystem;
+        private IWagonSystem _wagonSystem => _wagonSystemObject.WagonSystem;
+
         private IEvent _activeEvent;
         protected override void OnMouseOverEnterHandler()
         {
@@ -72,7 +77,7 @@ namespace DontStopTheTrain
 
         public void SetSystem(IWagonSystem wagonSystem)
         {
-            _wagonSystem ??= wagonSystem;
+       //     _wagonSystem ??= wagonSystem;
         }
 
         public void SetEvent(IEvent eventData)

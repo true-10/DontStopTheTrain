@@ -14,15 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 1
   _info:
-    _name: 
-    _description: 
+    _name: "\u041A\u043E\u043B\u0435\u0441\u043D\u0430\u044F \u0442\u0435\u043B\u0435\u0436\u043A\u0430
+      001 2x 02"
+    _description: "\u041A\u043E\u043B\u0435\u0441\u043D\u0430\u044F \u0442\u0435\u043B\u0435\u0436\u043A\u0430,
+      \u0447\u043E \u043D\u0435\u043F\u043E\u043D\u044F\u0442\u043D\u043E\u0433\u043E"
     _hint: 
     _icon: {fileID: 0}
-  _baseEnergyConsumption: 1
+  _baseEnergyConsumption: 0
   _baseDeteriorationSpeed: 0
   _weight: 10
   _maxHealth: 1000
-  _wagonEventTypes: 
+  _wagonEventTypes: 01000000
   _wagonPartStaticData: {fileID: 11400000, guid: 33abbe9172b50d34db1ad9a44e47cee5,
     type: 2}
   _nextLevelStaticData: {fileID: 0}
