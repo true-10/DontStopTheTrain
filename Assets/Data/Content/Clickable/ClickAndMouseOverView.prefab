@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7213642253655152491}
   - component: {fileID: 1032067636824149625}
   - component: {fileID: 335984579282695392}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: ClickAndMouseOverView
   m_TagString: Untagged
   m_Icon: {fileID: 0}

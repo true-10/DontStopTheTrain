@@ -18,12 +18,12 @@ namespace True10.Interfaces
         public abstract void Dispose();
         public abstract void Initialize();
 
-        protected virtual void Start()
+        protected virtual void OnEnable()// Start()
         {
             Initialize();
         }
 
-        protected virtual void OnDestroy()
+        protected virtual void OnDisable()// OnDestroy()
         {
             Dispose();
         }

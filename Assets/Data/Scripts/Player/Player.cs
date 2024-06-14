@@ -10,6 +10,17 @@ using Zenject;
 
 namespace DontStopTheTrain
 {
+
+    public enum Corporation
+    {
+        Oil = 0,
+        Media,
+        Justice,
+        Atom,
+        Anarhy,
+        Church
+    }
+
     [System.Serializable]
     public sealed class Player: IGameLifeCycle
     {

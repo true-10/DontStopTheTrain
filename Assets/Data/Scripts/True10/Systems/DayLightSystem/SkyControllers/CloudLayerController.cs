@@ -10,10 +10,11 @@ namespace True10.DayLightSystem
     {
         [SerializeField]
         private Volume _volume;
+        [SerializeField]
+        private float _speed;
 
         private VolumeProfile _volumeProfile;
         private CloudLayer _cloudLayer;
-        private float _speed;
 
         public void SetSpeed(float newSpeed)
         {
