@@ -44,10 +44,13 @@ namespace DontStopTheTrain.UI
         {
             _wagonSystem = wagonSystem;
             _clickableView = clickableView;
-            _nameText.text = wagonSystem.StaticData.Info.Name;
-            _descriptionText.text = wagonSystem.StaticData.Info.Description;
-            _icon.sprite = wagonSystem.StaticData.Info.Icon;
-            _healthSlider.value = (float)wagonSystem.Health.Value / wagonSystem.MaxHealth.Value;
+            if(wagonSystem != null)
+            {
+                _nameText.text = wagonSystem.StaticData.Info.Name;
+                _descriptionText.text = wagonSystem.StaticData.Info.Description;
+                _icon.sprite = wagonSystem.StaticData.Info.Icon;
+                _healthSlider.value = (float)wagonSystem.Health.Value / wagonSystem.MaxHealth.Value;
+            }
 
             ShowButtons(IsAnchored);
             _worldPostionSetter.SetPosition(lookAt);

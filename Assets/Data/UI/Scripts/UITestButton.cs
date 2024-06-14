@@ -1,43 +1,35 @@
 ﻿using DontStopTheTrain.Train;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace DontStopTheTrain
 {
     public class UITestButton : MonoBehaviour
     {
-        [Inject]
-        private WagonObjectsManager _wagonObjectsManager;
-
-
         [SerializeField]
         private TextMeshProUGUI _buttonText;
-        [SerializeField]
-        private SystemVisualUpdater _systemVisualUpdater;
-        [SerializeField]
-        private SystemViewModeSwitcher _systemVisualObject;
 
+        private bool _isScaled = false;
         private void Start()
         {
-            _buttonText.text = "Апгрейд";
-            _systemVisualUpdater.Initialize();
+            _buttonText.text = "таймскейл";
         }
 
         public void TestAction()
         {
-            //_systemVisualUpdater.NextVisualModel();
-            _systemVisualObject.SwitchToConstructorMode();
-            return;
-            var wagonObject = _wagonObjectsManager.SelectedWagonObject;
-            if (wagonObject == null)
+            _isScaled = !_isScaled;
+            if (_isScaled)
             {
-                return;
+                Time.timeScale = 1f;
             }
-            if (wagonObject.TryGetComponent<WagonViewModeSwitcher>(out var switcher))
+            else
             {
-                switcher.SwitchSystemsToConstructorMode();
+                Time.timeScale = 10f;
             }
+
+            _buttonText.text = $"таймскейл {Time.timeScale}x";
 
         }
     }

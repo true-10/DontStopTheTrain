@@ -55,7 +55,8 @@ namespace DontStopTheTrain.UI
         Gameplay,
         GameMenu,
         StartMenu,
-        PlayerMenu
+        PlayerMenu,
+        Constructor
 
     }
 }

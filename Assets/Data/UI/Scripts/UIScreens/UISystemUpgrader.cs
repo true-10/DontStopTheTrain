@@ -3,12 +3,16 @@ using TMPro;
 using True10.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace DontStopTheTrain.UI
 {
     public class UISystemUpgrader : UIScreen, IGameLifeCycle
     {
         public override UIScreenID ScreenID => UIScreenID.SystemUpgrader;
+
+        [Inject]
+        private UIContainer _UIContainer;
 
         [SerializeField]
         private Button _nextPartButton;
@@ -28,6 +32,7 @@ namespace DontStopTheTrain.UI
         public void SetVisualUpdater(SystemVisualUpdater systemVisualUpdater)
         {
             _systemVisualUpdater = systemVisualUpdater;
+            _systemVisualUpdater.Initialize();
         }
 
         public void Initialize()
@@ -52,6 +57,7 @@ namespace DontStopTheTrain.UI
 
         private void OnShowHandler(bool isShow)
         {
+
         }
 
         private void NextPartHandler()
@@ -69,6 +75,9 @@ namespace DontStopTheTrain.UI
             _systemVisualUpdater?.CommitUpdate();
             _systemVisualUpdater = null;
             Hide();
+
+            var screen = _UIContainer.GetUIScreen(UIScreenID.Constructor);
+            screen?.Show();
         }
 
         private void CancelHandler()
@@ -76,6 +85,8 @@ namespace DontStopTheTrain.UI
             _systemVisualUpdater?.Undo();
             _systemVisualUpdater = null;
             Hide();
+            var screen = _UIContainer.GetUIScreen(UIScreenID.Constructor);
+            screen?.Show();
         }
 
         private void Start()

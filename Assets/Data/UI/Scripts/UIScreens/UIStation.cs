@@ -1,6 +1,3 @@
-using DontStopTheTrain.UI;
-using System.Collections;
-using System.Collections.Generic;
 using True10.DayTimeSystem;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +5,6 @@ using Zenject;
 
 namespace DontStopTheTrain.UI
 {
-
     public class UIStation : UIScreen
     {
         public override UIScreenID ScreenID => UIScreenID.Station;
@@ -53,7 +49,9 @@ namespace DontStopTheTrain.UI
 
         public void OpenUpgradeScreen()
         {
-            var upgradeScreen = _UIContainer.GetUIScreen(UIScreenID.SystemUpgrader);
+            Hide();
+            //и включаем экран конструктора (только кнопка выхода из режима конструктора)
+            var upgradeScreen = _UIContainer.GetUIScreen(UIScreenID.Constructor);
             upgradeScreen?.Show();
         }
 

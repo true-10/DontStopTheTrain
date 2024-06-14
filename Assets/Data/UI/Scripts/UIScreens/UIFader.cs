@@ -70,7 +70,7 @@ namespace DontStopTheTrain.UI
             Show();
             //_targetAlpha = 1f; 
             //FadeAnimation(0f);
-            FadeOut(_fadeAwaitInSeconds);
+            //FadeOut(_fadeAwaitInSeconds);
         }
 
         private void OnValidate()

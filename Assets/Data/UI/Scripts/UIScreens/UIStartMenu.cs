@@ -61,7 +61,8 @@ namespace DontStopTheTrain.UI
 
         private void Start()
         {
-            Show();//вынести
+            Hide();
+            // Show();//вынести
         }
  
         public override void Show()
